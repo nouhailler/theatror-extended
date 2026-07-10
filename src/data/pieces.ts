@@ -213,6 +213,20 @@ export const PIECES: Piece[] = [
     resume: "Le grotesque Père Ubu s'empare du trône de Pologne — l'avant-garde est née.",
   },
   {
+    id: 'marquis-villemer', titre: 'Le Marquis de Villemer', auteur: 'George Sand', auteurId: 'sand',
+    annee: '1864', anneeNum: 1864, genre: 'comédie', actes: '4 actes',
+    femmes: 4, hommes: 4, dureeMin: 120, duree: '≈ 2 h', domainePublic: true,
+    decor: 'décor simple', pourEnfants: false, epoque: 'contemporain', difficulte: 2,
+    resume: "Une dame de compagnie et un marquis mélancolique s'aiment malgré les conventions et les rangs.",
+  },
+  {
+    id: 'francois-champi', titre: 'François le Champi', auteur: 'George Sand', auteurId: 'sand',
+    annee: '1849', anneeNum: 1849, genre: 'drame', actes: '3 actes',
+    femmes: 3, hommes: 4, dureeMin: 100, duree: '≈ 1 h 40', domainePublic: true,
+    decor: 'décor simple', pourEnfants: true, epoque: 'contemporain', difficulte: 2,
+    resume: "Un enfant trouvé, élevé par la meunière Madeleine, revient homme : l'amour transcende les différences.",
+  },
+  {
     id: 'le-jeu-amour-hasard', titre: "Le Jeu de l'amour et du hasard", auteur: 'Marivaux', auteurId: 'marivaux',
     annee: '1730', anneeNum: 1730, genre: 'comédie', actes: '3 actes',
     femmes: 2, hommes: 4, dureeMin: 100, duree: '≈ 1 h 40', domainePublic: true,

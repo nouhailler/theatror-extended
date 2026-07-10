@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { PIECES } from '../data/pieces';
 import type { Piece } from '../data/types';
-import { ScreenTitle, difficulteLabel } from '../components/ui';
-import Star from '../components/Star';
+import { ScreenTitle } from '../components/ui';
+import PieceCard from '../components/PieceCard';
 
 interface FilterDef {
   label: string;
@@ -90,24 +90,7 @@ export default function Pieces() {
         {results.length} pièce{results.length > 1 ? 's' : ''} correspond{results.length > 1 ? 'ent' : ''}
       </div>
 
-      {results.map((p) => (
-        <div key={p.id} className="card card-tap" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 7 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
-            <div style={{ fontFamily: 'var(--font-title)', fontSize: 18.5, fontWeight: 600 }}>{p.titre}</div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, whiteSpace: 'nowrap' }}>
-              <span style={{ fontSize: 13, color: 'var(--gold)' }}>{p.duree}</span>
-              <Star cat="pieces" id={p.id} />
-            </div>
-          </div>
-          <div style={{ fontSize: 14, color: 'var(--text-2)', fontStyle: 'italic' }}>{p.auteur} · {p.annee}</div>
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
-            <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, background: 'var(--red-chip-bg)', border: '1px solid var(--red-chip-border)', color: 'var(--red-chip-text)' }}>{p.genre}</span>
-            <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)' }}>{p.actes}</span>
-            <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)' }}>{p.femmes} F · {p.hommes} H</span>
-            <span style={{ fontSize: 12.5, color: 'var(--text-muted)', marginLeft: 'auto', fontStyle: 'italic' }}>{difficulteLabel(p.difficulte)}</span>
-          </div>
-        </div>
-      ))}
+      {results.map((p) => <PieceCard key={p.id} p={p} />)}
 
       {results.length === 0 && (
         <div style={{ textAlign: 'center', padding: '26px 18px', border: '1px dashed var(--b-chip)', borderRadius: 12, color: 'var(--text-muted)', fontStyle: 'italic', fontSize: 14.5 }}>

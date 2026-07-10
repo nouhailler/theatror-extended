@@ -129,4 +129,20 @@ export const DRAMATURGES: Dramaturge[] = [
     oeuvres: ['Le Barbier de Séville · 1775', 'Le Mariage de Figaro · 1784', 'La Mère coupable · 1792'],
     influence: "Figaro, valet frondeur, devient une figure de la contestation ; ses pièces inspirent Rossini et Mozart.",
   },
+  {
+    id: 'sand', nom: 'George Sand', nomComplet: 'Amantine Aurore Lucile Dupin',
+    dates: '1804 – 1876', naissance: 1804, initiale: 'S', categorie: 'Dramaturges',
+    img: 'George Sand by Nadar, 1864.jpg',
+    bio: "Romancière et dramaturge, George Sand mène une carrière théâtrale méconnue mais féconde. Elle adapte ses romans pour la scène et écrit des comédies de mœurs jouées à l'Odéon et au Gymnase, portées par une écriture sensible et un féminisme discret.",
+    chrono: [
+      { an: '1804', txt: 'Naissance à Paris.' },
+      { an: '1840', txt: 'Cosima, sa première pièce, à la Comédie-Française.' },
+      { an: '1849', txt: 'François le Champi, adapté à l’Odéon, triomphe.' },
+      { an: '1864', txt: 'Le Marquis de Villemer, grand succès à l’Odéon.' },
+      { an: '1876', txt: 'Mort à Nohant.' },
+    ],
+    citation: { txt: "« Le théâtre est un résumé de la vie, une image de la société. »", src: 'Correspondance' },
+    oeuvres: ['Cosima · 1840', 'François le Champi · 1849', 'Claudie · 1851', 'Le Marquis de Villemer · 1864'],
+    influence: "Pionnière parmi les femmes de théâtre du XIXe siècle, elle ouvre la voie aux autrices dramatiques françaises.",
+  },
 ];

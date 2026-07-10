@@ -79,7 +79,7 @@ export default function Accueil() {
 
       {/* Pièce du jour */}
       <div
-        onClick={() => nav('/pieces')}
+        onClick={() => nav(`/pieces/${piece.id}`)}
         className="card-tap"
         style={{ background: 'var(--bg-piece-jour)', border: '1px solid var(--b-rest2)', borderRadius: 12, padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 8 }}
       >
@@ -120,7 +120,7 @@ export default function Accueil() {
 
       {/* Collection en vedette */}
       <div
-        onClick={() => nav('/explorer/collections')}
+        onClick={() => nav('/explorer/collections/absurde')}
         style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'linear-gradient(120deg,#3a1520,#241019)', border: '1px solid rgba(158,43,58,.4)', borderRadius: 12, padding: '13px 16px', cursor: 'pointer' }}
       >
         <div style={{ flex: 1 }}>

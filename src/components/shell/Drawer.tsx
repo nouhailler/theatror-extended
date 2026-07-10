@@ -33,10 +33,12 @@ export default function Drawer() {
         { label: 'Accueil', onGo: go('/') },
         { label: 'Pièces & filtres', onGo: go('/pieces') },
         { label: 'Encyclopédie', onGo: go('/explorer/encyclopedie') },
+        { label: 'Personnages célèbres', onGo: go('/explorer/personnages') },
         { label: 'Fiche dramaturge', note: 'ex. Molière', onGo: go('/explorer/dramaturge/moliere') },
         { label: 'Frise chronologique', onGo: go('/explorer/frise') },
         { label: 'Carte du monde', onGo: go('/explorer/carte') },
         { label: 'Collections thématiques', onGo: go('/explorer/collections') },
+        { label: 'Quiz', onGo: go('/quiz') },
       ],
     },
     {
@@ -65,7 +67,6 @@ export default function Drawer() {
     {
       titre: 'À venir',
       items: [
-        { label: 'Quiz', soon: true },
         { label: 'Mode IA & générateur de scènes', soon: true },
         { label: "Exercices d'acteur & voix", soon: true },
         { label: 'Lecture interactive', soon: true },

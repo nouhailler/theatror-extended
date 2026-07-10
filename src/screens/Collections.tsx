@@ -1,15 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import { COLLECTIONS } from '../data/content';
 import { wiki } from '../lib/wikimedia';
 
 export default function Collections() {
+  const nav = useNavigate();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '18px 18px 28px' }} data-screen-label="Collections">
       <BackHeader to="/explorer" title="Collections" />
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         {COLLECTIONS.map((c) => (
-          <div key={c.id} className="card card-tap" style={{ overflow: 'hidden' }}>
+          <div key={c.id} onClick={() => nav(`/explorer/collections/${c.id}`)} className="card card-tap" style={{ overflow: 'hidden' }}>
             <div style={{ position: 'relative', height: 110, background: c.fond, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
               <span style={{ fontFamily: 'var(--font-title)', fontSize: 38, color: 'rgba(242,233,220,.3)' }}>{c.initiale}</span>
               {c.img && (

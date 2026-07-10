@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store';
 import { BackHeader } from '../components/ui';
 import Star from '../components/Star';
@@ -24,6 +25,7 @@ function Empty({ children }: { children: React.ReactNode }) {
 }
 
 export default function MaCollection() {
+  const nav = useNavigate();
   const favs = useStore((s) => s.favs);
   const favCount = useStore((s) => s.favCount());
   const [seg, setSeg] = useState<Seg>('p');
@@ -58,7 +60,7 @@ export default function MaCollection() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {pieces.length === 0 && <Empty>Aucun favori pour l'instant.<br />Touchez ☆ sur une pièce pour l'ajouter ici.</Empty>}
           {pieces.map((p) => (
-            <div key={p.id} className="card" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div key={p.id} onClick={() => nav(`/pieces/${p.id}`)} className="card card-tap" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 18, fontWeight: 600 }}>{p.titre}</div>
                 <Star cat="pieces" id={p.id} />
@@ -73,7 +75,7 @@ export default function MaCollection() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {auteurs.length === 0 && <Empty>Aucun favori pour l'instant.<br />Touchez ☆ sur un dramaturge pour l'ajouter ici.</Empty>}
           {auteurs.map((d) => (
-            <div key={d.id} className="card" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
+            <div key={d.id} onClick={() => nav(`/explorer/dramaturge/${d.id}`)} className="card card-tap" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
               <WikiImage file={d.img} initial={d.initiale} initialSize={20} style={{ width: 52, height: 52, borderRadius: 999, flex: 'none' }} />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{d.nom}</div>
