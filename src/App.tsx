@@ -17,6 +17,7 @@ import FicheDramaturge from './screens/FicheDramaturge';
 import Personnages from './screens/Personnages';
 import FichePersonnage from './screens/FichePersonnage';
 import Quiz from './screens/Quiz';
+import ModeIA from './screens/ModeIA';
 import Frise from './screens/Frise';
 import Carte from './screens/Carte';
 import Collections from './screens/Collections';
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/explorer/personnages" element={<Personnages />} />
           <Route path="/explorer/personnage/:id" element={<FichePersonnage />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/ia" element={<ModeIA />} />
           <Route path="/explorer/frise" element={<Frise />} />
           <Route path="/explorer/carte" element={<Carte />} />
           <Route path="/explorer/collections" element={<Collections />} />

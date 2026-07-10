@@ -23,9 +23,15 @@ export default function Explorer() {
         </div>
       ))}
 
+      <div onClick={() => nav('/ia')} className="card-tap" style={{ background: 'linear-gradient(120deg,#2a1830,#1a1020)', border: '1px solid rgba(212,169,78,.4)', borderRadius: 12, padding: 16, cursor: 'pointer' }}>
+        <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Nouveau</div>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: 19, fontWeight: 600, marginTop: 2 }}>Mode IA</div>
+        <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 3 }}>Assistant théâtre, générateur de scènes, distribution, analyse</div>
+      </div>
+
       <div style={{ background: 'linear-gradient(120deg,#3a1520,#241019)', border: '1px solid rgba(158,43,58,.4)', borderRadius: 12, padding: 16 }}>
         <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Bientôt</div>
-        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Mode IA · Mise en scène virtuelle · Lecture interactive</div>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Lecture interactive · Mise en scène virtuelle</div>
       </div>
     </div>
   );

@@ -47,6 +47,7 @@ export default function Drawer() {
         { label: 'Monologues', onGo: go('/scene?seg=mono') },
         { label: 'Citations', onGo: go('/scene?seg=cit') },
         { label: 'Glossaire', onGo: go('/scene?seg=glos') },
+        { label: 'Mode IA', note: 'assistant', onGo: go('/ia') },
       ],
     },
     {
@@ -67,7 +68,6 @@ export default function Drawer() {
     {
       titre: 'À venir',
       items: [
-        { label: 'Mode IA & générateur de scènes', soon: true },
         { label: "Exercices d'acteur & voix", soon: true },
         { label: 'Lecture interactive', soon: true },
         { label: 'Costumes, décors, accessoires', soon: true },
