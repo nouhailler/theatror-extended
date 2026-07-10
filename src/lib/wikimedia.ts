@@ -29,6 +29,15 @@ export const CREDITS: Record<string, Credit> = {
   'Comédie-Française.jpg': { auteur: 'Wikimedia Commons', licence: 'CC BY-SA' },
   'Shakespeare’s Globe Theatre, London.jpg': { auteur: 'Wikimedia Commons', licence: 'CC BY-SA' },
   'Avignon, Palais des Papes by JM Rosier.jpg': { auteur: 'Jean-Marc Rosier', licence: 'CC BY-SA 3.0' },
+  // Auteurs contemporains
+  'Lagarce.jpg': { auteur: 'Babelio', licence: 'CC BY-SA 4.0' },
+  'Yasmina Reza at XIII Prix Diálogo - Ceremonia de entrega.jpg': { auteur: 'power axle', licence: 'CC BY 2.0' },
+  'Joël Pommerat.jpg': { auteur: 'David Balicki', licence: 'CC BY-SA 4.0' },
+  'OscarsCoulisses2021.jpg': { auteur: 'StradellaLand', licence: 'CC0' },
+  'Valère Novarina - portrait de Fernand Michaud - btv1b103296260.jpg': { auteur: 'Fernand Michaud', licence: 'Domaine public' },
+  'Michel Vinaver - 2006.jpg': { auteur: 'Wikinade', licence: 'CC BY-SA 4.0' },
+  'Marie Ndiaye 01.jpg': { auteur: 'Bengt Oberger', licence: 'CC BY-SA 4.0' },
+  'Fabrice Melquiot.jpg': { auteur: 'Unmecmoi', licence: 'CC BY-SA 4.0' },
 };
 
 export function creditFor(file?: string): Credit | undefined {

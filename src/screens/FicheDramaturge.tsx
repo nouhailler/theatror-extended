@@ -19,6 +19,8 @@ export default function FicheDramaturge() {
   }
 
   const src = d.img ? wiki(d.img, 800) : '';
+  const kind = d.categorie === 'Auteurs contemporains' ? 'Auteur contemporain' : 'Dramaturge';
+  const backTo = `/explorer/encyclopedie?cat=${encodeURIComponent(d.categorie)}`;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Fiche ${d.nom}`}>
@@ -30,13 +32,13 @@ export default function FicheDramaturge() {
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         )}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.25) 0%,rgba(23,16,21,0) 35%,rgba(23,16,21,.95) 100%)' }} />
-        <button onClick={() => nav('/explorer/encyclopedie')} aria-label="Retour"
+        <button onClick={() => nav(backTo)} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>
         <div style={{ position: 'absolute', top: 14, right: 16 }}>
           <Star cat="auteurs" id={d.id} size={22} shadow />
         </div>
         <div style={{ position: 'absolute', left: 18, bottom: 12 }}>
-          <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Dramaturge</div>
+          <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>{kind}</div>
           <div style={{ fontFamily: 'var(--font-title)', fontSize: 28, fontWeight: 700 }}>{d.nom}</div>
           <div style={{ fontSize: 14, color: 'var(--text-2)', fontStyle: 'italic' }}>{d.nomComplet && `${d.nomComplet} · `}{d.dates}</div>
         </div>

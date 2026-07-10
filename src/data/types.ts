@@ -51,6 +51,7 @@ export interface Dramaturge {
 
 export type EncycloCategorie =
   | 'Dramaturges'
+  | 'Auteurs contemporains'
   | 'Histoire'
   | 'Mouvements'
   | 'Genres'

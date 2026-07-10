@@ -8,7 +8,7 @@ import { LIEUX } from '../data/content';
 import type { EncycloCategorie } from '../data/types';
 
 const CATEGORIES: EncycloCategorie[] = [
-  'Dramaturges', 'Histoire', 'Mouvements', 'Genres', 'Métiers', 'Théâtres', 'Festivals',
+  'Dramaturges', 'Auteurs contemporains', 'Histoire', 'Mouvements', 'Genres', 'Métiers', 'Théâtres', 'Festivals',
 ];
 
 export default function Encyclopedie() {
@@ -17,7 +17,9 @@ export default function Encyclopedie() {
   const cat = (params.get('cat') as EncycloCategorie) || 'Dramaturges';
   const setCat = (c: EncycloCategorie) => setParams({ cat: c }, { replace: true });
 
-  const dramaturges = cat === 'Dramaturges' ? DRAMATURGES.filter((d) => d.categorie === 'Dramaturges') : [];
+  const dramaturges = (cat === 'Dramaturges' || cat === 'Auteurs contemporains')
+    ? DRAMATURGES.filter((d) => d.categorie === cat)
+    : [];
   const articles = articlesFor(cat);
   const lieux = cat === 'Théâtres' ? LIEUX.filter((l) => l.type === 'theatre')
     : cat === 'Festivals' ? LIEUX.filter((l) => l.type === 'festival')
@@ -33,8 +35,8 @@ export default function Encyclopedie() {
         ))}
       </div>
 
-      {/* Dramaturges : portraits → fiche dramaturge */}
-      {cat === 'Dramaturges' && (
+      {/* Dramaturges & auteurs contemporains : portraits → fiche dramaturge */}
+      {dramaturges.length > 0 && (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           {dramaturges.map((d) => (
             <div key={d.id} onClick={() => nav(`/explorer/dramaturge/${d.id}`)} className="card card-tap" style={{ overflow: 'hidden' }}>
