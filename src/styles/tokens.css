@@ -1,0 +1,65 @@
+/* ═══════════════════════════════════════════════════════════
+   Theathror — jetons de design (README « Design Tokens »)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Fonds */
+  --bg-app: #171015;
+  --bg-bar: #130d12;
+  --bg-card: #1f1620;
+  --bg-field: #221925; /* champs / segments */
+  --bg-drawer: #1a1118;
+  --bg-demo: #241626;
+  --bg-piece-jour: linear-gradient(180deg, #241a22, #1d1420);
+  --bg-page: radial-gradient(1200px 800px at 50% 20%, #241419 0%, #120b0e 60%, #0b0708 100%);
+
+  /* Texte */
+  --text: #f2e9dc;
+  --text-2: #c4b4a4;
+  --text-2b: #d8cabb;
+  --text-muted: #a8988a;
+  --text-disabled: #6a5c52;
+  --text-drawer-note: #7a6a5e;
+
+  /* Or (accent) */
+  --gold: #d4a94e;
+  --gold-hover: #e0ba62;
+  --gold-chip-text: #d9b45b;
+  --on-gold: #231a10;
+
+  /* Rouge rideau */
+  --red: #9e2b3a;
+  --red-chip-bg: rgba(158, 43, 58, 0.25);
+  --red-chip-border: rgba(158, 43, 58, 0.5);
+  --red-chip-text: #e0a3ab;
+  --hero-red: linear-gradient(160deg, #7a1f2b, #43101a);
+
+  /* Bordures or translucides */
+  --b-rest: rgba(212, 169, 78, 0.14);
+  --b-rest2: rgba(212, 169, 78, 0.16);
+  --b-input: rgba(212, 169, 78, 0.2);
+  --b-chip: rgba(212, 169, 78, 0.3);
+  --b-chip2: rgba(212, 169, 78, 0.35);
+  --b-hover: rgba(212, 169, 78, 0.5);
+  --b-strong: rgba(212, 169, 78, 0.6);
+
+  /* Nav */
+  --nav-inactive: #8a7a6e;
+
+  /* Repli image (initiale dorée) */
+  --fallback-grad: linear-gradient(180deg, #3a2028, #221219);
+
+  /* Rayons */
+  --r-card: 12px;
+  --r-hero: 14px;
+  --r-pill: 999px;
+  --r-thumb: 10px;
+
+  /* Ombres */
+  --sh-btn: 0 6px 18px rgba(212, 169, 78, 0.25);
+  --sh-drawer: 8px 0 30px rgba(0, 0, 0, 0.5);
+  --sh-demo: 0 14px 38px rgba(0, 0, 0, 0.65);
+
+  /* Polices */
+  --font-title: 'Playfair Display', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+}

@@ -1,0 +1,165 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg-page);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--gold);
+}
+a:hover {
+  color: #e7c26a;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Masquer la scrollbar (fidèle au prototype) */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+* {
+  scrollbar-width: none;
+}
+
+/* ─── L'appareil : cadre téléphone centré, plein écran sur mobile ─── */
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.app-frame {
+  width: 100%;
+  max-width: 428px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-app);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 480px) {
+  #root {
+    padding: 24px 0 32px;
+    align-items: center;
+  }
+  .app-frame {
+    height: 908px;
+    min-height: 908px;
+    max-height: calc(100vh - 56px);
+    border-radius: 30px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(212, 169, 78, 0.12);
+  }
+}
+
+/* ─── Motifs réutilisés ─── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--b-rest);
+  border-radius: var(--r-card);
+}
+
+.card-tap {
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.card-tap:hover,
+.card-tap:active {
+  border-color: var(--b-hover);
+}
+
+/* variante bordure repos plus marquée (accès rapides / hub) */
+.card-16 {
+  border-color: var(--b-rest2);
+}
+
+.gold-btn {
+  background: var(--gold);
+  color: var(--on-gold);
+  border: none;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--sh-btn);
+  transition: background 0.15s ease;
+}
+.gold-btn:hover {
+  background: var(--gold-hover);
+}
+
+.chip {
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  border: 1px solid var(--b-chip2);
+  color: var(--gold-chip-text);
+  background: transparent;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+}
+.chip.active {
+  background: var(--gold);
+  color: var(--on-gold);
+  border-color: var(--gold);
+  font-weight: 600;
+}
+
+.drawer-item:hover {
+  background: rgba(212, 169, 78, 0.08);
+}
+
+/* Leaflet : ajustements de teinte */
+.leaflet-container {
+  background: #1c131c !important;
+  font-family: var(--font-body);
+}
+.leaflet-tile {
+  filter: saturate(0.7) brightness(0.75);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--b-chip);
+}
+.leaflet-popup-content {
+  font-family: var(--font-body);
+}
+.leaflet-control-attribution {
+  background: rgba(19, 13, 18, 0.8) !important;
+  color: var(--text-muted) !important;
+}
+.leaflet-control-attribution a {
+  color: var(--gold-chip-text) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

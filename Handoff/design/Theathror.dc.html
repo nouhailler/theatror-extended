@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script>window.imgErr=function(e){var t=e&&e.target?e.target:this;if(t&&t.style)t.style.display='none'};</script>
+<style>
+body{margin:0;background:radial-gradient(1200px 800px at 50% 20%,#241419 0%,#120b0e 60%,#0b0708 100%);min-height:100vh}
+a{color:#d4a94e}a:hover{color:#e7c26a}
+::-webkit-scrollbar{width:0;height:0}
+</style>
+</helmet>
+
+<div style="display:flex;justify-content:center;padding:36px 0 48px;font-family:'EB Garamond',serif">
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+
+<div style="height:100%;display:flex;flex-direction:column;background:#171015;color:#f2e9dc;position:relative">
+
+<!-- ═══════════ BARRE HAUTE ═══════════ -->
+<div style="flex:none;display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid rgba(212,169,78,.15);background:#130d12">
+  <div onClick="{{ openMenu }}" style="cursor:pointer;width:32px;height:32px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:0 3px;box-sizing:border-box">
+    <div style="height:1.5px;background:#d4a94e;border-radius:2px"></div>
+    <div style="height:1.5px;background:#d4a94e;border-radius:2px"></div>
+    <div style="height:1.5px;background:#d4a94e;border-radius:2px"></div>
+  </div>
+  <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:2.5px">THEATHROR</div>
+  <div style="margin-left:auto;font-size:13px;font-style:italic;color:#a8988a">9 juillet</div>
+</div>
+
+<!-- ═══════════ CONTENU ═══════════ -->
+<div style="flex:1;overflow:auto;display:flex;flex-direction:column">
+
+<!-- ─── ACCUEIL ─── -->
+<sc-if value="{{ isAccueil }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Accueil" style="display:flex;flex-direction:column;gap:22px;padding:18px 18px 28px">
+  <div style="font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">Le compagnon du comédien</div>
+
+  <!-- Hero théâtre du jour -->
+  <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(212,169,78,.25);background:{{ heroBg }}">
+    <div style="position:relative;height:170px;background:linear-gradient(180deg,#3a2028,#221219);display:flex;align-items:center;justify-content:center">
+      <span style="font-family:'Playfair Display',serif;font-size:64px;color:rgba(212,169,78,.25)">G</span>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Paris%20Opera%20full%20frontal%20architecture%2C%20May%202009.jpg?width=800" onError="{{ imgErr }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,16,21,0) 40%,rgba(23,16,21,.92) 100%)"></div>
+      <div style="position:absolute;left:14px;bottom:10px;right:14px">
+        <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Théâtre du jour</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:600">Palais Garnier, Paris</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Citation du jour -->
+  <div style="border-left:2px solid #d4a94e;padding:2px 0 2px 14px">
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:18px;line-height:1.45">« Le devoir de la comédie étant de corriger les hommes en les divertissant. »</div>
+    <div style="font-size:14px;color:#a8988a;margin-top:6px;letter-spacing:1px">MOLIÈRE — Premier placet au roi, 1664</div>
+  </div>
+
+  <!-- Pièce du jour -->
+  <div style="background:#211823;background:linear-gradient(180deg,#241a22,#1d1420);border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Pièce du jour</div>
+    <div style="font-family:'Playfair Display',serif;font-size:21px;font-weight:600">Le Misanthrope</div>
+    <div style="font-size:14.5px;color:#c4b4a4;font-style:italic">Molière · comédie · 1666</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <span style="font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">5 actes</span>
+      <span style="font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">≈ 2 h</span>
+      <span style="font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">4 F · 7 H</span>
+      <span style="font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">domaine public</span>
+    </div>
+  </div>
+
+  <!-- Accès rapides -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div onClick="{{ go.scene }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:13px 14px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+      <div style="font-family:'Playfair Display',serif;font-size:16.5px;font-weight:600">Monologues</div>
+      <div style="font-size:13px;color:#a8988a;margin-top:2px">Pour vos auditions</div>
+    </div>
+    <div onClick="{{ go.explorer }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:13px 14px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+      <div style="font-family:'Playfair Display',serif;font-size:16.5px;font-weight:600">Frise du théâtre</div>
+      <div style="font-size:13px;color:#a8988a;margin-top:2px">2 500 ans d'histoire</div>
+    </div>
+    <div onClick="{{ go.pieces }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:13px 14px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+      <div style="font-family:'Playfair Display',serif;font-size:16.5px;font-weight:600">Trouver une pièce</div>
+      <div style="font-size:13px;color:#a8988a;margin-top:2px">Filtres par distribution</div>
+    </div>
+    <div onClick="{{ go.journal }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:13px 14px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+      <div style="font-family:'Playfair Display',serif;font-size:16.5px;font-weight:600">Journal</div>
+      <div style="font-size:13px;color:#a8988a;margin-top:2px">Notes de répétition</div>
+    </div>
+  </div>
+
+  <!-- Ma collection -->
+  <div onClick="{{ openMaCollection }}" style="display:flex;align-items:center;gap:14px;background:#1f1620;border:1px solid rgba(212,169,78,.3);border-radius:12px;padding:13px 16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.6)">
+    <div style="font-size:21px;color:#d4a94e;line-height:1">★</div>
+    <div style="flex:1">
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600">Ma collection</div>
+      <div style="font-size:13.5px;color:#a8988a;font-style:italic">{{ favCountLabel }}</div>
+    </div>
+    <div style="font-size:20px;color:#d4a94e">→</div>
+  </div>
+
+  <!-- Collection en vedette -->
+  <div onClick="{{ openCollections }}" style="display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#3a1520,#241019);border:1px solid rgba(158,43,58,.4);border-radius:12px;padding:13px 16px;cursor:pointer">
+    <div style="flex:1">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Collection</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600;margin-top:2px">Le théâtre de l'absurde</div>
+      <div style="font-size:13.5px;color:#c4b4a4;margin-top:2px;font-style:italic">Ionesco, Beckett, Adamov — 12 pièces</div>
+    </div>
+    <div style="font-size:20px;color:#d4a94e">→</div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ─── MA COLLECTION ─── -->
+<sc-if value="{{ isCollection }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Ma collection" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div onClick="{{ backAccueil }}" style="cursor:pointer;color:#d4a94e;font-size:20px;line-height:1">←</div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700">Ma collection</div>
+      <div style="font-size:13px;color:#a8988a;font-style:italic">{{ favCountLabel }}</div>
+    </div>
+  </div>
+  <div style="display:flex;background:#221925;border:1px solid rgba(212,169,78,.2);border-radius:999px;padding:4px;gap:4px">
+    <div onClick="{{ colSegM.p }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:13px;cursor:pointer;background:{{ colBg.p }};color:{{ colC.p }};font-weight:600">Pièces</div>
+    <div onClick="{{ colSegM.a }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:13px;cursor:pointer;background:{{ colBg.a }};color:{{ colC.a }};font-weight:600">Auteurs</div>
+    <div onClick="{{ colSegM.c }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:13px;cursor:pointer;background:{{ colBg.c }};color:{{ colC.c }};font-weight:600">Citations</div>
+    <div onClick="{{ colSegM.m }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:13px;cursor:pointer;background:{{ colBg.m }};color:{{ colC.m }};font-weight:600">Monologues</div>
+  </div>
+
+  <sc-if value="{{ isColP }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-if value="{{ noFavPieces }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:26px 18px;border:1px dashed rgba(212,169,78,.3);border-radius:12px;color:#a8988a;font-style:italic;font-size:14.5px">Aucun favori pour l’instant.<br>Touchez ☆ sur une pièce pour l’ajouter ici.</div></sc-if>
+      <sc-for list="{{ favPieces }}" as="p" hint-placeholder-count="0">
+        <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600">{{ p.titre }}</div>
+            <div onClick="{{ p.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ p.favC }}">{{ p.favG }}</div>
+          </div>
+          <div style="font-size:14px;color:#c4b4a4;font-style:italic">{{ p.auteur }} · {{ p.annee }} · {{ p.genre }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isColA }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-if value="{{ noFavAuteurs }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:26px 18px;border:1px dashed rgba(212,169,78,.3);border-radius:12px;color:#a8988a;font-style:italic;font-size:14.5px">Aucun favori pour l’instant.<br>Touchez ☆ sur un dramaturge pour l’ajouter ici.</div></sc-if>
+      <sc-for list="{{ favAuteurs }}" as="d" hint-placeholder-count="0">
+        <div style="display:flex;gap:14px;align-items:center;background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:12px 14px">
+          <div style="position:relative;width:52px;height:52px;border-radius:999px;overflow:hidden;background:linear-gradient(180deg,#3a2028,#221219);display:flex;align-items:center;justify-content:center;flex:none">
+            <span style="font-family:'Playfair Display',serif;font-size:20px;color:rgba(212,169,78,.35)">{{ d.initiale }}</span>
+            <div style="position:absolute;inset:0;background-image:url('{{ d.img }}');background-size:cover;background-position:center top"></div>
+          </div>
+          <div style="flex:1">
+            <div style="font-family:'Playfair Display',serif;font-size:16.5px;font-weight:600">{{ d.nom }}</div>
+            <div style="font-size:13px;color:#a8988a;font-style:italic">{{ d.dates }}</div>
+          </div>
+          <div onClick="{{ d.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ d.favC }}">{{ d.favG }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isColC }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-if value="{{ noFavCitations }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:26px 18px;border:1px dashed rgba(212,169,78,.3);border-radius:12px;color:#a8988a;font-style:italic;font-size:14.5px">Aucun favori pour l’instant.<br>Touchez ☆ sous une citation pour l’ajouter ici.</div></sc-if>
+      <sc-for list="{{ favCitations }}" as="q" hint-placeholder-count="0">
+        <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:16px">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:16.5px;line-height:1.45">{{ q.txt }}</div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:8px">
+            <div style="font-size:13.5px;color:#a8988a;letter-spacing:.5px">{{ q.src }}</div>
+            <div onClick="{{ q.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ q.favC }}">{{ q.favG }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isColM }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-if value="{{ noFavMonologues }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:26px 18px;border:1px dashed rgba(212,169,78,.3);border-radius:12px;color:#a8988a;font-style:italic;font-size:14.5px">Aucun favori pour l’instant.<br>Touchez ☆ sur un monologue pour l’ajouter ici.</div></sc-if>
+      <sc-for list="{{ favMonologues }}" as="m" hint-placeholder-count="0">
+        <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+            <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">{{ m.titre }}</div>
+            <div onClick="{{ m.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ m.favC }}">{{ m.favG }}</div>
+          </div>
+          <div style="font-size:14px;color:#c4b4a4;font-style:italic">{{ m.source }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ─── PIÈCES ─── -->
+<sc-if value="{{ isPieces }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Pièces" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div>
+    <div style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">Bibliothèque</div>
+    <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700">Les pièces</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;background:#221925;border:1px solid rgba(212,169,78,.2);border-radius:999px;padding:10px 16px;color:#a8988a;font-size:15px;font-style:italic">
+    <span style="color:#d4a94e">⌕</span> Titre, auteur, personnage…
+  </div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap">
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;background:#d4a94e;color:#231a10;font-weight:600">Comédie</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;background:#d4a94e;color:#231a10;font-weight:600">Domaine public</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Moins de 30 min</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">2 personnages</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Sans décor</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Pour enfants</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Tragédie</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Contemporain</span>
+  </div>
+  <div style="font-size:13.5px;color:#a8988a;font-style:italic">148 pièces correspondent</div>
+
+  <sc-for list="{{ pieces }}" as="p" hint-placeholder-count="4">
+    <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:7px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.45)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+        <div style="font-family:'Playfair Display',serif;font-size:18.5px;font-weight:600">{{ p.titre }}</div>
+        <div style="display:flex;align-items:baseline;gap:10px;white-space:nowrap"><span style="font-size:13px;color:#d4a94e">{{ p.duree }}</span><span onClick="{{ p.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ p.favC }}">{{ p.favG }}</span></div>
+      </div>
+      <div style="font-size:14px;color:#c4b4a4;font-style:italic">{{ p.auteur }} · {{ p.annee }}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <span style="font-size:12px;padding:2px 9px;border-radius:999px;background:rgba(158,43,58,.25);border:1px solid rgba(158,43,58,.5);color:#e0a3ab">{{ p.genre }}</span>
+        <span style="font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid rgba(212,169,78,.3);color:#d9b45b">{{ p.actes }}</span>
+        <span style="font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid rgba(212,169,78,.3);color:#d9b45b">{{ p.distribution }}</span>
+        <span style="font-size:12.5px;color:#a8988a;margin-left:auto;font-style:italic">{{ p.difficulte }}</span>
+      </div>
+    </div>
+  </sc-for>
+</div>
+</sc-if>
+
+<!-- ─── EXPLORER (hub) ─── -->
+<sc-if value="{{ isExplorer }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Explorer" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div>
+    <div style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">Découvrir</div>
+    <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700">Explorer</div>
+  </div>
+  <div onClick="{{ openEncyclo }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+    <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:600">Encyclopédie</div>
+    <div style="font-size:14px;color:#a8988a;margin-top:3px">Histoire, dramaturges, mouvements, genres, métiers</div>
+  </div>
+  <div onClick="{{ openFrise }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+    <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:600">Frise chronologique</div>
+    <div style="font-size:14px;color:#a8988a;margin-top:3px">D'Eschyle à Ionesco — auteurs, œuvres, événements</div>
+  </div>
+  <div onClick="{{ openCarte }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+    <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:600">Carte du monde</div>
+    <div style="font-size:14px;color:#a8988a;margin-top:3px">Grands théâtres, festivals, traditions, écoles</div>
+  </div>
+  <div onClick="{{ openCollections }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+    <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:600">Collections thématiques</div>
+    <div style="font-size:14px;color:#a8988a;margin-top:3px">Les 100 incontournables, tragédies grecques, femmes dramaturges…</div>
+  </div>
+  <div style="background:linear-gradient(120deg,#3a1520,#241019);border:1px solid rgba(158,43,58,.4);border-radius:12px;padding:16px">
+    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Bientôt</div>
+    <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600;margin-top:2px">Quiz · Mode IA · Mise en scène virtuelle</div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ─── ENCYCLOPÉDIE ─── -->
+<sc-if value="{{ isEncyclo }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Encyclopédie" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div onClick="{{ backExplorer }}" style="cursor:pointer;color:#d4a94e;font-size:20px;line-height:1">←</div>
+    <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700">Encyclopédie</div>
+  </div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap">
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;background:#d4a94e;color:#231a10;font-weight:600">Dramaturges</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Histoire</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Mouvements</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Genres</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Métiers</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Théâtres</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Festivals</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <sc-for list="{{ dramaturges }}" as="d" hint-placeholder-count="0">
+      <div onClick="{{ openMoliere }}" style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;overflow:hidden;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+        <div style="position:relative;height:150px;background:linear-gradient(180deg,#3a2028,#221219);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'Playfair Display',serif;font-size:44px;color:rgba(212,169,78,.3)">{{ d.initiale }}</span>
+          <div style="position:absolute;inset:0;background-image:url('{{ d.img }}');background-size:cover;background-position:center top"></div>
+          <div onClick="{{ d.onFav }}" style="position:absolute;top:6px;right:8px;cursor:pointer;font-size:17px;line-height:1;color:{{ d.favC }};text-shadow:0 1px 4px rgba(0,0,0,.85)">{{ d.favG }}</div>
+        </div>
+        <div style="padding:10px 12px">
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:600">{{ d.nom }}</div>
+          <div style="font-size:12.5px;color:#a8988a;font-style:italic;margin-top:1px">{{ d.dates }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<!-- ─── FICHE DRAMATURGE ─── -->
+<sc-if value="{{ isDramaturge }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Fiche Molière" style="display:flex;flex-direction:column">
+  <div style="position:relative;height:230px;background:linear-gradient(180deg,#3a2028,#221219);display:flex;align-items:center;justify-content:center">
+    <span style="font-family:'Playfair Display',serif;font-size:70px;color:rgba(212,169,78,.25)">M</span>
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pierre%20Mignard%20-%20Portrait%20de%20Jean-Baptiste%20Poquelin%20dit%20Moli%C3%A8re%20%281622-1673%29%20-%20Google%20Art%20Project.jpg?width=800" onError="{{ imgErr }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,16,21,.25) 0%,rgba(23,16,21,0) 35%,rgba(23,16,21,.95) 100%)"></div>
+    <div onClick="{{ backEncyclo }}" style="position:absolute;top:12px;left:14px;cursor:pointer;color:#f2e9dc;font-size:20px;background:rgba(23,16,21,.55);border-radius:999px;width:34px;height:34px;display:flex;align-items:center;justify-content:center">←</div>
+    <div style="position:absolute;left:18px;bottom:12px">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Dramaturge</div>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700">Molière</div>
+      <div style="font-size:14px;color:#c4b4a4;font-style:italic">Jean-Baptiste Poquelin · 1622 – 1673</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px;padding:18px 18px 28px">
+    <div style="font-size:15.5px;line-height:1.55;color:#d8cabb">Comédien, chef de troupe et auteur, Molière élève la comédie au rang de la tragédie. Protégé de Louis XIV, il peint les travers de son siècle — dévots, médecins, précieuses — jusqu'à mourir en scène, ou presque, après une représentation du <i>Malade imaginaire</i>.</div>
+    <div>
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e;margin-bottom:10px">Chronologie</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <sc-for list="{{ chronoMoliere }}" as="c" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;align-items:baseline;padding:7px 0;border-bottom:1px solid rgba(212,169,78,.1)">
+            <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:#d4a94e;width:44px;flex:none">{{ c.an }}</div>
+            <div style="font-size:14.5px;color:#d8cabb">{{ c.txt }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="border-left:2px solid #d4a94e;padding:2px 0 2px 14px">
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.45">« On ne meurt qu'une fois, et c'est pour si longtemps ! »</div>
+      <div style="font-size:13.5px;color:#a8988a;margin-top:5px">Le Dépit amoureux, 1656</div>
+    </div>
+    <div>
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e;margin-bottom:10px">Œuvres majeures</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <span style="font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b;font-style:italic">Tartuffe · 1664</span>
+        <span style="font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b;font-style:italic">Dom Juan · 1665</span>
+        <span style="font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b;font-style:italic">Le Misanthrope · 1666</span>
+        <span style="font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b;font-style:italic">L'Avare · 1668</span>
+        <span style="font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b;font-style:italic">Le Malade imaginaire · 1673</span>
+      </div>
+    </div>
+    <div style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:14px 16px">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Influence</div>
+      <div style="font-size:14.5px;line-height:1.5;color:#d8cabb;margin-top:5px">La « langue de Molière » désigne le français lui-même. Son mélange de farce et de satire morale irrigue Marivaux, Beaumarchais, Feydeau — jusqu'au théâtre contemporain.</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ─── FRISE ─── -->
+<sc-if value="{{ isFrise }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Frise chronologique" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div onClick="{{ backExplorer }}" style="cursor:pointer;color:#d4a94e;font-size:20px;line-height:1">←</div>
+    <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700">Frise chronologique</div>
+  </div>
+  <div style="display:flex;flex-direction:column">
+    <sc-for list="{{ frise }}" as="f" hint-placeholder-count="6">
+      <div style="display:flex;gap:16px">
+        <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex:none">
+          <div style="width:11px;height:11px;border-radius:999px;background:{{ f.couleur }};flex:none;margin-top:5px"></div>
+          <div style="width:1px;flex:1;background:rgba(212,169,78,.2)"></div>
+        </div>
+        <div style="padding-bottom:22px;flex:1">
+          <div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:{{ f.couleur }}">{{ f.ere }}</div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <div style="font-family:'Playfair Display',serif;font-size:17.5px;font-weight:600;margin-top:2px">{{ f.titre }}</div>
+            <div style="font-family:'Playfair Display',serif;font-size:15px;color:#d4a94e;white-space:nowrap">{{ f.an }}</div>
+          </div>
+          <div style="font-size:14px;color:#a8988a;margin-top:3px;line-height:1.45">{{ f.txt }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<!-- ─── CARTE ─── -->
+<sc-if value="{{ isCarte }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Carte du monde" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div onClick="{{ backExplorer }}" style="cursor:pointer;color:#d4a94e;font-size:20px;line-height:1">←</div>
+    <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700">Carte du monde</div>
+  </div>
+  <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(212,169,78,.2);background:#1c131c;height:190px">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/BlankMap-World.svg?width=800" onError="{{ imgErr }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:invert(.85) sepia(.3) saturate(.6);opacity:.35">
+    <div style="position:absolute;left:46%;top:34%;width:9px;height:9px;border-radius:999px;background:#d4a94e;box-shadow:0 0 0 4px rgba(212,169,78,.25)"></div>
+    <div style="position:absolute;left:44%;top:28%;width:9px;height:9px;border-radius:999px;background:#d4a94e;box-shadow:0 0 0 4px rgba(212,169,78,.25)"></div>
+    <div style="position:absolute;left:52%;top:42%;width:9px;height:9px;border-radius:999px;background:#9e2b3a;box-shadow:0 0 0 4px rgba(158,43,58,.3)"></div>
+    <div style="position:absolute;left:27%;top:36%;width:9px;height:9px;border-radius:999px;background:#9e2b3a;box-shadow:0 0 0 4px rgba(158,43,58,.3)"></div>
+    <div style="position:absolute;right:10px;bottom:8px;font-size:11.5px;color:#a8988a;font-style:italic">● théâtres · ● festivals</div>
+  </div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap">
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;background:#d4a94e;color:#231a10;font-weight:600">Grands théâtres</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Festivals</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Traditions</span>
+    <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Écoles</span>
+  </div>
+  <sc-for list="{{ lieux }}" as="l" hint-placeholder-count="0">
+    <div style="display:flex;gap:14px;align-items:center;background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:12px 14px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.45)">
+      <div style="position:relative;width:64px;height:64px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#3a2028,#221219);display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Playfair Display',serif;font-size:24px;color:rgba(212,169,78,.35)">{{ l.initiale }}</span>
+        <div style="position:absolute;inset:0;background-image:url('{{ l.img }}');background-size:cover;background-position:center"></div>
+      </div>
+      <div style="flex:1">
+        <div style="font-family:'Playfair Display',serif;font-size:16.5px;font-weight:600">{{ l.nom }}</div>
+        <div style="font-size:13.5px;color:#a8988a;font-style:italic">{{ l.lieu }}</div>
+        <div style="font-size:13px;color:#c4b4a4;margin-top:2px">{{ l.txt }}</div>
+      </div>
+    </div>
+  </sc-for>
+</div>
+</sc-if>
+
+<!-- ─── COLLECTIONS ─── -->
+<sc-if value="{{ isCollections }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Collections" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div onClick="{{ backExplorer }}" style="cursor:pointer;color:#d4a94e;font-size:20px;line-height:1">←</div>
+    <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700">Collections</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <sc-for list="{{ collections }}" as="c" hint-placeholder-count="0">
+      <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;overflow:hidden;cursor:pointer" style-hover="border-color:rgba(212,169,78,.5)">
+        <div style="position:relative;height:110px;background:{{ c.fond }};display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'Playfair Display',serif;font-size:38px;color:rgba(242,233,220,.3)">{{ c.initiale }}</span>
+          <div style="position:absolute;inset:0;background-image:url('{{ c.img }}');background-size:cover;background-position:center top;opacity:.85"></div>
+        </div>
+        <div style="padding:10px 12px">
+          <div style="font-family:'Playfair Display',serif;font-size:15.5px;font-weight:600;line-height:1.25">{{ c.titre }}</div>
+          <div style="font-size:12.5px;color:#a8988a;font-style:italic;margin-top:3px">{{ c.nb }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<!-- ─── SCÈNE (monologues / citations / glossaire) ─── -->
+<sc-if value="{{ isScene }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Scène" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div>
+    <div style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">L'atelier du comédien</div>
+    <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700">Scène</div>
+  </div>
+  <div style="display:flex;background:#221925;border:1px solid rgba(212,169,78,.2);border-radius:999px;padding:4px;gap:4px">
+    <div onClick="{{ segM.mono }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:14px;cursor:pointer;background:{{ segBg.mono }};color:{{ segC.mono }};font-weight:600">Monologues</div>
+    <div onClick="{{ segM.cit }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:14px;cursor:pointer;background:{{ segBg.cit }};color:{{ segC.cit }};font-weight:600">Citations</div>
+    <div onClick="{{ segM.glos }}" style="flex:1;text-align:center;padding:7px 0;border-radius:999px;font-size:14px;cursor:pointer;background:{{ segBg.glos }};color:{{ segC.glos }};font-weight:600">Glossaire</div>
+  </div>
+
+  <sc-if value="{{ isSegMono }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;background:#d4a94e;color:#231a10;font-weight:600">Femme</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Homme</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Moins de 2 min</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Classique</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Contemporain</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Colère</span>
+      </div>
+      <sc-for list="{{ monologues }}" as="m" hint-placeholder-count="3">
+        <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.45)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+            <div style="font-family:'Playfair Display',serif;font-size:17.5px;font-weight:600">{{ m.titre }}</div>
+            <div style="display:flex;align-items:baseline;gap:10px;white-space:nowrap"><span style="font-size:13px;color:#d4a94e">{{ m.duree }}</span><span onClick="{{ m.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ m.favC }}">{{ m.favG }}</span></div>
+          </div>
+          <div style="font-size:14px;color:#c4b4a4;font-style:italic">{{ m.source }}</div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:14.5px;color:#d8cabb;line-height:1.45">{{ m.extrait }}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid rgba(212,169,78,.3);color:#d9b45b">{{ m.pour }}</span>
+            <span style="font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid rgba(212,169,78,.3);color:#d9b45b">{{ m.emotion }}</span>
+            <span style="font-size:12px;padding:2px 9px;border-radius:999px;background:rgba(158,43,58,.25);border:1px solid rgba(158,43,58,.5);color:#e0a3ab">{{ m.niveau }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSegCit }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;background:#d4a94e;color:#231a10;font-weight:600">Amour</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Pouvoir</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Destin</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Le théâtre</span>
+        <span style="font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,169,78,.35);color:#d9b45b">Mort</span>
+      </div>
+      <sc-for list="{{ citations }}" as="q" hint-placeholder-count="3">
+        <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.45)">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.45">{{ q.txt }}</div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:8px"><div style="font-size:13.5px;color:#a8988a;letter-spacing:.5px">{{ q.src }}</div><div onClick="{{ q.onFav }}" style="cursor:pointer;font-size:17px;line-height:1;color:{{ q.favC }}">{{ q.favG }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSegGlos }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:5px;flex-wrap:wrap;font-size:13px;color:#a8988a">
+        <span style="padding:3px 8px;border-radius:6px;background:#d4a94e;color:#231a10;font-weight:600">A</span>
+        <span style="padding:3px 8px">C</span><span style="padding:3px 8px">D</span><span style="padding:3px 8px">M</span><span style="padding:3px 8px">Q</span><span style="padding:3px 8px">S</span><span style="padding:3px 8px">T</span>
+      </div>
+      <sc-for list="{{ glossaire }}" as="g" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(212,169,78,.12);padding:10px 2px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">{{ g.terme }}</div>
+            <div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#d4a94e">{{ g.cat }}</div>
+          </div>
+          <div style="font-size:14.5px;color:#c4b4a4;line-height:1.5;margin-top:4px">{{ g.def }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ─── JOURNAL ─── -->
+<sc-if value="{{ isJournal }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Journal" style="display:flex;flex-direction:column;gap:16px;padding:18px 18px 28px">
+  <div>
+    <div style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">Carnet de bord</div>
+    <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700">Journal du comédien</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:12px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#d4a94e">8</div>
+      <div style="font-size:12.5px;color:#a8988a">répétitions<br>ce mois</div>
+    </div>
+    <div style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:12px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#d4a94e">14 h</div>
+      <div style="font-size:12.5px;color:#a8988a">de travail<br>en scène</div>
+    </div>
+    <div style="background:#1f1620;border:1px solid rgba(212,169,78,.16);border-radius:12px;padding:12px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#d4a94e">2</div>
+      <div style="font-size:12.5px;color:#a8988a">monologues<br>en mémoire</div>
+    </div>
+  </div>
+  <sc-for list="{{ journal }}" as="j" hint-placeholder-count="3">
+    <div style="background:#1f1620;border:1px solid rgba(212,169,78,.14);border-radius:12px;padding:14px 16px;cursor:pointer" style-hover="border-color:rgba(212,169,78,.45)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">{{ j.titre }}</div>
+        <div style="font-size:12.5px;color:#a8988a;font-style:italic;white-space:nowrap">{{ j.date }}</div>
+      </div>
+      <div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#d4a94e;margin-top:2px">{{ j.type }}</div>
+      <div style="font-size:14.5px;color:#c4b4a4;line-height:1.5;margin-top:6px">{{ j.txt }}</div>
+    </div>
+  </sc-for>
+  <div style="display:flex;justify-content:center;margin-top:4px">
+    <div style="background:#d4a94e;color:#231a10;border-radius:999px;padding:11px 26px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(212,169,78,.25)" style-hover="background:#e0ba62">+ Nouvelle entrée</div>
+  </div>
+</div>
+</sc-if>
+
+</div>
+
+<!-- ═══════════ NAV BAS ═══════════ -->
+<div style="flex:none;display:flex;border-top:1px solid rgba(212,169,78,.2);background:#130d12;padding:9px 6px 7px">
+  <div onClick="{{ go.accueil }}" style="flex:1;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px">
+    <div style="width:5px;height:5px;border-radius:999px;background:#d4a94e;opacity:{{ dot.accueil }}"></div>
+    <div style="font-size:13px;letter-spacing:.5px;color:{{ navC.accueil }}">Accueil</div>
+  </div>
+  <div onClick="{{ go.pieces }}" style="flex:1;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px">
+    <div style="width:5px;height:5px;border-radius:999px;background:#d4a94e;opacity:{{ dot.pieces }}"></div>
+    <div style="font-size:13px;letter-spacing:.5px;color:{{ navC.pieces }}">Pièces</div>
+  </div>
+  <div onClick="{{ go.explorer }}" style="flex:1;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px">
+    <div style="width:5px;height:5px;border-radius:999px;background:#d4a94e;opacity:{{ dot.explorer }}"></div>
+    <div style="font-size:13px;letter-spacing:.5px;color:{{ navC.explorer }}">Explorer</div>
+  </div>
+  <div onClick="{{ go.scene }}" style="flex:1;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px">
+    <div style="width:5px;height:5px;border-radius:999px;background:#d4a94e;opacity:{{ dot.scene }}"></div>
+    <div style="font-size:13px;letter-spacing:.5px;color:{{ navC.scene }}">Scène</div>
+  </div>
+  <div onClick="{{ go.journal }}" style="flex:1;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px">
+    <div style="width:5px;height:5px;border-radius:999px;background:#d4a94e;opacity:{{ dot.journal }}"></div>
+    <div style="font-size:13px;letter-spacing:.5px;color:{{ navC.journal }}">Journal</div>
+  </div>
+</div>
+
+<!-- ═══════════ VISITE GUIDÉE ═══════════ -->
+<sc-if value="{{ demoOn }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:12px;right:12px;bottom:66px;z-index:55;background:#241626;border:1px solid rgba(212,169,78,.55);border-radius:14px;padding:13px 16px 14px;box-shadow:0 14px 38px rgba(0,0,0,.65);display:flex;flex-direction:column;gap:7px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">Visite guidée · {{ demoNum }}</div>
+    <div onClick="{{ demoEnd }}" style="cursor:pointer;color:#a8988a;font-size:19px;line-height:1">×</div>
+  </div>
+  <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:600">{{ demoTitre }}</div>
+  <div style="font-size:14px;color:#c4b4a4;line-height:1.5">{{ demoTxt }}</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:5px">
+    <div onClick="{{ demoPrev }}" style="cursor:pointer;font-size:14px;color:{{ demoPrevC }};padding:6px 4px">← Précédent</div>
+    <div onClick="{{ demoNext }}" style="cursor:pointer;background:#d4a94e;color:#231a10;border-radius:999px;padding:8px 20px;font-size:14px;font-weight:600" style-hover="background:#e0ba62">{{ demoNextLabel }}</div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════════ ONBOARDING ═══════════ -->
+<sc-if value="{{ onbOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:60;background:radial-gradient(620px 420px at 50% 12%,#2e1922 0%,#150d12 72%);display:flex;flex-direction:column;padding:20px 26px 28px;box-sizing:border-box">
+  <div style="display:flex;justify-content:flex-end;flex:none">
+    <div onClick="{{ onbSkip }}" style="cursor:pointer;font-size:14px;font-style:italic;color:#a8988a;padding:4px 6px">Passer</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+
+    <sc-if value="{{ isOnb0 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px">
+        <div style="width:88px;height:88px;border-radius:999px;border:1px solid rgba(212,169,78,.5);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:#d4a94e">T</span>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:3px">THEATHROR</div>
+          <div style="font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e;margin-top:5px">Le compagnon du comédien</div>
+        </div>
+        <div style="font-size:16px;line-height:1.6;color:#c4b4a4;max-width:290px">Encyclopédie du théâtre, bibliothèque de pièces, atelier du comédien et carnet de bord — tout en un.</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isOnb1 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div>
+          <div style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">1 · Découvrir</div>
+          <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-top:4px">2 500 ans de théâtre</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#d4a94e;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Pièces & filtres</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Par durée, distribution, genre, décor, domaine public…</div></div></div>
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#d4a94e;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Encyclopédie & fiches</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Dramaturges, mouvements, genres, métiers — avec portraits.</div></div></div>
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#d4a94e;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Frise chronologique</div><div style="font-size:14px;color:#a8988a;line-height:1.45">De Thespis à Beckett, ère par ère.</div></div></div>
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#d4a94e;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Carte & collections</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Grands théâtres, festivals, sélections thématiques.</div></div></div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isOnb2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div>
+          <div style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#d4a94e">2 · Travailler</div>
+          <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-top:4px">Votre atelier</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#9e2b3a;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Monologues d’audition</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Filtrés par durée, émotion, homme/femme, niveau.</div></div></div>
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#9e2b3a;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Citations & glossaire</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Des milliers de répliques et tous les termes du théâtre.</div></div></div>
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#9e2b3a;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Favoris ☆ → Ma collection</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Touchez l’étoile sur une pièce, un auteur, une citation.</div></div></div>
+          <div style="display:flex;gap:13px"><div style="width:5px;border-radius:3px;background:#9e2b3a;flex:none"></div><div><div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600">Journal du comédien</div><div style="font-size:14px;color:#a8988a;line-height:1.45">Répétitions, progrès, idées de mise en scène.</div></div></div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+  <div style="flex:none;display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:18px">
+    <div style="display:flex;gap:8px">
+      <div style="width:8px;height:8px;border-radius:999px;background:{{ onbDot0 }}"></div>
+      <div style="width:8px;height:8px;border-radius:999px;background:{{ onbDot1 }}"></div>
+      <div style="width:8px;height:8px;border-radius:999px;background:{{ onbDot2 }}"></div>
+    </div>
+    <sc-if value="{{ onbNotLast }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ onbNext }}" style="cursor:pointer;background:#d4a94e;color:#231a10;border-radius:999px;padding:12px 44px;font-size:15.5px;font-weight:600;box-shadow:0 6px 18px rgba(212,169,78,.25)" style-hover="background:#e0ba62">Continuer</div>
+    </sc-if>
+    <sc-if value="{{ onbIsLast }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;align-items:center">
+        <div onClick="{{ onbDemo }}" style="cursor:pointer;background:#d4a94e;color:#231a10;border-radius:999px;padding:12px 34px;font-size:15.5px;font-weight:600;box-shadow:0 6px 18px rgba(212,169,78,.25)" style-hover="background:#e0ba62">Lancer la visite guidée</div>
+        <div onClick="{{ onbStart }}" style="cursor:pointer;border:1px solid rgba(212,169,78,.45);color:#d9b45b;border-radius:999px;padding:11px 34px;font-size:15px" style-hover="border-color:rgba(212,169,78,.8)">Explorer par moi-même</div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════════ MENU LATÉRAL ═══════════ -->
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:50;display:flex">
+  <div style="width:288px;max-width:82%;background:#1a1118;border-right:1px solid rgba(212,169,78,.3);height:100%;overflow:auto;display:flex;flex-direction:column;padding:16px 0 24px;box-sizing:border-box;box-shadow:8px 0 30px rgba(0,0,0,.5)">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 18px 13px;border-bottom:1px solid rgba(212,169,78,.15)">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:2px">THEATHROR</div>
+        <div style="font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:#d4a94e;margin-top:2px">Toutes les sections</div>
+      </div>
+      <div onClick="{{ closeMenu }}" style="cursor:pointer;color:#d4a94e;font-size:22px;line-height:1">×</div>
+    </div>
+    <sc-for list="{{ menu }}" as="g" hint-placeholder-count="0">
+      <div style="padding:16px 18px 5px;font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:#d4a94e">{{ g.titre }}</div>
+      <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="0">
+        <div onClick="{{ i.onGo }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 18px;cursor:pointer;color:{{ i.c }}" style-hover="background:rgba(212,169,78,.08)">
+          <div style="font-family:'EB Garamond',serif;font-size:16.5px">{{ i.label }}</div>
+          <div style="font-size:12px;font-style:italic;color:#7a6a5e;white-space:nowrap">{{ i.note }}</div>
+        </div>
+      </sc-for>
+    </sc-for>
+  </div>
+  <div onClick="{{ closeMenu }}" style="flex:1;background:rgba(0,0,0,.55)"></div>
+</div>
+</sc-if>
+
+</div>
+</x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 500, &quot;height&quot;: 990}, &quot;ecranInitial&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;accueil&quot;, &quot;pieces&quot;, &quot;explorer&quot;, &quot;scene&quot;, &quot;journal&quot;], &quot;default&quot;: &quot;accueil&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Navigation&quot;}, &quot;rideau&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;options&quot;: [&quot;#7a1f2b&quot;, &quot;#5a3a1a&quot;, &quot;#2a3a5a&quot;], &quot;default&quot;: &quot;#7a1f2b&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Ambiance&quot;}}">
+class Component extends DCLogic {
+  state = { tab: null, sub: null, seg: 'mono', colSeg: 'p', menuOpen: false, onb: Component.firstRun() ? 0 : null, demo: null, favs: Component.loadFavs() };
+
+  static firstRun() {
+    try { return !localStorage.getItem('theathror-onb'); } catch (e) { return true; }
+  }
+  finishOnb() {
+    try { localStorage.setItem('theathror-onb', '1'); } catch (e) {}
+    this.setState({ onb: null });
+  }
+  demoSteps() {
+    return [
+      { tab: 'accueil', titre: 'Accueil', txt: 'Chaque jour : un théâtre, une citation et une pièce à découvrir, plus des accès rapides vers vos outils.' },
+      { tab: 'pieces', titre: 'Pièces & filtres', txt: 'Trouvez la pièce idéale : durée, distribution hommes/femmes, genre, décor, domaine public… Touchez ☆ pour la garder en favori.' },
+      { tab: 'explorer', titre: 'Explorer', txt: 'Le hub de découverte : encyclopédie, frise chronologique, carte du monde et collections thématiques.' },
+      { tab: 'explorer', sub: 'encyclo', titre: 'Encyclopédie', txt: 'Dramaturges, histoire, mouvements, genres, métiers… Touchez un portrait pour ouvrir sa fiche complète.' },
+      { tab: 'explorer', sub: 'dramaturge', titre: 'Fiche dramaturge', txt: 'Biographie, chronologie, citation, œuvres majeures et influence — ici, Molière.' },
+      { tab: 'explorer', sub: 'frise', titre: 'Frise chronologique', txt: '2 500 ans de théâtre : de Thespis à Beckett, ères colorées et événements clés.' },
+      { tab: 'explorer', sub: 'carte', titre: 'Carte du monde', txt: 'Grands théâtres, festivals, traditions et écoles — d’Épidaure à Avignon.' },
+      { tab: 'scene', seg: 'mono', titre: 'Scène — l’atelier', txt: 'Monologues filtrés pour vos auditions, citations classées par thème et glossaire des termes du théâtre.' },
+      { tab: 'journal', titre: 'Journal du comédien', txt: 'Votre carnet de bord : répétitions, progrès, difficultés et idées de mise en scène.' },
+      { tab: 'accueil', sub: 'collectionPerso', titre: 'Ma collection', txt: 'Tous vos favoris — pièces, auteurs, citations, monologues — réunis au même endroit. Bonne visite !' },
+    ];
+  }
+  startDemo() { this.applyDemo(0); }
+  applyDemo(i) {
+    const st = this.demoSteps()[i];
+    this.setState({ demo: i, tab: st.tab, sub: st.sub || null, seg: st.seg || this.state.seg, menuOpen: false, onb: null });
+  }
+  onbVals() {
+    const o = this.state.onb;
+    const gold = '#d4a94e', dim = 'rgba(212,169,78,.25)';
+    return {
+      onbOpen: o !== null,
+      isOnb0: o === 0, isOnb1: o === 1, isOnb2: o === 2,
+      onbNotLast: o !== null && o < 2, onbIsLast: o === 2,
+      onbDot0: o === 0 ? gold : dim, onbDot1: o === 1 ? gold : dim, onbDot2: o === 2 ? gold : dim,
+      onbNext: () => this.setState({ onb: Math.min(2, (this.state.onb ?? 0) + 1) }),
+      onbSkip: () => this.finishOnb(),
+      onbStart: () => this.finishOnb(),
+      onbDemo: () => { this.finishOnb(); this.startDemo(); },
+    };
+  }
+  demoVals() {
+    const i = this.state.demo;
+    if (i === null) return { demoOn: false };
+    const steps = this.demoSteps();
+    const st = steps[i];
+    return {
+      demoOn: true,
+      demoNum: (i + 1) + ' / ' + steps.length,
+      demoTitre: st.titre,
+      demoTxt: st.txt,
+      demoPrevC: i === 0 ? '#5a4c44' : '#d9b45b',
+      demoPrev: () => { if (i > 0) this.applyDemo(i - 1); },
+      demoNext: () => { if (i < steps.length - 1) this.applyDemo(i + 1); else this.setState({ demo: null, tab: 'accueil', sub: null }); },
+      demoNextLabel: i < steps.length - 1 ? 'Suivant →' : 'Terminer',
+      demoEnd: () => this.setState({ demo: null }),
+    };
+  }
+
+  static loadFavs() {
+    try { return JSON.parse(localStorage.getItem('theathror-favs')) || {}; } catch (e) { return {}; }
+  }
+  toggleFav(cat, id) {
+    return (e) => {
+      if (e && e.stopPropagation) e.stopPropagation();
+      const favs = Object.assign({}, this.state.favs);
+      const k = cat + '::' + id;
+      if (favs[k]) delete favs[k]; else favs[k] = true;
+      localStorage.setItem('theathror-favs', JSON.stringify(favs));
+      this.setState({ favs });
+    };
+  }
+  buildMenu() {
+    const navTo = (t, s, extra) => () => this.setState(Object.assign({ tab: t, sub: s || null, menuOpen: false }, extra || {}));
+    const item = (label, onGo, note) => ({ label, note: note || '', c: '#f2e9dc', onGo });
+    const soon = (label) => ({ label, note: 'bient\u00f4t', c: '#6a5c52', onGo: () => {} });
+    return [
+      { titre: 'D\u00e9couvrir', items: [
+        item('Accueil', navTo('accueil')),
+        item('Pi\u00e8ces & filtres', navTo('pieces')),
+        item('Encyclop\u00e9die', navTo('explorer', 'encyclo')),
+        item('Fiche dramaturge', navTo('explorer', 'dramaturge'), 'ex. Moli\u00e8re'),
+        item('Frise chronologique', navTo('explorer', 'frise')),
+        item('Carte du monde', navTo('explorer', 'carte')),
+        item('Collections th\u00e9matiques', navTo('explorer', 'collections')),
+      ] },
+      { titre: 'L\u2019atelier', items: [
+        item('Monologues', navTo('scene', null, { seg: 'mono' })),
+        item('Citations', navTo('scene', null, { seg: 'cit' })),
+        item('Glossaire', navTo('scene', null, { seg: 'glos' })),
+      ] },
+      { titre: 'Aide', items: [
+        item('Visite guidée (démo)', () => this.startDemo()),
+        item('Revoir l’introduction', () => this.setState({ onb: 0, menuOpen: false })),
+      ] },
+      { titre: 'Personnel', items: [
+        item('Ma collection', navTo('accueil', 'collectionPerso'), 'favoris'),
+        item('Journal du com\u00e9dien', navTo('journal')),
+      ] },
+      { titre: '\u00c0 venir', items: [
+        soon('Quiz'),
+        soon('Mode IA & g\u00e9n\u00e9rateur de sc\u00e8nes'),
+        soon('Exercices d\u2019acteur & voix'),
+        soon('Lecture interactive'),
+        soon('Costumes, d\u00e9cors, accessoires'),
+        soon('Festivals & agenda'),
+      ] },
+    ];
+  }
+  deco(cat, list, idKey) {
+    return list.map((it) => {
+      const fav = !!this.state.favs[cat + '::' + it[idKey]];
+      return Object.assign({}, it, {
+        onFav: this.toggleFav(cat, it[idKey]),
+        favG: fav ? '\u2605' : '\u2606',
+        favC: fav ? '#d4a94e' : 'rgba(242,233,220,.35)',
+      });
+    });
+  }
+
+  renderVals() {
+    const tab = this.state.tab ?? (this.props.ecranInitial ?? 'accueil');
+    const sub = this.state.sub;
+    const seg = this.state.seg;
+    const colSeg = this.state.colSeg;
+    const gold = '#d4a94e', muted = '#8a7a6e';
+    const setTab = (t) => () => this.setState({ tab: t, sub: null });
+    const setSub = (s) => () => this.setState({ tab: 'explorer', sub: s });
+    const setSeg = (s) => () => this.setState({ seg: s });
+    const setColSeg = (s) => () => this.setState({ colSeg: s });
+
+    const W = (f) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + f + '?width=500';
+
+    const vals = {
+      isAccueil: tab === 'accueil' && !sub,
+      isCollection: tab === 'accueil' && sub === 'collectionPerso',
+      isPieces: tab === 'pieces',
+      isExplorer: tab === 'explorer' && !sub,
+      isEncyclo: tab === 'explorer' && sub === 'encyclo',
+      isDramaturge: tab === 'explorer' && sub === 'dramaturge',
+      isFrise: tab === 'explorer' && sub === 'frise',
+      isCarte: tab === 'explorer' && sub === 'carte',
+      isCollections: tab === 'explorer' && sub === 'collections',
+      isScene: tab === 'scene',
+      isJournal: tab === 'journal',
+      isSegMono: seg === 'mono', isSegCit: seg === 'cit', isSegGlos: seg === 'glos',
+      isColP: colSeg === 'p', isColA: colSeg === 'a', isColC: colSeg === 'c', isColM: colSeg === 'm',
+
+      go: { accueil: setTab('accueil'), pieces: setTab('pieces'), explorer: setTab('explorer'), scene: setTab('scene'), journal: setTab('journal') },
+      openEncyclo: setSub('encyclo'), openMoliere: setSub('dramaturge'), openFrise: setSub('frise'),
+      openCarte: setSub('carte'), openCollections: setSub('collections'),
+      backExplorer: setSub(null), backEncyclo: setSub('encyclo'),
+      openMaCollection: () => this.setState({ tab: 'accueil', sub: 'collectionPerso' }),
+      backAccueil: () => this.setState({ tab: 'accueil', sub: null }),
+      colSegM: { p: setColSeg('p'), a: setColSeg('a'), c: setColSeg('c'), m: setColSeg('m') },
+      colBg: Object.fromEntries(['p','a','c','m'].map(k => [k, k === colSeg ? gold : 'transparent'])),
+      colC: Object.fromEntries(['p','a','c','m'].map(k => [k, k === colSeg ? '#231a10' : muted])),
+
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menu: this.buildMenu(),
+      ...this.onbVals(),
+      ...this.demoVals(),
+      segM: { mono: setSeg('mono'), cit: setSeg('cit'), glos: setSeg('glos') },
+      segBg: { mono: seg === 'mono' ? gold : 'transparent', cit: seg === 'cit' ? gold : 'transparent', glos: seg === 'glos' ? gold : 'transparent' },
+      segC: { mono: seg === 'mono' ? '#231a10' : muted, cit: seg === 'cit' ? '#231a10' : muted, glos: seg === 'glos' ? '#231a10' : muted },
+      navC: Object.fromEntries(['accueil','pieces','explorer','scene','journal'].map(t => [t, t === tab ? gold : muted])),
+      dot: Object.fromEntries(['accueil','pieces','explorer','scene','journal'].map(t => [t, t === tab ? 1 : 0])),
+
+      heroBg: 'linear-gradient(160deg,' + (this.props.rideau ?? '#7a1f2b') + ',#43101a)',
+      imgErr: (e) => { e.target.style.display = 'none'; },
+
+      pieces: this.deco('pieces', [
+        { titre: 'Le Misanthrope', auteur: 'Molière', annee: '1666', genre: 'comédie', actes: '5 actes', distribution: '4 F · 7 H', duree: '≈ 2 h', difficulte: 'difficulté ●●●○' },
+        { titre: 'Antigone', auteur: 'Sophocle', annee: '~441 av. J.-C.', genre: 'tragédie', actes: '1 acte', distribution: '4 F · 8 H', duree: '≈ 1 h 30', difficulte: 'difficulté ●●●●' },
+        { titre: 'La Cantatrice chauve', auteur: 'Eugène Ionesco', annee: '1950', genre: 'absurde', actes: '11 scènes', distribution: '3 F · 3 H', duree: '≈ 1 h', difficulte: 'difficulté ●●○○' },
+        { titre: 'Cyrano de Bergerac', auteur: 'Edmond Rostand', annee: '1897', genre: 'héroï-comédie', actes: '5 actes', distribution: '3 F · 12 H', duree: '≈ 2 h 30', difficulte: 'difficulté ●●●●' },
+        { titre: 'Phèdre', auteur: 'Jean Racine', annee: '1677', genre: 'tragédie', actes: '5 actes', distribution: '4 F · 4 H', duree: '≈ 1 h 45', difficulte: 'difficulté ●●●●' },
+      ], 'titre'),
+
+      dramaturges: this.deco('auteurs', [
+        { nom: 'Molière', dates: '1622 – 1673', initiale: 'M', img: W('Pierre%20Mignard%20-%20Portrait%20de%20Jean-Baptiste%20Poquelin%20dit%20Moli%C3%A8re%20%281622-1673%29%20-%20Google%20Art%20Project.jpg') },
+        { nom: 'Shakespeare', dates: '1564 – 1616', initiale: 'S', img: W('Shakespeare.jpg') },
+        { nom: 'Jean Racine', dates: '1639 – 1699', initiale: 'R', img: W('Jean%20racine.jpg') },
+        { nom: 'Anton Tchekhov', dates: '1860 – 1904', initiale: 'T', img: W('Anton%20Chekhov%20with%20bow-tie%20sepia%20image.jpg') },
+        { nom: 'Victor Hugo', dates: '1802 – 1885', initiale: 'H', img: W('Victor%20Hugo%20by%20%C3%89tienne%20Carjat%201876%20-%20full.jpg') },
+        { nom: 'Sophocle', dates: '~496 – 406 av. J.-C.', initiale: 'S', img: W('Sophocles%20pushkin.jpg') },
+      ], 'nom'),
+
+      chronoMoliere: [
+        { an: '1622', txt: 'Naissance à Paris, fils d\u2019un tapissier du roi.' },
+        { an: '1643', txt: 'Fonde l\u2019Illustre Théâtre avec Madeleine Béjart.' },
+        { an: '1658', txt: 'Joue devant Louis XIV — la troupe s\u2019installe à Paris.' },
+        { an: '1664', txt: 'Tartuffe interdit cinq ans par le parti dévot.' },
+        { an: '1673', txt: 'Meurt après la 4e représentation du Malade imaginaire.' },
+      ],
+
+      frise: [
+        { ere: 'Antiquité', couleur: '#c98b4e', an: '~534 av. J.-C.', titre: 'Thespis, premier acteur', txt: 'Aux Grandes Dionysies d\u2019Athènes, un homme sort du chœur : le théâtre est né.' },
+        { ere: 'Antiquité', couleur: '#c98b4e', an: '~441 av. J.-C.', titre: 'Antigone de Sophocle', txt: 'La tragédie grecque à son sommet — loi des hommes contre loi des dieux.' },
+        { ere: 'Moyen Âge', couleur: '#8e9e5a', an: 'XVe s.', titre: 'Mystères et farces', txt: 'Sur les parvis, la Passion se joue trois jours durant ; la farce de Maître Pathelin fait rire les foules.' },
+        { ere: 'Élisabéthain', couleur: '#5f8ea8', an: '1599', titre: 'Le Globe ouvre à Londres', txt: 'La troupe de Shakespeare y créera Hamlet, Othello, Le Roi Lear.' },
+        { ere: 'Classicisme', couleur: '#d4a94e', an: '1664', titre: 'Tartuffe fait scandale', txt: 'Molière défie les dévots ; la règle des trois unités règne sur la scène française.' },
+        { ere: 'Romantisme', couleur: '#a85a72', an: '1830', titre: 'La bataille d\u2019Hernani', txt: 'Hugo fait exploser les règles classiques — clameurs et pugilats dans la salle.' },
+        { ere: 'Moderne', couleur: '#9e2b3a', an: '1896', titre: 'Ubu roi', txt: '« Merdre ! » — Jarry ouvre la voie aux avant-gardes du XXe siècle.' },
+        { ere: 'Absurde', couleur: '#b0563a', an: '1953', titre: 'En attendant Godot', txt: 'Beckett met l\u2019attente elle-même en scène ; le théâtre de l\u2019absurde triomphe.' },
+      ],
+
+      lieux: [
+        { nom: 'Théâtre d\u2019Épidaure', lieu: 'Grèce · IVe s. av. J.-C.', txt: '14 000 places, acoustique légendaire.', initiale: 'É', img: W('Epidaurus%20Theater.jpg') },
+        { nom: 'Comédie-Française', lieu: 'Paris · fondée en 1680', txt: 'La « Maison de Molière », plus ancienne troupe au monde.', initiale: 'C', img: W('Com%C3%A9die-Fran%C3%A7aise.jpg') },
+        { nom: 'Shakespeare\u2019s Globe', lieu: 'Londres · reconstruit en 1997', txt: 'Théâtre élisabéthain à ciel ouvert, spectateurs debout.', initiale: 'G', img: W('Shakespeare\u2019s%20Globe%20Theatre%2C%20London.jpg') },
+        { nom: 'Festival d\u2019Avignon', lieu: 'France · chaque juillet', txt: 'Cour d\u2019honneur du Palais des papes + 1 500 spectacles au Off.', initiale: 'A', img: W('Avignon%2C%20Palais%20des%20Papes%20by%20JM%20Rosier.jpg') },
+      ],
+
+      collections: [
+        { titre: 'Les 100 pièces incontournables', nb: '100 pièces', initiale: 'C', fond: 'linear-gradient(140deg,#7a1f2b,#43101a)', img: '' },
+        { titre: 'Les grandes tragédies grecques', nb: '18 pièces', initiale: 'Τ', fond: 'linear-gradient(140deg,#8a6a3a,#4a3416)', img: W('Sophocles%20pushkin.jpg') },
+        { titre: 'Le théâtre de Molière', nb: '33 pièces', initiale: 'M', fond: 'linear-gradient(140deg,#3a4a6a,#1c2436)', img: W('Pierre%20Mignard%20-%20Portrait%20de%20Jean-Baptiste%20Poquelin%20dit%20Moli%C3%A8re%20%281622-1673%29%20-%20Google%20Art%20Project.jpg') },
+        { titre: 'Shakespeare en 20 œuvres', nb: '20 pièces', initiale: 'S', fond: 'linear-gradient(140deg,#4a5a3a,#242e1a)', img: W('Shakespeare.jpg') },
+        { titre: 'Les femmes dramaturges', nb: '24 autrices', initiale: 'F', fond: 'linear-gradient(140deg,#6a3a5a,#32182a)', img: W('George%20Sand%20by%20Nadar%2C%201864.jpg') },
+        { titre: 'Le théâtre de l\u2019absurde', nb: '12 pièces', initiale: 'A', fond: 'linear-gradient(140deg,#3a3a3a,#1a1a1a)', img: '' },
+      ],
+
+      monologues: this.deco('monologues', [
+        { titre: 'La tirade du nez', source: 'Cyrano de Bergerac, acte I — Rostand', extrait: '« Ah ! non ! c\u2019est un peu court, jeune homme ! On pouvait dire… oh ! Dieu ! bien des choses en somme… »', duree: '≈ 3 min', pour: 'Homme', emotion: 'Panache', niveau: 'Difficile' },
+        { titre: 'Phèdre avoue sa passion', source: 'Phèdre, acte II — Racine', extrait: '« Oui, prince, je languis, je brûle pour Thésée… »', duree: '≈ 2 min 30', pour: 'Femme', emotion: 'Passion', niveau: 'Difficile' },
+        { titre: 'Être ou ne pas être', source: 'Hamlet, acte III — Shakespeare', extrait: '« Être, ou ne pas être, telle est la question… »', duree: '≈ 2 min', pour: 'Mixte', emotion: 'Doute', niveau: 'Intermédiaire' },
+      ], 'titre'),
+
+      citations: this.deco('citations', [
+        { txt: '« Le monde entier est un théâtre, et tous, hommes et femmes, n\u2019en sont que les acteurs. »', src: 'SHAKESPEARE — Comme il vous plaira' },
+        { txt: '« Qu\u2019il est doux d\u2019être aimé pour soi-même ! »', src: 'BEAUMARCHAIS — Le Barbier de Séville' },
+        { txt: '« Va, je ne te hais point. »', src: 'CORNEILLE — Le Cid' },
+      ], 'src'),
+
+      glossaire: [
+        { terme: 'Aparté', cat: 'Jeu', def: 'Réplique qu\u2019un personnage adresse au public, censée ne pas être entendue des autres personnages.' },
+        { terme: 'Catharsis', cat: 'Théorie', def: 'Purgation des passions du spectateur par la représentation — concept d\u2019Aristote dans la Poétique.' },
+        { terme: 'Didascalie', cat: 'Texte', def: 'Indication scénique donnée par l\u2019auteur : ton, geste, décor, déplacement.' },
+        { terme: 'Quatrième mur', cat: 'Mise en scène', def: 'Mur imaginaire séparant la scène de la salle ; le « briser », c\u2019est s\u2019adresser au public.' },
+        { terme: 'Stichomythie', cat: 'Texte', def: 'Dialogue où les personnages se répondent vers pour vers, dans un duel verbal serré.' },
+      ],
+
+      journal: [
+        { titre: 'Répétition — Tartuffe, acte III', date: 'hier', type: 'Répétition', txt: 'Scène 3 avec Elmire : mieux tenir le silence avant « Je vous parle un peu franc ». Revoir le placement côté jardin.' },
+        { titre: 'Diction : les « r » roulés', date: '6 juillet', type: 'Progrès', txt: 'Virelangues 15 min. Net progrès sur « Trois tortues trottaient ». À refaire chaque matin.' },
+        { titre: 'Idée de mise en scène', date: '2 juillet', type: 'Idée', txt: 'Jouer l\u2019aparté d\u2019Orgon face public, lumière resserrée — effet confession.' },
+      ],
+    };
+    vals.favPieces = vals.pieces.filter((p) => p.favG === '\u2605');
+    vals.favAuteurs = vals.dramaturges.filter((d) => d.favG === '\u2605');
+    vals.favCitations = vals.citations.filter((q) => q.favG === '\u2605');
+    vals.favMonologues = vals.monologues.filter((m) => m.favG === '\u2605');
+    const total = vals.favPieces.length + vals.favAuteurs.length + vals.favCitations.length + vals.favMonologues.length;
+    vals.favCountLabel = total === 0 ? 'Encore vide \u2014 touchez \u2606 pour ajouter des favoris' : total + ' favori' + (total > 1 ? 's' : '');
+    vals.noFavPieces = vals.favPieces.length === 0;
+    vals.noFavAuteurs = vals.favAuteurs.length === 0;
+    vals.noFavCitations = vals.favCitations.length === 0;
+    vals.noFavMonologues = vals.favMonologues.length === 0;
+    return vals;
+  }
+}
+</script>
+</body>
+</html>
