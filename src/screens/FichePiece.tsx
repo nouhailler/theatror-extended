@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { PIECES } from '../data/pieces';
 import { PIECE_DETAILS } from '../data/pieceDetails';
+import { hasTexte } from '../data/pieceTextes';
 import { DRAMATURGES } from '../data/dramaturges';
 import { difficulteLabel } from '../components/ui';
 import Star from '../components/Star';
@@ -56,6 +57,20 @@ export default function FichePiece() {
           {p.pourEnfants && <span style={chip}>pour enfants</span>}
           <span style={{ ...chip, border: 'none', color: 'var(--text-muted)', fontStyle: 'italic' }}>{difficulteLabel(p.difficulte)}</span>
         </div>
+
+        {/* Lecture du texte intégral */}
+        {hasTexte(p.id) && (
+          <button onClick={() => nav(`/pieces/${p.id}/texte`)}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              width: '100%', padding: '13px 16px', cursor: 'pointer',
+              background: 'var(--gold)', color: 'var(--on-gold)', border: 'none',
+              borderRadius: 10, fontFamily: 'var(--font-title)', fontSize: 16, fontWeight: 600,
+              boxShadow: 'var(--sh-btn)',
+            }}>
+            📖 Lire le texte intégral
+          </button>
+        )}
 
         {/* Résumé */}
         {p.resume && (

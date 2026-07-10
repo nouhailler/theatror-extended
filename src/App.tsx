@@ -11,6 +11,7 @@ import Accueil from './screens/Accueil';
 import MaCollection from './screens/MaCollection';
 import Pieces from './screens/Pieces';
 import FichePiece from './screens/FichePiece';
+import LecturePiece from './screens/LecturePiece';
 import Explorer from './screens/Explorer';
 import Encyclopedie from './screens/Encyclopedie';
 import FicheArticle from './screens/FicheArticle';
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/collection" element={<MaCollection />} />
           <Route path="/pieces" element={<Pieces />} />
           <Route path="/pieces/:id" element={<FichePiece />} />
+          <Route path="/pieces/:id/texte" element={<LecturePiece />} />
           <Route path="/explorer" element={<Explorer />} />
           <Route path="/explorer/encyclopedie" element={<Encyclopedie />} />
           <Route path="/explorer/article/:id" element={<FicheArticle />} />
