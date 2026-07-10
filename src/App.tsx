@@ -13,6 +13,7 @@ import Pieces from './screens/Pieces';
 import FichePiece from './screens/FichePiece';
 import Explorer from './screens/Explorer';
 import Encyclopedie from './screens/Encyclopedie';
+import FicheArticle from './screens/FicheArticle';
 import FicheDramaturge from './screens/FicheDramaturge';
 import Personnages from './screens/Personnages';
 import FichePersonnage from './screens/FichePersonnage';
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/pieces/:id" element={<FichePiece />} />
           <Route path="/explorer" element={<Explorer />} />
           <Route path="/explorer/encyclopedie" element={<Encyclopedie />} />
+          <Route path="/explorer/article/:id" element={<FicheArticle />} />
           <Route path="/explorer/dramaturge/:id" element={<FicheDramaturge />} />
           <Route path="/explorer/personnages" element={<Personnages />} />
           <Route path="/explorer/personnage/:id" element={<FichePersonnage />} />
