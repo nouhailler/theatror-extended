@@ -44,7 +44,7 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   compose les scènes en h2) ; (b) **`sc_cue`** : locuteur en `<span class="sc">nom</span>. —`
   (petites capitales Guizot) reconnu en tête de `<p>`. **Total pièces avec texte : 25.**
 
-## À faire — textes des pièces restantes (7, toutes DÉLICATES)
+## À faire — textes des pièces restantes (8, toutes DÉLICATES)
 
 → Procédure : `scripts/wikisource/README.md` (déclarer dans `PLAYS`, générer, enregistrer
 le loader dans `pieceTextes.ts`, build, vérifier le rendu).
@@ -63,7 +63,7 @@ le loader dans `pieceTextes.ts`, build, vérifier le rendu).
 - **`romeo-juliette`** : trad. Montégut = locuteurs NON balisés (ni `sc` ni `personnage`),
   en-têtes de scènes incohérents (mélange h2/h3) → bespoke. (Voir aussi trad. Hugo 1868.)
 
-⚠️ Ces 7 pièces ne se génèrent PAS avec le pipeline actuel. Chacune demande une adaptation
+⚠️ Ces 8 pièces ne se génèrent PAS avec le pipeline actuel. Chacune demande une adaptation
 spécifique (repérage locuteur/acte différent) ou n'a pas de source libre — décision au cas
 par cas avant d'y investir.
 
