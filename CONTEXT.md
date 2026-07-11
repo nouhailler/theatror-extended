@@ -18,7 +18,48 @@ Speech, quiz, exercices d'acteur/voix, agenda festivals — DEMANDER à l'utilis
   manuscrits), 37 avec portrait Wikimedia.
 - **PWA** : textes en cache à la demande (install ≈ 1,2 Mo). Build nécessite `NODE_OPTIONS=--max-old-space-size=6144` (dans `package.json`).
 
-### Détail du gros chantier « répertoire élargi » (fait le 2026-07-11)
+## 🗺️ ROADMAP COMPLÈTE DES PRIORITÉS (fournie par l'utilisateur, 2026-07-11)
+Priorité 1 (coquille/onboarding/lecteur) ✅ · **Priorité 2 (base de données pièces) ✅** ·
+**Priorité 3 (dramaturges) ✅**. Suite ci-dessous (statut : ✅ fait · ⚠️ existe en version de base ·
+❌ à faire). **La prochaine est la n°4.**
+
+- **4. Personnages célèbres** ❌ **(PROCHAINE)** — Tartuffe, Cyrano, Antigone, Dom Juan, Figaro…
+  Pour chacun : psychologie · évolution · scènes importantes · monologues · adaptations.
+  ⚠️ NB : `src/screens/FichePersonnage.tsx` existe déjà — vérifier la data personnages existante
+  et brancher les chips « personnages » des fiches-pièces vers ces fiches.
+- **5. Frise chronologique interactive** ⚠️ (écran Frise existe) — naissance des auteurs · création
+  des œuvres · événements historiques · évolution des styles.
+- **6. Carte du monde** ⚠️ (Leaflet+OSM existe) — grands théâtres · festivals · traditions · écoles.
+- **7. Citations** ⚠️ (Scène/Citations existe) — des milliers, classées par auteur · pièce · thème · émotion.
+- **8. Monologues** ⚠️ (Scène/Monologues existe) — recherche par durée · difficulté · âge · H · F ·
+  émotion · contemporain · classique.
+- **9. Exercices d'acteur** ❌ — respiration, diction, articulation, concentration, improvisation,
+  émotions, regard, posture, mémoire, écoute.
+- **10. Entraînement vocal** ❌ — virelangues, échauffement, projection, placement de voix, respiration.
+- **11. Quiz** ❌ — reconnaître pièce/auteur/citation/personnage, chronologie, costumes ; plusieurs niveaux.
+- **12. Mode IA** ❌ (archi prête : clé OpenRouter dans Réglages) — requêtes en langage naturel
+  (« comédie française avec 5 personnages », « compare Molière et Shakespeare »).
+- **13. Générateur de scènes (IA)** ❌ — scène drôle, dialogue, tragédie, monologue, impro.
+- **14. Analyse d'une pièce (IA)** ❌ — importer un texte → thèmes, personnages, structure, conflits,
+  symboles, évolution dramatique.
+- **15. Lecture interactive** ⚠️ (lecteur de texte existe) — cliquer sur un personnage / mot ancien /
+  référence historique / note de mise en scène (Web Speech aussi envisagé).
+- **16. Mise en scène virtuelle** ❌ — placement des acteurs, décors, éclairage, déplacements.
+- **17. Costumes** ❌ — galerie historique, recherche par époque · pays · style · personnage.
+- **18. Décors** ❌ — bibliothèque (théâtre grec, palais, rue, forêt, intérieur bourgeois).
+- **19. Accessoires** ❌ — catalogue (armes, mobilier, objets anciens).
+- **20. Festivals** ❌ — agenda mondial : dates, programme, billetterie, localisation.
+- **21. Journal du comédien** ✅ (CRUD local + stats) — répétitions, progrès, difficultés, idées.
+- **22. Collection personnelle** ✅ (Ma collection, favoris 4 catégories).
+- **23. Podcasts et vidéos** ❌ — conférences, analyses, interviews, captations.
+- **24. Glossaire** ⚠️ (Scène/Glossaire existe) — aparté, didascalie, catharsis, quatrième mur,
+  tirade, stichomythie, deus ex machina… (viser des centaines de termes).
+- **25. Parcours d'apprentissage** ❌ — par profil : débutant, amateur, étudiant, professeur,
+  metteur en scène, comédien.
+- **26. Collections thématiques** ⚠️ (écran Collections existe) — Les 100 incontournables, tragédies
+  grecques, théâtre de Molière, femmes dramaturges, théâtre engagé, théâtre de l'absurde…
+
+## Détail du gros chantier « répertoire élargi » (fait le 2026-07-11)
 Les **319 pièces** de `texteslibres.fr/categorie/theatre` intégrées. 8 pièces du site écartées
 (2 liens 404, 3 gaps source : serments-indiscrets, pamela-giraud, eventail ; 3 sketches quasi-vides).
 Duplicatas retirés (Dom Juan, Barbier, Tartuffe déjà présents).
