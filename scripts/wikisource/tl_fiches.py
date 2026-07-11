@@ -73,28 +73,62 @@ def auteur_id(nom):
     s = s.split(" de ")[-1] if " de " in s else s
     return re.sub(r"[^a-z]", "", s.split()[-1]) if s.split() else "?"
 
-FEM = re.compile(r"^(madame|mme|mademoiselle|mlle|la |une |dame|reine|princesse|comtesse|marquise|"
-                 r"baronne|duchesse|dona|doña|miss|lady|mère|tante|nourrice|servante|soeur|sœur)\b", re.I)
-MASC = re.compile(r"^(monsieur|m\.|le |un |don |sieur|roi|prince|comte|marquis|baron|duc|abbé|"
-                  r"père|oncle|valet|comdt|commandant|general|général|docteur|maître|frère)\b", re.I)
-FEM_END = ("a", "e", "ine", "ette", "elle")  # faible indice
-KNOWN_F = {"lucette","lucienne","marianne","silvia","araminte","marton","adèle","henriette","clara",
-           "nini","maggy","viviane","hermia","flaminia","lisette","zerbinette","hyacinte","martine",
-           "jacqueline","lucinde","nérine","émilie","fulvie","livie","pauline","stratonice","bérénice",
-           "phénice","roxane","atalide","zaïre","zatime","marceline","armandine","célimène","agnès"}
+FEM = re.compile(r"^(madame|mme|mademoiselle|mlle|mrs|miss|lady|la |une |dame|reine|princesse|"
+                 r"comtesse|marquise|baronne|duchesse|vicomtesse|dona|doña|donna|mère|grand-?mère|"
+                 r"tante|nourrice|servante|suivante|soeur|sœur|veuve|épouse|femme|fille|cousine|"
+                 r"nièce|maîtresse|bergère|paysanne|marchande|cuisinière|gouvernante|abbesse|fée|"
+                 r"déesse|impératrice|infante|demoiselle|bourgeoise|camériste|lingère|blanchisseuse)\b", re.I)
+MASC = re.compile(r"^(monsieur|mr|m\.|le |un |don |sieur|roi|prince|comte|marquis|baron|duc|vicomte|"
+                  r"abbé|père|grand-?père|oncle|valet|laquais|commandant|colonel|capitaine|général|"
+                  r"lieutenant|docteur|médecin|maître|frère|chevalier|seigneur|fils|neveu|cousin|"
+                  r"jardinier|notaire|curé|soldat|garde|huissier|empereur|sultan|pacha|marchand|"
+                  r"paysan|bourgeois|domestique|comdt|gendarme|commissaire|brigadier|garçon|monsieur)\b", re.I)
+# Prénoms féminins fréquents du répertoire (classique, XIXe, russe, scandinave)
+KNOWN_F = set("""isabelle lyse angélique elvire dorine toinette nicole elmire célimène henriette armande
+bélise philaminte agnès georgette rosine suzanne marceline fanchette cléone émilie camille sabine julie
+chimène léonor léonore junie monime atalide roxane aricie hermione andromaque iphigénie ériphile phèdre
+œnone josabeth athalie zaïre alzire mérope colombine silvia sylvia flaminia lisette marton araminte hortense
+constance rosette nérine zerbinette hyacinte célie doris iris lucile lucinde marianne mariane marinette cathos
+madelon jacqueline martine dorimène climène élise béline frosine dorothée agathe louison violette nanette babet
+cécile adèle adrienne blanche clarisse clara clairette corinne delphine eugénie fanny gabrielle gervaise ginette
+hélène jeanne joséphine juliette laure léonie léontine lucie lucienne madeleine marguerite mathilde nathalie
+olympe pauline rose thérèse valentine victoire virginie yvonne zoé aline amélie antoinette augustine berthe
+célestine clémence clémentine cunégonde sophie stéphanie charlotte caroline dorval nina macha sonia olga irina
+irène natacha varia douniacha anfissa marina lioubov charlotta ania sacha hedda nora hedvig rebecca ellida hilde
+gina berte thea rita maja bérénice phénice fulvie livie stratonice zatime maggy viviane hermia nini armandine
+lucette pamela eugénie carmosine barberine félicie marton bettine rosette angelica cydalise araminte agathe
+frisette célimare géronte-no dona rita clara sylvette ninon manon fadette cosette esther judith rebecca sara
+marthe ruth noémie dina lia rachel léa myriam""".split())
+FEM_SUFFIX = ("ette", "ine", "elle", "otte")  # suffixes assez sûrs (résiduel)
+
+def _base(role):
+    low = re.split(r"[,(]", role.strip().lower())[0].strip()
+    return low, low.split()[0] if low.split() else low
 
 def gender(role):
-    r = role.strip()
-    low = r.lower()
+    low, first = _base(role)
     if FEM.match(low): return "F"
     if MASC.match(low): return "M"
-    base = re.split(r"[ ,(]", low)[0]
-    if base in KNOWN_F: return "F"
-    return "M"  # défaut masculin (heuristique imparfaite)
+    if first in KNOWN_F or low in KNOWN_F: return "F"
+    if first.endswith(FEM_SUFFIX) and len(first) > 4: return "F"
+    return "M"  # défaut masculin
 
 def split_fh(roles):
     f = sum(1 for r in roles if gender(r) == "F")
     return len(roles) - f, f  # hommes, femmes
+
+# Distributions F/H connues exactement (id -> (femmes, hommes)) pour les pièces majeures
+FH_OVERRIDE = {
+  "illusion-comique": (2, 8), "menteur": (3, 7), "femmes-savantes": (4, 7),
+  "ecole-des-femmes": (2, 7), "ecole-des-maris": (2, 6), "precieuses-ridicules": (3, 8),
+  "monsieur-de-pourceaugnac": (3, 9), "plaideurs": (1, 7), "athalie": (3, 6),
+  "iphigenie": (4, 5), "mithridate": (1, 5), "cerisaie": (5, 7), "trois-s-urs": (4, 10),
+  "ivanov": (5, 9), "hedda-gabler": (3, 4), "peer-gynt": (6, 12), "ours": (1, 2),
+  "demande-en-mariage": (1, 2), "mefaits-du-tabac": (0, 1), "arlequin-valet-de-deux-maitres": (3, 6),
+  "surprise-de-l-amour": (3, 4), "ile-des-esclaves": (2, 3), "triomphe-de-l-amour": (3, 3),
+  "rodogune": (2, 5), "nicomede": (2, 6), "andromede": (4, 6), "dame-de-chez-maxim": (8, 12),
+  "puce-a-l-oreille": (5, 9), "turcaret": (3, 6), "roi-lear": (3, 10), "othello": (3, 8),
+}
 
 def epoque(an):
     return "antique" if an < 0 else "classique" if an < 1800 else "contemporain"
@@ -276,13 +310,34 @@ RESUMES = {
   # Shakespeare
   "roi-lear": "Le vieux roi Lear partage son royaume selon la flatterie et rejette la seule fille qui l'aime : descente aux enfers de l'orgueil et de l'ingratitude.",
   "othello": "Manipulé par le perfide Iago, le Maure Othello étouffe de jalousie et tue Desdémone, son innocente épouse : tragédie de la calomnie.",
+  # Compléments (pièces connues)
+  "acteurs-de-bonne-foi": "Des valets répètent une comédie qui se confond peu à peu avec leurs vrais sentiments : subtile mise en abyme du théâtre et de l'amour.",
+  "heritier-de-village": "Un paysan brusquement enrichi veut singer les manières nobles : satire enlevée de la vanité sociale.",
+  "denouement-imprevu": "Un père veut marier sa fille contre son gré ; un dénouement inattendu délivre la jeune fille.",
+  "joie-imprevue": "Un père retrouve son fils qui a joué tout son argent ; la joie des retrouvailles efface la faute.",
+  "prejuge-vaincu": "Une jeune femme de qualité surmonte son préjugé de rang pour aimer un homme de moindre naissance.",
+  "inconnu": "Une comtesse est courtisée par un galant qui garde l'anonymat et multiplie fêtes et prodiges pour se faire aimer : comédie à machines.",
+  "petit-eyolf": "Après la noyade de leur enfant infirme, un couple affronte la culpabilité et tente de se reconstruire : drame intime d'Ibsen.",
+  "quand-nous-nous-reveillerons-d-entre-les": "Un sculpteur vieillissant retrouve l'ancien modèle qui inspira son chef-d'œuvre : ultime drame d'Ibsen sur l'art et la vie manquée.",
+  "monsieur-badin": "Un employé qui ne vient jamais au bureau explique à son chef, avec une mauvaise foi géniale, pourquoi il s'absente : monologue de la lâcheté ordinaire.",
+  "amour-et-piano": "Un jeune homme sonne chez une cocotte en croyant venir pour le piano ; elle le prend pour un tout autre visiteur : quiproquo pétillant en un acte.",
+  "par-la-fenetre": "Pour se venger d'un mari jaloux, une femme fait irruption par la fenêtre chez un voisin ahuri : farce conjugale en un acte.",
+  "main-passe": "Vaudeville des ménages qui se trompent à tour de rôle ; un phonographe compromettant finit par tout faire éclater.",
+  "ruban": "Un médecin obnubilé par la Légion d'honneur voit un autre récolter le ruban à sa place : satire de la vanité.",
+  "celimare-le-bien-aime": "Un veuf sur le point de se remarier voit débarquer les maris de ses anciennes maîtresses, devenus des amis encombrants.",
+  "tragedien-malgre-lui": "Accablé de commissions par sa famille pendant ses « vacances », un homme excédé finit par exploser : monologue-farce.",
+  "achille": "Fragment de tragédie inachevée sur la colère d'Achille au siège de Troie.",
+  "mangeront-ils": "Comédie féerique : deux amants réfugiés dans une forêt échappent à un roi tyrannique grâce à un mendiant sorcier.",
 }
 
 def esc(s): return s.replace("\\", "\\\\").replace("'", "\\'")
 
 def fiche(rec):
     an = rec["annee"]; genre = GENRE_OVERRIDE.get(rec["id"], GENRE_AUT.get(rec["auteur"], "comédie"))
-    roles = rec["roles"]; h, f = split_fh(roles)
+    if rec["id"] in FH_OVERRIDE:
+        f, h = FH_OVERRIDE[rec["id"]]
+    else:
+        h, f = split_fh(rec["roles"])
     dm, ds = duree(rec["nlignes"], rec["actes"])
     ep = epoque(an)
     aid = auteur_id(rec["auteur"])

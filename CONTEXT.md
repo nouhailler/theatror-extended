@@ -14,10 +14,13 @@ titre/auteur/année/actes EXACTS ; **genres corrigés** via `GENRE_OVERRIDE` (co
 Corneille/Th. Corneille, Plaideurs de Racine, Annibal de Marivaux = tragédie, drames de
 Tchekhov/Ibsen/Beaumarchais, farces des one-acts…) ; **138 résumés** rédigés (`RESUMES`) pour
 les pièces canoniques ; **durée** estimée (nb répliques + plancher `actes*22`).
-⚠️ **Reste approximatif** : la **distribution F/H** (heuristique sur les noms → souvent 0 femme
-à tort, ex. Illusion comique 0F·12H) et les **résumés absents** pour ~130 pièces obscures
-(Labiche/Feydeau/Courteline one-acts, tragédies mineures). Améliorables : enrichir `KNOWN_F` /
-règles de genre dans `gender()`, compléter `RESUMES`.
+**Distribution F/H** — améliorée : `gender()` avec grand lexique `KNOWN_F` (prénoms féminins
+classiques/XIXe/russes/scandinaves) + titres FR/M étendus, et `FH_OVERRIDE` (distributions exactes
+pour ~30 pièces majeures). Résultat plausible partout (Illusion comique 2F·8H, Colonie 7F·9H…).
+Résiduel : quelques comptes gonflés par les rôles de foule/mineurs, et prénoms rares mis en H par
+défaut. **Résumés** : 155/268 rédigés (tout le canon + one-acts célèbres). Les ~113 sans résumé
+sont des one-acts très obscurs (Labiche/Feydeau/Courteline) laissés vides **volontairement** (pas
+de source fiable → ne pas inventer ; les « fiches de lecture » du site sont sous copyright).
 
 ### Rappel des 15 pilotes (fiches soignées à la main, à garder comme référence)
 amphitryon, fourberies-scapin, medecin-malgre-lui, fausses-confidences, double-inconstance,
