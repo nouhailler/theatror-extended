@@ -108,6 +108,13 @@ export const PIECES: Piece[] = [
     resume: "Trahie par Jason, Médée assouvit une vengeance monstrueuse.",
   },
   {
+    id: 'medee-corneille', titre: 'Médée', auteur: 'Pierre Corneille', auteurId: 'corneille',
+    annee: '1635', anneeNum: 1635, genre: 'tragédie', actes: '5 actes',
+    femmes: 4, hommes: 5, dureeMin: 110, duree: '≈ 1 h 50', domainePublic: true,
+    decor: 'sans décor', pourEnfants: false, epoque: 'classique', difficulte: 4,
+    resume: "Trahie par Jason qui épouse Créuse, la magicienne Médée déchaîne une vengeance implacable : première tragédie de Corneille.",
+  },
+  {
     id: 'hamlet', titre: 'Hamlet', auteur: 'William Shakespeare', auteurId: 'shakespeare',
     annee: '1601', anneeNum: 1601, genre: 'tragédie', actes: '5 actes',
     femmes: 2, hommes: 16, dureeMin: 180, duree: '≈ 3 h', domainePublic: true,

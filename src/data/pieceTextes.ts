@@ -49,6 +49,7 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'les-grenouilles': () => import('./texts/les-grenouilles'),
   'romeo-juliette': () => import('./texts/romeo-juliette'),
   'la-mouette': () => import('./texts/la-mouette'),
+  'medee-corneille': () => import('./texts/medee-corneille'),
 };
 
 export function hasTexte(id?: string): boolean {

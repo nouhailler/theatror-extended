@@ -63,16 +63,21 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   `parse_act(force_started=True)`. texteslibres.fr utilise **les mêmes classes** `span.personnage`
   / `span.didascalie` que Wikisource → `emit_lines` fonctionne tel quel. 4 actes.
   **Total pièces avec texte : 30.**
+- **NOUVELLE PIÈCE — Médée de Corneille (`medee-corneille`, 2026-07-11)** : le lien texteslibres
+  fourni pour « Médée » était en fait celui de **Corneille (1635)**, pas d'Euripide → ajoutée comme
+  **pièce distincte** dans `src/data/pieces.ts` (Corneille, 5 actes, classique) ; la Médée d'Euripide
+  (`medee`) reste au catalogue sans texte. `gen.py` : `gen_external` gère désormais un **découpage
+  par scène** (une page/scène, regroupées par acte : Corneille = 26 scènes / 5 actes). Écriture .ts
+  factorisée dans `write_ts`. **Total pièces avec texte : 31.**
 
 ## À faire — 3 pièces restantes (aucune source FR libre trouvée)
 
-- `medee` (Euripide) : Artaud n'a pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son
-  djvu source manquant sur Wikisource.
-- `oncle-vania` (Tchekhov) : pas de traduction FR du domaine public trouvée (ni Wikisource ni
-  texteslibres.fr — à re-vérifier sur texteslibres.fr le cas échéant).
+- `medee` (Euripide) : pas de traduction FR libre exploitable (Artaud n'a pas traduit Médée ;
+  Leconte de Lisle « Mèdéia » a son djvu manquant). NB : la Médée de **Corneille** est, elle, dispo
+  (`medee-corneille`).
+- `oncle-vania` (Tchekhov) : pas de traduction FR du domaine public trouvée (re-vérifier
+  texteslibres.fr — le chemin `EXTERNAL` est en place).
 - `importance-etre-constant` (Wilde) : pas de traduction FR du domaine public trouvée.
-→ Laissées sans texte tant qu'aucune source libre exploitable n'apparaît. (Piste : chercher
-  oncle-vania / d'autres pièces sur texteslibres.fr, le chemin `EXTERNAL` est en place.)
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne

@@ -92,23 +92,47 @@ EXTERNAL = {
       ("ACTE IV",      "https://www.texteslibres.fr/la-mouette-anton-tchekhov/acte-iv-6077.html"),
     ],
   },
+  "medee-corneille": {
+    "source": "Pierre Corneille, Médée (1635) — texte du domaine public. Source : texteslibres.fr.",
+    # texteslibres.fr découpe la pièce par scène : une page par scène, regroupées par acte.
+    "acts": [(act, [(lbl, "https://www.texteslibres.fr/medee-pierre-corneille/" + slug + ".html")
+                    for lbl, slug in scenes])
+      for act, scenes in [
+        ("ACTE I", [("Scène première","acte-i-scene-premiere-4360"), ("Scène II","acte-i-scene-ii-4361"),
+                    ("Scène III","acte-i-scene-iii-4362"), ("Scène IV","acte-i-scene-iv-4363"), ("Scène V","acte-i-scene-v-4364")]),
+        ("ACTE II", [("Scène première","acte-ii-scene-premiere-4365"), ("Scène II","acte-ii-scene-ii-4366"),
+                     ("Scène III","acte-ii-scene-iii-4367"), ("Scène IV","acte-ii-scene-iv-4368"), ("Scène V","acte-ii-scene-v-4369")]),
+        ("ACTE III", [("Scène première","acte-iii-scene-premiere-4370"), ("Scène II","acte-iii-scene-ii-4371"),
+                      ("Scène III","acte-iii-scene-iii-4372"), ("Scène IV","acte-iii-scene-iv-4373")]),
+        ("ACTE IV", [("Scène première","acte-iv-scene-premiere-4374"), ("Scène II","acte-iv-scene-ii-4375"),
+                     ("Scène III","acte-iv-scene-iii-4376"), ("Scène IV","acte-iv-scene-iv-4377"), ("Scène V","acte-iv-scene-v-4378")]),
+        ("ACTE V", [("Scène première","acte-v-scene-premiere-4379"), ("Scène II","acte-v-scene-ii-4380"),
+                    ("Scène III","acte-v-scene-iii-4381"), ("Scène IV","acte-v-scene-iv-4382"), ("Scène V","acte-v-scene-v-4383"),
+                    ("Scène VI","acte-v-scene-vi-4384"), ("Scène VII","acte-v-scene-vii-4385")]),
+      ]],
+  },
 }
 
 def esc(s):
     return s.replace("\\","\\\\").replace("'", "\\'")
 
 def gen_external(pid):
-    """Génère une pièce depuis texteslibres.fr (une page par acte)."""
+    """Génère une pièce depuis texteslibres.fr. Chaque acte est soit une URL unique
+    (2e élément = str), soit une liste de scènes (2e élément = [(label, url), …])."""
     spec = EXTERNAL[pid]
     blocks = []
-    for label, url in spec["acts"]:
-        html = ws.get_texteslibres(url)
-        b = ws.parse_act(html, force_started=True)
-        sys.stderr.write(f"  {label} ({url}): {len(b)} blocs\n")
-        if not b:
-            raise SystemExit(f"ABORT: 0 bloc pour {url}")
-        blocks.append({"k": "acte", "t": label})
-        blocks += b
+    for act_label, pages in spec["acts"]:
+        blocks.append({"k": "acte", "t": act_label})
+        scenes = [(None, pages)] if isinstance(pages, str) else pages
+        for scene_label, url in scenes:
+            html = ws.get_texteslibres(url)
+            b = ws.parse_act(html, force_started=True)
+            sys.stderr.write(f"  {act_label}{' / '+scene_label if scene_label else ''}: {len(b)} blocs\n")
+            if not b:
+                raise SystemExit(f"ABORT: 0 bloc pour {url}")
+            if scene_label:
+                blocks.append({"k": "scene", "t": scene_label})
+            blocks += b
     write_ts(pid, spec["source"], blocks)
 
 def gen(pid):
