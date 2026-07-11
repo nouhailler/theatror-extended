@@ -27,6 +27,9 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'le-cid': () => import('./texts/le-cid'),
   'britannicus': () => import('./texts/britannicus'),
   'cyrano': () => import('./texts/cyrano'),
+  'malade-imaginaire': () => import('./texts/malade-imaginaire'),
+  'bourgeois-gentilhomme': () => import('./texts/bourgeois-gentilhomme'),
+  'dom-juan': () => import('./texts/dom-juan'),
 };
 
 export function hasTexte(id?: string): boolean {

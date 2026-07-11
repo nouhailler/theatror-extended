@@ -1,6 +1,6 @@
 # CONTEXT — travail en cours
 
-_Dernière mise à jour : 2026-07-10._
+_Dernière mise à jour : 2026-07-11._
 
 ## 🔔 À rappeler au démarrage de la prochaine session
 On reprend le **texte intégral des pièces** : le lecteur est en place, il reste à
@@ -20,11 +20,15 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   - **Lot 1 (8 pièces)** : le-misanthrope, tartuffe, lavare, phedre, andromaque,
     le-cid, britannicus, cyrano.
   - Outillage réutilisable : `scripts/wikisource/` (`ws_fetch.py`, `gen.py`, `README.md`).
+- **Lot 2 — Molière (3 pièces, 2026-07-11)** : malade-imaginaire, bourgeois-gentilhomme,
+  dom-juan (édition Louandre 1910). ⚠️ `dom-juan` : base Wikisource = « **Don** Juan… »
+  (« Dom Juan » redirige). **Correctif parseur** `ws_fetch.py` (`is_cue`) : comparaison
+  désormais insensible aux espaces → le 1er locuteur d'une scène (didascalie collée au nom,
+  « Sganarelle, tenant… ») n'est plus perdu. Ancien défaut connu = résolu.
 
-## À faire — textes des pièces restantes (~25)
+## À faire — textes des pièces restantes (~22)
 
-### Lot 2 suggéré — classiques français faciles (sous-pages /Acte sur Wikisource)
-- **Molière** : malade-imaginaire, bourgeois-gentilhomme, dom-juan
+### Lot 2 (suite) — classiques français faciles (sous-pages /Acte sur Wikisource)
 - **Corneille** : horace
 - **Beaumarchais** : mariage-figaro, barbier-seville
 - **Hugo** : hernani, ruy-blas

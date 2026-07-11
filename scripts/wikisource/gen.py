@@ -26,6 +26,12 @@ PLAYS = {
       "Jean Racine, Britannicus (1669) — édition de 1670. Source : Wikisource, domaine public."),
   "cyrano": ("Cyrano de Bergerac (Rostand)", 5,
       "Edmond Rostand, Cyrano de Bergerac (1897). Source : Wikisource, domaine public."),
+  "malade-imaginaire": ("Le Malade imaginaire", 3,
+      "Molière, Le Malade imaginaire (1673) — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public."),
+  "bourgeois-gentilhomme": ("Le Bourgeois gentilhomme/Édition Louandre, 1910", 5,
+      "Molière, Le Bourgeois gentilhomme (1670) — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public."),
+  "dom-juan": ("Don Juan ou le Festin de pierre/Édition Louandre, 1910", 5,
+      "Molière, Dom Juan ou le Festin de pierre (1665) — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public."),
 }
 
 def esc(s):

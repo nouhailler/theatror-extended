@@ -47,8 +47,10 @@ def parse_act(html):
         if not perso: return None
         did = el.find("span", class_="didascalie")
         # feuille « locuteur » seulement si le div ne contient que le nom (+ didascalie)
-        own = norm(el.get_text())
-        expect = norm(perso.get_text() + " " + (did.get_text() if did else ""))
+        # comparaison insensible aux espaces : la didascalie commence souvent par « , »
+        # collée au nom (« Sganarelle, tenant… ») → forcer un espace ferait échouer le test.
+        own = norm(el.get_text()).replace(" ", "")
+        expect = norm(perso.get_text() + " " + (did.get_text() if did else "")).replace(" ", "")
         if own == expect:
             return (norm(perso.get_text()), norm(did.get_text()) if did else "")
         return None
