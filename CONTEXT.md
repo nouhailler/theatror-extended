@@ -3,10 +3,23 @@
 _Dernière mise à jour : 2026-07-11._
 
 ## 🔔 À rappeler au démarrage de la prochaine session
-**GROS CHANTIER EN COURS — répertoire élargi texteslibres.fr** : la page
-`texteslibres.fr/categorie/theatre` liste **319 pièces** (dont ~24 déjà dans l'app).
-Objectif validé par l'utilisateur : **toutes les implémenter** (fiches enrichies + texte).
-→ **Lot pilote de 15 fait et commité** (à faire valider). Ensuite : lancer les **~280 restantes**.
+**RÉPERTOIRE ÉLARGI texteslibres.fr — FAIT (2026-07-11)** : les **319 pièces** de
+`texteslibres.fr/categorie/theatre` sont intégrées. Catalogue passé de 34 à **317 pièces**,
+315 avec texte intégral. Restent sans texte : `medee` (Euripide) et `importance-etre-constant`.
+8 pièces du site écartées (2 liens 404, 3 gaps source : serments-indiscrets, pamela-giraud,
+eventail ; 3 sketches quasi-vides). Duplicatas retirés (Dom Juan, Barbier, Tartuffe déjà présents).
+
+### ⚠️ Qualité des fiches auto-générées — à affiner (passe suivante)
+Fiches des ~268 nouvelles pièces générées par `scripts/wikisource/tl_fiches.py` :
+titre/auteur/année/actes EXACTS, mais **genre par heuristique-auteur** (imparfait : les comédies
+de Corneille sont étiquetées 'tragédie' ; Musset/Tchekhov défaut 'comédie'), **distribution F/H
+par heuristique** sur les noms (approximative), **durée estimée** du nb de répliques, **pas de
+résumé** (sauf pièces connues). → à corriger par lots (map d'overrides genre + résumés).
+
+### Rappel des 15 pilotes (fiches soignées à la main, à garder comme référence)
+amphitryon, fourberies-scapin, medecin-malgre-lui, fausses-confidences, double-inconstance,
+cinna, polyeucte, berenice, bajazet, caprices-marianne, lorenzaccio, fil-a-la-patte, le-dindon,
+boubouroche, perrichon.
 
 ### Où on en est sur ce chantier
 - **Pipeline auto** prêt : `scripts/wikisource/texteslibres_gen.py` (dict `PLAYS` id→(slug,auteur,titre,année))
