@@ -15,6 +15,22 @@ def get_html(page):
         d = json.load(r)
     return d["parse"]["text"]["*"]
 
+def get_texteslibres(url):
+    # Source alternative texteslibres.fr (textes du domaine public) : une page par acte.
+    # On isole le conteneur .texte et on retire le bruit (boutons commentaires, icônes).
+    # Le balisage locuteur/didascalie utilise les mêmes classes que Wikisource
+    # (span.personnage / span.didascalie) → parse_act(force_started=True) le lit tel quel.
+    req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) Theathror/1.0 (educational)"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read().decode("utf-8", "replace")
+    soup = BeautifulSoup(html, "lxml")
+    el = soup.select_one(".texte")
+    if el is None:
+        return ""
+    for bad in el.select(".commentaire-bulle, .btn-comment, .fa-layers, i, script, style, sup"):
+        bad.decompose()
+    return str(el)
+
 def sget(el, k, default=""):
     a = getattr(el, "attrs", None)
     if not a: return default
@@ -28,7 +44,9 @@ def norm(s):
     s = re.sub(r"\s+"," ", s)
     return s.strip()
 
-def parse_act(html, no_act=False, sc_mode=False):
+def parse_act(html, no_act=False, sc_mode=False, force_started=False):
+    # force_started : le HTML fourni EST déjà le corps de l'acte (pas de front-matter,
+    # pas d'en-tête ACTE) → on capture d'emblée (source texteslibres.fr).
     # no_act : pièces sans structure d'actes (tragédies grecques…) : on n'ouvre pas
     # la capture sur un h2 ACTE (il n'y en a pas) mais sur le 1er vrai locuteur, ce
     # qui saute d'office le front-matter (titre, notice, liste des personnages).
@@ -36,9 +54,9 @@ def parse_act(html, no_act=False, sc_mode=False):
     # composés en <div> texte (pas de h2/h3), locuteur = <div> ne contenant qu'un
     # <span class="sc"> EN GRAS (les noms cités dans les didascalies sont en sc non gras).
     soup = BeautifulSoup(html, "lxml")
-    root = soup.select_one(".mw-parser-output") or soup
+    root = soup.select_one(".mw-parser-output") or soup.select_one(".texte") or soup.body or soup
     blocks = []
-    started = False
+    started = force_started
     skip_cast = False
     # drop noise nodes
     for bad in root.select("style, link, script, sup.reference, .ws-noexport, .pagenum, .mw-editsection"):

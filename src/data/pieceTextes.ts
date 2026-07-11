@@ -48,6 +48,7 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'oedipe-roi': () => import('./texts/oedipe-roi'),
   'les-grenouilles': () => import('./texts/les-grenouilles'),
   'romeo-juliette': () => import('./texts/romeo-juliette'),
+  'la-mouette': () => import('./texts/la-mouette'),
 };
 
 export function hasTexte(id?: string): boolean {

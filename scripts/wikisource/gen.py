@@ -81,10 +81,39 @@ PLAYS = {
       "ROMÉO ET JULIETTE"),
 }
 
+# Pièces issues d'une source externe (texteslibres.fr) : une URL par acte.
+EXTERNAL = {
+  "la-mouette": {
+    "source": "Anton Tchekhov, La Mouette (1896) — traduction française du domaine public. Source : texteslibres.fr.",
+    "acts": [
+      ("ACTE PREMIER", "https://www.texteslibres.fr/la-mouette-anton-tchekhov/acte-premier-6074.html"),
+      ("ACTE II",      "https://www.texteslibres.fr/la-mouette-anton-tchekhov/acte-ii-6075.html"),
+      ("ACTE III",     "https://www.texteslibres.fr/la-mouette-anton-tchekhov/acte-iii-6076.html"),
+      ("ACTE IV",      "https://www.texteslibres.fr/la-mouette-anton-tchekhov/acte-iv-6077.html"),
+    ],
+  },
+}
+
 def esc(s):
     return s.replace("\\","\\\\").replace("'", "\\'")
 
+def gen_external(pid):
+    """Génère une pièce depuis texteslibres.fr (une page par acte)."""
+    spec = EXTERNAL[pid]
+    blocks = []
+    for label, url in spec["acts"]:
+        html = ws.get_texteslibres(url)
+        b = ws.parse_act(html, force_started=True)
+        sys.stderr.write(f"  {label} ({url}): {len(b)} blocs\n")
+        if not b:
+            raise SystemExit(f"ABORT: 0 bloc pour {url}")
+        blocks.append({"k": "acte", "t": label})
+        blocks += b
+    write_ts(pid, spec["source"], blocks)
+
 def gen(pid):
+    if pid in EXTERNAL:
+        return gen_external(pid)
     entry = PLAYS[pid]
     base, nact, source = entry[0], entry[1], entry[2]
     # 4e élément optionnel = gabarit de la page d'acte (défaut : romain « Acte {roman} »).
@@ -114,6 +143,9 @@ def gen(pid):
             if not b:
                 raise SystemExit(f"ABORT: 0 bloc pour {page}")
             blocks+=b
+    write_ts(pid, source, blocks)
+
+def write_ts(pid, source, blocks):
     lines=["import type { PieceTexte } from '../pieceTextes';","",
            "const texte: PieceTexte = {",
            f"  source: '{esc(source)}',",

@@ -57,14 +57,22 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   didascalies sont en sc non-gras → non confondus), répliques = `<p>`, reste = didascalie ; titre
   synthétique prépendu. (La trad. Montégut, elle, a des locuteurs non balisés → écartée.)
   **Total pièces avec texte : 29.**
+- **Lot 3 — La Mouette (1 pièce, 2026-07-11)** : trad. FR du domaine public via **texteslibres.fr**
+  (1re source hors Wikisource). Nouveau chemin `gen.py` : dict `EXTERNAL` (une URL par acte) +
+  `ws.get_texteslibres(url)` (isole `.texte`, retire le bruit boutons-commentaires/icônes) +
+  `parse_act(force_started=True)`. texteslibres.fr utilise **les mêmes classes** `span.personnage`
+  / `span.didascalie` que Wikisource → `emit_lines` fonctionne tel quel. 4 actes.
+  **Total pièces avec texte : 30.**
 
-## À faire — 4 pièces restantes (sources indisponibles)
+## À faire — 3 pièces restantes (aucune source FR libre trouvée)
 
-- **INDISPONIBLES** — pas de traduction FR du domaine public exploitable sur fr.wikisource :
-  `oncle-vania` (Tchekhov), `importance-etre-constant` (Wilde), `medee` (Euripide : Artaud n'a
-  pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son djvu source manquant), et
-  `la-mouette` (Tchekhov : page ~35 Ko sans h2/h3 ni classe locuteur — aucune autre édition FR
-  libre trouvée). → laissées sans texte tant qu'aucune source libre exploitable n'apparaît.
+- `medee` (Euripide) : Artaud n'a pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son
+  djvu source manquant sur Wikisource.
+- `oncle-vania` (Tchekhov) : pas de traduction FR du domaine public trouvée (ni Wikisource ni
+  texteslibres.fr — à re-vérifier sur texteslibres.fr le cas échéant).
+- `importance-etre-constant` (Wilde) : pas de traduction FR du domaine public trouvée.
+→ Laissées sans texte tant qu'aucune source libre exploitable n'apparaît. (Piste : chercher
+  oncle-vania / d'autres pièces sur texteslibres.fr, le chemin `EXTERNAL` est en place.)
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
