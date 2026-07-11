@@ -76,6 +76,9 @@ PLAYS = {
       "LES GRENOUILLES"),
   # medee (Euripide) : PAS de traduction FR exploitable sur fr.wikisource (Artaud n'a
   # pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son djvu manquant). Laissée sans texte.
+  "romeo-juliette": ("Roméo et Juliette (trad. Hugo)", -2,
+      "William Shakespeare, Roméo et Juliette — traduction française de François-Victor Hugo, 1868. Source : Wikisource, domaine public.",
+      "ROMÉO ET JULIETTE"),
 }
 
 def esc(s):
@@ -90,15 +93,16 @@ def gen(pid):
     blocks=[]
     if nact <= 0:
         # Page unique. nact==0 : « Texte entier » avec actes (h2)/scènes (h3).
-        # nact==-1 : pièce SANS actes (tragédie grecque…) → mode no_act + un bloc
-        # « acte » synthétique (titre) prépendu pour l'ancrage du lecteur.
+        # nact==-1 : pièce SANS actes (tragédie grecque…) → mode no_act.
+        # nact==-2 : édition in-quarto (Roméo, trad. Hugo) → mode sc_mode.
+        # Pour -1/-2 : un bloc « acte » synthétique (titre = 4e champ) est prépendu.
         html=ws.get_html(base)
-        blocks=ws.parse_act(html, no_act=(nact == -1))
-        if nact == -1:
+        blocks=ws.parse_act(html, no_act=(nact == -1), sc_mode=(nact == -2))
+        if nact <= -1:
             label = entry[3] if len(entry) > 3 else "Texte intégral"
             blocks = [{"k":"acte","t":label}] + blocks
         sys.stderr.write(f"  {base}: {len(blocks)} blocs\n")
-        if len(blocks) <= (1 if nact == -1 else 0):
+        if len(blocks) <= (1 if nact <= -1 else 0):
             raise SystemExit(f"ABORT: 0 bloc pour {base}")
     else:
         for i in range(1, nact+1):

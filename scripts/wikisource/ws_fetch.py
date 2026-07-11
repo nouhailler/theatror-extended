@@ -28,10 +28,13 @@ def norm(s):
     s = re.sub(r"\s+"," ", s)
     return s.strip()
 
-def parse_act(html, no_act=False):
+def parse_act(html, no_act=False, sc_mode=False):
     # no_act : pièces sans structure d'actes (tragédies grecques…) : on n'ouvre pas
     # la capture sur un h2 ACTE (il n'y en a pas) mais sur le 1er vrai locuteur, ce
     # qui saute d'office le front-matter (titre, notice, liste des personnages).
+    # sc_mode : édition « in-quarto » (Roméo et Juliette, trad. Hugo 1868) — actes/scènes
+    # composés en <div> texte (pas de h2/h3), locuteur = <div> ne contenant qu'un
+    # <span class="sc"> EN GRAS (les noms cités dans les didascalies sont en sc non gras).
     soup = BeautifulSoup(html, "lxml")
     root = soup.select_one(".mw-parser-output") or soup
     blocks = []
@@ -79,6 +82,50 @@ def parse_act(html, no_act=False):
             line = re.sub(r"^[\s.—–:-]+", "", rest)
             return (name, line)
         return None
+
+    def bold_sc_cue(el):
+        # locuteur « in-quarto » : le bloc ne contient qu'un span.sc EN GRAS.
+        sp = el.find("span", class_="sc")
+        if not sp or "bold" not in sget(sp, "style", ""):
+            return None
+        if norm(el.get_text()) != norm(sp.get_text()):
+            return None
+        return norm(sp.get_text()).rstrip(" .,")
+
+    def walk_sc(node):
+        nonlocal started
+        for el in node.children:
+            if not isinstance(el, Tag):
+                continue
+            if el.name in ("style", "link", "script"):
+                continue
+            t = norm(el.get_text())
+            # En-tête acte/scène = <div> texte, sans span.sc.
+            if el.name in ("div", "center", "p") and not el.find("span", class_="sc") \
+               and re.match(r"(?i)^(acte|sc[eè]ne|prologue|épilogue)\b", t) and len(t) < 40:
+                started = True
+                k = "acte" if re.match(r"(?i)^acte\b", t) else "scene"
+                blocks.append({"k": k, "t": t})
+                continue
+            if not started:
+                # avant la 1re scène : on descend chercher l'en-tête, on ignore le reste
+                if el.name in ("div", "section", "center"):
+                    walk_sc(el)
+                continue
+            cue = bold_sc_cue(el)
+            if cue:
+                blocks.append({"k": "perso", "t": cue})
+                continue
+            if el.name == "p":
+                emit_lines(el, blocks)
+                continue
+            if el.name in ("div", "center", "dd"):
+                # didascalie (décor, entrées/sorties) — peut contenir des sc non gras
+                if el.find(["div", "p", "center"]):
+                    walk_sc(el)
+                elif t:
+                    blocks.append({"k": "didascalie", "t": t})
+                continue
 
     def walk(node):
         nonlocal started, skip_cast
@@ -181,7 +228,7 @@ def parse_act(html, no_act=False):
             buf.append(ch.get_text())
         flush()
 
-    walk(root)
+    walk_sc(root) if sc_mode else walk(root)
     # collapse consecutive identical didascalies / empties
     out=[]
     for b in blocks:

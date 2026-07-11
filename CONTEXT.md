@@ -50,16 +50,21 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   un bloc `acte` synthétique (titre, 4e champ) prépendu. Lecteur : la barre de nav des actes est
   **masquée quand il n'y a qu'un bloc** (`actes.length > 1`). Éditions Artaud/Talbot = `span.personnage`
   standalone → `is_cue` fonctionne. **Total pièces avec texte : 28.**
+- **Lot 3 — Roméo et Juliette (1 pièce, 2026-07-11)** : trad. **F.-V. Hugo 1868** (`Roméo et
+  Juliette (trad. Hugo)`), édition in-quarto = **24 scènes continues, sans actes**. Nouveau
+  **`sc_mode`** (`gen.py` `nact = -2`) : en-têtes acte/scène en `<div>` texte (pas de h2/h3),
+  locuteur = `<div>` ne contenant qu'un `<span class="sc">` **EN GRAS** (les noms cités dans les
+  didascalies sont en sc non-gras → non confondus), répliques = `<p>`, reste = didascalie ; titre
+  synthétique prépendu. (La trad. Montégut, elle, a des locuteurs non balisés → écartée.)
+  **Total pièces avec texte : 29.**
 
-## À faire — 5 pièces restantes (indisponibles ou bespoke)
+## À faire — 4 pièces restantes (sources indisponibles)
 
 - **INDISPONIBLES** — pas de traduction FR du domaine public exploitable sur fr.wikisource :
   `oncle-vania` (Tchekhov), `importance-etre-constant` (Wilde), `medee` (Euripide : Artaud n'a
-  pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son djvu source manquant). → sans texte.
-- **BESPOKE** (présentes mais balisage inexploitable par le pipeline) :
-  - `la-mouette` (Tchekhov) : page ~35 Ko sans h2/h3 ni classe locuteur.
-  - `romeo-juliette` : trad. Montégut = locuteurs NON balisés (ni `sc` ni `personnage`),
-    en-têtes de scènes incohérents (mélange h2/h3). (Voir aussi trad. Hugo 1868.)
+  pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son djvu source manquant), et
+  `la-mouette` (Tchekhov : page ~35 Ko sans h2/h3 ni classe locuteur — aucune autre édition FR
+  libre trouvée). → laissées sans texte tant qu'aucune source libre exploitable n'apparaît.
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
