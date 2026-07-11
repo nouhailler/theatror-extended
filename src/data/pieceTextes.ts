@@ -30,6 +30,9 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'malade-imaginaire': () => import('./texts/malade-imaginaire'),
   'bourgeois-gentilhomme': () => import('./texts/bourgeois-gentilhomme'),
   'dom-juan': () => import('./texts/dom-juan'),
+  'horace': () => import('./texts/horace'),
+  'mariage-figaro': () => import('./texts/mariage-figaro'),
+  'barbier-seville': () => import('./texts/barbier-seville'),
 };
 
 export function hasTexte(id?: string): boolean {

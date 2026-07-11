@@ -25,12 +25,15 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   (« Dom Juan » redirige). **Correctif parseur** `ws_fetch.py` (`is_cue`) : comparaison
   désormais insensible aux espaces → le 1er locuteur d'une scène (didascalie collée au nom,
   « Sganarelle, tenant… ») n'est plus perdu. Ancien défaut connu = résolu.
+- **Lot 2 — Corneille + Beaumarchais (3 pièces, 2026-07-11)** : horace, mariage-figaro,
+  barbier-seville. ⚠️ `horace` n'a **pas** de sous-pages `/Acte` → page unique (édition
+  Courbé). Nouveau support dans `gen.py` : **nb actes = 0** ⇒ on fetch `base` en une seule
+  page et `parse_act` repère actes (h2)/scènes (h3) d'un seul tenant. Réutilisable pour le
+  Lot 3 (pièces étrangères souvent en « Texte entier »).
 
-## À faire — textes des pièces restantes (~22)
+## À faire — textes des pièces restantes (~19)
 
 ### Lot 2 (suite) — classiques français faciles (sous-pages /Acte sur Wikisource)
-- **Corneille** : horace
-- **Beaumarchais** : mariage-figaro, barbier-seville
 - **Hugo** : hernani, ruy-blas
 - **Musset** : on-ne-badine-pas
 - **Marivaux** : le-jeu-amour-hasard

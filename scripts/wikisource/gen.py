@@ -32,6 +32,13 @@ PLAYS = {
       "Molière, Le Bourgeois gentilhomme (1670) — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public."),
   "dom-juan": ("Don Juan ou le Festin de pierre/Édition Louandre, 1910", 5,
       "Molière, Dom Juan ou le Festin de pierre (1665) — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public."),
+  # nb actes = 0 → page unique (« Texte entier »)
+  "horace": ("Horace (Corneille)/Édition Courbé", 0,
+      "Pierre Corneille, Horace (1640) — édition Augustin Courbé. Source : Wikisource, domaine public."),
+  "mariage-figaro": ("Le Mariage de Figaro", 5,
+      "Beaumarchais, La Folle Journée, ou le Mariage de Figaro (1784). Source : Wikisource, domaine public."),
+  "barbier-seville": ("Le Barbier de Séville", 4,
+      "Beaumarchais, Le Barbier de Séville, ou la Précaution inutile (1775). Source : Wikisource, domaine public."),
 }
 
 def esc(s):
@@ -40,15 +47,24 @@ def esc(s):
 def gen(pid):
     base, nact, source = PLAYS[pid]
     blocks=[]
-    for i in range(1, nact+1):
-        roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"][i]
-        page=f"{base}/Acte {roman}"
-        html=ws.get_html(page)
-        b=ws.parse_act(html)
-        sys.stderr.write(f"  {page}: {len(b)} blocs\n")
-        if not b:
-            raise SystemExit(f"ABORT: 0 bloc pour {page}")
-        blocks+=b
+    if nact == 0:
+        # Page unique (« Texte entier ») : base contient toute la pièce,
+        # parse_act repère les actes (h2) et scènes (h3) d'un seul tenant.
+        html=ws.get_html(base)
+        blocks=ws.parse_act(html)
+        sys.stderr.write(f"  {base}: {len(blocks)} blocs\n")
+        if not blocks:
+            raise SystemExit(f"ABORT: 0 bloc pour {base}")
+    else:
+        for i in range(1, nact+1):
+            roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"][i]
+            page=f"{base}/Acte {roman}"
+            html=ws.get_html(page)
+            b=ws.parse_act(html)
+            sys.stderr.write(f"  {page}: {len(b)} blocs\n")
+            if not b:
+                raise SystemExit(f"ABORT: 0 bloc pour {page}")
+            blocks+=b
     lines=["import type { PieceTexte } from '../pieceTextes';","",
            "const texte: PieceTexte = {",
            f"  source: '{esc(source)}',",
