@@ -1,16 +1,18 @@
 # Theathror — le compagnon du comédien
 
 PWA en français pour comédiens professionnels : encyclopédie du théâtre, bibliothèque
-de pièces filtrable, atelier du comédien (monologues, citations, glossaire), collection
-de favoris et journal de répétitions. Mobile Android d'abord, installable, fonctionne
-hors-ligne.
+de **317 pièces** filtrable (dont **315 avec le texte intégral** lisible hors-ligne),
+atelier du comédien (monologues, citations, glossaire), collection de favoris et journal
+de répétitions. Mobile Android d'abord, installable, fonctionne hors-ligne.
 
 ## Stack
 
 - **React 18 + Vite + TypeScript**
 - **Styles** : tokens CSS (`src/styles/tokens.css`) + styles inline fidèles au prototype
 - **PWA** : `vite-plugin-pwa` (manifest, service worker, cache offline des polices
-  auto-hébergées, des images Wikimédia et des tuiles OpenStreetMap déjà consultées)
+  auto-hébergées, des images Wikimédia et des tuiles OpenStreetMap déjà consultées).
+  Les **textes intégraux** des pièces sont code-splittés dans `assets/texts/`, **exclus
+  du précache** et mis en cache à la demande (install léger : ~1,2 Mo même à 300+ pièces)
 - **Routing** : `react-router-dom` (routes = onglets + sous-écrans)
 - **État / persistance** : `zustand` + `idb-keyval` (IndexedDB) — favoris, journal,
   préférences. Flag d'onboarding en `localStorage` (`theathror-onb`).
@@ -37,11 +39,14 @@ SPA `/* → /index.html`. Connectez le dépôt à Netlify, aucune config supplé
 public/fonts/        Playfair Display + EB Garamond auto-hébergées (offline)
 src/
   data/              Données typées (pièces, dramaturges, frise, lieux, collections,
-                     monologues, citations, glossaire) — ~30 pièces du domaine public
+                     monologues, citations, glossaire). 317 pièces du domaine public ;
+                     texts/<id>.ts = texte intégral par pièce (chargé à la demande) ;
+                     personnages.ts, pieceDetails.ts (thèmes/extraits/personnages curés)
   components/        WikiImage (repli « initiale dorée »), Star, Credit, shell, ui
-  screens/           Un fichier par écran
+  screens/           Un fichier par écran (dont LecturePiece = lecteur de texte intégral)
   store.ts           Zustand (favoris, journal, réglages, onboarding, visite guidée)
   lib/               wikimedia, storage (idb), date
+scripts/wikisource/  Outils Python de génération des textes (Wikisource + texteslibres.fr)
 ```
 
 ## Fonctionnalités
@@ -49,9 +54,14 @@ src/
 - Coquille : barre haute (☰ + wordmark + date), nav basse 5 onglets, tiroir groupé
 - Onboarding 3 écrans (premier lancement) + visite guidée 10 étapes qui navigue l'app
 - Accueil (théâtre / citation / pièce du jour, accès rapides, collections)
-- Pièces : recherche + filtres combinables (durée, distribution, genre, décor,
-  domaine public, âge, difficulté)
-- Encyclopédie + fiche dramaturge (bio, chronologie, citation, œuvres, influence)
+- Pièces : recherche (titre, auteur, **personnage**) + filtres combinables (genre dont
+  vaudeville, durée dont « < 30 min », distribution dont « 2 personnages », décor,
+  domaine public, âge, difficulté, époque)
+- **Fiche pièce** : résumé, extrait célèbre, **distribution des personnages**, thèmes,
+  et **lecteur de texte intégral** (`/pieces/:id/texte` : nav par actes, taille de police,
+  hors-ligne) pour 315 pièces
+- Encyclopédie + **fiche dramaturge** (40 auteurs, portraits) : biographie, chronologie,
+  citations, œuvres, style, influence, adaptations, manuscrits
 - Frise chronologique (ères colorées) et carte du monde (Leaflet + OSM)
 - Collections thématiques
 - Scène : monologues filtrables, citations par thème, glossaire A–Z

@@ -3,11 +3,25 @@
 _Dernière mise à jour : 2026-07-11._
 
 ## 🔔 À rappeler au démarrage de la prochaine session
-**RÉPERTOIRE ÉLARGI texteslibres.fr — FAIT (2026-07-11)** : les **319 pièces** de
-`texteslibres.fr/categorie/theatre` sont intégrées. Catalogue passé de 34 à **317 pièces**,
-315 avec texte intégral. Restent sans texte : `medee` (Euripide) et `importance-etre-constant`.
-8 pièces du site écartées (2 liens 404, 3 gaps source : serments-indiscrets, pamela-giraud,
-eventail ; 3 sketches quasi-vides). Duplicatas retirés (Dom Juan, Barbier, Tartuffe déjà présents).
+**POINT D'ARRÊT (nuit du 2026-07-11)** : session très productive, tout est commité et poussé
+sur `origin/main`. **Priorité 2 (base de données des pièces) et Priorité 3 (dramaturges) = FAITES.**
+→ **Prochaine session : attaquer la PRIORITÉ 4** (définie dans la roadmap perso de l'utilisateur ;
+candidats probables d'après la roadmap Handoff : Mode IA via OpenRouter, lecture interactive Web
+Speech, quiz, exercices d'acteur/voix, agenda festivals — DEMANDER à l'utilisateur ce qu'est la n°4).
+
+### État actuel (résumé)
+- **317 pièces** au catalogue (34 → 317), **315 avec texte intégral** hors-ligne. Sans texte :
+  `medee` (Euripide) et `importance-etre-constant` (Wilde) — pas de source FR libre.
+- **Pièces** : personnages structurés (recherche par perso), thèmes+extraits sur le canon (62 fiches),
+  résumés ≈ 217/317, tous les filtres demandés (dont vaudeville, < 30 min, 2 personnages).
+- **Dramaturges** : 40 fiches complètes (bio/chrono/œuvres/style/citations/influence/adaptations/
+  manuscrits), 37 avec portrait Wikimedia.
+- **PWA** : textes en cache à la demande (install ≈ 1,2 Mo). Build nécessite `NODE_OPTIONS=--max-old-space-size=6144` (dans `package.json`).
+
+### Détail du gros chantier « répertoire élargi » (fait le 2026-07-11)
+Les **319 pièces** de `texteslibres.fr/categorie/theatre` intégrées. 8 pièces du site écartées
+(2 liens 404, 3 gaps source : serments-indiscrets, pamela-giraud, eventail ; 3 sketches quasi-vides).
+Duplicatas retirés (Dom Juan, Barbier, Tartuffe déjà présents).
 
 ### Fiches auto-générées (`scripts/wikisource/tl_fiches.py`) — AFFINÉES (2026-07-11)
 titre/auteur/année/actes EXACTS ; **genres corrigés** via `GENRE_OVERRIDE` (comédies de
