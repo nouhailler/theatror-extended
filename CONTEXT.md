@@ -38,21 +38,34 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   ÉDITEURS » du Marquis ignorée) ; (c) liste des personnages embarquée en tête d'acte (marqueur
   « PERSONNAGES », Ruy Blas) désormais sautée.
   **Total pièces avec texte : 21.**
+- **Lot 3 — Shakespeare (×3) + Ibsen (4 pièces, 2026-07-11)** : hamlet, macbeth,
+  songe-nuit-ete (trad. Guizot 1862-64, sous-pages /Acte), maison-poupee (Ibsen, trad.
+  Savine 1906). Extensions parseur : (a) un **h2 « SCÈNE… »** compte comme scène (Guizot
+  compose les scènes en h2) ; (b) **`sc_cue`** : locuteur en `<span class="sc">nom</span>. —`
+  (petites capitales Guizot) reconnu en tête de `<p>`. **Total pièces avec texte : 25.**
 
-## À faire — textes des pièces restantes (~12)
+## À faire — textes des pièces restantes (7, toutes DÉLICATES)
 
 → Procédure : `scripts/wikisource/README.md` (déclarer dans `PLAYS`, générer, enregistrer
 le loader dans `pieceTextes.ts`, build, vérifier le rendu).
 
-### Lot 3 — étranger, via traduction française du domaine public (plus délicat)
-- **Shakespeare** : hamlet, romeo-juliette, macbeth, songe-nuit-ete
-- **Tragiques grecs** : antigone-sophocle, oedipe-roi, medee, les-grenouilles
-- **Tchekhov** : la-mouette, oncle-vania
-- **Ibsen** : maison-poupee
-- **Wilde** : importance-etre-constant
+### Lot 3 (reste) — étranger, chaque cas est bespoke
+- **INDISPONIBLES** (pas de traduction FR du domaine public trouvée sur fr.wikisource) :
+  `oncle-vania` (Tchekhov), `importance-etre-constant` (Wilde). → À laisser sans texte
+  (ou chercher une autre source libre).
+- **Tragiques grecs** (`antigone-sophocle`, `oedipe-roi`, `medee`, `les-grenouilles`) :
+  pas de structure « ACTE », locuteurs souvent hors classe détectable. `les-grenouilles`
+  (trad. Talbot) A des `span.personnage` (717) mais AUCUN acte + front-matter avant un 2e
+  h2 titre → il faudrait un mode « sans actes » + saut du front-matter (bespoke).
+  `antigone`/`medee`/`oedipe(Sophocle)` : pages sans h2/h3 ni classe locuteur (oedipe
+  Sophocle quasi vide, 1 Ko) → parseur dédié requis.
+- **`la-mouette`** (Tchekhov) : page ~35 Ko sans h2/h3 ni classe locuteur → bespoke.
+- **`romeo-juliette`** : trad. Montégut = locuteurs NON balisés (ni `sc` ni `personnage`),
+  en-têtes de scènes incohérents (mélange h2/h3) → bespoke. (Voir aussi trad. Hugo 1868.)
 
-⚠️ Souvent une page « Texte entier » unique (pas de /Acte) → le parseur devra peut-être
-être adapté (repérage des actes/scènes différent). À valider au cas par cas.
+⚠️ Ces 7 pièces ne se génèrent PAS avec le pipeline actuel. Chacune demande une adaptation
+spécifique (repérage locuteur/acte différent) ou n'a pas de source libre — décision au cas
+par cas avant d'y investir.
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne

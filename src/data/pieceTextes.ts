@@ -40,6 +40,10 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'ubu-roi': () => import('./texts/ubu-roi'),
   'marquis-villemer': () => import('./texts/marquis-villemer'),
   'francois-champi': () => import('./texts/francois-champi'),
+  'hamlet': () => import('./texts/hamlet'),
+  'macbeth': () => import('./texts/macbeth'),
+  'songe-nuit-ete': () => import('./texts/songe-nuit-ete'),
+  'maison-poupee': () => import('./texts/maison-poupee'),
 };
 
 export function hasTexte(id?: string): boolean {

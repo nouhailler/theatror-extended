@@ -54,6 +54,15 @@ PLAYS = {
       "George Sand, Le Marquis de Villemer (théâtre, 1864). Source : Wikisource, domaine public."),
   "francois-champi": ("François le Champi (Théâtre)", 0,
       "George Sand, François le Champi (théâtre, 1849). Source : Wikisource, domaine public."),
+  # Lot 3 — étranger, traductions françaises du domaine public
+  "hamlet": ("Hamlet/Traduction Guizot, 1864", 5,
+      "William Shakespeare, Hamlet — traduction française de François Guizot, 1864. Source : Wikisource, domaine public."),
+  "macbeth": ("Macbeth/Traduction Guizot, 1864", 5,
+      "William Shakespeare, Macbeth — traduction française de François Guizot, 1864. Source : Wikisource, domaine public."),
+  "songe-nuit-ete": ("Le Songe d’une nuit d’été/Traduction Guizot, 1862", 5,
+      "William Shakespeare, Le Songe d’une nuit d’été — traduction française de François Guizot, 1862. Source : Wikisource, domaine public."),
+  "maison-poupee": ("Une maison de poupée", 3,
+      "Henrik Ibsen, Une maison de poupée — traduction française d’Albert Savine, 1906. Source : Wikisource, domaine public."),
 }
 
 def esc(s):

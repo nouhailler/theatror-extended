@@ -56,6 +56,27 @@ def parse_act(html):
             return (norm(perso.get_text()), norm(did.get_text()) if did else "")
         return None
 
+    def sc_cue(el):
+        # Convention « petites capitales » (traduction Guizot de Shakespeare) :
+        # <p><span class="sc">nom</span>. — réplique…</p>. Le locuteur n'est reconnu
+        # que si le span.sc ouvre le paragraphe et est suivi d'une ponctuation de
+        # réplique (« . — »), pour ne pas confondre avec un nom cité dans le texte.
+        first = None
+        for ch in el.children:
+            if isinstance(ch, NavigableString):
+                if str(ch).strip() == "": continue
+                return None
+            first = ch; break
+        if first is None or first.name != "span" or "sc" not in scls(first):
+            return None
+        name = norm(first.get_text())
+        if not name: return None
+        rest = norm(el.get_text())[len(name):].lstrip()
+        if rest[:1] in (".", "—", "–", ":"):
+            line = re.sub(r"^[\s.—–:-]+", "", rest)
+            return (name, line)
+        return None
+
     def walk(node):
         nonlocal started, skip_cast
         for el in node.children:
@@ -66,6 +87,12 @@ def parse_act(html):
             if name == "h2" and (sget(el,"id","").startswith("ACTE") or "ACTE" in el.get_text().upper()):
                 started = True; skip_cast = False
                 blocks.append({"k":"acte","t":norm(el.get_text())})
+                continue
+            if name == "h2" and started and "SCÈNE" in el.get_text().upper():
+                # Certaines éditions (trad. Guizot de Shakespeare) composent aussi
+                # les scènes en h2. On ne les prend qu'après le 1er acte.
+                skip_cast = False
+                blocks.append({"k":"scene","t":norm(el.get_text())})
                 continue
             if name == "h3":
                 # Une scène ne peut exister avant un acte : on n'ouvre la capture
@@ -105,7 +132,12 @@ def parse_act(html):
                 if t: blocks.append({"k":"didascalie","t":t})
                 continue
             if name == "p":
-                emit_lines(el, blocks)
+                sc = sc_cue(el)
+                if sc:
+                    blocks.append({"k":"perso","t":sc[0]})
+                    if sc[1]: blocks.append({"k":"ligne","t":sc[1]})
+                else:
+                    emit_lines(el, blocks)
                 continue
             if name in ("div","section","dl","dd","ul","li","table","tbody","tr","td","span","a","center"):
                 walk(el)
