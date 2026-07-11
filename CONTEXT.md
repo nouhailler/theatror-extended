@@ -18,9 +18,11 @@ les pièces canoniques ; **durée** estimée (nb répliques + plancher `actes*22
 classiques/XIXe/russes/scandinaves) + titres FR/M étendus, et `FH_OVERRIDE` (distributions exactes
 pour ~30 pièces majeures). Résultat plausible partout (Illusion comique 2F·8H, Colonie 7F·9H…).
 Résiduel : quelques comptes gonflés par les rôles de foule/mineurs, et prénoms rares mis en H par
-défaut. **Résumés** : 155/268 rédigés (tout le canon + one-acts célèbres). Les ~113 sans résumé
-sont des one-acts très obscurs (Labiche/Feydeau/Courteline) laissés vides **volontairement** (pas
-de source fiable → ne pas inventer ; les « fiches de lecture » du site sont sous copyright).
+défaut. **Résumés** : 168/268 rédigés — canon + one-acts célèbres (main) + 13 reformulés depuis les
+notices fr.wikipedia (`scripts/wikisource/wiki_resumes.py` récupère les sections « Résumé/Argument »).
+Les **100 restants** sont des one-acts très obscurs SANS article Wikipédia dédié (Labiche/Feydeau/
+Courteline mineurs) → laissés vides **volontairement** (pas de source fiable ; ne pas inventer ;
+les « fiches de lecture » du site sont sous copyright). Total catalogue ≈ 217/317 avec résumé.
 
 ### Rappel des 15 pilotes (fiches soignées à la main, à garder comme référence)
 amphitryon, fourberies-scapin, medecin-malgre-lui, fausses-confidences, double-inconstance,

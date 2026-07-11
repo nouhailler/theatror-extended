@@ -328,6 +328,20 @@ RESUMES = {
   "tragedien-malgre-lui": "Accablé de commissions par sa famille pendant ses « vacances », un homme excédé finit par exploser : monologue-farce.",
   "achille": "Fragment de tragédie inachevée sur la colère d'Achille au siège de Troie.",
   "mangeront-ils": "Comédie féerique : deux amants réfugiés dans une forêt échappent à un roi tyrannique grâce à un mendiant sorcier.",
+  # Compléments d'après les notices de fr.wikipedia (résumés reformulés)
+  "29-degres-a-l-ombre": "Par une chaleur accablante, Pomadour surprend un invité inconnu embrassant sa femme et exige un duel : les atermoiements d'un mari sous la canicule.",
+  "37-sous-de-m-montaudoin": "Le jour où il marie sa fille, M. Montaudoin s'obstine à élucider un mystère : depuis vingt ans, on lui dérobe chaque jour exactement trente-sept sous.",
+  "gros-chagrins": "Gabrielle découvre dans la poche de son mari la lettre d'une autre femme et s'en ouvre à son amie Caroline : petite scène acide de la jalousie conjugale.",
+  "client-serieux": "Un substitut menacé par un avocat ambitieux voit celui-ci commis d'office pour défendre un prévenu : la mécanique judiciaire tourne à l'absurde.",
+  "dormez-je-le-veux": "Le valet Justin, hypnotiseur, fait faire son service par son propre maître et sabote le mariage de celui-ci pour préserver sa combine : vaudeville d'un acte.",
+  "gibier-de-potence": "Trompé par sa femme, l'herboriste Plumard dénonce anonymement l'amant à la police ; le quiproquo lui vaut d'être pris lui-même pour un malfaiteur.",
+  "hortense-a-dit-je-m-en-fous": "Un dentiste débordé doit à la fois soigner ses patients et arbitrer la guerre entre sa femme et une bonne insolente qui a lâché un « Je m'en fous ! ».",
+  "je-ne-trompe-pas-mon-mari": "Une femme qui refuse de tromper son mari déclenche malgré elle une cascade d'intrigues entre un peintre, un gigolo et une milliardaire américaine.",
+  "leonie-est-en-avance-ou-le-mal-joli": "Une jeune femme sur le point d'accoucher tyrannise son mari et lui impose ses caprices les plus absurdes : farce conjugale en un acte.",
+  "maman-sabouleux": "Le père Sabouleux se retrouve du jour au lendemain à devoir élever deux nourrissons : comédie mêlée de chants.",
+  "meprise": "Deux sœurs blondes, vêtues de même et masquées, se promènent séparément ; leur soupirant les confond et s'enferre dans d'inextricables malentendus.",
+  "paves-de-l-ours": "Décidé à rompre avec sa maîtresse pour un beau mariage, Lucien engage un valet de campagne « âme simple » dont la maladresse complique tout.",
+  "pere-prudent-et-equitable": "Un père veut marier sa fille à l'un de trois partis ; le valet Crispin intrigue pour les écarter au profit de l'amant qu'elle préfère.",
 }
 
 def esc(s): return s.replace("\\", "\\\\").replace("'", "\\'")
