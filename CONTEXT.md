@@ -134,6 +134,15 @@ boubouroche, perrichon.
   texteslibres.fr n'a que *Le Fantôme de Canterville* et *Le Portrait de Dorian Gray* pour Wilde,
   pas cette pièce. (Piste : la trad. FR historique est celle de Mme Toussaint du Wast — à chercher.)
 
+## Priorité 2 (base de données) — personnages structurés FAITS (2026-07-11)
+Index `src/data/personnages.ts` (Record<id, string[]>, 314 pièces / 4359 rôles, 68 Ko) généré par
+`scripts/wikisource/gen_personnages.py` (extrait les locuteurs uniques des textes intégraux, filtre
+foule/composés, title-case FR). FichePiece affiche la **distribution** (fallback si pas de fiche
+curée `PIECE_DETAILS`), et la **recherche Pièces** couvre désormais les personnages (« Scapin » →
+Fourberies, « Sganarelle » → 5 pièces). Reste priorité 2 : style, thèmes, costumes, extraits
+célèbres, distribution flexible (nouveaux champs à peupler — `PIECE_DETAILS` a déjà themes/extrait
+pour 13 pièces curées).
+
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
   avec la didascalie (vu dans Cyrano). Améliorer la détection si on veut du 100 %.

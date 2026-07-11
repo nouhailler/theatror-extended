@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { PIECES } from '../data/pieces';
 import { PIECE_DETAILS } from '../data/pieceDetails';
+import { PERSONNAGES } from '../data/personnages';
 import { hasTexte } from '../data/pieceTextes';
 import { DRAMATURGES } from '../data/dramaturges';
 import { difficulteLabel } from '../components/ui';
@@ -26,6 +27,9 @@ export default function FichePiece() {
   }
 
   const d = PIECE_DETAILS[p.id] ?? {};
+  // Personnages : liste curée si disponible, sinon distribution extraite du texte intégral.
+  const curated = !!(d.personnages && d.personnages.length);
+  const personnages = curated ? d.personnages! : PERSONNAGES[p.id] ?? [];
   const auteur = p.auteurId ? DRAMATURGES.find((x) => x.id === p.auteurId) : undefined;
 
   return (
@@ -89,11 +93,11 @@ export default function FichePiece() {
         )}
 
         {/* Personnages */}
-        {d.personnages && d.personnages.length > 0 && (
+        {personnages.length > 0 && (
           <div>
-            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>Personnages principaux</div>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>{curated ? 'Personnages principaux' : `Distribution · ${personnages.length} rôles`}</div>
             <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
-              {d.personnages.map((n) => (
+              {personnages.map((n) => (
                 <span key={n} style={{ fontSize: 13.5, padding: '5px 12px', borderRadius: 999, background: 'var(--bg-card)', border: '1px solid var(--b-rest2)', color: 'var(--text-2b)' }}>{n}</span>
               ))}
             </div>

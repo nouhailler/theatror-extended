@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { PIECES } from '../data/pieces';
+import { PERSONNAGES } from '../data/personnages';
 import type { Piece } from '../data/types';
 import { ScreenTitle } from '../components/ui';
 import PieceCard from '../components/PieceCard';
@@ -60,7 +61,10 @@ export default function Pieces() {
       byGroup.set(f.group, arr);
     });
     return PIECES.filter((p) => {
-      if (query && !(`${p.titre} ${p.auteur}`.toLowerCase().includes(query))) return false;
+      if (query) {
+        const hay = `${p.titre} ${p.auteur} ${(PERSONNAGES[p.id] ?? []).join(' ')}`.toLowerCase();
+        if (!hay.includes(query)) return false;
+      }
       for (const group of byGroup.values()) {
         if (!group.some((f) => f.test(p))) return false; // OR intra-groupe, AND inter-groupes
       }
