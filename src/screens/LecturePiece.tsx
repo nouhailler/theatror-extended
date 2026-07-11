@@ -73,8 +73,8 @@ export default function LecturePiece() {
         </div>
       </div>
 
-      {/* Navigation actes */}
-      {actes.length > 0 && (
+      {/* Navigation actes (masquée s'il n'y a qu'un bloc : tragédies grecques sans actes) */}
+      {actes.length > 1 && (
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '10px 14px 0' }}>
           {actes.map((a, n) => (
             <button key={a.i} onClick={() => goActe(a.i)} className="chip" style={{ fontSize: 12.5 }}>

@@ -28,7 +28,10 @@ def norm(s):
     s = re.sub(r"\s+"," ", s)
     return s.strip()
 
-def parse_act(html):
+def parse_act(html, no_act=False):
+    # no_act : pièces sans structure d'actes (tragédies grecques…) : on n'ouvre pas
+    # la capture sur un h2 ACTE (il n'y en a pas) mais sur le 1er vrai locuteur, ce
+    # qui saute d'office le front-matter (titre, notice, liste des personnages).
     soup = BeautifulSoup(html, "lxml")
     root = soup.select_one(".mw-parser-output") or soup
     blocks = []
@@ -103,8 +106,11 @@ def parse_act(html):
                     blocks.append({"k":"scene","t":norm(el.get_text())})
                 continue
             if not started:
-                walk(el)
-                continue
+                if no_act and is_cue(el):
+                    started = True  # 1er locuteur : on tombe dans le traitement normal
+                else:
+                    walk(el)
+                    continue
             # Liste des personnages parfois embarquée en tête de la page d'acte
             # (marqueur « PERSONNAGES », vu dans Ruy Blas) : on saute les noms
             # jusqu'à la scène suivante pour ne pas les émettre comme répliques.

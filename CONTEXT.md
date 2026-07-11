@@ -43,29 +43,23 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   Savine 1906). Extensions parseur : (a) un **h2 « SCÈNE… »** compte comme scène (Guizot
   compose les scènes en h2) ; (b) **`sc_cue`** : locuteur en `<span class="sc">nom</span>. —`
   (petites capitales Guizot) reconnu en tête de `<p>`. **Total pièces avec texte : 25.**
+- **Lot 3 — tragiques grecs (3 pièces, 2026-07-11)** : antigone-sophocle, oedipe-roi (trad.
+  Artaud, `Tragédies de Sophocle (Artaud)/…`), les-grenouilles (trad. Talbot). Nouveau **mode
+  « sans actes »** dans le pipeline : `gen.py` `nact = -1` ⇒ page unique + `parse_act(no_act=True)`
+  (démarre la capture au **1er locuteur**, ce qui saute tout le front-matter titre/notice/cast) +
+  un bloc `acte` synthétique (titre, 4e champ) prépendu. Lecteur : la barre de nav des actes est
+  **masquée quand il n'y a qu'un bloc** (`actes.length > 1`). Éditions Artaud/Talbot = `span.personnage`
+  standalone → `is_cue` fonctionne. **Total pièces avec texte : 28.**
 
-## À faire — textes des pièces restantes (8, toutes DÉLICATES)
+## À faire — 5 pièces restantes (indisponibles ou bespoke)
 
-→ Procédure : `scripts/wikisource/README.md` (déclarer dans `PLAYS`, générer, enregistrer
-le loader dans `pieceTextes.ts`, build, vérifier le rendu).
-
-### Lot 3 (reste) — étranger, chaque cas est bespoke
-- **INDISPONIBLES** (pas de traduction FR du domaine public trouvée sur fr.wikisource) :
-  `oncle-vania` (Tchekhov), `importance-etre-constant` (Wilde). → À laisser sans texte
-  (ou chercher une autre source libre).
-- **Tragiques grecs** (`antigone-sophocle`, `oedipe-roi`, `medee`, `les-grenouilles`) :
-  pas de structure « ACTE », locuteurs souvent hors classe détectable. `les-grenouilles`
-  (trad. Talbot) A des `span.personnage` (717) mais AUCUN acte + front-matter avant un 2e
-  h2 titre → il faudrait un mode « sans actes » + saut du front-matter (bespoke).
-  `antigone`/`medee`/`oedipe(Sophocle)` : pages sans h2/h3 ni classe locuteur (oedipe
-  Sophocle quasi vide, 1 Ko) → parseur dédié requis.
-- **`la-mouette`** (Tchekhov) : page ~35 Ko sans h2/h3 ni classe locuteur → bespoke.
-- **`romeo-juliette`** : trad. Montégut = locuteurs NON balisés (ni `sc` ni `personnage`),
-  en-têtes de scènes incohérents (mélange h2/h3) → bespoke. (Voir aussi trad. Hugo 1868.)
-
-⚠️ Ces 8 pièces ne se génèrent PAS avec le pipeline actuel. Chacune demande une adaptation
-spécifique (repérage locuteur/acte différent) ou n'a pas de source libre — décision au cas
-par cas avant d'y investir.
+- **INDISPONIBLES** — pas de traduction FR du domaine public exploitable sur fr.wikisource :
+  `oncle-vania` (Tchekhov), `importance-etre-constant` (Wilde), `medee` (Euripide : Artaud n'a
+  pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son djvu source manquant). → sans texte.
+- **BESPOKE** (présentes mais balisage inexploitable par le pipeline) :
+  - `la-mouette` (Tchekhov) : page ~35 Ko sans h2/h3 ni classe locuteur.
+  - `romeo-juliette` : trad. Montégut = locuteurs NON balisés (ni `sc` ni `personnage`),
+    en-têtes de scènes incohérents (mélange h2/h3). (Voir aussi trad. Hugo 1868.)
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne

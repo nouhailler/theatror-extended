@@ -63,6 +63,19 @@ PLAYS = {
       "William Shakespeare, Le Songe d’une nuit d’été — traduction française de François Guizot, 1862. Source : Wikisource, domaine public."),
   "maison-poupee": ("Une maison de poupée", 3,
       "Henrik Ibsen, Une maison de poupée — traduction française d’Albert Savine, 1906. Source : Wikisource, domaine public."),
+  # Tragédies grecques : pas de structure d'actes → nact = -1 (mode no_act),
+  # 4e champ = intitulé du bloc « acte » synthétique.
+  "antigone-sophocle": ("Tragédies de Sophocle (Artaud)/Antigone", -1,
+      "Sophocle, Antigone — traduction française de Nicolas Artaud, Charpentier, 1859. Source : Wikisource, domaine public.",
+      "ANTIGONE"),
+  "oedipe-roi": ("Tragédies de Sophocle (Artaud)/Œdipe roi", -1,
+      "Sophocle, Œdipe roi — traduction française de Nicolas Artaud, Charpentier, 1859. Source : Wikisource, domaine public.",
+      "ŒDIPE ROI"),
+  "les-grenouilles": ("Les Grenouilles (trad. Eugène Talbot)", -1,
+      "Aristophane, Les Grenouilles — traduction française d’Eugène Talbot, Alphonse Lemerre, 1897. Source : Wikisource, domaine public.",
+      "LES GRENOUILLES"),
+  # medee (Euripide) : PAS de traduction FR exploitable sur fr.wikisource (Artaud n'a
+  # pas traduit Médée ; l'édition Leconte de Lisle « Mèdéia » a son djvu manquant). Laissée sans texte.
 }
 
 def esc(s):
@@ -75,13 +88,17 @@ def gen(pid):
     # Certaines éditions numérotent en arabe → passer "Acte {n}".
     actfmt = entry[3] if len(entry) > 3 else "Acte {roman}"
     blocks=[]
-    if nact == 0:
-        # Page unique (« Texte entier ») : base contient toute la pièce,
-        # parse_act repère les actes (h2) et scènes (h3) d'un seul tenant.
+    if nact <= 0:
+        # Page unique. nact==0 : « Texte entier » avec actes (h2)/scènes (h3).
+        # nact==-1 : pièce SANS actes (tragédie grecque…) → mode no_act + un bloc
+        # « acte » synthétique (titre) prépendu pour l'ancrage du lecteur.
         html=ws.get_html(base)
-        blocks=ws.parse_act(html)
+        blocks=ws.parse_act(html, no_act=(nact == -1))
+        if nact == -1:
+            label = entry[3] if len(entry) > 3 else "Texte intégral"
+            blocks = [{"k":"acte","t":label}] + blocks
         sys.stderr.write(f"  {base}: {len(blocks)} blocs\n")
-        if not blocks:
+        if len(blocks) <= (1 if nact == -1 else 0):
             raise SystemExit(f"ABORT: 0 bloc pour {base}")
     else:
         for i in range(1, nact+1):

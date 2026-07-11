@@ -44,6 +44,9 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'macbeth': () => import('./texts/macbeth'),
   'songe-nuit-ete': () => import('./texts/songe-nuit-ete'),
   'maison-poupee': () => import('./texts/maison-poupee'),
+  'antigone-sophocle': () => import('./texts/antigone-sophocle'),
+  'oedipe-roi': () => import('./texts/oedipe-roi'),
+  'les-grenouilles': () => import('./texts/les-grenouilles'),
 };
 
 export function hasTexte(id?: string): boolean {
