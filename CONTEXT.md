@@ -9,12 +9,15 @@ _Dernière mise à jour : 2026-07-11._
 8 pièces du site écartées (2 liens 404, 3 gaps source : serments-indiscrets, pamela-giraud,
 eventail ; 3 sketches quasi-vides). Duplicatas retirés (Dom Juan, Barbier, Tartuffe déjà présents).
 
-### ⚠️ Qualité des fiches auto-générées — à affiner (passe suivante)
-Fiches des ~268 nouvelles pièces générées par `scripts/wikisource/tl_fiches.py` :
-titre/auteur/année/actes EXACTS, mais **genre par heuristique-auteur** (imparfait : les comédies
-de Corneille sont étiquetées 'tragédie' ; Musset/Tchekhov défaut 'comédie'), **distribution F/H
-par heuristique** sur les noms (approximative), **durée estimée** du nb de répliques, **pas de
-résumé** (sauf pièces connues). → à corriger par lots (map d'overrides genre + résumés).
+### Fiches auto-générées (`scripts/wikisource/tl_fiches.py`) — AFFINÉES (2026-07-11)
+titre/auteur/année/actes EXACTS ; **genres corrigés** via `GENRE_OVERRIDE` (comédies de
+Corneille/Th. Corneille, Plaideurs de Racine, Annibal de Marivaux = tragédie, drames de
+Tchekhov/Ibsen/Beaumarchais, farces des one-acts…) ; **138 résumés** rédigés (`RESUMES`) pour
+les pièces canoniques ; **durée** estimée (nb répliques + plancher `actes*22`).
+⚠️ **Reste approximatif** : la **distribution F/H** (heuristique sur les noms → souvent 0 femme
+à tort, ex. Illusion comique 0F·12H) et les **résumés absents** pour ~130 pièces obscures
+(Labiche/Feydeau/Courteline one-acts, tragédies mineures). Améliorables : enrichir `KNOWN_F` /
+règles de genre dans `gender()`, compléter `RESUMES`.
 
 ### Rappel des 15 pilotes (fiches soignées à la main, à garder comme référence)
 amphitryon, fourberies-scapin, medecin-malgre-lui, fausses-confidences, double-inconstance,
