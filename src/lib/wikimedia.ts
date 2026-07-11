@@ -38,6 +38,27 @@ export const CREDITS: Record<string, Credit> = {
   'Michel Vinaver - 2006.jpg': { auteur: 'Wikinade', licence: 'CC BY-SA 4.0' },
   'Marie Ndiaye 01.jpg': { auteur: 'Bengt Oberger', licence: 'CC BY-SA 4.0' },
   'Fabrice Melquiot.jpg': { auteur: 'Unmecmoi', licence: 'CC BY-SA 4.0' },
+  // Portraits des grands dramaturges (ajout)
+  'Pierre Carlet de Chamblain de Marivaux - Versailles MV 2985.jpg': { auteur: 'D\'après Louis-Michel van Loo', licence: 'Domaine public' },
+  'Landelle, Charles - Alfred de Musset - Musée d\'Orsay.png': { auteur: 'Charles Landelle', licence: 'Domaine public' },
+  'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg': { auteur: 'Atelier de Nicolas de Largillière', licence: 'Domaine public' },
+  'G Feydeau Carolus-Duran Lille 2918.jpg': { auteur: 'D\'après Carolus-Duran', licence: 'Domaine public' },
+  'Félix Nadar 1820-1910 portraits Eugène Labiche.jpg': { auteur: 'Nadar', licence: 'Domaine public' },
+  'Georges Courteline circa 1890.jpg': { auteur: 'Anonyme', licence: 'Domaine public' },
+  'Schaarwächter Henrik Ibsen cropped.jpg': { auteur: 'J. C. Schaarwächter', licence: 'Domaine public' },
+  'Edmond Rostand en habit vert 01.jpg': { auteur: 'Léopold-Émile Reutlinger', licence: 'Domaine public' },
+  'Nadar - Alexander Dumas père (1802-1870) - Google Art Project 2.jpg': { auteur: 'Nadar (Google Art Project)', licence: 'Domaine public' },
+  'Alfred Jarry.jpg': { auteur: 'Atelier Nadar', licence: 'Domaine public' },
+  '奥·巴尔扎克.png': { auteur: 'Louis-Auguste Bisson', licence: 'Domaine public' },
+  'Alessandro Longhi - Ritratto di Carlo Goldoni (c 1757) Ca Goldoni Venezia - Close-up.jpg': { auteur: 'Alessandro Longhi (photo D. Descouens)', licence: 'CC BY-SA 4.0' },
+  'Alain-René Lesage.png': { auteur: 'Anonyme', licence: 'Domaine public' },
+  'Denis Diderot 111.PNG': { auteur: 'Anonyme', licence: 'Domaine public' },
+  'Maupassant par Nadar.jpg': { auteur: 'Nadar', licence: 'Domaine public' },
+  'Émile Augier by Adam-Salomon c1870s.jpg': { auteur: 'Antoine Samuel Adam-Salomon', licence: 'Domaine public' },
+  'Jean de La Fontaine.PNG': { auteur: 'Hyacinthe Rigaud', licence: 'Domaine public' },
+  'Aristofanes.jpg': { auteur: 'Buste antique, via Wikimedia Commons', licence: 'Domaine public' },
+  'Euripide.jpg': { auteur: 'Buste antique, via Wikimedia Commons', licence: 'CC BY-SA 4.0' },
+  'Oscar Wilde (1854-1900) 1889, May 23. Picture by W. and D. Downey.jpg': { auteur: 'W. & D. Downey', licence: 'Domaine public' },
 };
 
 export function creditFor(file?: string): Credit | undefined {

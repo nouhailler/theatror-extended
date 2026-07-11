@@ -354,7 +354,7 @@ export const DRAMATURGES: Dramaturge[] = [
   // ─── Grands dramaturges du répertoire (fiches ajoutées) ───
   {
     id: 'marivaux', nom: 'Marivaux', nomComplet: 'Pierre Carlet de Chamblain de Marivaux',
-    dates: '1688 – 1763', naissance: 1688, initiale: 'M', categorie: 'Dramaturges', img: '',
+    dates: '1688 – 1763', naissance: 1688, initiale: 'M', categorie: 'Dramaturges', img: 'Pierre Carlet de Chamblain de Marivaux - Versailles MV 2985.jpg',
     bio: "Maître de la comédie sentimentale, Marivaux explore les surprises, les détours et les masques du cœur. Écrivant surtout pour les Comédiens-Italiens, il invente un langage si subtil qu'il a donné son nom à une manière : le « marivaudage ».",
     chrono: [
       { an: '1688', txt: 'Naissance à Paris.' },
@@ -373,7 +373,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'musset', nom: 'Alfred de Musset', nomComplet: 'Louis Charles Alfred de Musset',
-    dates: '1810 – 1857', naissance: 1810, initiale: 'M', categorie: 'Dramaturges', img: '',
+    dates: '1810 – 1857', naissance: 1810, initiale: 'M', categorie: 'Dramaturges', img: 'Landelle, Charles - Alfred de Musset - Musée d\'Orsay.png',
     bio: "Enfant terrible du romantisme, Musset invente après l'échec public de La Nuit vénitienne un « spectacle dans un fauteuil » : des pièces d'abord écrites pour la lecture, où la fantaisie et le lyrisme voisinent avec la cruauté la plus vive.",
     chrono: [
       { an: '1810', txt: 'Naissance à Paris.' },
@@ -392,7 +392,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'voltaire', nom: 'Voltaire', nomComplet: 'François-Marie Arouet',
-    dates: '1694 – 1778', naissance: 1694, initiale: 'V', categorie: 'Dramaturges', img: '',
+    dates: '1694 – 1778', naissance: 1694, initiale: 'V', categorie: 'Dramaturges', img: 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
     bio: "Si la postérité retient le philosophe et le conteur, Voltaire fut de son vivant salué avant tout comme le premier auteur tragique de son siècle. Il rêve de renouveler la tragédie classique par l'exotisme, le spectacle et la philosophie.",
     chrono: [
       { an: '1694', txt: 'Naissance à Paris.' },
@@ -410,7 +410,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'feydeau', nom: 'Georges Feydeau', nomComplet: 'Georges Feydeau',
-    dates: '1862 – 1921', naissance: 1862, initiale: 'F', categorie: 'Dramaturges', img: '',
+    dates: '1862 – 1921', naissance: 1862, initiale: 'F', categorie: 'Dramaturges', img: 'G Feydeau Carolus-Duran Lille 2918.jpg',
     bio: "Fils d'un romancier célèbre, Feydeau porte le vaudeville à sa perfection. Ses pièces sont des mécaniques de précision où les portes claquent, les amants se cachent et les quiproquos s'emboîtent avec une logique implacable.",
     chrono: [
       { an: '1862', txt: 'Naissance à Paris.' },
@@ -429,7 +429,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'labiche', nom: 'Eugène Labiche', nomComplet: 'Eugène Marin Labiche',
-    dates: '1815 – 1888', naissance: 1815, initiale: 'L', categorie: 'Dramaturges', img: '',
+    dates: '1815 – 1888', naissance: 1815, initiale: 'L', categorie: 'Dramaturges', img: 'Félix Nadar 1820-1910 portraits Eugène Labiche.jpg',
     bio: "Roi du vaudeville sous le Second Empire, Labiche a signé, souvent en collaboration, plus de cent cinquante pièces. Il y croque la bourgeoisie de son temps avec une drôlerie mécanique et une tendresse moqueuse.",
     chrono: [
       { an: '1815', txt: 'Naissance à Paris.' },
@@ -448,7 +448,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'courteline', nom: 'Georges Courteline', nomComplet: 'Georges Victor Marcel Moinaux',
-    dates: '1858 – 1929', naissance: 1858, initiale: 'C', categorie: 'Dramaturges', img: '',
+    dates: '1858 – 1929', naissance: 1858, initiale: 'C', categorie: 'Dramaturges', img: 'Georges Courteline circa 1890.jpg',
     bio: "Observateur féroce de la bêtise ordinaire, Courteline épingle en saynètes brèves l'administration, l'armée, la justice et les querelles de ménage. Un rire noir et concis, d'une modernité déconcertante.",
     chrono: [
       { an: '1858', txt: 'Naissance à Tours.' },
@@ -466,7 +466,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'ibsen', nom: 'Henrik Ibsen', nomComplet: 'Henrik Johan Ibsen',
-    dates: '1828 – 1906', naissance: 1828, initiale: 'I', categorie: 'Dramaturges', img: '',
+    dates: '1828 – 1906', naissance: 1828, initiale: 'I', categorie: 'Dramaturges', img: 'Schaarwächter Henrik Ibsen cropped.jpg',
     bio: "Père du drame moderne, le Norvégien Ibsen fait entrer sur scène les mensonges de la société bourgeoise et les secrets de famille. Une maison de poupée provoque en 1879 un scandale retentissant en Europe.",
     chrono: [
       { an: '1828', txt: 'Naissance à Skien, en Norvège.' },
@@ -484,7 +484,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'rostand', nom: 'Edmond Rostand', nomComplet: 'Edmond Eugène Alexis Rostand',
-    dates: '1868 – 1918', naissance: 1868, initiale: 'R', categorie: 'Dramaturges', img: '',
+    dates: '1868 – 1918', naissance: 1868, initiale: 'R', categorie: 'Dramaturges', img: 'Edmond Rostand en habit vert 01.jpg',
     bio: "À l'heure du naturalisme, Rostand ranime le théâtre en vers avec panache. Le triomphe de Cyrano de Bergerac en 1897 fait de lui, à trente ans, le dramaturge le plus célèbre de France.",
     chrono: [
       { an: '1868', txt: 'Naissance à Marseille.' },
@@ -502,7 +502,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'dumas', nom: 'Alexandre Dumas', nomComplet: 'Alexandre Dumas (père)',
-    dates: '1802 – 1870', naissance: 1802, initiale: 'D', categorie: 'Dramaturges', img: '',
+    dates: '1802 – 1870', naissance: 1802, initiale: 'D', categorie: 'Dramaturges', img: 'Nadar - Alexander Dumas père (1802-1870) - Google Art Project 2.jpg',
     bio: "Avant de conquérir le roman-feuilleton, Dumas s'impose au théâtre comme l'un des chefs de file du drame romantique, avec des passions extrêmes et une couleur historique flamboyante.",
     chrono: [
       { an: '1802', txt: 'Naissance à Villers-Cotterêts.' },
@@ -520,7 +520,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'jarry', nom: 'Alfred Jarry', nomComplet: 'Alfred Jarry',
-    dates: '1873 – 1907', naissance: 1873, initiale: 'J', categorie: 'Dramaturges', img: '',
+    dates: '1873 – 1907', naissance: 1873, initiale: 'J', categorie: 'Dramaturges', img: 'Alfred Jarry.jpg',
     bio: "Avec le Père Ubu, tyran grotesque et vorace, Jarry fait exploser en 1896 les conventions théâtrales. Inventeur de la 'Pataphysique, il annonce le surréalisme et le théâtre de l'absurde.",
     chrono: [
       { an: '1873', txt: 'Naissance à Laval.' },
@@ -537,7 +537,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'balzac', nom: 'Honoré de Balzac', nomComplet: 'Honoré de Balzac',
-    dates: '1799 – 1850', naissance: 1799, initiale: 'B', categorie: 'Dramaturges', img: '',
+    dates: '1799 – 1850', naissance: 1799, initiale: 'B', categorie: 'Dramaturges', img: '奥·巴尔扎克.png',
     bio: "Le romancier de La Comédie humaine a nourri toute sa vie l'ambition du théâtre. Ses pièces, longtemps mésestimées, portent la même puissance dans la peinture des passions de l'argent.",
     chrono: [
       { an: '1799', txt: 'Naissance à Tours.' },
@@ -554,7 +554,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'goldoni', nom: 'Carlo Goldoni', nomComplet: 'Carlo Osvaldo Goldoni',
-    dates: '1707 – 1793', naissance: 1707, initiale: 'G', categorie: 'Dramaturges', img: '',
+    dates: '1707 – 1793', naissance: 1707, initiale: 'G', categorie: 'Dramaturges', img: 'Alessandro Longhi - Ritratto di Carlo Goldoni (c 1757) Ca Goldoni Venezia - Close-up.jpg',
     bio: "Réformateur de la comédie italienne, le Vénitien Goldoni substitue à l'improvisation de la commedia dell'arte des pièces écrites, aux caractères vrais et aux mœurs finement peintes. Il finit sa vie à Paris.",
     chrono: [
       { an: '1707', txt: 'Naissance à Venise.' },
@@ -572,7 +572,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'lesage', nom: 'Alain-René Lesage', nomComplet: 'Alain-René Lesage',
-    dates: '1668 – 1747', naissance: 1668, initiale: 'L', categorie: 'Dramaturges', img: '',
+    dates: '1668 – 1747', naissance: 1668, initiale: 'L', categorie: 'Dramaturges', img: 'Alain-René Lesage.png',
     bio: "Auteur du roman Gil Blas, Lesage donne au théâtre une satire mordante des mœurs, en particulier du monde de la finance. Turcaret fait le lien entre Molière et la comédie du XVIIIe siècle.",
     chrono: [
       { an: '1668', txt: 'Naissance à Sarzeau, en Bretagne.' },
@@ -589,7 +589,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'diderot', nom: 'Denis Diderot', nomComplet: 'Denis Diderot',
-    dates: '1713 – 1784', naissance: 1713, initiale: 'D', categorie: 'Dramaturges', img: '',
+    dates: '1713 – 1784', naissance: 1713, initiale: 'D', categorie: 'Dramaturges', img: 'Denis Diderot 111.PNG',
     bio: "Maître d'œuvre de l'Encyclopédie, Diderot est aussi le théoricien d'un genre nouveau, le drame bourgeois, et l'auteur du célèbre Paradoxe sur le comédien, référence des acteurs.",
     chrono: [
       { an: '1713', txt: 'Naissance à Langres.' },
@@ -607,7 +607,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'maupassant', nom: 'Guy de Maupassant', nomComplet: 'Henry René Albert Guy de Maupassant',
-    dates: '1850 – 1893', naissance: 1850, initiale: 'M', categorie: 'Dramaturges', img: '',
+    dates: '1850 – 1893', naissance: 1850, initiale: 'M', categorie: 'Dramaturges', img: 'Maupassant par Nadar.jpg',
     bio: "Maître de la nouvelle naturaliste, Maupassant a aussi porté à la scène son regard désabusé sur les mœurs, avec quelques pièces marquées par l'ironie et le pessimisme.",
     chrono: [
       { an: '1850', txt: 'Naissance au château de Miromesnil (Normandie).' },
@@ -624,7 +624,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'augier', nom: 'Émile Augier', nomComplet: 'Guillaume Victor Émile Augier',
-    dates: '1820 – 1889', naissance: 1820, initiale: 'A', categorie: 'Dramaturges', img: '',
+    dates: '1820 – 1889', naissance: 1820, initiale: 'A', categorie: 'Dramaturges', img: 'Émile Augier by Adam-Salomon c1870s.jpg',
     bio: "Auteur à succès du Second Empire, Augier défend dans ses comédies de mœurs les valeurs de travail et de probité de la bourgeoisie, contre l'aristocratie déclinante et les arrivistes.",
     chrono: [
       { an: '1820', txt: 'Naissance à Valence.' },
@@ -642,7 +642,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'fontaine', nom: 'Jean de La Fontaine', nomComplet: 'Jean de La Fontaine',
-    dates: '1621 – 1695', naissance: 1621, initiale: 'L', categorie: 'Dramaturges', img: '',
+    dates: '1621 – 1695', naissance: 1621, initiale: 'L', categorie: 'Dramaturges', img: 'Jean de La Fontaine.PNG',
     bio: "Immortel par ses Fables, La Fontaine s'est aussi essayé au théâtre, avec des comédies et une tragédie inachevée, portées par la même grâce et le même naturel que ses vers.",
     chrono: [
       { an: '1621', txt: 'Naissance à Château-Thierry.' },
@@ -659,7 +659,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'aristophane', nom: 'Aristophane', nomComplet: 'Aristophane',
-    dates: 'v. 445 – v. 385 av. J.-C.', naissance: -445, initiale: 'A', categorie: 'Dramaturges', img: '',
+    dates: 'v. 445 – v. 385 av. J.-C.', naissance: -445, initiale: 'A', categorie: 'Dramaturges', img: 'Aristofanes.jpg',
     bio: "Le plus grand poète de la comédie grecque ancienne. Ses pièces, satires politiques et littéraires débridées, mêlent fantaisie, chœurs et obscénité joyeuse pour railler la cité d'Athènes et ses grands hommes.",
     chrono: [
       { an: '-445', txt: 'Naissance à Athènes (date approximative).' },
@@ -677,7 +677,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'euripide', nom: 'Euripide', nomComplet: 'Euripide',
-    dates: 'v. 480 – 406 av. J.-C.', naissance: -480, initiale: 'E', categorie: 'Dramaturges', img: '',
+    dates: 'v. 480 – 406 av. J.-C.', naissance: -480, initiale: 'E', categorie: 'Dramaturges', img: 'Euripide.jpg',
     bio: "Le plus « moderne » des trois grands tragiques grecs. Euripide met en scène des héros faillibles et des femmes passionnées — Médée, Phèdre — et interroge la justice des dieux avec une audace nouvelle.",
     chrono: [
       { an: '-480', txt: 'Naissance à Salamine (date traditionnelle).' },
@@ -694,7 +694,7 @@ export const DRAMATURGES: Dramaturge[] = [
   },
   {
     id: 'wilde', nom: 'Oscar Wilde', nomComplet: "Oscar Fingal O'Flahertie Wills Wilde",
-    dates: '1854 – 1900', naissance: 1854, initiale: 'W', categorie: 'Dramaturges', img: '',
+    dates: '1854 – 1900', naissance: 1854, initiale: 'W', categorie: 'Dramaturges', img: 'Oscar Wilde (1854-1900) 1889, May 23. Picture by W. and D. Downey.jpg',
     bio: "Dandy et roi du bon mot, l'Irlandais Wilde règne sur la comédie de salon victorienne. Au sommet de sa gloire, un procès retentissant le condamne à la prison ; il meurt à Paris, ruiné.",
     chrono: [
       { an: '1854', txt: 'Naissance à Dublin.' },

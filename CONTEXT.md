@@ -153,7 +153,10 @@ Musset, Voltaire, Feydeau, Labiche, Courteline, Ibsen, Rostand, Dumas, Jarry, Ba
 Lesage, Diderot, Maupassant, Augier, La Fontaine, Aristophane, Euripide, Wilde) → les fiches-pièces
 de ces auteurs ont enfin leur **carte auteur** cliquable. Les 9 classiques existants (Molière, Racine,
 Corneille, Hugo, Shakespeare, Tchekhov, Beaumarchais, Sophocle, Sand) enrichis de style/adaptations/
-manuscrits. Nouveaux auteurs sans portrait (`img:''` → initiale dorée) : ajoutables via Wikimedia.
+manuscrits. **Portraits ajoutés (2026-07-11)** : les 20 nouveaux auteurs ont désormais leur portrait Wikimedia
+(image d'infobox fr.wikipedia récupérée via API, `scripts` ad hoc dans le scratchpad ; toutes les
+URLs Special:FilePath vérifiées 200). Crédits/licences ajoutés dans `src/lib/wikimedia.ts` (CREDITS).
+Restent sans portrait : Koltès, Mouawad, Copi (pas d'image libre — initiale dorée).
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
