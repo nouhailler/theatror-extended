@@ -10,21 +10,31 @@ interface FilterDef {
   test: (p: Piece) => boolean;
 }
 
-// Filtres combinables (durée, distribution, genre, décor, domaine public, âge, difficulté).
+// Filtres combinables (genre, durée, distribution, décor, âge, époque, difficulté, domaine public).
+// Chaque genre du catalogue est rattaché à un chip (sinon un tiers des pièces — les vaudevilles —
+// serait infiltrable par genre).
 const FILTERS: FilterDef[] = [
-  { label: 'Comédie', group: 'genre', test: (p) => p.genre === 'comédie' || p.genre === 'comédie-ballet' },
+  // Genre — « humour » = Comédie ∪ Vaudeville ∪ Farce (même groupe → OR)
+  { label: 'Comédie', group: 'genre', test: (p) => p.genre === 'comédie' || p.genre === 'comédie-ballet' || p.genre === 'héroï-comédie' },
+  { label: 'Vaudeville', group: 'genre', test: (p) => p.genre === 'vaudeville' },
+  { label: 'Farce / absurde', group: 'genre', test: (p) => p.genre === 'farce' || p.genre === 'absurde' },
   { label: 'Tragédie', group: 'genre', test: (p) => p.genre === 'tragédie' },
-  { label: 'Drame', group: 'genre', test: (p) => p.genre === 'drame' },
-  { label: 'Absurde / farce', group: 'genre', test: (p) => p.genre === 'absurde' || p.genre === 'farce' },
-  { label: 'Domaine public', group: 'dp', test: (p) => p.domainePublic },
+  { label: 'Drame', group: 'genre', test: (p) => p.genre === 'drame' || p.genre === 'tragi-comédie' },
+  // Durée
+  { label: 'Moins de 30 min', group: 'duree', test: (p) => p.dureeMin <= 30 },
   { label: "Moins d'1 h 30", group: 'duree', test: (p) => p.dureeMin <= 90 },
   { label: 'Moins de 2 h', group: 'duree', test: (p) => p.dureeMin <= 120 },
+  // Distribution
+  { label: '2 personnages', group: 'dist', test: (p) => p.femmes + p.hommes === 2 },
   { label: 'Petite distribution (≤ 6)', group: 'dist', test: (p) => p.femmes + p.hommes <= 6 },
+  // Décor / âge / époque / difficulté / droits
   { label: 'Sans décor', group: 'decor', test: (p) => p.decor === 'sans décor' },
   { label: 'Pour enfants', group: 'age', test: (p) => p.pourEnfants },
   { label: 'Contemporain', group: 'epoque', test: (p) => p.epoque === 'contemporain' },
+  { label: 'Classique', group: 'epoque', test: (p) => p.epoque === 'classique' },
   { label: 'Antique', group: 'epoque', test: (p) => p.epoque === 'antique' },
   { label: 'Accessible (facile)', group: 'diff', test: (p) => p.difficulte <= 2 },
+  { label: 'Domaine public', group: 'dp', test: (p) => p.domainePublic },
 ];
 
 export default function Pieces() {
