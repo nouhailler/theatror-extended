@@ -78,8 +78,9 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
 - `medee` (Euripide) : pas de traduction FR libre exploitable (Artaud n'a pas traduit Médée ;
   Leconte de Lisle « Mèdéia » a son djvu manquant). NB : la Médée de **Corneille** est, elle, dispo
   (`medee-corneille`).
-- `importance-etre-constant` (Wilde) : pas de traduction FR du domaine public trouvée (Wilde EST
-  sur texteslibres.fr = `/auteur/oscar-wild.html` — à vérifier si cette pièce y figure).
+- `importance-etre-constant` (Wilde) : pas de traduction FR du domaine public trouvée. Vérifié :
+  texteslibres.fr n'a que *Le Fantôme de Canterville* et *Le Portrait de Dorian Gray* pour Wilde,
+  pas cette pièce. (Piste : la trad. FR historique est celle de Mme Toussaint du Wast — à chercher.)
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
