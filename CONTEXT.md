@@ -139,9 +139,11 @@ Index `src/data/personnages.ts` (Record<id, string[]>, 314 pièces / 4359 rôles
 `scripts/wikisource/gen_personnages.py` (extrait les locuteurs uniques des textes intégraux, filtre
 foule/composés, title-case FR). FichePiece affiche la **distribution** (fallback si pas de fiche
 curée `PIECE_DETAILS`), et la **recherche Pièces** couvre désormais les personnages (« Scapin » →
-Fourberies, « Sganarelle » → 5 pièces). Reste priorité 2 : style, thèmes, costumes, extraits
-célèbres, distribution flexible (nouveaux champs à peupler — `PIECE_DETAILS` a déjà themes/extrait
-pour 13 pièces curées).
+Fourberies, « Sganarelle » → 5 pièces).
+**Thèmes + extraits célèbres** : `PIECE_DETAILS` étendu à **62 pièces** (33 avec extrait vérifié)
+couvrant tout le répertoire canonique (Molière, Corneille, Racine, Marivaux, Musset, Hugo,
+Beaumarchais, Tchekhov, Ibsen, Shakespeare, grecs…). Reste priorité 2 : **style, costumes,
+distribution flexible** (champs non implémentés) + thèmes/extraits pour les pièces non canoniques.
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
