@@ -3,8 +3,39 @@
 _Dernière mise à jour : 2026-07-11._
 
 ## 🔔 À rappeler au démarrage de la prochaine session
-On reprend le **texte intégral des pièces** : le lecteur est en place, il reste à
-**ajouter les textes des pièces manquantes** (lots suivants). Voir ci-dessous.
+**GROS CHANTIER EN COURS — répertoire élargi texteslibres.fr** : la page
+`texteslibres.fr/categorie/theatre` liste **319 pièces** (dont ~24 déjà dans l'app).
+Objectif validé par l'utilisateur : **toutes les implémenter** (fiches enrichies + texte).
+→ **Lot pilote de 15 fait et commité** (à faire valider). Ensuite : lancer les **~280 restantes**.
+
+### Où on en est sur ce chantier
+- **Pipeline auto** prêt : `scripts/wikisource/texteslibres_gen.py` (dict `PLAYS` id→(slug,auteur,titre,année))
+  + `ws_fetch.discover_texteslibres(landing_url)` qui auto-découvre les sous-pages (une par
+  scène/acte), gère ordinaux FR (deuxieme…), prologue/épilogue, saute personnages/couverture,
+  nettoie emoji/@ parasites. Cache HTML brut dans le scratchpad (`tl_cache/`) → reprenable, throttle 0.35s.
+- **Fiches** : titre/auteur/année/actes/époque exacts ; genre + distribution F/H + résumé + durée
+  écrits à la main (connaissance + distribution réelle extraite du texte). `auteurId` = slug auteur
+  (moliere, corneille, racine, marivaux, musset, feydeau, courteline, labiche…) même si le
+  dramaturge n'a pas encore de fiche encyclo (rendu gracieux : pas de carte auteur, cf. FichePiece).
+- **PWA** : ⚠️ changement clé — les textes ne sont PLUS précachés. `vite.config.ts` route les chunks
+  `src/data/texts/*` vers `dist/assets/texts/` ; `workbox.globIgnores` les exclut du précache +
+  `runtimeCaching` CacheFirst « play-texts » → cache à la 1re ouverture. Précache tombé de 70 (6,2 Mo)
+  à **38 entrées (1,1 Mo)**. Indispensable à cette échelle.
+- **Lot pilote (15, commité)** : amphitryon, fourberies-scapin, medecin-malgre-lui (Molière) ·
+  fausses-confidences, double-inconstance (Marivaux) · cinna, polyeucte (Corneille) · berenice,
+  bajazet (Racine) · caprices-marianne, lorenzaccio (Musset) · fil-a-la-patte, le-dindon (Feydeau) ·
+  boubouroche (Courteline) · perrichon (Labiche). → **49 pièces au catalogue**.
+
+### Reste à faire (chantier)
+- Faire **valider le pilote** par l'utilisateur (qualité fiches + rendu).
+- **Générer les ~280 autres** : étendre `PLAYS` dans `texteslibres_gen.py` (titre/auteur/année depuis
+  les cartes de la page catégorie — parsées dans `scratchpad/theatre_cards.json`), générer par lots,
+  écrire les fiches, enregistrer les loaders. ⚠️ **Valider chaque pièce** : certaines pages sont
+  incomplètes (ex. Turcaret : actes III-V absents) ou ont des slugs incohérents (ex. Chapeau de paille
+  d'Italie : titres d'actes intégrés) → à repérer (trous dans la numérotation, très peu de pages) et
+  écarter/corriger au cas par cas.
+- Anecdote : quelques pages « ouverture d'acte » (décor) sont vides sur le site → didascalie de décor
+  parfois absente (mineur).
 
 ---
 

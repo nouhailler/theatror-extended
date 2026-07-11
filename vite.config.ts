@@ -4,6 +4,22 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        // Les textes intégraux des pièces (src/data/texts/*) sont routés dans un
+        // dossier dédié pour être EXCLUS du précache PWA (cf. workbox.globIgnores)
+        // et mis en cache à la demande (runtimeCaching) : install léger même avec
+        // des centaines de pièces, offline préservé après 1re ouverture.
+        chunkFileNames(info) {
+          if (info.facadeModuleId && info.facadeModuleId.includes('/src/data/texts/')) {
+            return 'assets/texts/[name]-[hash].js';
+          }
+          return 'assets/[name]-[hash].js';
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     VitePWA({
@@ -35,8 +51,21 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,woff2,svg,png,json}'],
+        // Les textes des pièces ne sont PAS précachés (trop volumineux à grande échelle) :
+        // ils sont mis en cache à la première ouverture via runtimeCaching ci-dessous.
+        globIgnores: ['**/assets/texts/**'],
         navigateFallback: '/index.html',
         runtimeCaching: [
+          {
+            // Textes intégraux des pièces : cache à la demande → hors-ligne après 1re lecture.
+            urlPattern: ({ url }) => url.pathname.includes('/assets/texts/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'play-texts',
+              expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 180 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             // Images Wikimedia déjà consultées — cache offline.
             urlPattern: ({ url }) =>

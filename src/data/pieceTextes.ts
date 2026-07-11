@@ -51,6 +51,22 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'la-mouette': () => import('./texts/la-mouette'),
   'medee-corneille': () => import('./texts/medee-corneille'),
   'oncle-vania': () => import('./texts/oncle-vania'),
+  // texteslibres.fr — lot 1 (répertoire élargi)
+  'amphitryon': () => import('./texts/amphitryon'),
+  'fourberies-scapin': () => import('./texts/fourberies-scapin'),
+  'medecin-malgre-lui': () => import('./texts/medecin-malgre-lui'),
+  'fausses-confidences': () => import('./texts/fausses-confidences'),
+  'double-inconstance': () => import('./texts/double-inconstance'),
+  'cinna': () => import('./texts/cinna'),
+  'polyeucte': () => import('./texts/polyeucte'),
+  'berenice': () => import('./texts/berenice'),
+  'bajazet': () => import('./texts/bajazet'),
+  'caprices-marianne': () => import('./texts/caprices-marianne'),
+  'lorenzaccio': () => import('./texts/lorenzaccio'),
+  'fil-a-la-patte': () => import('./texts/fil-a-la-patte'),
+  'le-dindon': () => import('./texts/le-dindon'),
+  'boubouroche': () => import('./texts/boubouroche'),
+  'perrichon': () => import('./texts/perrichon'),
 };
 
 export function hasTexte(id?: string): boolean {

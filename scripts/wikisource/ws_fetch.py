@@ -15,21 +15,85 @@ def get_html(page):
         d = json.load(r)
     return d["parse"]["text"]["*"]
 
+TL_UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) Theathror/1.0 (educational)"}
+
+def _tl_raw(url):
+    with urllib.request.urlopen(urllib.request.Request(url, headers=TL_UA), timeout=30) as r:
+        return r.read().decode("utf-8", "replace")
+
 def get_texteslibres(url):
-    # Source alternative texteslibres.fr (textes du domaine public) : une page par acte.
+    # Source alternative texteslibres.fr (textes du domaine public) : une page par scène/acte.
     # On isole le conteneur .texte et on retire le bruit (boutons commentaires, icônes).
     # Le balisage locuteur/didascalie utilise les mêmes classes que Wikisource
     # (span.personnage / span.didascalie) → parse_act(force_started=True) le lit tel quel.
-    req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) Theathror/1.0 (educational)"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        html = r.read().decode("utf-8", "replace")
-    soup = BeautifulSoup(html, "lxml")
+    soup = BeautifulSoup(_tl_raw(url), "lxml")
     el = soup.select_one(".texte")
     if el is None:
         return ""
     for bad in el.select(".commentaire-bulle, .btn-comment, .fa-layers, i, script, style, sup"):
         bad.decompose()
     return str(el)
+
+_ROMAN = {"i":1,"ii":2,"iii":3,"iv":4,"v":5,"vi":6,"vii":7,"viii":8,"ix":9,"x":10,
+          "xi":11,"xii":12,"xiii":13,"xiv":14,"xv":15,"xvi":16,"xvii":17,"xviii":18,
+          "xix":19,"xx":20,"premier":1,"premiere":1,"première":1,"second":2,"seconde":2,
+          "deuxieme":2,"deuxième":2,"troisieme":3,"troisième":3,"quatrieme":4,"quatrième":4,
+          "cinquieme":5,"cinquième":5,"sixieme":6,"sixième":6,"septieme":7,"septième":7,
+          "huitieme":8,"huitième":8,"neuvieme":9,"neuvième":9,"dixieme":10,"dixième":10}
+def _rn(n):  # int -> roman
+    v=["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV",
+       "XV","XVI","XVII","XVIII","XIX","XX","XXI","XXII","XXIII","XXIV","XXV"]
+    return v[n] if 0<n<len(v) else str(n)
+
+def discover_texteslibres(landing_url):
+    """Depuis la page d'une pièce texteslibres.fr, découvre les sous-pages (une par
+    scène ou par acte) et les regroupe par acte. Retourne
+    [(acte_label, [(scene_label|None, url), …]), …] dans l'ordre du document."""
+    soup = BeautifulSoup(_tl_raw(landing_url), "lxml")
+    slug = landing_url.rstrip("/").split("/")[-1]
+    if slug.endswith(".html"): slug = slug[:-5]
+    base = "https://www.texteslibres.fr/"
+    subs = []
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        m = re.search(rf"/{re.escape(slug)}/([a-z0-9-]+)\.html$", a["href"])
+        if m and a["href"] not in seen:
+            seen.add(a["href"]); subs.append((m.group(1), a["href"]))
+    acts = []  # ordered list of [label, [(scene_label, url)]]
+    idx = {}
+    for sub, url in subs:
+        # on ne garde que les pages de contenu (acte/scène/prologue/épilogue) : cela
+        # écarte d'office couverture, liste des personnages, notices, préfaces, etc.
+        if not re.search(r"(acte|sc[eè]ne|prologue|[ée]pilogue)", sub):
+            continue
+        ma = re.search(r"acte-([a-zéè]+|\d+)", sub)
+        ms = re.search(r"scene-([a-zéè]+|\d+)", sub)
+        if re.match(r"^prologue", sub):
+            act_label = "PROLOGUE"
+        elif re.match(r"^(epilogue|épilogue)", sub):
+            act_label = "ÉPILOGUE"
+        else:
+            act_n = _ROMAN.get(ma.group(1), None) if ma else None
+            if act_n is None and ma:
+                try: act_n = int(ma.group(1))
+                except: act_n = None
+            act_label = f"ACTE {_rn(act_n)}" if act_n else "TEXTE"
+        if act_label not in idx:
+            idx[act_label] = []
+            acts.append((act_label, idx[act_label]))
+        scene_label = None
+        if ms:
+            tok = ms.group(1)
+            if tok in ("derniere", "dernière"):
+                scene_label = "Scène dernière"
+            else:
+                sn = _ROMAN.get(tok)
+                if sn is None:
+                    try: sn = int(tok)
+                    except: sn = None
+                scene_label = f"Scène {_rn(sn)}" if sn else "Scène"
+        idx[act_label].append((scene_label, url))
+    return acts
 
 def sget(el, k, default=""):
     a = getattr(el, "attrs", None)
@@ -247,11 +311,14 @@ def parse_act(html, no_act=False, sc_mode=False, force_started=False):
         flush()
 
     walk_sc(root) if sc_mode else walk(root)
-    # collapse consecutive identical didascalies / empties
+    # collapse consecutive identical didascalies / empties + nettoyage
     out=[]
     for b in blocks:
+        # bruit texteslibres : emoji/pictogrammes (icônes audio, ex. « 🔉 ») et « @ »
+        # collé aux noms (artefact du lecteur audio) — sans usage légitime dans ces textes.
+        b["t"] = re.sub(r"[\U0001F000-\U0001FAFF☀-➿️]", "", b["t"]).replace("@", "").strip()
         if b["k"]=="perso":
-            b["t"]=b["t"].rstrip(" .,;:")
+            b["t"]=b["t"].rstrip(" .,;:").strip()
         if not b["t"]: continue
         if out and out[-1]==b: continue
         out.append(b)
