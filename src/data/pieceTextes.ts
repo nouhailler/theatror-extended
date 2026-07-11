@@ -50,6 +50,7 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'romeo-juliette': () => import('./texts/romeo-juliette'),
   'la-mouette': () => import('./texts/la-mouette'),
   'medee-corneille': () => import('./texts/medee-corneille'),
+  'oncle-vania': () => import('./texts/oncle-vania'),
 };
 
 export function hasTexte(id?: string): boolean {

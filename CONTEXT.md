@@ -69,15 +69,17 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   (`medee`) reste au catalogue sans texte. `gen.py` : `gen_external` gère désormais un **découpage
   par scène** (une page/scène, regroupées par acte : Corneille = 26 scènes / 5 actes). Écriture .ts
   factorisée dans `write_ts`. **Total pièces avec texte : 31.**
+- **Lot 3 — Oncle Vania (1 pièce, 2026-07-11)** : Tchekhov, via **texteslibres.fr** (4 actes,
+  chemin `EXTERNAL` par acte). Page auteur du site = `/auteur/anton-tchekhov.html` (liste toutes
+  les pièces). **Total pièces avec texte : 32.**
 
-## À faire — 3 pièces restantes (aucune source FR libre trouvée)
+## À faire — 2 pièces restantes (aucune source FR libre trouvée)
 
 - `medee` (Euripide) : pas de traduction FR libre exploitable (Artaud n'a pas traduit Médée ;
   Leconte de Lisle « Mèdéia » a son djvu manquant). NB : la Médée de **Corneille** est, elle, dispo
   (`medee-corneille`).
-- `oncle-vania` (Tchekhov) : pas de traduction FR du domaine public trouvée (re-vérifier
-  texteslibres.fr — le chemin `EXTERNAL` est en place).
-- `importance-etre-constant` (Wilde) : pas de traduction FR du domaine public trouvée.
+- `importance-etre-constant` (Wilde) : pas de traduction FR du domaine public trouvée (Wilde EST
+  sur texteslibres.fr = `/auteur/oscar-wild.html` — à vérifier si cette pièce y figure).
 
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne

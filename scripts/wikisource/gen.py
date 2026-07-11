@@ -92,6 +92,15 @@ EXTERNAL = {
       ("ACTE IV",      "https://www.texteslibres.fr/la-mouette-anton-tchekhov/acte-iv-6077.html"),
     ],
   },
+  "oncle-vania": {
+    "source": "Anton Tchekhov, Oncle Vania (1898) — traduction française du domaine public. Source : texteslibres.fr.",
+    "acts": [
+      ("ACTE I",   "https://www.texteslibres.fr/oncle-vania-anton-tchekhov/acte-i-6303.html"),
+      ("ACTE II",  "https://www.texteslibres.fr/oncle-vania-anton-tchekhov/acte-ii-6304.html"),
+      ("ACTE III", "https://www.texteslibres.fr/oncle-vania-anton-tchekhov/acte-iii-6305.html"),
+      ("ACTE IV",  "https://www.texteslibres.fr/oncle-vania-anton-tchekhov/acte-iv-6306.html"),
+    ],
+  },
   "medee-corneille": {
     "source": "Pierre Corneille, Médée (1635) — texte du domaine public. Source : texteslibres.fr.",
     # texteslibres.fr découpe la pièce par scène : une page par scène, regroupées par acte.
