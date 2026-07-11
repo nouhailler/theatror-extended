@@ -60,13 +60,13 @@ export default function FicheDramaturge() {
           </div>
         </div>
 
-        {/* Citation */}
-        {d.citation && (
-          <div style={{ borderLeft: '2px solid var(--gold)', padding: '2px 0 2px 14px' }}>
-            <div style={{ fontFamily: 'var(--font-title)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.45 }}>{d.citation.txt}</div>
-            <div style={{ fontSize: 13.5, color: 'var(--text-muted)', marginTop: 5 }}>{d.citation.src}</div>
+        {/* Citations */}
+        {(d.citations ?? (d.citation ? [d.citation] : [])).map((c, i) => (
+          <div key={i} style={{ borderLeft: '2px solid var(--gold)', padding: '2px 0 2px 14px' }}>
+            <div style={{ fontFamily: 'var(--font-title)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.45 }}>{c.txt}</div>
+            <div style={{ fontSize: 13.5, color: 'var(--text-muted)', marginTop: 5 }}>{c.src}</div>
           </div>
-        )}
+        ))}
 
         {/* Œuvres majeures */}
         <div>
@@ -78,11 +78,39 @@ export default function FicheDramaturge() {
           </div>
         </div>
 
+        {/* Style */}
+        {d.style && (
+          <div className="card card-16" style={{ padding: '14px 16px' }}>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Style</div>
+            <div style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-2b)', marginTop: 5 }}>{d.style}</div>
+          </div>
+        )}
+
         {/* Influence */}
         {d.influence && (
           <div className="card card-16" style={{ padding: '14px 16px' }}>
             <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Influence</div>
             <div style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-2b)', marginTop: 5 }}>{d.influence}</div>
+          </div>
+        )}
+
+        {/* Adaptations */}
+        {d.adaptations && d.adaptations.length > 0 && (
+          <div>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>Adaptations</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {d.adaptations.map((a) => (
+                <div key={a} style={{ fontSize: 14, color: 'var(--text-2b)', paddingLeft: 12, borderLeft: '2px solid rgba(212,169,78,.3)' }}>{a}</div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Manuscrits */}
+        {d.manuscrits && (
+          <div className="card card-16" style={{ padding: '14px 16px' }}>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Manuscrits</div>
+            <div style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-2b)', marginTop: 5 }}>{d.manuscrits}</div>
           </div>
         )}
 

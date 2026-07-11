@@ -44,8 +44,12 @@ export interface Dramaturge {
   bio: string;
   chrono: { an: string; txt: string }[];
   citation?: { txt: string; src: string };
+  citations?: { txt: string; src: string }[]; // plusieurs citations (prioritaire sur citation)
   oeuvres: string[]; // « Tartuffe · 1664 »
   influence?: string;
+  style?: string; // style dramatique / écriture
+  manuscrits?: string; // état des manuscrits, fonds, autographes
+  adaptations?: string[]; // adaptations célèbres (opéra, cinéma…)
   categorie: EncycloCategorie;
 }
 

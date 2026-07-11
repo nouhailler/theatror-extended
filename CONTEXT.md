@@ -145,6 +145,16 @@ couvrant tout le répertoire canonique (Molière, Corneille, Racine, Marivaux, M
 Beaumarchais, Tchekhov, Ibsen, Shakespeare, grecs…). Reste priorité 2 : **style, costumes,
 distribution flexible** (champs non implémentés) + thèmes/extraits pour les pièces non canoniques.
 
+## Priorité 3 (dramaturges) — FAITE (2026-07-11)
+Type `Dramaturge` étendu : `style`, `manuscrits`, `adaptations`, `citations` (pluriel). FicheDramaturge
+affiche désormais bio + chronologie + citation(s) + œuvres + **style + influence + adaptations +
+manuscrits**. DRAMATURGES passé de 20 à **40 fiches** : +20 auteurs majeurs du catalogue (Marivaux,
+Musset, Voltaire, Feydeau, Labiche, Courteline, Ibsen, Rostand, Dumas, Jarry, Balzac, Goldoni,
+Lesage, Diderot, Maupassant, Augier, La Fontaine, Aristophane, Euripide, Wilde) → les fiches-pièces
+de ces auteurs ont enfin leur **carte auteur** cliquable. Les 9 classiques existants (Molière, Racine,
+Corneille, Hugo, Shakespeare, Tchekhov, Beaumarchais, Sophocle, Sand) enrichis de style/adaptations/
+manuscrits. Nouveaux auteurs sans portrait (`img:''` → initiale dorée) : ajoutables via Wikimedia.
+
 ## Autres pistes (backlog, non prioritaire)
 - Défaut mineur du parseur : 1er locuteur d'une scène parfois manquant si composé en ligne
   avec la didascalie (vu dans Cyrano). Améliorer la détection si on veut du 100 %.
