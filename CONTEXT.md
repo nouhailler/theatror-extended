@@ -30,15 +30,16 @@ On reprend le **texte intégral des pièces** : le lecteur est en place, il rest
   Courbé). Nouveau support dans `gen.py` : **nb actes = 0** ⇒ on fetch `base` en une seule
   page et `parse_act` repère actes (h2)/scènes (h3) d'un seul tenant. Réutilisable pour le
   Lot 3 (pièces étrangères souvent en « Texte entier »).
+- **Lot 2 — Hugo + Musset + Marivaux + Jarry + Sand (7 pièces, 2026-07-11) → LOT 2 TERMINÉ** :
+  hernani, ruy-blas, on-ne-badine-pas, le-jeu-amour-hasard, ubu-roi, marquis-villemer,
+  francois-champi. Sand = versions **(Théâtre)** en page unique (`nact=0`). Deux améliorations
+  parseur : (a) chiffres **arabes** pour les pages d'acte (`gen.py`, 4e champ `"Acte {n}"` —
+  ruy-blas, ubu-roi) ; (b) un h3 avant le 1er acte n'ouvre plus la capture (préface/« NOTE DES
+  ÉDITEURS » du Marquis ignorée) ; (c) liste des personnages embarquée en tête d'acte (marqueur
+  « PERSONNAGES », Ruy Blas) désormais sautée.
+  **Total pièces avec texte : 21.**
 
-## À faire — textes des pièces restantes (~19)
-
-### Lot 2 (suite) — classiques français faciles (sous-pages /Acte sur Wikisource)
-- **Hugo** : hernani, ruy-blas
-- **Musset** : on-ne-badine-pas
-- **Marivaux** : le-jeu-amour-hasard
-- **Jarry** : ubu-roi
-- **Sand** : marquis-villemer, francois-champi
+## À faire — textes des pièces restantes (~12)
 
 → Procédure : `scripts/wikisource/README.md` (déclarer dans `PLAYS`, générer, enregistrer
 le loader dans `pieceTextes.ts`, build, vérifier le rendu).

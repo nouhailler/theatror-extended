@@ -33,6 +33,7 @@ def parse_act(html):
     root = soup.select_one(".mw-parser-output") or soup
     blocks = []
     started = False
+    skip_cast = False
     # drop noise nodes
     for bad in root.select("style, link, script, sup.reference, .ws-noexport, .pagenum, .mw-editsection"):
         bad.decompose()
@@ -56,22 +57,39 @@ def parse_act(html):
         return None
 
     def walk(node):
-        nonlocal started
+        nonlocal started, skip_cast
         for el in node.children:
             if not isinstance(el, Tag):
                 continue
             cls = scls(el)
             name = el.name
             if name == "h2" and (sget(el,"id","").startswith("ACTE") or "ACTE" in el.get_text().upper()):
-                started = True
+                started = True; skip_cast = False
                 blocks.append({"k":"acte","t":norm(el.get_text())})
                 continue
             if name == "h3":
-                started = True
-                blocks.append({"k":"scene","t":norm(el.get_text())})
+                # Une scène ne peut exister avant un acte : on n'ouvre la capture
+                # que sur un h2 ACTE. Ainsi les préfaces/notes d'éditeur composées
+                # en h3 avant le 1er acte (vu dans « Le Marquis de Villemer ») sont ignorées.
+                skip_cast = False
+                if started:
+                    blocks.append({"k":"scene","t":norm(el.get_text())})
                 continue
             if not started:
                 walk(el)
+                continue
+            # Liste des personnages parfois embarquée en tête de la page d'acte
+            # (marqueur « PERSONNAGES », vu dans Ruy Blas) : on saute les noms
+            # jusqu'à la scène suivante pour ne pas les émettre comme répliques.
+            own = norm(el.get_text())
+            if name in ("p","div") and re.match(r"(?i)^personnages\b", own) and len(own) < 16:
+                skip_cast = True
+                continue
+            if skip_cast:
+                # On descend dans les conteneurs (pour retrouver le h3 qui clôt la
+                # liste et remet skip_cast à False) mais sans émettre de réplique.
+                if name in ("div","section","dl","dd","ul","li","table","tbody","tr","td","span","a","center"):
+                    walk(el)
                 continue
             if "poem" in cls:
                 emit_lines(el, blocks)

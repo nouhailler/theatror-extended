@@ -39,13 +39,32 @@ PLAYS = {
       "Beaumarchais, La Folle Journée, ou le Mariage de Figaro (1784). Source : Wikisource, domaine public."),
   "barbier-seville": ("Le Barbier de Séville", 4,
       "Beaumarchais, Le Barbier de Séville, ou la Précaution inutile (1775). Source : Wikisource, domaine public."),
+  "hernani": ("Hernani (Hetzel, 1889)", 5,
+      "Victor Hugo, Hernani (1830) — édition Hetzel, 1889. Source : Wikisource, domaine public."),
+  "ruy-blas": ("Ruy Blas", 5,
+      "Victor Hugo, Ruy Blas (1838). Source : Wikisource, domaine public.", "Acte {n}"),
+  "on-ne-badine-pas": ("On ne badine pas avec l’amour (1884)", 3,
+      "Alfred de Musset, On ne badine pas avec l’amour (1834) — édition de 1884. Source : Wikisource, domaine public."),
+  "le-jeu-amour-hasard": ("Le Jeu de l’amour et du hasard", 3,
+      "Marivaux, Le Jeu de l’amour et du hasard (1730). Source : Wikisource, domaine public."),
+  "ubu-roi": ("Ubu roi (1896)", 5,
+      "Alfred Jarry, Ubu roi (1896). Source : Wikisource, domaine public.", "Acte {n}"),
+  # Sand : versions théâtre en page unique (nb actes = 0)
+  "marquis-villemer": ("Le Marquis de Villemer (Théâtre)", 0,
+      "George Sand, Le Marquis de Villemer (théâtre, 1864). Source : Wikisource, domaine public."),
+  "francois-champi": ("François le Champi (Théâtre)", 0,
+      "George Sand, François le Champi (théâtre, 1849). Source : Wikisource, domaine public."),
 }
 
 def esc(s):
     return s.replace("\\","\\\\").replace("'", "\\'")
 
 def gen(pid):
-    base, nact, source = PLAYS[pid]
+    entry = PLAYS[pid]
+    base, nact, source = entry[0], entry[1], entry[2]
+    # 4e élément optionnel = gabarit de la page d'acte (défaut : romain « Acte {roman} »).
+    # Certaines éditions numérotent en arabe → passer "Acte {n}".
+    actfmt = entry[3] if len(entry) > 3 else "Acte {roman}"
     blocks=[]
     if nact == 0:
         # Page unique (« Texte entier ») : base contient toute la pièce,
@@ -58,7 +77,7 @@ def gen(pid):
     else:
         for i in range(1, nact+1):
             roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"][i]
-            page=f"{base}/Acte {roman}"
+            page=f"{base}/"+actfmt.format(roman=roman, n=i)
             html=ws.get_html(page)
             b=ws.parse_act(html)
             sys.stderr.write(f"  {page}: {len(b)} blocs\n")

@@ -33,6 +33,13 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'horace': () => import('./texts/horace'),
   'mariage-figaro': () => import('./texts/mariage-figaro'),
   'barbier-seville': () => import('./texts/barbier-seville'),
+  'hernani': () => import('./texts/hernani'),
+  'ruy-blas': () => import('./texts/ruy-blas'),
+  'on-ne-badine-pas': () => import('./texts/on-ne-badine-pas'),
+  'le-jeu-amour-hasard': () => import('./texts/le-jeu-amour-hasard'),
+  'ubu-roi': () => import('./texts/ubu-roi'),
+  'marquis-villemer': () => import('./texts/marquis-villemer'),
+  'francois-champi': () => import('./texts/francois-champi'),
 };
 
 export function hasTexte(id?: string): boolean {
