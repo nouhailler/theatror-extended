@@ -129,14 +129,70 @@ export const MONOLOGUES: Monologue[] = [
 ];
 
 export const CITATIONS: Citation[] = [
-  { id: 'shakespeare-theatre', txt: "« Le monde entier est un théâtre, et tous, hommes et femmes, n'en sont que les acteurs. »", src: 'SHAKESPEARE — Comme il vous plaira', theme: 'Le théâtre' },
-  { id: 'beaumarchais-aime', txt: "« Qu'il est doux d'être aimé pour soi-même ! »", src: 'BEAUMARCHAIS — Le Barbier de Séville', theme: 'Amour' },
-  { id: 'corneille-hais', txt: '« Va, je ne te hais point. »', src: 'CORNEILLE — Le Cid', theme: 'Amour' },
-  { id: 'moliere-corriger', txt: '« Le devoir de la comédie étant de corriger les hommes en les divertissant. »', src: 'MOLIÈRE — Premier placet au roi', theme: 'Le théâtre' },
-  { id: 'racine-forets', txt: '« Dans le fond des forêts votre image me suit. »', src: 'RACINE — Phèdre', theme: 'Amour' },
-  { id: 'corneille-maitre', txt: "« Je suis maître de moi comme de l'univers. »", src: 'CORNEILLE — Cinna', theme: 'Pouvoir' },
-  { id: 'shakespeare-etre', txt: '« Être, ou ne pas être : telle est la question. »', src: 'SHAKESPEARE — Hamlet', theme: 'Mort' },
-  { id: 'sophocle-homme', txt: "« Rien de plus grand que l'homme. »", src: 'SOPHOCLE — Antigone', theme: 'Destin' },
+  // ─── Molière ───
+  { id: 'moliere-corriger', txt: '« Le devoir de la comédie étant de corriger les hommes en les divertissant. »', src: 'MOLIÈRE — Premier placet au roi', auteur: 'Molière', theme: 'Le théâtre', emotion: 'Ironie' },
+  { id: 'moliere-pauvre-homme', txt: '« Le pauvre homme ! »', src: 'MOLIÈRE — Tartuffe', auteur: 'Molière', pieceId: 'tartuffe', theme: 'Vérité', emotion: 'Aveuglement' },
+  { id: 'moliere-couvrez', txt: '« Couvrez ce sein que je ne saurais voir. »', src: 'MOLIÈRE — Tartuffe', auteur: 'Molière', pieceId: 'tartuffe', theme: 'Vérité', emotion: 'Hypocrisie' },
+  { id: 'moliere-sans-dot', txt: '« Sans dot ! »', src: "MOLIÈRE — L'Avare", auteur: 'Molière', pieceId: 'lavare', theme: 'Pouvoir', emotion: 'Avarice' },
+  { id: 'moliere-manger', txt: '« Il faut manger pour vivre, et non pas vivre pour manger. »', src: "MOLIÈRE — L'Avare", auteur: 'Molière', pieceId: 'lavare', theme: 'Vérité', emotion: 'Sagesse' },
+  { id: 'moliere-mourir', txt: "« On ne meurt qu'une fois, et c'est pour si longtemps ! »", src: 'MOLIÈRE — Le Dépit amoureux', auteur: 'Molière', theme: 'Mort', emotion: 'Ironie' },
+  { id: 'moliere-prose', txt: "« Il y a plus de quarante ans que je dis de la prose sans que j'en susse rien. »", src: 'MOLIÈRE — Le Bourgeois gentilhomme', auteur: 'Molière', pieceId: 'bourgeois-gentilhomme', theme: 'Le théâtre', emotion: 'Naïveté' },
+  { id: 'moliere-hypocrisie', txt: "« L'hypocrisie est un vice à la mode, et tous les vices à la mode passent pour vertus. »", src: 'MOLIÈRE — Dom Juan', auteur: 'Molière', pieceId: 'dom-juan', theme: 'Vérité', emotion: 'Cynisme' },
+
+  // ─── Corneille ───
+  { id: 'corneille-hais', txt: '« Va, je ne te hais point. »', src: 'CORNEILLE — Le Cid', auteur: 'Corneille', pieceId: 'le-cid', theme: 'Amour', emotion: 'Déchirement' },
+  { id: 'corneille-maitre', txt: "« Je suis maître de moi comme de l'univers. »", src: 'CORNEILLE — Cinna', auteur: 'Corneille', pieceId: 'cinna', theme: 'Pouvoir', emotion: 'Grandeur' },
+  { id: 'corneille-vaincre', txt: '« À vaincre sans péril, on triomphe sans gloire. »', src: 'CORNEILLE — Le Cid', auteur: 'Corneille', pieceId: 'le-cid', theme: 'Honneur', emotion: 'Fierté' },
+  { id: 'corneille-rage', txt: '« Ô rage ! ô désespoir ! ô vieillesse ennemie ! »', src: 'CORNEILLE — Le Cid', auteur: 'Corneille', pieceId: 'le-cid', theme: 'Temps', emotion: 'Désespoir' },
+  { id: 'corneille-valeur', txt: "« Aux âmes bien nées, la valeur n'attend point le nombre des années. »", src: 'CORNEILLE — Le Cid', auteur: 'Corneille', pieceId: 'le-cid', theme: 'Honneur', emotion: 'Fierté' },
+  { id: 'corneille-coeur', txt: '« Rodrigue, as-tu du cœur ? — Tout autre que mon père… »', src: 'CORNEILLE — Le Cid', auteur: 'Corneille', pieceId: 'le-cid', theme: 'Honneur', emotion: 'Devoir' },
+
+  // ─── Racine ───
+  { id: 'racine-forets', txt: '« Dans le fond des forêts votre image me suit. »', src: 'RACINE — Phèdre', auteur: 'Racine', pieceId: 'phedre', theme: 'Amour', emotion: 'Passion' },
+  { id: 'racine-venus', txt: "« C'est Vénus tout entière à sa proie attachée. »", src: 'RACINE — Phèdre', auteur: 'Racine', pieceId: 'phedre', theme: 'Amour', emotion: 'Passion' },
+  { id: 'racine-vis', txt: '« Je le vis, je rougis, je pâlis à sa vue. »', src: 'RACINE — Phèdre', auteur: 'Racine', pieceId: 'phedre', theme: 'Amour', emotion: 'Trouble' },
+  { id: 'racine-jour', txt: '« Que le jour recommence et que le jour finisse, / Sans que jamais Titus puisse voir Bérénice. »', src: 'RACINE — Bérénice', auteur: 'Racine', pieceId: 'berenice', theme: 'Amour', emotion: 'Douleur' },
+  { id: 'racine-etouffer', txt: "« J'embrasse mon rival, mais c'est pour l'étouffer. »", src: 'RACINE — Britannicus', auteur: 'Racine', pieceId: 'britannicus', theme: 'Pouvoir', emotion: 'Perfidie' },
+
+  // ─── Beaumarchais ───
+  { id: 'beaumarchais-aime', txt: "« Qu'il est doux d'être aimé pour soi-même ! »", src: 'BEAUMARCHAIS — Le Barbier de Séville', auteur: 'Beaumarchais', pieceId: 'barbier-seville', theme: 'Amour', emotion: 'Tendresse' },
+  { id: 'beaumarchais-rire', txt: "« Je me presse de rire de tout, de peur d'être obligé d'en pleurer. »", src: 'BEAUMARCHAIS — Le Barbier de Séville', auteur: 'Beaumarchais', pieceId: 'barbier-seville', theme: 'Vérité', emotion: 'Mélancolie' },
+  { id: 'beaumarchais-genie', txt: '« Parce que vous êtes un grand seigneur, vous vous croyez un grand génie ! »', src: 'BEAUMARCHAIS — Le Mariage de Figaro', auteur: 'Beaumarchais', pieceId: 'mariage-figaro', theme: 'Pouvoir', emotion: 'Révolte' },
+  { id: 'beaumarchais-liberte', txt: "« Sans la liberté de blâmer, il n'est point d'éloge flatteur. »", src: 'BEAUMARCHAIS — Le Mariage de Figaro', auteur: 'Beaumarchais', pieceId: 'mariage-figaro', theme: 'Liberté', emotion: 'Fierté' },
+
+  // ─── Shakespeare ───
+  { id: 'shakespeare-theatre', txt: "« Le monde entier est un théâtre, et tous, hommes et femmes, n'en sont que les acteurs. »", src: 'SHAKESPEARE — Comme il vous plaira', auteur: 'Shakespeare', theme: 'Le théâtre', emotion: 'Sagesse' },
+  { id: 'shakespeare-etre', txt: '« Être, ou ne pas être : telle est la question. »', src: 'SHAKESPEARE — Hamlet', auteur: 'Shakespeare', pieceId: 'hamlet', theme: 'Mort', emotion: 'Doute' },
+  { id: 'shakespeare-pourri', txt: '« Il y a quelque chose de pourri au royaume de Danemark. »', src: 'SHAKESPEARE — Hamlet', auteur: 'Shakespeare', pieceId: 'hamlet', theme: 'Pouvoir', emotion: 'Soupçon' },
+  { id: 'shakespeare-mots', txt: '« Des mots, des mots, des mots. »', src: 'SHAKESPEARE — Hamlet', auteur: 'Shakespeare', pieceId: 'hamlet', theme: 'Vérité', emotion: 'Ironie' },
+  { id: 'shakespeare-ombre', txt: "« La vie n'est qu'une ombre qui marche, un pauvre acteur qui se pavane… »", src: 'SHAKESPEARE — Macbeth', auteur: 'Shakespeare', pieceId: 'macbeth', theme: 'Mort', emotion: 'Désespoir' },
+  { id: 'shakespeare-romeo', txt: '« Roméo, Roméo ! Pourquoi es-tu Roméo ? »', src: 'SHAKESPEARE — Roméo et Juliette', auteur: 'Shakespeare', pieceId: 'romeo-juliette', theme: 'Amour', emotion: 'Passion' },
+
+  // ─── Sophocle ───
+  { id: 'sophocle-homme', txt: "« Il existe bien des merveilles en ce monde, il n'en est pas de plus grande que l'homme. »", src: 'SOPHOCLE — Antigone', auteur: 'Sophocle', pieceId: 'antigone-sophocle', theme: 'Destin', emotion: 'Gravité' },
+  { id: 'sophocle-amour', txt: "« Je suis née pour partager l'amour et non la haine. »", src: 'SOPHOCLE — Antigone', auteur: 'Sophocle', pieceId: 'antigone-sophocle', theme: 'Amour', emotion: 'Conviction' },
+
+  // ─── Victor Hugo ───
+  { id: 'hugo-force', txt: '« Je suis une force qui va ! »', src: 'HUGO — Hernani', auteur: 'Victor Hugo', pieceId: 'hernani', theme: 'Destin', emotion: 'Fatalité' },
+  { id: 'hugo-appetit', txt: '« Bon appétit, messieurs ! Ô ministres intègres ! »', src: 'HUGO — Ruy Blas', auteur: 'Victor Hugo', pieceId: 'ruy-blas', theme: 'Pouvoir', emotion: 'Colère' },
+
+  // ─── Musset ───
+  { id: 'musset-badine', txt: "« On ne badine pas avec l'amour. »", src: "MUSSET — On ne badine pas avec l'amour", auteur: 'Musset', pieceId: 'on-ne-badine-pas', theme: 'Amour', emotion: 'Amertume' },
+  { id: 'musset-creux', txt: "« Je suis plus creux et plus vide qu'une statue de fer-blanc. »", src: 'MUSSET — Lorenzaccio', auteur: 'Musset', pieceId: 'lorenzaccio', theme: 'Vérité', emotion: 'Désabusement' },
+
+  // ─── Rostand ───
+  { id: 'rostand-panache', txt: '« Mon panache. »', src: 'ROSTAND — Cyrano de Bergerac', auteur: 'Edmond Rostand', pieceId: 'cyrano', theme: 'Honneur', emotion: 'Panache' },
+  { id: 'rostand-baiser', txt: "« Un baiser, mais à tout prendre, qu'est-ce ? Un serment fait d'un peu plus près… »", src: 'ROSTAND — Cyrano de Bergerac', auteur: 'Edmond Rostand', pieceId: 'cyrano', theme: 'Amour', emotion: 'Lyrisme' },
+  { id: 'rostand-cap', txt: "« C'est un roc ! … c'est un pic ! … c'est un cap ! Que dis-je, c'est un cap ? … C'est une péninsule ! »", src: 'ROSTAND — Cyrano de Bergerac', auteur: 'Edmond Rostand', pieceId: 'cyrano', theme: 'Le théâtre', emotion: 'Panache' },
+
+  // ─── Jarry ───
+  { id: 'jarry-merdre', txt: '« Merdre ! »', src: 'JARRY — Ubu roi', auteur: 'Alfred Jarry', pieceId: 'ubu-roi', theme: 'Pouvoir', emotion: 'Grotesque' },
+
+  // ─── Ibsen ───
+  { id: 'ibsen-humain', txt: '« Je crois que je suis avant tout un être humain, tout comme toi. »', src: 'IBSEN — Une maison de poupée', auteur: 'Henrik Ibsen', pieceId: 'maison-poupee', theme: 'Liberté', emotion: 'Émancipation' },
+
+  // ─── Marivaux ───
+  { id: 'marivaux-coeur', txt: '« Ah ! je vois clair dans mon cœur. »', src: "MARIVAUX — Le Jeu de l'amour et du hasard", auteur: 'Marivaux', pieceId: 'le-jeu-amour-hasard', theme: 'Amour', emotion: 'Trouble' },
 ];
 
 export const GLOSSAIRE: GlossaireTerme[] = [

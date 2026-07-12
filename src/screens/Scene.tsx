@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ScreenTitle } from '../components/ui';
 import Star from '../components/Star';
 import { MONOLOGUES, CITATIONS, GLOSSAIRE } from '../data/content';
@@ -89,27 +89,52 @@ function Monologues({ focus }: { focus?: string | null }) {
 }
 
 // ─── Citations ───
-const THEMES = ['Amour', 'Pouvoir', 'Destin', 'Le théâtre', 'Mort'] as const;
 function CitationsSeg() {
+  const nav = useNavigate();
   const [theme, setTheme] = useState<string | null>(null);
-  const list = theme ? CITATIONS.filter((c) => c.theme === theme) : CITATIONS;
+  const [auteur, setAuteur] = useState<string | null>(null);
+
+  // Facettes dérivées des données
+  const themes = useMemo(() => Array.from(new Set(CITATIONS.map((c) => c.theme))).sort(), []);
+  const auteurs = useMemo(() => Array.from(new Set(CITATIONS.map((c) => c.auteur))).sort(), []);
+
+  const list = useMemo(
+    () => CITATIONS.filter((c) => (!theme || c.theme === theme) && (!auteur || c.auteur === auteur)),
+    [theme, auteur],
+  );
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>Thème</div>
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
-        {THEMES.map((t) => (
+        {themes.map((t) => (
           <button key={t} className={`chip${theme === t ? ' active' : ''}`} onClick={() => setTheme(theme === t ? null : t)}>{t}</button>
         ))}
       </div>
+      <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)', marginTop: 2 }}>Auteur</div>
+      <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+        {auteurs.map((a) => (
+          <button key={a} className={`chip${auteur === a ? ' active' : ''}`} onClick={() => setAuteur(auteur === a ? null : a)}>{a}</button>
+        ))}
+      </div>
+
+      <div style={{ fontSize: 12.5, color: 'var(--text-muted)', marginTop: 2 }}>{list.length} citation{list.length > 1 ? 's' : ''}</div>
+
       {list.map((q) => (
-        <div key={q.id} className="card card-tap" style={{ padding: 16 }}>
+        <div key={q.id} className={`card${q.pieceId ? ' card-tap' : ''}`} style={{ padding: 16, cursor: q.pieceId ? 'pointer' : 'default' }}
+          onClick={q.pieceId ? () => nav(`/pieces/${q.pieceId}`) : undefined}>
           <div style={{ fontFamily: 'var(--font-title)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.45 }}>{q.txt}</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10, marginTop: 8 }}>
-            <div style={{ fontSize: 13.5, color: 'var(--text-muted)', letterSpacing: 0.5 }}>{q.src}</div>
+            <div style={{ fontSize: 13.5, color: 'var(--text-muted)', letterSpacing: 0.5 }}>{q.src}{q.pieceId && <span style={{ color: 'var(--gold)', marginLeft: 6 }}>→</span>}</div>
             <Star cat="citations" id={q.id} />
+          </div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 8 }}>
+            <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)' }}>{q.theme}</span>
+            {q.emotion && <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, background: 'var(--red-chip-bg)', border: '1px solid var(--red-chip-border)', color: 'var(--red-chip-text)' }}>{q.emotion}</span>}
           </div>
         </div>
       ))}
-      {list.length === 0 && <Empty>Aucune citation pour ce thème.</Empty>}
+      {list.length === 0 && <Empty>Aucune citation pour ces filtres.</Empty>}
     </div>
   );
 }

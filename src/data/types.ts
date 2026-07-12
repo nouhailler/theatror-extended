@@ -113,11 +113,18 @@ export interface Monologue {
   epoque: 'Classique' | 'Contemporain';
 }
 
+export type CitationTheme =
+  | 'Amour' | 'Pouvoir' | 'Destin' | 'Le théâtre' | 'Mort'
+  | 'Liberté' | 'Honneur' | 'Temps' | 'Vérité' | 'Folie';
+
 export interface Citation {
   id: string;
   txt: string;
-  src: string;
-  theme: 'Amour' | 'Pouvoir' | 'Destin' | 'Le théâtre' | 'Mort';
+  src: string; // affichage « AUTEUR — Pièce »
+  theme: CitationTheme;
+  auteur: string; // pour le classement / filtre par auteur
+  pieceId?: string; // lien vers la fiche pièce
+  emotion?: string; // émotion dominante
 }
 
 export interface GlossaireTerme {
