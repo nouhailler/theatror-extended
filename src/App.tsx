@@ -28,6 +28,7 @@ import Exercices from './screens/Exercices';
 import Voix from './screens/Voix';
 import MiseEnScene from './screens/MiseEnScene';
 import Costumes from './screens/Costumes';
+import Decors from './screens/Decors';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Reglages from './screens/Reglages';
@@ -65,6 +66,7 @@ export default function App() {
           <Route path="/voix" element={<Voix />} />
           <Route path="/mise-en-scene" element={<MiseEnScene />} />
           <Route path="/costumes" element={<Costumes />} />
+          <Route path="/decors" element={<Decors />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/reglages" element={<Reglages />} />

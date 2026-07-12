@@ -10,6 +10,7 @@ const CARDS = [
   { titre: 'Entraînement vocal', sub: 'Échauffement, placement, projection, virelangues, justesse', to: '/voix' },
   { titre: 'Mise en scène', sub: 'Plateau 2D : placez vos acteurs, décor et lumière', to: '/mise-en-scene' },
   { titre: 'Costumes', sub: 'Galerie historique : époque, pays, style, personnage', to: '/costumes' },
+  { titre: 'Décors', sub: 'Bibliothèque : théâtre grec, palais, forêt, salon…', to: '/decors' },
   { titre: 'Collections thématiques', sub: 'Les 100 incontournables, tragédies grecques, femmes dramaturges…', to: '/explorer/collections' },
   { titre: 'Quiz', sub: 'Testez vos connaissances : auteurs, citations, chronologie', to: '/quiz' },
 ];
@@ -35,7 +36,7 @@ export default function Explorer() {
 
       <div style={{ background: 'linear-gradient(120deg,#3a1520,#241019)', border: '1px solid rgba(158,43,58,.4)', borderRadius: 12, padding: 16 }}>
         <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Bientôt</div>
-        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Décors · Accessoires · Festivals · Podcasts</div>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Accessoires · Festivals · Podcasts · Parcours</div>
       </div>
     </div>
   );
