@@ -1,63 +1,64 @@
-# CONTEXT — travail en cours
+# CONTEXT — état du projet
 
-_Dernière mise à jour : 2026-07-11._
+_Dernière mise à jour : 2026-07-12._
 
-## 🔔 À rappeler au démarrage de la prochaine session
-**POINT D'ARRÊT (nuit du 2026-07-11)** : session très productive, tout est commité et poussé
-sur `origin/main`. **Priorité 2 (base de données des pièces) et Priorité 3 (dramaturges) = FAITES.**
-→ **Prochaine session : attaquer la PRIORITÉ 4** (définie dans la roadmap perso de l'utilisateur ;
-candidats probables d'après la roadmap Handoff : Mode IA via OpenRouter, lecture interactive Web
-Speech, quiz, exercices d'acteur/voix, agenda festivals — DEMANDER à l'utilisateur ce qu'est la n°4).
+## 🎉 Roadmap complète (26/26) + agrégation RSS
+Toute la roadmap fournie par l'utilisateur (priorités 1 → 26) est **livrée**, testée et poussée sur
+`origin/main`, ainsi que l'**agrégation RSS en direct** (au-delà de la roadmap). Il n'y a plus de
+« prochaine priorité » : le projet est fonctionnellement complet. La suite = enrichissement de contenu
+et corrections.
 
 ### État actuel (résumé)
-- **317 pièces** au catalogue (34 → 317), **315 avec texte intégral** hors-ligne. Sans texte :
-  `medee` (Euripide) et `importance-etre-constant` (Wilde) — pas de source FR libre.
-- **Pièces** : personnages structurés (recherche par perso), thèmes+extraits sur le canon (62 fiches),
-  résumés ≈ 217/317, tous les filtres demandés (dont vaudeville, < 30 min, 2 personnages).
-- **Dramaturges** : 40 fiches complètes (bio/chrono/œuvres/style/citations/influence/adaptations/
-  manuscrits), 37 avec portrait Wikimedia.
-- **PWA** : textes en cache à la demande (install ≈ 1,2 Mo). Build nécessite `NODE_OPTIONS=--max-old-space-size=6144` (dans `package.json`).
+- **330 pièces** au catalogue, **320 avec texte intégral** hors-ligne (fr.wikisource + texteslibres.fr).
+  Restent sans texte : quelques ajouts récents (répertoire antique/farces en métadonnées) et 2 pièces
+  sans source FR libre (`medee` Euripide, `importance-etre-constant` Wilde).
+- **57 fiches de personnages** (`src/data/characters.ts`) interconnectées : chips cliquables des
+  fiches-pièces → fiche perso (`ficheFor`), cartes Auteur/Pièce/Monologue lié.
+- **Contenu** : 45 monologues, 41 citations, encyclopédie (Histoire/Mouvements/Genres/Métiers = 10
+  articles chacun), 51 lieux (théâtres/festivals/traditions/écoles), 31 costumes, 31 décors, 42
+  accessoires, 20 festivals (agenda), 24 ressources (annuaire médias) + 8 flux RSS.
+- **Compteurs** : chaque chip de filtre de l'app affiche son nombre d'enregistrements.
+- **Mode IA** (OpenRouter, clé locale jamais hardcodée) : Assistant ancré sur le catalogue +
+  personnages + monologues ; Générateur « à la manière de » ; Analyse (texte collé ou pièce du
+  catalogue) ; Distribution.
+- **Agrégation RSS** : `netlify/functions/feed.js` (proxy CORS, garde anti-SSRF, cache) + `src/lib/feeds.ts`
+  (parse RSS/Atom, vignettes/résumés, cache idb) + onglet « Nouveautés » des Médias, sources
+  personnalisables. `netlify.toml` déclare le dossier des fonctions.
+- **PWA** : textes en cache à la demande (install léger). Build : `NODE_OPTIONS=--max-old-space-size=6144`
+  (dans `package.json`).
 
 ## 🗺️ ROADMAP COMPLÈTE DES PRIORITÉS (fournie par l'utilisateur, 2026-07-11)
-Priorité 1 (coquille/onboarding/lecteur) ✅ · **Priorité 2 (base de données pièces) ✅** ·
-**Priorité 3 (dramaturges) ✅**. Suite ci-dessous (statut : ✅ fait · ⚠️ existe en version de base ·
-❌ à faire). **La prochaine est la n°4.**
+**Les 26 priorités sont FAITES ✅** (routes dans `src/App.tsx`, écrans dans `src/screens/`).
 
-- **4. Personnages célèbres** ❌ **(PROCHAINE)** — Tartuffe, Cyrano, Antigone, Dom Juan, Figaro…
-  Pour chacun : psychologie · évolution · scènes importantes · monologues · adaptations.
-  ⚠️ NB : `src/screens/FichePersonnage.tsx` existe déjà — vérifier la data personnages existante
-  et brancher les chips « personnages » des fiches-pièces vers ces fiches.
-- **5. Frise chronologique interactive** ⚠️ (écran Frise existe) — naissance des auteurs · création
-  des œuvres · événements historiques · évolution des styles.
-- **6. Carte du monde** ⚠️ (Leaflet+OSM existe) — grands théâtres · festivals · traditions · écoles.
-- **7. Citations** ⚠️ (Scène/Citations existe) — des milliers, classées par auteur · pièce · thème · émotion.
-- **8. Monologues** ⚠️ (Scène/Monologues existe) — recherche par durée · difficulté · âge · H · F ·
-  émotion · contemporain · classique.
-- **9. Exercices d'acteur** ❌ — respiration, diction, articulation, concentration, improvisation,
-  émotions, regard, posture, mémoire, écoute.
-- **10. Entraînement vocal** ❌ — virelangues, échauffement, projection, placement de voix, respiration.
-- **11. Quiz** ❌ — reconnaître pièce/auteur/citation/personnage, chronologie, costumes ; plusieurs niveaux.
-- **12. Mode IA** ❌ (archi prête : clé OpenRouter dans Réglages) — requêtes en langage naturel
-  (« comédie française avec 5 personnages », « compare Molière et Shakespeare »).
-- **13. Générateur de scènes (IA)** ❌ — scène drôle, dialogue, tragédie, monologue, impro.
-- **14. Analyse d'une pièce (IA)** ❌ — importer un texte → thèmes, personnages, structure, conflits,
-  symboles, évolution dramatique.
-- **15. Lecture interactive** ⚠️ (lecteur de texte existe) — cliquer sur un personnage / mot ancien /
-  référence historique / note de mise en scène (Web Speech aussi envisagé).
-- **16. Mise en scène virtuelle** ❌ — placement des acteurs, décors, éclairage, déplacements.
-- **17. Costumes** ❌ — galerie historique, recherche par époque · pays · style · personnage.
-- **18. Décors** ❌ — bibliothèque (théâtre grec, palais, rue, forêt, intérieur bourgeois).
-- **19. Accessoires** ❌ — catalogue (armes, mobilier, objets anciens).
-- **20. Festivals** ❌ — agenda mondial : dates, programme, billetterie, localisation.
-- **21. Journal du comédien** ✅ (CRUD local + stats) — répétitions, progrès, difficultés, idées.
-- **22. Collection personnelle** ✅ (Ma collection, favoris 4 catégories).
-- **23. Podcasts et vidéos** ❌ — conférences, analyses, interviews, captations.
-- **24. Glossaire** ⚠️ (Scène/Glossaire existe) — aparté, didascalie, catharsis, quatrième mur,
-  tirade, stichomythie, deus ex machina… (viser des centaines de termes).
-- **25. Parcours d'apprentissage** ❌ — par profil : débutant, amateur, étudiant, professeur,
-  metteur en scène, comédien.
-- **26. Collections thématiques** ⚠️ (écran Collections existe) — Les 100 incontournables, tragédies
-  grecques, théâtre de Molière, femmes dramaturges, théâtre engagé, théâtre de l'absurde…
+- **1. Coquille / onboarding / lecteur** ✅
+- **2. Base de données des pièces** ✅ (330 pièces, filtres, recherche)
+- **3. Dramaturges** ✅ (40 fiches + portraits)
+- **4. Personnages célèbres** ✅ — 57 fiches (`characters.ts`), chips cliquables (`ficheFor`), cartes liées.
+- **5. Frise chronologique interactive** ✅ — filtres par type, naissances d'auteurs, éléments cliquables.
+- **6. Carte du monde** ✅ — 51 lieux (théâtres/festivals/traditions/écoles), 4 types, `fitBounds`.
+- **7. Citations** ✅ — 41 citations, filtres thème + auteur, lien pièce (`/scene?seg=cit`).
+- **8. Monologues** ✅ — 45 monologues, filtres groupés (genre/durée/niveau/époque/âge), `?focus=`.
+- **9. Exercices d'acteur** ✅ — `/exercices`, 26 exercices, 10 catégories.
+- **10. Entraînement vocal** ✅ — `/voix`, 20 exercices, 6 catégories.
+- **11. Quiz** ✅ — 3 niveaux, 8 générateurs de questions (`Quiz.tsx`).
+- **12. Mode IA** ✅ — `/ia`, Assistant ancré (OpenRouter, clé locale), streaming.
+- **13. Générateur de scènes (IA)** ✅ — onglet Générer (« à la manière de », longueur, régénérer).
+- **14. Analyse d'une pièce (IA)** ✅ — onglet Analyse (texte collé OU pièce du catalogue).
+- **15. Lecture interactive** ✅ — personnages cliquables + lecture à voix haute (Web Speech).
+- **16. Mise en scène virtuelle** ✅ — `/mise-en-scene`, plateau 2D drag, décor + lumière, sauvegarde idb.
+- **17. Costumes** ✅ — `/costumes`, 31 costumes, 7 époques.
+- **18. Décors** ✅ — `/decors`, 31 décors, 7 catégories.
+- **19. Accessoires** ✅ — `/accessoires`, 42 (armes/mobilier/objets anciens).
+- **20. Festivals** ✅ — `/festivals`, 20 festivals, agenda par saison.
+- **21. Journal du comédien** ✅ (CRUD local + stats).
+- **22. Collection personnelle** ✅ (favoris 4 catégories).
+- **23. Podcasts et vidéos** ✅ — `/medias`, annuaire curé + onglet Nouveautés (flux RSS live, sources perso).
+- **24. Glossaire** ✅ (Scène/Glossaire, filtres par lettre).
+- **25. Parcours d'apprentissage** ✅ — `/parcours`, 6 profils, étapes cliquables vers les écrans.
+- **26. Collections thématiques** ✅ (écran Collections).
+
+**Au-delà de la roadmap** : agrégation RSS en direct (fonction Netlify + onglet Nouveautés) ;
+compteurs sur tous les chips ; enrichissements de contenu.
 
 ## Détail du gros chantier « répertoire élargi » (fait le 2026-07-11)
 Les **319 pièces** de `texteslibres.fr/categorie/theatre` intégrées. 8 pièces du site écartées

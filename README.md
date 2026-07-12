@@ -1,82 +1,95 @@
 # Theathror — le compagnon du comédien
 
-PWA en français pour comédiens professionnels : encyclopédie du théâtre, bibliothèque
-de **317 pièces** filtrable (dont **315 avec le texte intégral** lisible hors-ligne),
-atelier du comédien (monologues, citations, glossaire), collection de favoris et journal
-de répétitions. Mobile Android d'abord, installable, fonctionne hors-ligne.
+PWA en français pour comédiens et passionnés de théâtre : encyclopédie, bibliothèque de
+**330 pièces** filtrable (dont **320 avec le texte intégral** lisible hors-ligne), fiches de
+**57 personnages célèbres**, atelier du comédien (monologues, citations, glossaire), exercices
+d'acteur et vocaux, mise en scène 2D, costumes / décors / accessoires, agenda des festivals,
+quiz, mode IA, podcasts & vidéos, parcours d'apprentissage, collection de favoris et journal de
+répétitions. Mobile Android d'abord, installable, fonctionne hors-ligne.
 
 ## Stack
 
 - **React 18 + Vite + TypeScript**
 - **Styles** : tokens CSS (`src/styles/tokens.css`) + styles inline fidèles au prototype
-- **PWA** : `vite-plugin-pwa` (manifest, service worker, cache offline des polices
-  auto-hébergées, des images Wikimédia et des tuiles OpenStreetMap déjà consultées).
-  Les **textes intégraux** des pièces sont code-splittés dans `assets/texts/`, **exclus
-  du précache** et mis en cache à la demande (install léger : ~1,2 Mo même à 300+ pièces)
+- **PWA** : `vite-plugin-pwa` (manifest, service worker, cache offline des polices auto-hébergées,
+  des images Wikimédia et des tuiles OpenStreetMap). Les **textes intégraux** des pièces sont
+  code-splittés dans `assets/texts/`, **exclus du précache** et mis en cache à la demande
+  (install léger malgré 320 textes)
 - **Routing** : `react-router-dom` (routes = onglets + sous-écrans)
-- **État / persistance** : `zustand` + `idb-keyval` (IndexedDB) — favoris, journal,
-  préférences. Flag d'onboarding en `localStorage` (`theathror-onb`).
+- **État / persistance** : `zustand` + `idb-keyval` (IndexedDB) — favoris, journal, préférences,
+  mise en scène, cache des flux RSS. Flag d'onboarding en `localStorage` (`theathror-onb`)
 - **Carte** : `leaflet` + `react-leaflet` sur fond OpenStreetMap
+- **Mode IA** : OpenRouter (streaming SSE), clé fournie par l'utilisateur dans Réglages —
+  **jamais en dur**, stockée localement
+- **Agrégation RSS** : fonction serverless Netlify (`netlify/functions/feed.js`) servant de proxy
+  CORS (garde anti-SSRF + cache) pour les flux de podcasts / vidéos
 
 ## Démarrer
 
 ```bash
 npm install
-npm run dev        # serveur de dev
+npm run dev        # serveur de dev (Vite)
 npm run build      # build de production → dist/
 npm run preview    # prévisualiser le build
 npm run typecheck  # vérification des types
+
+netlify dev        # dev avec la fonction serverless (onglet Nouveautés des Médias)
 ```
 
 ## Déploiement Netlify
 
-`netlify.toml` est fourni : build `npm run build`, publication de `dist`, redirection
-SPA `/* → /index.html`. Connectez le dépôt à Netlify, aucune config supplémentaire.
+`netlify.toml` : build `npm run build`, publication de `dist`, redirection SPA `/* → /index.html`,
+et **`functions = "netlify/functions"`** (proxy RSS). Connectez le dépôt à Netlify, aucune config
+supplémentaire. L'onglet « Nouveautés » des Médias ne fonctionne qu'une fois déployé (ou via
+`netlify dev`) ; le reste de l'app est autonome et hors-ligne.
 
 ## Structure
 
 ```
+netlify/functions/   feed.js — proxy CORS des flux RSS/Atom (allowlist anti-SSRF + cache)
 public/fonts/        Playfair Display + EB Garamond auto-hébergées (offline)
 src/
-  data/              Données typées (pièces, dramaturges, frise, lieux, collections,
-                     monologues, citations, glossaire). 317 pièces du domaine public ;
-                     texts/<id>.ts = texte intégral par pièce (chargé à la demande) ;
-                     personnages.ts, pieceDetails.ts (thèmes/extraits/personnages curés)
-  components/        WikiImage (repli « initiale dorée »), Star, Credit, shell, ui
-  screens/           Un fichier par écran (dont LecturePiece = lecteur de texte intégral)
+  data/              Données typées : pieces (330), dramaturges (40), characters (57 fiches),
+                     encyclopedie, frise, lieux (51), collections, monologues (45), citations (41),
+                     glossaire, exercices, voix, costumes, decors, accessoires, festivals, medias,
+                     flux (RSS), parcours ; texts/<id>.ts = texte intégral par pièce
+  components/        WikiImage (repli « initiale dorée »), Star, shell, ui
+  screens/           Un fichier par écran (+ ia/ pour le Mode IA)
+  lib/               openrouter, aiContext, useAI, feeds (RSS), storage (idb), wikimedia, date
   store.ts           Zustand (favoris, journal, réglages, onboarding, visite guidée)
-  lib/               wikimedia, storage (idb), date
 scripts/wikisource/  Outils Python de génération des textes (Wikisource + texteslibres.fr)
 ```
 
 ## Fonctionnalités
 
-- Coquille : barre haute (☰ + wordmark + date), nav basse 5 onglets, tiroir groupé
-- Onboarding 3 écrans (premier lancement) + visite guidée 10 étapes qui navigue l'app
-- Accueil (théâtre / citation / pièce du jour, accès rapides, collections)
-- Pièces : recherche (titre, auteur, **personnage**) + filtres combinables (genre dont
-  vaudeville, durée dont « < 30 min », distribution dont « 2 personnages », décor,
-  domaine public, âge, difficulté, époque)
-- **Fiche pièce** : résumé, extrait célèbre, **distribution des personnages**, thèmes,
-  et **lecteur de texte intégral** (`/pieces/:id/texte` : nav par actes, taille de police,
-  hors-ligne) pour 315 pièces
-- Encyclopédie + **fiche dramaturge** (40 auteurs, portraits) : biographie, chronologie,
-  citations, œuvres, style, influence, adaptations, manuscrits
-- Frise chronologique (ères colorées) et carte du monde (Leaflet + OSM)
-- Collections thématiques
-- Scène : monologues filtrables, citations par thème, glossaire A–Z
-- Ma collection (favoris 4 catégories, états vides) et Journal (CRUD local + stats)
-- Images Wikimédia via `Special:FilePath` avec repli systématique + crédit/licence
+- **Coquille** : barre haute, nav basse 5 onglets, tiroir ; onboarding + visite guidée qui navigue l'app
+- **Pièces** : recherche (titre, auteur, personnage) + filtres combinables **avec compteurs**
+  (genre, durée, distribution, décor, âge, difficulté, époque, domaine public)
+- **Fiche pièce** : résumé, extrait, distribution, thèmes, chips personnages **cliquables** vers les
+  fiches, et **lecteur de texte intégral** (nav par actes, taille de police, hors-ligne)
+- **Lecture interactive** : noms de personnages cliquables → fiche, **lecture à voix haute** (Web Speech)
+- **Personnages célèbres** : 57 fiches (psychologie, évolution, scènes, adaptations, monologue lié)
+- **Encyclopédie** + fiches dramaturges (40 auteurs, portraits) ; **Frise** interactive et **Carte** du monde
+- **Scène** : monologues, citations et glossaire, tous filtrables
+- **Exercices d'acteur** et **Entraînement vocal** (déroulés pas à pas)
+- **Mise en scène** : plateau 2D — placez vos acteurs, choisissez décor et lumière (sauvegarde locale)
+- **Costumes · Décors · Accessoires** : galeries historiques filtrables
+- **Festivals** : agenda mondial classé par saison
+- **Quiz** à plusieurs niveaux ; **Mode IA** (assistant, générateur de scènes, distribution, analyse)
+- **Podcasts & vidéos** : annuaire curé (hors-ligne) + onglet **Nouveautés** agrégeant des flux RSS
+  (France Culture, France Inter, Comédie-Française, ARTE, TNP…) — sources personnalisables
+- **Parcours d'apprentissage** par profil (débutant, comédien, metteur en scène…)
+- **Ma collection** (favoris) et **Journal** du comédien (CRUD local + stats)
+
+Chaque chip de filtre affiche le **nombre d'enregistrements** correspondants, pour voir d'un coup
+d'œil la profondeur de chaque catégorie.
 
 ## Images & licences
 
-Portraits et lieux proviennent de Wikimedia Commons via `Special:FilePath`. Chaque fiche
-affiche le crédit et la licence (`src/lib/wikimedia.ts`). En cas d'échec de chargement,
-un repli « initiale dorée » s'affiche — jamais de trou visuel.
+Portraits et lieux proviennent de Wikimedia Commons via `Special:FilePath`, avec crédit/licence
+(`src/lib/wikimedia.ts`) et repli « initiale dorée ». Les textes intégraux sont du **domaine public**
+(fr.wikisource, texteslibres.fr), avec l'attribution de l'édition/traduction dans le lecteur.
 
-## Étapes suivantes (architecture préparée)
+## État du projet
 
-- **Mode IA via OpenRouter** : clé fournie dans Réglages (jamais en dur, stockée
-  localement). Recherche en langage naturel, explication de pièces, générateur de scènes.
-- **Lecture interactive** (Web Speech API, voix Google sur Android, dégradation iOS)
-- Quiz, exercices d'acteur/voix, costumes/décors/accessoires, agenda des festivals
+**Roadmap complète (26/26) livrée.** Détail et historique dans `CONTEXT.md`.
