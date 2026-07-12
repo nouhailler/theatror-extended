@@ -14,6 +14,7 @@ const CARDS = [
   { titre: 'Accessoires', sub: 'Catalogue : armes, mobilier, objets anciens', to: '/accessoires' },
   { titre: 'Festivals', sub: 'Agenda mondial : Avignon, Édimbourg, Athènes…', to: '/festivals' },
   { titre: 'Podcasts & vidéos', sub: 'Ressources gratuites : Comédie-Française, France Culture, INA…', to: '/medias' },
+  { titre: "Parcours d'apprentissage", sub: 'Un chemin par profil : débutant, comédien, metteur en scène…', to: '/parcours' },
   { titre: 'Collections thématiques', sub: 'Les 100 incontournables, tragédies grecques, femmes dramaturges…', to: '/explorer/collections' },
   { titre: 'Quiz', sub: 'Testez vos connaissances : auteurs, citations, chronologie', to: '/quiz' },
 ];
@@ -35,11 +36,6 @@ export default function Explorer() {
         <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Nouveau</div>
         <div style={{ fontFamily: 'var(--font-title)', fontSize: 19, fontWeight: 600, marginTop: 2 }}>Mode IA</div>
         <div style={{ fontSize: 14, color: 'var(--text-2)', marginTop: 3 }}>Assistant théâtre, générateur de scènes, distribution, analyse</div>
-      </div>
-
-      <div style={{ background: 'linear-gradient(120deg,#3a1520,#241019)', border: '1px solid rgba(158,43,58,.4)', borderRadius: 12, padding: 16 }}>
-        <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Bientôt</div>
-        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Parcours d'apprentissage</div>
       </div>
     </div>
   );

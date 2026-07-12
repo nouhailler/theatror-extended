@@ -32,6 +32,7 @@ import Decors from './screens/Decors';
 import Accessoires from './screens/Accessoires';
 import Festivals from './screens/Festivals';
 import Medias from './screens/Medias';
+import Parcours from './screens/Parcours';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Reglages from './screens/Reglages';
@@ -73,6 +74,7 @@ export default function App() {
           <Route path="/accessoires" element={<Accessoires />} />
           <Route path="/festivals" element={<Festivals />} />
           <Route path="/medias" element={<Medias />} />
+          <Route path="/parcours" element={<Parcours />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/reglages" element={<Reglages />} />
