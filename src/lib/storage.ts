@@ -8,6 +8,7 @@ export const KEYS = {
   seeded: 'theathror-seeded', // journal d'exemple inséré une fois
   onb: 'theathror-onb', // flag onboarding vu (localStorage, lecture synchrone au boot)
   miseEnScene: 'theathror-miseenscene', // plateau de mise en scène virtuelle
+  flux: 'theathror-flux', // cache des nouveautés RSS (podcasts/vidéos)
 } as const;
 
 // ─── IndexedDB (idb-keyval) : favoris, journal, préférences ───

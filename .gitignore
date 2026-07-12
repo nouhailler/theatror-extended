@@ -10,3 +10,7 @@ dev-dist
 *.log
 *.tsbuildinfo
 __pycache__/
+
+# Local Netlify folder
+.netlify
+deno.lock
