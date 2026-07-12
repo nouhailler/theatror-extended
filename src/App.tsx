@@ -24,6 +24,7 @@ import Frise from './screens/Frise';
 import Carte from './screens/Carte';
 import Collections from './screens/Collections';
 import CollectionDetail from './screens/CollectionDetail';
+import Exercices from './screens/Exercices';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Reglages from './screens/Reglages';
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/explorer/carte" element={<Carte />} />
           <Route path="/explorer/collections" element={<Collections />} />
           <Route path="/explorer/collections/:id" element={<CollectionDetail />} />
+          <Route path="/exercices" element={<Exercices />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/reglages" element={<Reglages />} />
