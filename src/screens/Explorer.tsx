@@ -12,6 +12,7 @@ const CARDS = [
   { titre: 'Costumes', sub: 'Galerie historique : époque, pays, style, personnage', to: '/costumes' },
   { titre: 'Décors', sub: 'Bibliothèque : théâtre grec, palais, forêt, salon…', to: '/decors' },
   { titre: 'Accessoires', sub: 'Catalogue : armes, mobilier, objets anciens', to: '/accessoires' },
+  { titre: 'Festivals', sub: 'Agenda mondial : Avignon, Édimbourg, Athènes…', to: '/festivals' },
   { titre: 'Collections thématiques', sub: 'Les 100 incontournables, tragédies grecques, femmes dramaturges…', to: '/explorer/collections' },
   { titre: 'Quiz', sub: 'Testez vos connaissances : auteurs, citations, chronologie', to: '/quiz' },
 ];
@@ -37,7 +38,7 @@ export default function Explorer() {
 
       <div style={{ background: 'linear-gradient(120deg,#3a1520,#241019)', border: '1px solid rgba(158,43,58,.4)', borderRadius: 12, padding: 16 }}>
         <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Bientôt</div>
-        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Festivals · Podcasts · Parcours d'apprentissage</div>
+        <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Podcasts · Parcours d'apprentissage</div>
       </div>
     </div>
   );

@@ -30,6 +30,7 @@ import MiseEnScene from './screens/MiseEnScene';
 import Costumes from './screens/Costumes';
 import Decors from './screens/Decors';
 import Accessoires from './screens/Accessoires';
+import Festivals from './screens/Festivals';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Reglages from './screens/Reglages';
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/costumes" element={<Costumes />} />
           <Route path="/decors" element={<Decors />} />
           <Route path="/accessoires" element={<Accessoires />} />
+          <Route path="/festivals" element={<Festivals />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/reglages" element={<Reglages />} />
