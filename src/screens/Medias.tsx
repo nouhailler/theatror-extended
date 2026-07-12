@@ -108,7 +108,7 @@ function Vignette({ item }: { item: FeedItem }) {
   }
   return (
     <div style={{ fontSize: 22, flex: 'none', width: 56, height: 56, borderRadius: 10, background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      {item.type === 'video' ? '🎬' : '🎙️'}
+      {item.type === 'video' ? '🎬' : item.type === 'article' ? '📰' : '🎙️'}
     </div>
   );
 }

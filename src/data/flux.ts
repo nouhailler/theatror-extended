@@ -11,7 +11,7 @@ export interface FluxSource {
   id: string;
   titre: string;
   source: string;
-  type: 'podcast' | 'video';
+  type: 'podcast' | 'video' | 'article';
   url: string;
 }
 
@@ -43,4 +43,11 @@ export const FLUX: FluxSource[] = [
   // ─── ARTE ───
   { id: 'yt-arte-concert', titre: 'ARTE Concert', source: 'ARTE', type: 'video',
     url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UC-smeLB9AnOTeypr1YyjJ3A' },
+
+  // ─── Théâtres (actualités) ───
+  // Vérifié : seul le TNP expose un flux RSS d'actualités exploitable (WordPress).
+  // Comédie-Française, Odéon, TNS, Théâtre de la Ville, Chaillot, Rond-Point,
+  // Nanterre-Amandiers = sites JS/SPA sans flux ; MC93/La Colline = flux vides.
+  { id: 'tnp-actus', titre: 'TNP · Actualités', source: 'TNP', type: 'article',
+    url: 'https://www.tnp-villeurbanne.com/feed' },
 ];

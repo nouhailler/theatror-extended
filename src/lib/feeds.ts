@@ -17,7 +17,7 @@ export interface FeedItem {
   titre: string;
   source: string;
   programme: string;
-  type: 'podcast' | 'video';
+  type: 'podcast' | 'video' | 'article';
   lien: string;
   image?: string;
   resume?: string;
