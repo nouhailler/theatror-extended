@@ -29,25 +29,48 @@ function Segmented({ value, onChange }: { value: Seg; onChange: (s: Seg) => void
 }
 
 // ─── Monologues ───
-interface MonoFilter { label: string; group: string; test: (m: Monologue) => boolean; }
-const MONO_FILTERS: MonoFilter[] = [
-  { label: 'Femme', group: 'pour', test: (m) => m.pour === 'Femme' },
-  { label: 'Homme', group: 'pour', test: (m) => m.pour === 'Homme' },
-  { label: 'Moins de 2 min', group: 'duree', test: (m) => m.dureeMin <= 2 },
-  { label: 'Classique', group: 'epoque', test: (m) => m.epoque === 'Classique' },
-  { label: 'Contemporain', group: 'epoque', test: (m) => m.epoque === 'Contemporain' },
-  { label: 'Difficile', group: 'niveau', test: (m) => m.niveau === 'Difficile' },
+interface MonoItem { label: string; test: (m: Monologue) => boolean; }
+const MONO_GROUPS: { titre: string; items: MonoItem[] }[] = [
+  { titre: 'Genre', items: [
+    { label: 'Femme', test: (m) => m.pour === 'Femme' },
+    { label: 'Homme', test: (m) => m.pour === 'Homme' },
+    { label: 'Mixte', test: (m) => m.pour === 'Mixte' },
+  ] },
+  { titre: 'Durée', items: [
+    { label: '< 2 min', test: (m) => m.dureeMin < 2 },
+    { label: '2–3 min', test: (m) => m.dureeMin >= 2 && m.dureeMin <= 3 },
+    { label: '> 3 min', test: (m) => m.dureeMin > 3 },
+  ] },
+  { titre: 'Niveau', items: [
+    { label: 'Facile', test: (m) => m.niveau === 'Facile' },
+    { label: 'Intermédiaire', test: (m) => m.niveau === 'Intermédiaire' },
+    { label: 'Difficile', test: (m) => m.niveau === 'Difficile' },
+  ] },
+  { titre: 'Époque', items: [
+    { label: 'Classique', test: (m) => m.epoque === 'Classique' },
+    { label: 'Contemporain', test: (m) => m.epoque === 'Contemporain' },
+  ] },
+  { titre: 'Âge du rôle', items: [
+    { label: 'Jeune', test: (m) => m.age === 'Jeune' },
+    { label: 'Adulte', test: (m) => m.age === 'Adulte' },
+    { label: 'Mûr', test: (m) => m.age === 'Mûr' },
+  ] },
 ];
 
 function Monologues({ focus }: { focus?: string | null }) {
-  const [active, setActive] = useState<Set<number>>(new Set());
-  const toggle = (i: number) => setActive((p) => { const n = new Set(p); n.has(i) ? n.delete(i) : n.add(i); return n; });
+  const nav = useNavigate();
+  const [active, setActive] = useState<Set<string>>(new Set()); // clés "gi-ii"
+  const toggle = (k: string) => setActive((p) => { const n = new Set(p); n.has(k) ? n.delete(k) : n.add(k); return n; });
   const focusRef = useRef<HTMLDivElement>(null);
 
   const list = useMemo(() => {
-    const byGroup = new Map<string, MonoFilter[]>();
-    active.forEach((i) => { const f = MONO_FILTERS[i]; const a = byGroup.get(f.group) ?? []; a.push(f); byGroup.set(f.group, a); });
-    return MONOLOGUES.filter((m) => { for (const g of byGroup.values()) if (!g.some((f) => f.test(m))) return false; return true; });
+    // Un groupe contraint si au moins un de ses items est actif : OU dans le groupe, ET entre groupes.
+    return MONOLOGUES.filter((m) =>
+      MONO_GROUPS.every((g, gi) => {
+        const sel = g.items.filter((_, ii) => active.has(`${gi}-${ii}`));
+        return sel.length === 0 || sel.some((it) => it.test(m));
+      }),
+    );
   }, [active]);
 
   // Ciblage d'un monologue précis (arrivée depuis une fiche personnage)
@@ -57,15 +80,26 @@ function Monologues({ focus }: { focus?: string | null }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
-        {MONO_FILTERS.map((f, i) => (
-          <button key={f.label} className={`chip${active.has(i) ? ' active' : ''}`} onClick={() => toggle(i)}>{f.label}</button>
-        ))}
-      </div>
+      {MONO_GROUPS.map((g, gi) => (
+        <div key={g.titre} style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+          <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>{g.titre}</div>
+          <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+            {g.items.map((it, ii) => {
+              const k = `${gi}-${ii}`;
+              return <button key={it.label} className={`chip${active.has(k) ? ' active' : ''}`} onClick={() => toggle(k)}>{it.label}</button>;
+            })}
+          </div>
+        </div>
+      ))}
+
+      <div style={{ fontSize: 12.5, color: 'var(--text-muted)', marginTop: 2 }}>{list.length} monologue{list.length > 1 ? 's' : ''}</div>
+
       {list.map((m) => {
         const focused = focus === m.id;
         return (
-        <div key={m.id} ref={focused ? focusRef : undefined} className="card card-tap" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6, border: focused ? '1px solid var(--gold)' : undefined, boxShadow: focused ? '0 0 0 2px rgba(212,169,78,.25)' : undefined }}>
+        <div key={m.id} ref={focused ? focusRef : undefined} className={`card${m.pieceId ? ' card-tap' : ''}`}
+          onClick={m.pieceId ? () => nav(`/pieces/${m.pieceId}`) : undefined}
+          style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6, cursor: m.pieceId ? 'pointer' : 'default', border: focused ? '1px solid var(--gold)' : undefined, boxShadow: focused ? '0 0 0 2px rgba(212,169,78,.25)' : undefined }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
             <div style={{ fontFamily: 'var(--font-title)', fontSize: 17.5, fontWeight: 600 }}>{m.titre}</div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, whiteSpace: 'nowrap' }}>
@@ -73,10 +107,11 @@ function Monologues({ focus }: { focus?: string | null }) {
               <Star cat="monologues" id={m.id} />
             </div>
           </div>
-          <div style={{ fontSize: 14, color: 'var(--text-2)', fontStyle: 'italic' }}>{m.source}</div>
+          <div style={{ fontSize: 14, color: 'var(--text-2)', fontStyle: 'italic' }}>{m.source}{m.pieceId && <span style={{ color: 'var(--gold)', marginLeft: 6 }}>→</span>}</div>
           <div style={{ fontFamily: 'var(--font-title)', fontStyle: 'italic', fontSize: 14.5, color: 'var(--text-2b)', lineHeight: 1.45 }}>{m.extrait}</div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)' }}>{m.pour}</span>
+            {m.age && <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)' }}>{m.age}</span>}
             <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)' }}>{m.emotion}</span>
             <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, background: 'var(--red-chip-bg)', border: '1px solid var(--red-chip-border)', color: 'var(--red-chip-text)' }}>{m.niveau}</span>
           </div>

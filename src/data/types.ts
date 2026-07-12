@@ -111,6 +111,8 @@ export interface Monologue {
   emotion: string;
   niveau: 'Facile' | 'Intermédiaire' | 'Difficile';
   epoque: 'Classique' | 'Contemporain';
+  age?: 'Jeune' | 'Adulte' | 'Mûr'; // tranche d'âge du rôle
+  pieceId?: string; // lien vers la fiche pièce
 }
 
 export type CitationTheme =

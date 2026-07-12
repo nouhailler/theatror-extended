@@ -116,16 +116,59 @@ export const COLLECTIONS: Collection[] = [
   { id: 'absurde', titre: "Le théâtre de l'absurde", nb: '12 pièces', initiale: 'A', fond: 'linear-gradient(140deg,#3a3a3a,#1a1a1a)', img: '' },
 ];
 
+// Époque : Classique = XVIIe-XVIIIe (+ antique/élisabéthain) ; Contemporain = XIXe-XXe (romantiques, modernes).
 export const MONOLOGUES: Monologue[] = [
-  { id: 'tirade-nez', titre: 'La tirade du nez', source: 'Cyrano de Bergerac, acte I — Rostand', extrait: "« Ah ! non ! c'est un peu court, jeune homme ! On pouvait dire… oh ! Dieu ! bien des choses en somme… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', emotion: 'Panache', niveau: 'Difficile', epoque: 'Classique' },
-  { id: 'phedre-aveu', titre: 'Phèdre avoue sa passion', source: 'Phèdre, acte II — Racine', extrait: '« Oui, prince, je languis, je brûle pour Thésée… »', dureeMin: 2, duree: '≈ 2 min 30', pour: 'Femme', emotion: 'Passion', niveau: 'Difficile', epoque: 'Classique' },
-  { id: 'etre-ou-ne-pas', titre: 'Être ou ne pas être', source: 'Hamlet, acte III — Shakespeare', extrait: '« Être, ou ne pas être, telle est la question… »', dureeMin: 2, duree: '≈ 2 min', pour: 'Mixte', emotion: 'Doute', niveau: 'Intermédiaire', epoque: 'Classique' },
-  { id: 'figaro-monologue', titre: 'Le monologue de Figaro', source: 'Le Mariage de Figaro, acte V — Beaumarchais', extrait: "« Ô femme ! femme ! femme ! créature faible et décevante !… »", dureeMin: 4, duree: '≈ 4 min', pour: 'Homme', emotion: 'Révolte', niveau: 'Difficile', epoque: 'Classique' },
-  { id: 'camille-amour', titre: "La tirade de Camille", source: "On ne badine pas avec l'amour, acte II — Musset", extrait: "« Adieu, Perdican. »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', emotion: 'Amertume', niveau: 'Intermédiaire', epoque: 'Contemporain' },
-  { id: 'lady-macbeth', titre: 'Le somnambulisme de Lady Macbeth', source: 'Macbeth, acte V — Shakespeare', extrait: '« Va-t-en, tache maudite ! va-t-en, dis-je ! »', dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', emotion: 'Folie', niveau: 'Difficile', epoque: 'Classique' },
-  { id: 'harpagon-cassette', titre: 'Harpagon et sa cassette', source: "L'Avare, acte IV — Molière", extrait: "« Au voleur ! au voleur ! à l'assassin ! au meurtrier ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', emotion: 'Panique', niveau: 'Intermédiaire', epoque: 'Classique' },
-  { id: 'antigone-loi', titre: 'Antigone face à Créon', source: 'Antigone — Sophocle', extrait: "« Ce n'est pas Zeus qui avait proclamé pour moi cet ordre… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Femme', emotion: 'Colère', niveau: 'Difficile', epoque: 'Classique' },
-  { id: 'stances-cid', titre: 'Les stances de Rodrigue', source: 'Le Cid, acte I — Corneille', extrait: "« Percé jusques au fond du cœur / D'une atteinte imprévue aussi bien que mortelle… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', emotion: 'Déchirement', niveau: 'Difficile', epoque: 'Classique' },
+  // ─── Molière ───
+  { id: 'harpagon-cassette', titre: 'Harpagon et sa cassette', source: "L'Avare, acte IV — Molière", pieceId: 'lavare', extrait: "« Au voleur ! au voleur ! à l'assassin ! au meurtrier ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Mûr', emotion: 'Panique', niveau: 'Intermédiaire', epoque: 'Classique' },
+  { id: 'alceste-sincere', titre: 'La profession de foi d\'Alceste', source: 'Le Misanthrope, acte I — Molière', pieceId: 'le-misanthrope', extrait: "« Je veux qu'on soit sincère, et qu'en homme d'honneur, on ne lâche aucun mot qui ne parte du cœur. »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Adulte', emotion: 'Colère', niveau: 'Intermédiaire', epoque: 'Classique' },
+  { id: 'dom-juan-hypocrisie', titre: "L'éloge de l'hypocrisie", source: 'Dom Juan, acte V — Molière', pieceId: 'dom-juan', extrait: "« L'hypocrisie est un vice à la mode, et tous les vices à la mode passent pour vertus. »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', age: 'Adulte', emotion: 'Cynisme', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'sganarelle-tabac', titre: "L'éloge du tabac", source: 'Dom Juan, acte I — Molière', pieceId: 'dom-juan', extrait: "« Quoi que puisse dire Aristote et toute la philosophie, il n'est rien d'égal au tabac. »", dureeMin: 1, duree: '≈ 1 min', pour: 'Homme', age: 'Adulte', emotion: 'Comique', niveau: 'Facile', epoque: 'Classique' },
+  { id: 'arnolphe-jalousie', titre: 'La jalousie d\'Arnolphe', source: "L'École des femmes, acte IV — Molière", pieceId: 'ecole-des-femmes', extrait: "« Ciel ! faut-il que le sort, par un souci cuisant, trouble ainsi le repos d'un homme innocent ? »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Mûr', emotion: 'Jalousie', niveau: 'Intermédiaire', epoque: 'Classique' },
+
+  // ─── Corneille ───
+  { id: 'stances-cid', titre: 'Les stances de Rodrigue', source: 'Le Cid, acte I — Corneille', pieceId: 'le-cid', extrait: "« Percé jusques au fond du cœur / D'une atteinte imprévue aussi bien que mortelle… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', age: 'Jeune', emotion: 'Déchirement', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'don-diegue', titre: "Ô rage ! ô désespoir !", source: 'Le Cid, acte I — Corneille', pieceId: 'le-cid', extrait: "« Ô rage ! ô désespoir ! ô vieillesse ennemie ! N'ai-je donc tant vécu que pour cette infamie ? »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Mûr', emotion: 'Désespoir', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'auguste-clemence', titre: 'La délibération d\'Auguste', source: 'Cinna, acte IV — Corneille', pieceId: 'cinna', extrait: "« Ciel, à qui voulez-vous désormais que je fie / Les secrets de mon âme et le soin de ma vie ? »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', age: 'Mûr', emotion: 'Délibération', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'medee-vengeance', titre: 'Médée seule contre tous', source: 'Médée, acte I — Corneille', pieceId: 'medee-corneille', extrait: "« Dans un si grand revers que vous reste-t-il ? — Moi, / Moi, dis-je, et c'est assez. »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Adulte', emotion: 'Vengeance', niveau: 'Difficile', epoque: 'Classique' },
+
+  // ─── Racine ───
+  { id: 'phedre-aveu', titre: 'Phèdre avoue sa passion', source: 'Phèdre, acte II — Racine', pieceId: 'phedre', extrait: "« Oui, prince, je languis, je brûle pour Thésée… »", dureeMin: 2, duree: '≈ 2 min 30', pour: 'Femme', age: 'Adulte', emotion: 'Passion', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'hermione-fureur', titre: 'La fureur d\'Hermione', source: 'Andromaque, acte V — Racine', pieceId: 'andromaque', extrait: "« Où suis-je ? Qu'ai-je fait ? Que dois-je faire encore ? »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Jeune', emotion: 'Fureur', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'andromaque-hector', titre: 'Andromaque fidèle à Hector', source: 'Andromaque, acte III — Racine', pieceId: 'andromaque', extrait: "« Songe, songe, Céphise, à cette nuit cruelle / Qui fut pour tout un peuple une nuit éternelle… »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Adulte', emotion: 'Fidélité', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'berenice-adieu', titre: 'Les adieux de Bérénice', source: 'Bérénice, acte IV — Racine', pieceId: 'berenice', extrait: "« Pour jamais ! Ah, Seigneur ! songez-vous en vous-même / Combien ce mot cruel est affreux quand on aime ? »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Adulte', emotion: 'Douleur', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'neron-monstre', titre: 'Néron amoureux de Junie', source: 'Britannicus, acte II — Racine', pieceId: 'britannicus', extrait: "« Excité d'un désir curieux, / Cette nuit je l'ai vue arriver en ces lieux… »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Jeune', emotion: 'Trouble', niveau: 'Difficile', epoque: 'Classique' },
+
+  // ─── Beaumarchais ───
+  { id: 'figaro-monologue', titre: 'Le monologue de Figaro', source: 'Le Mariage de Figaro, acte V — Beaumarchais', pieceId: 'mariage-figaro', extrait: "« Ô femme ! femme ! femme ! créature faible et décevante !… »", dureeMin: 5, duree: '≈ 5 min', pour: 'Homme', age: 'Adulte', emotion: 'Révolte', niveau: 'Difficile', epoque: 'Classique' },
+
+  // ─── Marivaux ───
+  { id: 'silvia-trouble', titre: 'Le trouble de Silvia', source: "Le Jeu de l'amour et du hasard, acte II — Marivaux", pieceId: 'le-jeu-amour-hasard', extrait: "« Ah ! je vois clair dans mon cœur. »", dureeMin: 1, duree: '≈ 1 min 30', pour: 'Femme', age: 'Jeune', emotion: 'Trouble', niveau: 'Intermédiaire', epoque: 'Classique' },
+
+  // ─── Shakespeare ───
+  { id: 'etre-ou-ne-pas', titre: 'Être ou ne pas être', source: 'Hamlet, acte III — Shakespeare', pieceId: 'hamlet', extrait: "« Être, ou ne pas être, telle est la question… »", dureeMin: 2, duree: '≈ 2 min', pour: 'Mixte', age: 'Jeune', emotion: 'Doute', niveau: 'Intermédiaire', epoque: 'Classique' },
+  { id: 'macbeth-poignard', titre: 'Le poignard de Macbeth', source: 'Macbeth, acte II — Shakespeare', pieceId: 'macbeth', extrait: "« Est-ce un poignard que je vois là devant moi, le manche tourné vers ma main ? »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Adulte', emotion: 'Angoisse', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'lady-macbeth', titre: 'Le somnambulisme de Lady Macbeth', source: 'Macbeth, acte V — Shakespeare', pieceId: 'macbeth', extrait: "« Va-t'en, tache maudite ! va-t'en, dis-je ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Adulte', emotion: 'Folie', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'macbeth-vie', titre: "« La vie n'est qu'une ombre »", source: 'Macbeth, acte V — Shakespeare', pieceId: 'macbeth', extrait: "« Demain, et demain, et demain se glisse à petits pas de jour en jour… »", dureeMin: 1, duree: '≈ 1 min 30', pour: 'Homme', age: 'Adulte', emotion: 'Désespoir', niveau: 'Intermédiaire', epoque: 'Classique' },
+
+  // ─── Sophocle ───
+  { id: 'antigone-loi', titre: 'Antigone face à Créon', source: 'Antigone — Sophocle', pieceId: 'antigone-sophocle', extrait: "« Ce n'est pas Zeus qui avait proclamé pour moi cet ordre… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Femme', age: 'Jeune', emotion: 'Colère', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'oedipe-lumiere', titre: "L'aveuglement d'Œdipe", source: 'Œdipe roi — Sophocle', pieceId: 'oedipe-roi', extrait: "« Ô lumière, que je te voie aujourd'hui pour la dernière fois ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Adulte', emotion: 'Effroi', niveau: 'Difficile', epoque: 'Classique' },
+
+  // ─── Musset (romantique) ───
+  { id: 'camille-amour', titre: 'La tirade de Camille', source: "On ne badine pas avec l'amour, acte II — Musset", pieceId: 'on-ne-badine-pas', extrait: "« Adieu, Perdican. »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Jeune', emotion: 'Amertume', niveau: 'Intermédiaire', epoque: 'Contemporain' },
+  { id: 'perdican-amour', titre: "L'aveu de Perdican", source: "On ne badine pas avec l'amour, acte II — Musset", pieceId: 'on-ne-badine-pas', extrait: "« Tous les hommes sont menteurs, inconstants… mais il y a au monde quelque chose de saint et de sublime… »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Jeune', emotion: 'Passion', niveau: 'Intermédiaire', epoque: 'Contemporain' },
+  { id: 'lorenzo-confession', titre: 'La confession de Lorenzo', source: 'Lorenzaccio, acte III — Musset', pieceId: 'lorenzaccio', extrait: "« Je suis plus creux et plus vide qu'une statue de fer-blanc. »", dureeMin: 4, duree: '≈ 4 min', pour: 'Homme', age: 'Jeune', emotion: 'Désabusement', niveau: 'Difficile', epoque: 'Contemporain' },
+
+  // ─── Hugo (romantique) ───
+  { id: 'ruy-blas-ministres', titre: '« Bon appétit, messieurs ! »', source: 'Ruy Blas, acte III — Hugo', pieceId: 'ruy-blas', extrait: "« Bon appétit, messieurs ! Ô ministres intègres ! Conseillers vertueux ! Voilà votre façon de servir… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', age: 'Adulte', emotion: 'Colère', niveau: 'Difficile', epoque: 'Contemporain' },
+  { id: 'hernani-force', titre: '« Je suis une force qui va ! »', source: 'Hernani, acte III — Hugo', pieceId: 'hernani', extrait: "« Tu me crois peut-être / Un homme comme sont tous les autres… Je suis une force qui va ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Jeune', emotion: 'Fatalité', niveau: 'Difficile', epoque: 'Contemporain' },
+
+  // ─── Rostand (moderne) ───
+  { id: 'tirade-nez', titre: 'La tirade du nez', source: 'Cyrano de Bergerac, acte I — Rostand', pieceId: 'cyrano', extrait: "« Ah ! non ! c'est un peu court, jeune homme ! On pouvait dire… oh ! Dieu ! bien des choses en somme… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', age: 'Adulte', emotion: 'Panache', niveau: 'Difficile', epoque: 'Contemporain' },
+  { id: 'cyrano-non-merci', titre: 'La tirade des « non, merci »', source: 'Cyrano de Bergerac, acte II — Rostand', pieceId: 'cyrano', extrait: "« Et que faudrait-il faire ? … Non, merci. Non, merci. Non, merci ! Mais… chanter, rêver, rire, passer, être seul, être libre… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', age: 'Adulte', emotion: 'Fierté', niveau: 'Difficile', epoque: 'Contemporain' },
+
+  // ─── Jarry (moderne) ───
+  { id: 'pere-ubu-finances', titre: 'Ubu et les finances', source: 'Ubu roi, acte III — Jarry', pieceId: 'ubu-roi', extrait: "« Cornegidouille ! nous allons faire notre grande machine à décerveler ! »", dureeMin: 1, duree: '≈ 1 min', pour: 'Homme', age: 'Adulte', emotion: 'Grotesque', niveau: 'Facile', epoque: 'Contemporain' },
 ];
 
 export const CITATIONS: Citation[] = [
