@@ -413,6 +413,153 @@ export const PERSONNAGES: Personnage[] = [
     scenes: ['Acte I, sc. 1 — l\'exposition du plan de vengeance', 'Acte IV — le retour et le resserrement du piège', 'Acte V — le dénouement où il est tué par Ruy Blas'],
     citation: "« Je construis un édifice, et je bâtis sur toi. »",
   },
+
+  // ─── Sophocle (suite) ──────────────────────────────────────────────────
+  {
+    id: 'creon', nom: 'Créon', initiale: 'C', piece: 'Antigone', pieceId: 'antigone-sophocle',
+    auteur: 'Sophocle', auteurId: 'sophocle', emploi: 'Roi intransigeant',
+    psychologie: "Nouveau maître de Thèbes, Créon confond l'ordre de l'État avec sa propre volonté. Soucieux d'autorité et de cohérence, il fait de l'intransigeance une vertu — jusqu'à l'aveuglement tragique qui le dresse contre les lois non écrites.",
+    evolution: "De législateur assuré condamnant Antigone, il s'obstine malgré les avertissements de son fils Hémon et du devin Tirésias ; quand il cède enfin, il est trop tard : Antigone, Hémon et Eurydice sont morts, et il reste anéanti.",
+    scenes: ['L\'édit interdisant d\'ensevelir Polynice', 'L\'affrontement avec Antigone puis avec Hémon', 'La prophétie de Tirésias et le dénouement'],
+    adaptations: ['Antigone d\'Anouilh (1944) — relecture du couple Créon/Antigone', "Mises en scène contemporaines multiples", 'Opéra Œdipus Rex de Stravinsky (univers proche)'],
+    citation: "« Il n'est pas de plus grand fléau que l'anarchie. »",
+  },
+
+  // ─── Molière (suite 2) ─────────────────────────────────────────────────
+  {
+    id: 'monsieur-jourdain', nom: 'Monsieur Jourdain', initiale: 'J', piece: 'Le Bourgeois gentilhomme', pieceId: 'bourgeois-gentilhomme',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Bourgeois vaniteux', aka: ['Jourdain'],
+    psychologie: "Riche bourgeois obsédé par la noblesse, Monsieur Jourdain veut acheter les manières des gens de qualité. Vaniteux, crédule et touchant, il se fait plumer par tous ceux qui flattent sa lubie de paraître ce qu'il n'est pas.",
+    evolution: "De leçon de danse en leçon de philosophie, il s'enfonce dans le ridicule ; manipulé par Dorante et grisé par la cérémonie turque du « Mamamouchi », il finit dupé mais heureux, roi de sa propre comédie.",
+    scenes: ['Acte II — « Il y a plus de quarante ans que je dis de la prose »', 'Acte III — la leçon de belles manières', 'Acte IV — la cérémonie turque du Mamamouchi'],
+    adaptations: ['Michel Serrault, Jean Le Poulain à la Comédie-Française', "Comédie-ballet reprise avec la musique de Lully", 'Mise en scène de Denis Podalydès (2020)'],
+    citation: "« Par ma foi ! il y a plus de quarante ans que je dis de la prose sans que j'en susse rien. »",
+  },
+  {
+    id: 'philaminte', nom: 'Philaminte', initiale: 'P', piece: 'Les Femmes savantes', pieceId: 'femmes-savantes',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Bel esprit autoritaire',
+    psychologie: "Maîtresse femme éprise de savoir et de beaux discours, Philaminte règne en despote sur sa maison au nom de la philosophie et des lettres. Sincère dans sa soif de culture, elle en devient tyrannique et aveugle au ridicule de son pédantisme.",
+    evolution: "Elle impose Trissotin comme gendre et méprise le bon sens de son mari ; une fausse ruine dévoile l'imposteur, et Philaminte, détrompée sur le faux savant, retrouve un peu de mesure au dénouement.",
+    scenes: ['Acte III — la lecture des vers de Trissotin', 'Acte III — le renvoi de la servante Martine « pour faute de grammaire »', 'Acte V — la fausse ruine qui démasque Trissotin'],
+    citation: "« Nul n'aura de l'esprit hors nous et nos amis. »",
+  },
+  {
+    id: 'trissotin', nom: 'Trissotin', initiale: 'T', piece: 'Les Femmes savantes', pieceId: 'femmes-savantes',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Faux bel esprit',
+    psychologie: "Poète de salon vaniteux et intéressé, Trissotin séduit les femmes savantes par ses vers précieux pour mettre la main sur la dot d'Henriette. Sous le bel esprit affecté perce le cuistre cupide.",
+    evolution: "Adulé par Philaminte, il triomphe jusqu'à ce que la nouvelle d'une ruine de la famille le fasse fuir : l'amour du savoir n'était qu'appât, et son masque tombe d'un coup.",
+    scenes: ['Acte III — le sonnet « À la princesse Uranie »', 'Acte III — la joute de vers avec Vadius', 'Acte V — la fuite devant la fausse ruine'],
+    citation: "« Souffrez que d'un poème encor je vous régale. »",
+  },
+
+  // ─── Beaumarchais (suite 2) ────────────────────────────────────────────
+  {
+    id: 'comte-almaviva', nom: 'Le Comte Almaviva', initiale: 'A', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Grand seigneur libertin', aka: ['Le Comte'],
+    psychologie: "Grand d'Espagne séduisant et autoritaire, le Comte règne sur son domaine et sur les femmes. Jaloux de son épouse tout en convoitant Suzanne, il incarne l'arbitraire du privilège que la « folle journée » va mettre en échec.",
+    evolution: "Décidé à rétablir le « droit du seigneur » sur Suzanne, il est déjoué à chaque tour par les valets et par la Comtesse ; pris dans le noir des marronniers, il doit demander pardon publiquement — le maître humilié par ses domestiques.",
+    scenes: ['Acte III — le monologue de la jalousie', 'Acte III — le procès Marceline / Figaro', 'Acte V — les marronniers et le pardon final'],
+    adaptations: ['Personnage central des Noces de Figaro de Mozart', "Comédie-Française, rôle de répertoire", 'Trilogie Beaumarchais (déjà présent dans Le Barbier de Séville)'],
+    citation: "« Tandis que je m'agite, elle est tranquille ? »",
+  },
+  {
+    id: 'rosine', nom: 'Rosine', initiale: 'R', piece: 'Le Barbier de Séville', pieceId: 'barbier-seville',
+    auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Jeune pupille amoureuse',
+    psychologie: "Pupille séquestrée par le vieux Bartholo qui veut l'épouser, Rosine est vive, spirituelle et bien décidée à conquérir sa liberté. Sous la docilité de façade, une jeune femme rusée qui mène sa propre évasion sentimentale.",
+    evolution: "Éprise du mystérieux « Lindor » (le Comte déguisé), elle déjoue avec Figaro la surveillance de Bartholo, échange billets et signes, et finit par épouser son amant — future Comtesse Almaviva.",
+    scenes: ['Acte II — le billet glissé malgré Bartholo', 'Acte III — la leçon de musique et « la Précaution inutile »', 'Acte IV — le mariage nocturne'],
+    citation: "« Tout me dit que Lindor n'est pas fait pour moi. »",
+  },
+
+  // ─── Hugo (suite 2) ────────────────────────────────────────────────────
+  {
+    id: 'dona-sol', nom: 'Doña Sol', initiale: 'S', piece: 'Hernani', pieceId: 'hernani',
+    auteur: 'Victor Hugo', auteurId: 'hugo', emploi: 'Amoureuse passionnée',
+    psychologie: "Nièce et promise du vieux Don Ruy Gomez, Doña Sol aime le proscrit Hernani d'un amour absolu qui défie sa famille et le roi. Entière et courageuse, elle place la passion au-dessus de tout, jusqu'au sacrifice.",
+    evolution: "Convoitée par trois hommes — Hernani, le roi Don Carlos et Don Ruy Gomez —, elle reste fidèle à Hernani ; le soir de leurs noces, quand le cor fatal résonne, elle boit le poison avant lui pour ne pas lui survivre.",
+    scenes: ['Acte I — les trois soupirants dans sa chambre', 'Acte II — le refus du roi Don Carlos', 'Acte V — la mort des amants sur le poison partagé'],
+    citation: "« Vous êtes mon lion superbe et généreux ! »",
+  },
+
+  // ─── Shakespeare (suite 2) ─────────────────────────────────────────────
+  {
+    id: 'ophelie', nom: 'Ophélie', initiale: 'O', piece: 'Hamlet', pieceId: 'hamlet',
+    auteur: 'Shakespeare', auteurId: 'shakespeare', emploi: 'Jeune fille brisée', aka: ['Ophélia', 'Ophelia'],
+    psychologie: "Fille de Polonius et aimée de Hamlet, Ophélie est prise entre l'obéissance filiale et son amour. Douce et fragile, elle devient le jouet des manœuvres de la cour, jusqu'à ce que la folie l'emporte.",
+    evolution: "Éconduite puis brutalisée par un Hamlet feignant (ou non) la démence, bouleversée par la mort de son père tué par Hamlet, elle sombre dans la folie et se noie — figure tragique de l'innocence sacrifiée.",
+    scenes: ['Acte III — « Get thee to a nunnery » (la rupture avec Hamlet)', 'Acte IV — la folie et les chansons', 'Acte IV — le récit de sa noyade par la reine'],
+    adaptations: ['Tableau d\'Ophélie de John Everett Millais (1852)', "Rôle repris par les plus grandes actrices", 'Nombreuses relectures au cinéma (Zeffirelli, Branagh)'],
+    citation: "« Nous savons ce que nous sommes, mais non ce que nous pouvons être. »",
+  },
+
+  // ─── Musset (suite 2) ──────────────────────────────────────────────────
+  {
+    id: 'fantasio', nom: 'Fantasio', initiale: 'F', piece: 'Fantasio', pieceId: 'fantasio',
+    auteur: 'Musset', auteurId: 'musset', emploi: 'Bouffon mélancolique',
+    psychologie: "Jeune homme désœuvré, spirituel et mélancolique, Fantasio fuit ses dettes et son ennui en se déguisant en bouffon du roi. Sous la fantaisie et l'ironie affleure le mal du siècle romantique : le vertige de l'inutilité.",
+    evolution: "Endossant le costume du fou mort, il s'immisce à la cour et, par une pirouette poétique, empêche le mariage politique de la princesse Elsbeth — sauvant, presque par jeu, un royaume et une jeune fille du malheur.",
+    scenes: ['Acte I — la mélancolie et les dettes', 'Acte II — le bouffon qui pêche la perruque du prince', 'Acte II — le dialogue avec Elsbeth dans le jardin'],
+    citation: "« Comme tous les hommes sont plats et peu de chose ! »",
+  },
+
+  // ─── Marivaux ──────────────────────────────────────────────────────────
+  {
+    id: 'silvia', nom: 'Silvia', initiale: 'S', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
+    auteur: 'Marivaux', auteurId: 'marivaux', emploi: 'Amoureuse déguisée',
+    psychologie: "Pour observer librement le prétendant qu'on lui destine, Silvia échange son rôle avec sa servante Lisette. Fine et fière, elle veut aimer par choix, non par convention — et se trouve troublée par un « valet » plus digne qu'il ne devrait.",
+    evolution: "Le déguisement croisé (Dorante s'est lui aussi travesti en valet) la met à l'épreuve : elle lutte contre son cœur qui s'éprend d'un homme qu'elle croit domestique, jusqu'à la reconnaissance qui couronne l'amour né du hasard.",
+    scenes: ['Acte I — le pacte du déguisement avec Lisette', 'Acte II — le trouble amoureux malgré les rangs', 'Acte III — l\'aveu et la reconnaissance'],
+    citation: "« Ah ! je vois clair dans mon cœur. »",
+  },
+  {
+    id: 'dorante-jeu', nom: 'Dorante', initiale: 'D', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
+    auteur: 'Marivaux', auteurId: 'marivaux', emploi: 'Amoureux déguisé',
+    psychologie: "Venu incognito sous l'habit de son valet pour juger sa promise, Dorante est un jeune homme délicat et sincère. Son amour naissant pour une « suivante » le met en guerre avec les préjugés de son rang.",
+    evolution: "Épris de celle qu'il croit servante (Silvia déguisée), il ose braver les convenances et lui offrir son cœur avant de connaître sa vraie condition — preuve d'un amour vrai que la révélation finale récompense.",
+    scenes: ['Acte I — l\'arrivée sous le costume de Bourguignon', 'Acte II — la lutte entre l\'amour et le rang', 'Acte III — la demande faite à la « servante »'],
+    citation: "« Il n'y a point de bonheur pour moi que par toi. »",
+  },
+  {
+    id: 'arlequin', nom: 'Arlequin', initiale: 'A', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
+    auteur: 'Marivaux', auteurId: 'marivaux', emploi: 'Valet bouffon',
+    psychologie: "Valet de Dorante travesti en maître, Arlequin est truculent, gourmand et sans façons. Héritier de la commedia dell'arte, il fait éclater sous la préciosité marivaudienne un comique franc et populaire.",
+    evolution: "Jouant le grand seigneur avec maladresse, il courtise Lisette (elle-même déguisée en maîtresse) ; les deux valets tombent amoureux et se démasquent avec un naturel réjouissant, doublant en miroir l'intrigue des maîtres.",
+    scenes: ['Acte II — le « seigneur » Arlequin en pleine gloutonnerie', 'Acte II — la cour à Lisette', 'Acte III — le double aveu des valets'],
+    citation: "« Va, dans deux jours je t'aimerai bien tout à fait. »",
+  },
+
+  // ─── Corneille (suite 2) ───────────────────────────────────────────────
+  {
+    id: 'medee', nom: 'Médée', initiale: 'M', piece: 'Médée', pieceId: 'medee-corneille',
+    auteur: 'Corneille', auteurId: 'corneille', emploi: 'Magicienne vengeresse',
+    psychologie: "Magicienne trahie par Jason pour qui elle a tout sacrifié, Médée est la passion portée à l'incandescence. Bafouée, elle transforme son amour en fureur vengeresse d'une froide et terrible lucidité.",
+    evolution: "Répudiée et menacée d'exil, elle feint la soumission pour mieux frapper : elle empoisonne sa rivale Créuse et le roi Créon, puis égorge ses propres enfants pour anéantir Jason — et s'envole, invincible dans le crime.",
+    scenes: ["Acte I — « Moi, moi, dis-je, et c'est assez »", 'Acte IV — la préparation des présents empoisonnés', 'Acte V — le meurtre des enfants et la fuite'],
+    adaptations: ['Médée d\'Euripide, matrice du personnage', "Médée de Pasolini (1969) avec Maria Callas", 'Opéra Médée de Cherubini'],
+    citation: "« Dans un si grand revers que vous reste-t-il ? — Moi, / Moi, dis-je, et c'est assez. »",
+  },
+
+  // ─── Ibsen (suite) ─────────────────────────────────────────────────────
+  {
+    id: 'hedda', nom: 'Hedda Gabler', initiale: 'H', piece: 'Hedda Gabler', pieceId: 'hedda-gabler',
+    auteur: 'Henrik Ibsen', auteurId: 'ibsen', emploi: 'Bourgeoise étouffée', aka: ['Hedda'],
+    psychologie: "Fille du général Gabler, Hedda a épousé sans amour un universitaire terne. Étouffée par l'ennui et la médiocrité, avide de beauté et de pouvoir sur les autres, elle manipule son entourage par pur besoin de sentir sa liberté.",
+    evolution: "Jalouse de l'œuvre et de la vie de Lövborg, elle le pousse au « beau » suicide en lui offrant un pistolet ; mais la mort qu'elle a orchestrée est sordide, et prise au piège du chantage de Brack, elle se tue à son tour.",
+    scenes: ['Acte I — le retour de voyage de noces et l\'ennui', 'Acte III — Hedda brûle le manuscrit de Lövborg', 'Acte IV — le chantage de Brack et le suicide'],
+    adaptations: ['Rôle-phare du répertoire (Isabelle Huppert, Cate Blanchett)', "Mise en scène de Thomas Ostermeier (2005)", 'Nombreuses versions filmées'],
+    citation: "« Je brûle ton enfant, Thea ! »",
+  },
+
+  // ─── Jarry ─────────────────────────────────────────────────────────────
+  {
+    id: 'pere-ubu', nom: 'Père Ubu', initiale: 'U', piece: 'Ubu roi', pieceId: 'ubu-roi',
+    auteur: 'Alfred Jarry', auteurId: 'jarry', emploi: 'Tyran grotesque',
+    psychologie: "Lâche, glouton, cupide et cruel, le Père Ubu est la caricature bouffonne du tyran et de la bêtise au pouvoir. Poussé par sa femme et par son appétit sans limites, il incarne l'absurde et la sauvagerie sous des dehors de pantin.",
+    evolution: "De capitaine félon, il assassine le roi Venceslas, s'empare du trône de Pologne, y règne par la « débraillade » et la « décervelage », avant d'être chassé et de fuir sur la mer — toujours aussi ignoble et impuni.",
+    scenes: ['Acte I — « Merdre ! » et le complot poussé par la Mère Ubu', 'Acte III — la « machine à décerveler » et les impôts', 'Acte V — la déroute et la fuite en bateau'],
+    adaptations: ['Scandale de la création (1896) — acte de naissance du théâtre moderne', "Inspiration du surréalisme et du théâtre de l'absurde", 'Mises en scène et marionnettes innombrables'],
+    citation: "« Merdre ! »",
+  },
 ];
 
 // Normalise un nom de rôle pour le rapprochement distribution ↔ fiche :
