@@ -71,12 +71,40 @@ export const FRISE: FriseItem[] = [
 ];
 
 export const LIEUX: Lieu[] = [
+  // ─── Grands théâtres ───
   { id: 'epidaure', nom: "Théâtre d'Épidaure", lieu: 'Grèce · IVe s. av. J.-C.', txt: '14 000 places, acoustique légendaire.', initiale: 'É', img: 'Epidaurus Theater.jpg', type: 'theatre', lat: 37.596, lng: 23.079 },
+  { id: 'dionysos', nom: 'Théâtre de Dionysos', lieu: "Athènes · Ve s. av. J.-C.", txt: 'Le berceau de la tragédie, au pied de l\'Acropole.', initiale: 'D', img: '', type: 'theatre', lat: 37.970, lng: 23.727 },
+  { id: 'olimpico', nom: 'Teatro Olimpico', lieu: 'Vicence · 1585', txt: 'Le plus ancien théâtre couvert du monde, dessiné par Palladio.', initiale: 'O', img: '', type: 'theatre', lat: 45.549, lng: 11.548 },
   { id: 'comedie-francaise', nom: 'Comédie-Française', lieu: 'Paris · fondée en 1680', txt: 'La « Maison de Molière », plus ancienne troupe au monde.', initiale: 'C', img: 'Comédie-Française.jpg', type: 'theatre', lat: 48.863, lng: 2.336 },
   { id: 'globe', nom: "Shakespeare's Globe", lieu: 'Londres · reconstruit en 1997', txt: 'Théâtre élisabéthain à ciel ouvert, spectateurs debout.', initiale: 'G', img: 'Shakespeare’s Globe Theatre, London.jpg', type: 'theatre', lat: 51.508, lng: -0.097 },
-  { id: 'avignon', nom: "Festival d'Avignon", lieu: 'France · chaque juillet', txt: "Cour d'honneur du Palais des papes + 1 500 spectacles au Off.", initiale: 'A', img: 'Avignon, Palais des Papes by JM Rosier.jpg', type: 'festival', lat: 43.951, lng: 4.807 },
   { id: 'garnier', nom: 'Palais Garnier', lieu: 'Paris · inauguré en 1875', txt: "Chef-d'œuvre du Second Empire, temple de l'opéra et du ballet.", initiale: 'G', img: 'Paris Opera full frontal architecture, May 2009.jpg', type: 'theatre', lat: 48.872, lng: 2.332 },
+  { id: 'scala', nom: 'Teatro alla Scala', lieu: 'Milan · 1778', txt: 'La plus prestigieuse scène lyrique du monde.', initiale: 'S', img: '', type: 'theatre', lat: 45.467, lng: 9.189 },
+  { id: 'bolshoi', nom: 'Théâtre Bolchoï', lieu: 'Moscou · 1825', txt: 'Haut lieu de l\'opéra et du ballet russes.', initiale: 'B', img: '', type: 'theatre', lat: 55.760, lng: 37.618 },
+  { id: 'burgtheater', nom: 'Burgtheater', lieu: 'Vienne · 1741', txt: 'Le « Burg », l\'un des plus grands théâtres de langue allemande.', initiale: 'B', img: '', type: 'theatre', lat: 48.210, lng: 16.361 },
+  { id: 'broadway', nom: 'Broadway', lieu: 'New York · quartier des théâtres', txt: 'Une quarantaine de salles autour de Times Square.', initiale: 'B', img: '', type: 'theatre', lat: 40.759, lng: -73.985 },
+  { id: 'colon', nom: 'Teatro Colón', lieu: 'Buenos Aires · 1908', txt: 'Réputé pour son acoustique parmi les meilleures au monde.', initiale: 'C', img: '', type: 'theatre', lat: -34.601, lng: -58.383 },
+  { id: 'sydney', nom: 'Opéra de Sydney', lieu: 'Australie · 1973', txt: 'Icône mondiale de l\'architecture, aux voiles de béton.', initiale: 'S', img: '', type: 'theatre', lat: -33.857, lng: 151.215 },
+
+  // ─── Festivals ───
+  { id: 'avignon', nom: "Festival d'Avignon", lieu: 'France · chaque juillet', txt: "Cour d'honneur du Palais des papes + 1 500 spectacles au Off.", initiale: 'A', img: 'Avignon, Palais des Papes by JM Rosier.jpg', type: 'festival', lat: 43.951, lng: 4.807 },
   { id: 'edimbourg', nom: 'Edinburgh Fringe', lieu: 'Écosse · chaque août', txt: 'Le plus grand festival des arts du spectacle au monde.', initiale: 'E', img: '', type: 'festival', lat: 55.953, lng: -3.188 },
+  { id: 'epidaure-festival', nom: "Festival d'Athènes-Épidaure", lieu: 'Grèce · chaque été', txt: 'Les tragédies grecques rejouées dans les théâtres antiques.', initiale: 'É', img: '', type: 'festival', lat: 37.972, lng: 23.726 },
+  { id: 'bitef', nom: 'BITEF', lieu: 'Belgrade · chaque automne', txt: 'Grand festival des nouvelles tendances du théâtre.', initiale: 'B', img: '', type: 'festival', lat: 44.816, lng: 20.460 },
+  { id: 'almada', nom: 'Festival d\'Almada', lieu: 'Portugal · chaque juillet', txt: 'Rendez-vous majeur du théâtre en péninsule ibérique.', initiale: 'A', img: '', type: 'festival', lat: 38.677, lng: -9.158 },
+
+  // ─── Traditions ───
+  { id: 'kabuki', nom: 'Kabuki-za', lieu: 'Tokyo · Japon', txt: 'Le grand théâtre du kabuki ; le nô, plus ancien, lui est proche.', initiale: 'K', img: '', type: 'tradition', lat: 35.669, lng: 139.767 },
+  { id: 'opera-pekin', nom: 'Opéra de Pékin', lieu: 'Chine · depuis 1790', txt: 'Chant, mime, acrobatie et maquillages codifiés (jingju).', initiale: 'P', img: '', type: 'tradition', lat: 39.905, lng: 116.391 },
+  { id: 'kathakali', nom: 'Kathakali', lieu: 'Kerala · Inde', txt: 'Théâtre dansé aux costumes et maquillages spectaculaires.', initiale: 'K', img: '', type: 'tradition', lat: 10.850, lng: 76.271 },
+  { id: 'commedia', nom: "Commedia dell'arte", lieu: 'Venise · Italie', txt: 'Masques et types (Arlequin, Pantalon) improvisant sur canevas.', initiale: 'C', img: '', type: 'tradition', lat: 45.440, lng: 12.316 },
+  { id: 'wayang', nom: 'Wayang kulit', lieu: 'Java · Indonésie', txt: 'Théâtre d\'ombres avec marionnettes de cuir découpé.', initiale: 'W', img: '', type: 'tradition', lat: -7.797, lng: 110.370 },
+
+  // ─── Écoles ───
+  { id: 'cnsad', nom: 'Conservatoire (CNSAD)', lieu: 'Paris · 1786', txt: "Le Conservatoire national supérieur d'art dramatique.", initiale: 'C', img: '', type: 'ecole', lat: 48.872, lng: 2.345 },
+  { id: 'lecoq', nom: 'École Jacques Lecoq', lieu: 'Paris · 1956', txt: 'École internationale du mouvement, du mime et du jeu.', initiale: 'L', img: '', type: 'ecole', lat: 48.867, lng: 2.363 },
+  { id: 'rada', nom: 'RADA', lieu: 'Londres · 1904', txt: 'Royal Academy of Dramatic Art, école britannique de référence.', initiale: 'R', img: '', type: 'ecole', lat: 51.522, lng: -0.130 },
+  { id: 'actors-studio', nom: 'Actors Studio', lieu: 'New York · 1947', txt: 'Berceau de la Méthode (Strasberg, Brando, De Niro).', initiale: 'A', img: '', type: 'ecole', lat: 40.764, lng: -73.992 },
+  { id: 'gitis', nom: 'GITIS', lieu: 'Moscou · 1878', txt: 'Grande école russe, héritière de Stanislavski.', initiale: 'G', img: '', type: 'ecole', lat: 55.766, lng: 37.607 },
 ];
 
 export const COLLECTIONS: Collection[] = [
