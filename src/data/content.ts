@@ -105,6 +105,38 @@ export const LIEUX: Lieu[] = [
   { id: 'rada', nom: 'RADA', lieu: 'Londres · 1904', txt: 'Royal Academy of Dramatic Art, école britannique de référence.', initiale: 'R', img: '', type: 'ecole', lat: 51.522, lng: -0.130 },
   { id: 'actors-studio', nom: 'Actors Studio', lieu: 'New York · 1947', txt: 'Berceau de la Méthode (Strasberg, Brando, De Niro).', initiale: 'A', img: '', type: 'ecole', lat: 40.764, lng: -73.992 },
   { id: 'gitis', nom: 'GITIS', lieu: 'Moscou · 1878', txt: 'Grande école russe, héritière de Stanislavski.', initiale: 'G', img: '', type: 'ecole', lat: 55.766, lng: 37.607 },
+
+  // ─── Grands théâtres (compléments) ───
+  { id: 'national-theatre', nom: 'National Theatre', lieu: 'Londres · 1963', txt: 'La grande scène publique britannique, sur la rive sud de la Tamise.', initiale: 'N', img: '', type: 'theatre', lat: 51.507, lng: -0.114 },
+  { id: 'berliner-ensemble', nom: 'Berliner Ensemble', lieu: 'Berlin · 1949', txt: 'Le théâtre fondé par Bertolt Brecht, foyer du théâtre épique.', initiale: 'B', img: '', type: 'theatre', lat: 52.522, lng: 13.386 },
+  { id: 'teatro-real', nom: 'Teatro Real', lieu: 'Madrid · 1850', txt: 'Le grand opéra royal d\'Espagne, sur la Plaza de Oriente.', initiale: 'R', img: '', type: 'theatre', lat: 40.418, lng: -3.710 },
+  { id: 'mariinsky', nom: 'Théâtre Mariinsky', lieu: 'Saint-Pétersbourg · 1860', txt: 'Temple de l\'opéra et du ballet russes, berceau des Ballets russes.', initiale: 'M', img: '', type: 'theatre', lat: 59.925, lng: 30.296 },
+
+  // ─── Festivals (compléments) ───
+  { id: 'festwochen', nom: 'Wiener Festwochen', lieu: 'Vienne · mai-juin', txt: 'Les « Semaines festives » de Vienne : théâtre, opéra et performance.', initiale: 'W', img: '', type: 'festival', lat: 48.203, lng: 16.365 },
+  { id: 'automne-paris', nom: "Festival d'Automne", lieu: 'Paris · sept.-déc.', txt: 'Grand festival parisien de création contemporaine.', initiale: 'A', img: '', type: 'festival', lat: 48.858, lng: 2.350 },
+  { id: 'theatertreffen', nom: 'Theatertreffen', lieu: 'Berlin · mai', txt: 'Les dix mises en scène les plus marquantes de la saison germanophone.', initiale: 'T', img: '', type: 'festival', lat: 52.507, lng: 13.353 },
+  { id: 'grec-barcelone', nom: 'Festival Grec', lieu: 'Barcelone · juin-juil.', txt: 'Le festival estival de Barcelone, au Teatre Grec de Montjuïc.', initiale: 'G', img: '', type: 'festival', lat: 41.363, lng: 2.155 },
+  { id: 'mess', nom: 'MESS', lieu: 'Sarajevo · octobre', txt: 'Un des plus anciens festivals de théâtre expérimental d\'Europe.', initiale: 'M', img: '', type: 'festival', lat: 43.858, lng: 18.413 },
+  { id: 'under-radar', nom: 'Under the Radar', lieu: 'New York · janvier', txt: 'Vitrine new-yorkaise de la création théâtrale d\'avant-garde.', initiale: 'U', img: '', type: 'festival', lat: 40.735, lng: -73.990 },
+  { id: 'adelaide-fringe', nom: 'Adelaide Fringe', lieu: 'Adélaïde · fév.-mars', txt: 'Deuxième plus grand festival off du monde après Édimbourg.', initiale: 'A', img: '', type: 'festival', lat: -34.928, lng: 138.600 },
+  { id: 'santiago-mil', nom: 'Santiago a Mil', lieu: 'Santiago · janvier', txt: 'Grand carrefour des arts de la scène latino-américains.', initiale: 'S', img: '', type: 'festival', lat: -33.447, lng: -70.673 },
+
+  // ─── Traditions (compléments) ───
+  { id: 'no-theatre', nom: 'Théâtre nô', lieu: 'Kyoto · Japon', txt: 'Le plus ancien théâtre japonais : masques, lenteur et poésie codifiées.', initiale: 'N', img: '', type: 'tradition', lat: 35.011, lng: 135.768 },
+  { id: 'bunraku', nom: 'Bunraku', lieu: 'Osaka · Japon', txt: 'Théâtre de grandes marionnettes manipulées à vue, avec récitant et shamisen.', initiale: 'B', img: '', type: 'tradition', lat: 34.669, lng: 135.507 },
+  { id: 'topeng-bali', nom: 'Théâtre balinais', lieu: 'Bali · Indonésie', txt: 'Danse-théâtre masqué (topeng) mêlant rite, musique et récit.', initiale: 'T', img: '', type: 'tradition', lat: -8.507, lng: 115.262 },
+  { id: 'karagoz', nom: 'Karagöz', lieu: 'Bursa · Turquie', txt: 'Théâtre d\'ombres turc, satirique et populaire, aux figures de cuir coloré.', initiale: 'K', img: '', type: 'tradition', lat: 40.183, lng: 29.061 },
+  { id: 'kutiyattam', nom: 'Kutiyattam', lieu: 'Kerala · Inde', txt: 'Le plus ancien théâtre sanskrit vivant, classé au patrimoine de l\'UNESCO.', initiale: 'K', img: '', type: 'tradition', lat: 10.527, lng: 76.214 },
+  { id: 'yoruba', nom: 'Théâtre yoruba', lieu: 'Lagos · Nigeria', txt: 'Théâtre populaire chanté et masqué d\'Afrique de l\'Ouest.', initiale: 'Y', img: '', type: 'tradition', lat: 6.524, lng: 3.379 },
+
+  // ─── Écoles (compléments) ───
+  { id: 'piccolo-scuola', nom: 'Scuola del Piccolo', lieu: 'Milan · 1986', txt: 'L\'école du Piccolo Teatro, fondée dans l\'esprit de Giorgio Strehler.', initiale: 'P', img: '', type: 'ecole', lat: 45.470, lng: 9.184 },
+  { id: 'juilliard', nom: 'Juilliard (Drama)', lieu: 'New York · 1968', txt: 'La division théâtre de la prestigieuse école new-yorkaise.', initiale: 'J', img: '', type: 'ecole', lat: 40.774, lng: -73.983 },
+  { id: 'ernst-busch', nom: 'Ernst Busch', lieu: 'Berlin · 1951', txt: 'La grande école d\'art dramatique allemande.', initiale: 'E', img: '', type: 'ecole', lat: 52.537, lng: 13.360 },
+  { id: 'resad', nom: 'RESAD', lieu: 'Madrid · 1831', txt: 'Le conservatoire supérieur d\'art dramatique espagnol.', initiale: 'R', img: '', type: 'ecole', lat: 40.407, lng: -3.702 },
+  { id: 'central-london', nom: 'Central School', lieu: 'Londres · 1906', txt: 'Central School of Speech and Drama, référence britannique du jeu et de la voix.', initiale: 'C', img: '', type: 'ecole', lat: 51.543, lng: -0.172 },
+  { id: 'ecole-tns', nom: 'École du TNS', lieu: 'Strasbourg · 1954', txt: 'L\'école du Théâtre National de Strasbourg, formant acteurs et metteurs en scène.', initiale: 'T', img: '', type: 'ecole', lat: 48.583, lng: 7.752 },
 ];
 
 export const COLLECTIONS: Collection[] = [
