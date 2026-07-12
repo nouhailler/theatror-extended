@@ -79,6 +79,25 @@ PLAYS = {
   "romeo-juliette": ("Roméo et Juliette (trad. Hugo)", -2,
       "William Shakespeare, Roméo et Juliette — traduction française de François-Victor Hugo, 1868. Source : Wikisource, domaine public.",
       "ROMÉO ET JULIETTE"),
+  # Lot « répertoire antique » — pages uniques (nact=-1)
+  "electre-sophocle": ("Tragédies de Sophocle (Artaud)/Électre", -1,
+      "Sophocle, Électre — traduction française de Nicolas Artaud, Charpentier, 1859. Source : Wikisource, domaine public.",
+      "ÉLECTRE"),
+  "lysistrata": ("Lysistrata (trad. Eugène Talbot)", -1,
+      "Aristophane, Lysistrata — traduction française d’Eugène Talbot, Alphonse Lemerre, 1897. Source : Wikisource, domaine public.",
+      "LYSISTRATA"),
+  "les-oiseaux": ("Les Oiseaux (Aristophane, trad. Eugène Talbot)", -1,
+      "Aristophane, Les Oiseaux — traduction française d’Eugène Talbot, Alphonse Lemerre, 1897. Source : Wikisource, domaine public.",
+      "LES OISEAUX"),
+  # NB : Eschyle/Euripide (Leconte de Lisle) non intégrés — les pages fr.wikisource
+  # renvoient un conteneur sans action=parse exploitable. Laissés sans texte.
+  # Farces de Molière (un acte) — page unique sans structure d'actes (nact=-1)
+  "medecin-volant": ("Le Médecin volant/Édition Louandre, 1910", -1,
+      "Molière, Le Médecin volant — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public.",
+      "LE MÉDECIN VOLANT"),
+  "jalousie-barbouille": ("La Jalousie du Barbouillé/Édition Louandre, 1910", -1,
+      "Molière, La Jalousie du Barbouillé — édition Louandre, Charpentier, 1910. Source : Wikisource, domaine public.",
+      "LA JALOUSIE DU BARBOUILLÉ"),
 }
 
 # Pièces issues d'une source externe (texteslibres.fr) : une URL par acte.

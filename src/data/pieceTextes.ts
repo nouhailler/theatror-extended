@@ -48,6 +48,12 @@ export const TEXTE_LOADERS: Record<string, Loader> = {
   'oedipe-roi': () => import('./texts/oedipe-roi'),
   'les-grenouilles': () => import('./texts/les-grenouilles'),
   'romeo-juliette': () => import('./texts/romeo-juliette'),
+  // Répertoire antique + farces (Wikisource, domaine public)
+  'electre-sophocle': () => import('./texts/electre-sophocle'),
+  'lysistrata': () => import('./texts/lysistrata'),
+  'les-oiseaux': () => import('./texts/les-oiseaux'),
+  'medecin-volant': () => import('./texts/medecin-volant'),
+  'jalousie-barbouille': () => import('./texts/jalousie-barbouille'),
   'la-mouette': () => import('./texts/la-mouette'),
   'medee-corneille': () => import('./texts/medee-corneille'),
   'oncle-vania': () => import('./texts/oncle-vania'),
