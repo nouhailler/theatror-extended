@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { PIECES } from '../data/pieces';
 import { PIECE_DETAILS } from '../data/pieceDetails';
 import { PERSONNAGES } from '../data/personnages';
+import { ficheFor } from '../data/characters';
 import { hasTexte } from '../data/pieceTextes';
 import { DRAMATURGES } from '../data/dramaturges';
 import { difficulteLabel } from '../components/ui';
@@ -97,9 +98,17 @@ export default function FichePiece() {
           <div>
             <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>{curated ? 'Personnages principaux' : `Distribution · ${personnages.length} rôles`}</div>
             <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
-              {personnages.map((n) => (
-                <span key={n} style={{ fontSize: 13.5, padding: '5px 12px', borderRadius: 999, background: 'var(--bg-card)', border: '1px solid var(--b-rest2)', color: 'var(--text-2b)' }}>{n}</span>
-              ))}
+              {personnages.map((n) => {
+                const fid = ficheFor(p.id, n);
+                return fid ? (
+                  <span key={n} onClick={() => nav(`/explorer/personnage/${fid}`)} className="card-tap"
+                    style={{ fontSize: 13.5, padding: '5px 12px', borderRadius: 999, cursor: 'pointer', background: 'var(--bg-card)', border: '1px solid var(--gold)', color: 'var(--gold-chip-text)', display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+                    {n}<span style={{ fontSize: 11, opacity: 0.8 }}>→</span>
+                  </span>
+                ) : (
+                  <span key={n} style={{ fontSize: 13.5, padding: '5px 12px', borderRadius: 999, background: 'var(--bg-card)', border: '1px solid var(--b-rest2)', color: 'var(--text-2b)' }}>{n}</span>
+                );
+              })}
             </div>
           </div>
         )}

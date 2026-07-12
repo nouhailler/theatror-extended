@@ -62,6 +62,19 @@ export default function FichePersonnage() {
           </div>
         </Section>
 
+        {c.adaptations && c.adaptations.length > 0 && (
+          <Section titre="Adaptations & mises en scène">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {c.adaptations.map((a, i) => (
+                <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
+                  <span style={{ color: 'var(--gold)', fontSize: 13 }}>▸</span>
+                  <span style={{ fontSize: 14.5, color: 'var(--text-2b)' }}>{a}</span>
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {c.pieceId && (
             <div onClick={() => nav(`/pieces/${c.pieceId}`)} className="card card-16 card-tap" style={{ padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
