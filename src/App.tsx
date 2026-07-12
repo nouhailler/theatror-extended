@@ -26,6 +26,7 @@ import Collections from './screens/Collections';
 import CollectionDetail from './screens/CollectionDetail';
 import Exercices from './screens/Exercices';
 import Voix from './screens/Voix';
+import MiseEnScene from './screens/MiseEnScene';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Reglages from './screens/Reglages';
@@ -61,6 +62,7 @@ export default function App() {
           <Route path="/explorer/collections/:id" element={<CollectionDetail />} />
           <Route path="/exercices" element={<Exercices />} />
           <Route path="/voix" element={<Voix />} />
+          <Route path="/mise-en-scene" element={<MiseEnScene />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/reglages" element={<Reglages />} />
