@@ -87,6 +87,7 @@ export const PERSONNAGES: Personnage[] = [
     evolution: "Rival de son propre fils auprès de Mariane, il est floué de toutes parts ; le vol de sa cassette le plonge dans le délire, avant qu'un dénouement de comédie ne dénoue tout et le laisse retrouver, ému, son or.",
     scenes: ['Acte I, sc. 3 — la fouille de La Flèche', "Acte IV, sc. 7 — le monologue de la cassette (« Au voleur ! »)", 'Acte V — la confrontation avec Valère'],
     adaptations: ['Louis de Funès au cinéma (Jean Girault, 1980)', 'Michel Serrault à la Comédie-Française', "Mise en scène de Catherine Hiegel (2009)"],
+    monologueId: 'harpagon-cassette',
     citation: "« Sans dot ! »",
   },
   {
@@ -231,6 +232,7 @@ export const PERSONNAGES: Personnage[] = [
     evolution: "D'abord plus résolue que Macbeth, elle craque sous le poids du remords : la femme d'acier devient somnambule, se frottant les mains d'un sang qui ne part pas, avant de sombrer et de se donner la mort.",
     scenes: ['Acte I, sc. 5 — « Venez, esprits… désexez-moi »', 'Acte II, sc. 2 — juste après le meurtre de Duncan', 'Acte V, sc. 1 — la scène du somnambulisme (« Out, damned spot ! »)'],
     adaptations: ['Rôle-phare de Judi Dench, Marion Cotillard', "Opéra de Verdi", 'Nombreuses relectures féministes'],
+    monologueId: 'lady-macbeth',
     citation: "« Va-t'en, tache maudite ! Va-t'en, dis-je ! »",
   },
 
@@ -285,6 +287,131 @@ export const PERSONNAGES: Personnage[] = [
     scenes: ['Acte I — la dette cachée et la tarentelle', 'Acte III — la lettre de Krogstad découverte par Torvald', 'Acte III — le départ final et la porte qui claque'],
     adaptations: ['Rôle emblématique du théâtre moderne', "Mise en scène de Thomas Ostermeier (Nora, 2004)", 'Nombreuses relectures féministes ; suite A Doll\'s House Part 2'],
     citation: "« Je crois que je suis avant tout un être humain, tout comme toi. »",
+  },
+
+  // ─── Molière (suite) ───────────────────────────────────────────────────
+  {
+    id: 'orgon', nom: 'Orgon', initiale: 'O', piece: 'Tartuffe', pieceId: 'tartuffe',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Bourgeois aveuglé',
+    psychologie: "Père de famille autoritaire mais crédule, Orgon voue à Tartuffe une dévotion aveugle qui confine au fanatisme. Sa passion pour le faux dévot le rend sourd à sa famille et prêt à la sacrifier tout entière.",
+    evolution: "De protecteur enthousiaste de l'imposteur, il devient sa victime : il lui donne sa fille, sa fortune, sa maison — jusqu'à ce que la scène de la table lui dessille enfin les yeux, trop tard pour éviter le désastre.",
+    scenes: ['Acte I, sc. 4 — « Et Tartuffe ? » / « Le pauvre homme ! »', 'Acte III, sc. 6 — la donation à Tartuffe', 'Acte IV, sc. 5 — caché sous la table'],
+    citation: "« Le pauvre homme ! »",
+  },
+  {
+    id: 'elmire', nom: 'Elmire', initiale: 'E', piece: 'Tartuffe', pieceId: 'tartuffe',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Épouse habile',
+    psychologie: "Femme d'Orgon, honnête et fine, Elmire préfère l'adresse à l'éclat. Plutôt que de s'indigner, elle tend un piège calculé à Tartuffe pour confondre l'hypocrite sous les yeux mêmes de son mari.",
+    evolution: "Discrète d'abord face aux avances de Tartuffe, elle prend l'initiative décisive : la scène de la table où elle le pousse à se démasquer pendant qu'Orgon écoute, sauvant la famille par sa lucidité.",
+    scenes: ['Acte III, sc. 3 — la première déclaration de Tartuffe', 'Acte IV, sc. 5 — le piège de la table', 'Acte IV, sc. 6 — Orgon détrompé'],
+    citation: "« Les gens comme vous savent flatter les sens. »",
+  },
+  {
+    id: 'dorine', nom: 'Dorine', initiale: 'D', piece: 'Tartuffe', pieceId: 'tartuffe',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Suivante impertinente',
+    psychologie: "Servante au franc-parler, Dorine incarne le bon sens populaire face à l'aveuglement des maîtres. Insolente et lucide, elle dit tout haut ce que la bienséance tait et défend Mariane contre la tyrannie d'Orgon.",
+    evolution: "Elle raille sans relâche la fausse dévotion, tient tête à Orgon, souffle aux amoureux leur conduite et se démène pour déjouer le mariage forcé — véritable metteur en scène de la résistance familiale.",
+    scenes: ['Acte I, sc. 1 — la tirade face à Madame Pernelle', 'Acte II, sc. 2 — l\'affrontement avec Orgon', 'Acte II, sc. 4 — la réconciliation des amoureux'],
+    citation: "« Vous êtes donc bien tendre à la tentation. »",
+  },
+  {
+    id: 'agnes', nom: 'Agnès', initiale: 'A', piece: "L'École des femmes", pieceId: 'ecole-des-femmes',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Ingénue',
+    psychologie: "Élevée dans l'ignorance pour rester docile, Agnès est l'ingénue par excellence — mais sa naïveté cache une intelligence et un cœur qui s'éveillent d'un coup à l'amour, déjouant tous les calculs d'Arnolphe.",
+    evolution: "De jeune fille candide récitant ses « maximes », elle découvre le désir avec Horace, apprend à ruser, à écrire, à désobéir — et affirme, dans l'acte V, une liberté neuve qui laisse Arnolphe désarmé.",
+    scenes: ['Acte II, sc. 5 — le récit naïf du « petit chat »', 'Acte III — la lettre à Horace', 'Acte V — « Que ne vous êtes-vous comme lui fait aimer ? »'],
+    citation: "« Le moyen de chasser ce qui fait du plaisir ? »",
+  },
+  {
+    id: 'sganarelle-dj', nom: 'Sganarelle', initiale: 'S', piece: 'Dom Juan', pieceId: 'dom-juan',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Valet couard',
+    psychologie: "Valet de Dom Juan, Sganarelle est partagé entre la peur, la morale et la fascination pour son maître. Superstitieux et lâche, il désapprouve tout haut les débauches qu'il sert tout bas — double comique et conscience impuissante.",
+    evolution: "Il assiste, mi-effrayé mi-complice, à toutes les provocations de Dom Juan ; après l'engloutissement du libertin, il ne lui reste que sa fameuse plainte matérielle : « Mes gages ! »",
+    scenes: ['Acte I, sc. 1 — l\'éloge du tabac', 'Acte III — la dispute sur la religion (« Je crois que deux et deux sont quatre »)', 'Acte V — « Mes gages ! »'],
+    citation: "« Mes gages ! mes gages ! mes gages ! »",
+  },
+
+  // ─── Corneille (suite) ─────────────────────────────────────────────────
+  {
+    id: 'auguste', nom: 'Auguste', initiale: 'A', piece: 'Cinna', pieceId: 'cinna',
+    auteur: 'Corneille', auteurId: 'corneille', emploi: 'Empereur magnanime',
+    psychologie: "Empereur parvenu au faîte du pouvoir par la violence, Auguste est las du trône et rongé par le doute. Découvrant la conjuration de Cinna qu'il aimait comme un fils, il livre en lui-même le combat entre la vengeance et la clémence.",
+    evolution: "De la tentation d'abdiquer à la découverte du complot, il choisit finalement le pardon — geste souverain qui le grandit et fonde sa gloire : « Je suis maître de moi comme de l'univers. »",
+    scenes: ['Acte II, sc. 1 — la délibération sur l\'abdication', 'Acte IV — la découverte de la conjuration', 'Acte V, sc. 3 — « Soyons amis, Cinna »'],
+    citation: "« Je suis maître de moi comme de l'univers. »",
+  },
+  {
+    id: 'cinna', nom: 'Cinna', initiale: 'C', piece: 'Cinna', pieceId: 'cinna',
+    auteur: 'Corneille', auteurId: 'corneille', emploi: 'Conjuré partagé',
+    psychologie: "Petit-fils de Pompée, Cinna conspire contre Auguste par amour pour Émilie autant que par idéal républicain. Mais la bonté du tyran qu'il veut tuer le déchire : sa parole donnée à Émilie s'oppose à sa reconnaissance grandissante.",
+    evolution: "Meneur ardent de la conjuration, il vacille à mesure qu'Auguste le comble de bienfaits ; démasqué, il assume son crime avant d'être submergé par la clémence impériale qui le désarme et le rachète.",
+    scenes: ['Acte I, sc. 3 — le récit enflammé de la conjuration', 'Acte III, sc. 4 — les remords face à Maxime', 'Acte V — l\'aveu et le pardon'],
+    citation: "« Je sais ce que je suis, et ce que je vous dois. »",
+  },
+
+  // ─── Racine (suite) ────────────────────────────────────────────────────
+  {
+    id: 'berenice', nom: 'Bérénice', initiale: 'B', piece: 'Bérénice', pieceId: 'berenice',
+    auteur: 'Racine', auteurId: 'racine', emploi: 'Reine sacrifiée',
+    psychologie: "Reine de Palestine aimée de Titus, Bérénice croit au bonheur jusqu'à ce que la raison d'État le lui arrache. Femme entière et digne, elle passe de l'amour comblé à la douleur de l'absolu renoncement.",
+    evolution: "De l'attente heureuse des noces à l'incompréhension, puis à la révolte et enfin à la grandeur : elle s'impose de partir pour que Titus règne, transformant sa souffrance en héroïsme de la retenue.",
+    scenes: ['Acte IV, sc. 5 — « Pour jamais ! Ah, Seigneur ! songez-vous en vous-même… »', 'Acte V — les adieux', 'Acte V, sc. dernière — « Que le jour recommence et que le jour finisse… »'],
+    citation: "« Dans un mois, dans un an, comment souffrirons-nous, / Seigneur, que tant de mers me séparent de vous ? »",
+  },
+  {
+    id: 'titus', nom: 'Titus', initiale: 'T', piece: 'Bérénice', pieceId: 'berenice',
+    auteur: 'Racine', auteurId: 'racine', emploi: 'Empereur déchiré',
+    psychologie: "Nouvel empereur de Rome, Titus aime Bérénice mais découvre que Rome n'acceptera jamais une reine. Le devoir impérial et la passion se livrent en lui un combat où l'homme s'efface douloureusement devant le souverain.",
+    evolution: "Il diffère l'aveu, cherche des détours, songe même à mourir, avant de trouver la force de renoncer publiquement à Bérénice — sacrifice qui scelle sa gloire au prix de son bonheur.",
+    scenes: ['Acte II, sc. 2 — la résolution douloureuse', 'Acte IV, sc. 5 — la confrontation avec Bérénice', 'Acte V — le triple renoncement'],
+    citation: "« Je n'ai que trop pris soin de vous montrer mes larmes. »",
+  },
+
+  // ─── Beaumarchais (suite) ──────────────────────────────────────────────
+  {
+    id: 'suzanne', nom: 'Suzanne', initiale: 'S', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Camériste rusée',
+    psychologie: "Fiancée de Figaro et camériste de la Comtesse, Suzanne est vive, spirituelle et plus fine encore que Figaro. C'est elle qui déjoue le Comte : l'intelligence pratique et le sang-froid au service de son mariage et de sa vertu.",
+    evolution: "Menacée par le « droit du seigneur » que convoite le Comte, elle mène le jeu des travestissements de la « folle journée », piège Almaviva dans le noir des marronniers et sauve à la fois son honneur et son amour.",
+    scenes: ['Acte I, sc. 1 — la révélation des intentions du Comte', 'Acte IV — le billet dicté à la Comtesse', 'Acte V — la scène des marronniers'],
+    citation: "« Est-ce qu'on n'est pas toujours assez riche pour attendre ? »",
+  },
+  {
+    id: 'cherubin', nom: 'Chérubin', initiale: 'C', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Page amoureux',
+    psychologie: "Adolescent que l'amour trouble tout entier, Chérubin aime toutes les femmes et surtout la Comtesse. Figure de l'éveil du désir, il incarne la grâce, l'émoi et l'impertinence de la jeunesse.",
+    evolution: "Renvoyé par le Comte jaloux, il se cache, se travestit, multiplie les émois et les quiproquos ; son innocence espiègle alimente toute l'intrigue avant qu'on l'expédie à l'armée — sans qu'il cesse de revenir.",
+    scenes: ['Acte I, sc. 7 — « Non, je ne sais plus ce que je suis »', 'Acte II — le travestissement et le saut par la fenêtre', 'Acte II, sc. 4 — la romance « Mon coursier hors d\'haleine »'],
+    citation: "« Je ne sais plus ce que je suis ; mais depuis quelque temps je sens ma poitrine agitée… »",
+  },
+
+  // ─── Musset (suite) ────────────────────────────────────────────────────
+  {
+    id: 'camille', nom: 'Camille', initiale: 'C', piece: "On ne badine pas avec l'amour", pieceId: 'on-ne-badine-pas',
+    auteur: 'Musset', auteurId: 'musset', emploi: 'Jeune fille blessée',
+    psychologie: "Élevée au couvent et marquée par les confidences amères des religieuses, Camille se méfie de l'amour et des hommes. Orgueil, peur d'être trahie et passion refoulée pour Perdican se disputent en elle.",
+    evolution: "De la froideur affichée au duel verbal avec Perdican, elle laisse enfin paraître son amour ; mais l'orgueil des deux jeunes gens et la mort de Rosette brisent tout : « Adieu, Perdican. »",
+    scenes: ['Acte II, sc. 5 — la joute sur l\'amour et les couvents', 'Acte III — l\'aveu surpris derrière le mur', 'Acte III, sc. 8 — « Adieu, Perdican »'],
+    monologueId: 'camille-amour',
+    citation: "« Adieu, Perdican. »",
+  },
+  {
+    id: 'celimene', nom: 'Célimène', initiale: 'C', piece: 'Le Misanthrope', pieceId: 'le-misanthrope',
+    auteur: 'Molière', auteurId: 'moliere', emploi: 'Coquette mondaine',
+    psychologie: "Jeune veuve brillante et médisante, Célimène règne sur les salons par son esprit. Coquette assumée, elle aime être courtisée et redoute l'engagement — tout ce qui rend Alceste furieux et amoureux à la fois.",
+    evolution: "Maîtresse du jeu des soupirants, elle est prise à son propre piège quand ses lettres contradictoires sont dévoilées ; démasquée, elle refuse pourtant de suivre Alceste au « désert » : elle a vingt ans et aime le monde.",
+    scenes: ['Acte II, sc. 4 — la scène des portraits', 'Acte V — la lecture publique des lettres', 'Acte V — le refus final de suivre Alceste'],
+    citation: "« La solitude effraie une âme de vingt ans. »",
+  },
+
+  // ─── Hugo (suite) ──────────────────────────────────────────────────────
+  {
+    id: 'don-salluste', nom: 'Don Salluste', initiale: 'D', piece: 'Ruy Blas', pieceId: 'ruy-blas',
+    auteur: 'Victor Hugo', auteurId: 'hugo', emploi: 'Grand d\'Espagne vindicatif',
+    psychologie: "Ministre disgracié et froid, Don Salluste met toute son intelligence au service d'une seule passion : la vengeance contre la reine qui l'a chassé. Cynique et méthodique, il manie les êtres comme des instruments.",
+    evolution: "Il façonne son valet Ruy Blas en faux seigneur pour perdre la reine, tisse patiemment son piège — mais son mépris pour ceux qu'il utilise le perd : Ruy Blas se retourne et le tue avant de mourir.",
+    scenes: ['Acte I, sc. 1 — l\'exposition du plan de vengeance', 'Acte IV — le retour et le resserrement du piège', 'Acte V — le dénouement où il est tué par Ruy Blas'],
+    citation: "« Je construis un édifice, et je bâtis sur toi. »",
   },
 ];
 

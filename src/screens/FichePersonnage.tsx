@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { PERSONNAGES } from '../data/characters';
+import { MONOLOGUES } from '../data/content';
 
 export default function FichePersonnage() {
   const { id } = useParams();
   const nav = useNavigate();
   const c = PERSONNAGES.find((x) => x.id === id);
+  const mono = c?.monologueId ? MONOLOGUES.find((m) => m.id === c.monologueId) : undefined;
 
   if (!c) {
     return (
@@ -85,11 +87,12 @@ export default function FichePersonnage() {
               <div style={{ fontSize: 20, color: 'var(--gold)' }}>→</div>
             </div>
           )}
-          {c.monologueId && (
-            <div onClick={() => nav('/scene?seg=mono')} className="card card-16 card-tap" style={{ padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
+          {mono && (
+            <div onClick={() => nav(`/scene?seg=mono&focus=${mono.id}`)} className="card card-16 card-tap" style={{ padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Monologue lié</div>
-                <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>Travailler ce rôle en Scène</div>
+                <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>{mono.titre}</div>
+                <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 1 }}>{mono.duree} · à travailler en Scène</div>
               </div>
               <div style={{ fontSize: 20, color: 'var(--gold)' }}>→</div>
             </div>

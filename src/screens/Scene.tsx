@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ScreenTitle } from '../components/ui';
 import Star from '../components/Star';
@@ -39,15 +39,21 @@ const MONO_FILTERS: MonoFilter[] = [
   { label: 'Difficile', group: 'niveau', test: (m) => m.niveau === 'Difficile' },
 ];
 
-function Monologues() {
+function Monologues({ focus }: { focus?: string | null }) {
   const [active, setActive] = useState<Set<number>>(new Set());
   const toggle = (i: number) => setActive((p) => { const n = new Set(p); n.has(i) ? n.delete(i) : n.add(i); return n; });
+  const focusRef = useRef<HTMLDivElement>(null);
 
   const list = useMemo(() => {
     const byGroup = new Map<string, MonoFilter[]>();
     active.forEach((i) => { const f = MONO_FILTERS[i]; const a = byGroup.get(f.group) ?? []; a.push(f); byGroup.set(f.group, a); });
     return MONOLOGUES.filter((m) => { for (const g of byGroup.values()) if (!g.some((f) => f.test(m))) return false; return true; });
   }, [active]);
+
+  // Ciblage d'un monologue précis (arrivée depuis une fiche personnage)
+  useEffect(() => {
+    if (focus && focusRef.current) focusRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [focus]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -56,8 +62,10 @@ function Monologues() {
           <button key={f.label} className={`chip${active.has(i) ? ' active' : ''}`} onClick={() => toggle(i)}>{f.label}</button>
         ))}
       </div>
-      {list.map((m) => (
-        <div key={m.id} className="card card-tap" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      {list.map((m) => {
+        const focused = focus === m.id;
+        return (
+        <div key={m.id} ref={focused ? focusRef : undefined} className="card card-tap" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6, border: focused ? '1px solid var(--gold)' : undefined, boxShadow: focused ? '0 0 0 2px rgba(212,169,78,.25)' : undefined }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
             <div style={{ fontFamily: 'var(--font-title)', fontSize: 17.5, fontWeight: 600 }}>{m.titre}</div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, whiteSpace: 'nowrap' }}>
@@ -73,7 +81,8 @@ function Monologues() {
             <span style={{ fontSize: 12, padding: '2px 9px', borderRadius: 999, background: 'var(--red-chip-bg)', border: '1px solid var(--red-chip-border)', color: 'var(--red-chip-text)' }}>{m.niveau}</span>
           </div>
         </div>
-      ))}
+        );
+      })}
       {list.length === 0 && <Empty>Aucun monologue pour ces filtres.</Empty>}
     </div>
   );
@@ -145,13 +154,14 @@ function Empty({ children }: { children: React.ReactNode }) {
 export default function Scene() {
   const [params, setParams] = useSearchParams();
   const seg = (params.get('seg') as Seg) || 'mono';
+  const focus = params.get('focus');
   const setSeg = (s: Seg) => setParams({ seg: s }, { replace: true });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '18px 18px 28px' }} data-screen-label="Scène">
       <ScreenTitle over="L'atelier du comédien">Scène</ScreenTitle>
       <Segmented value={seg} onChange={setSeg} />
-      {seg === 'mono' && <Monologues />}
+      {seg === 'mono' && <Monologues focus={focus} />}
       {seg === 'cit' && <CitationsSeg />}
       {seg === 'glos' && <Glossaire />}
     </div>

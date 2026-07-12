@@ -56,6 +56,7 @@ export const MONOLOGUES: Monologue[] = [
   { id: 'lady-macbeth', titre: 'Le somnambulisme de Lady Macbeth', source: 'Macbeth, acte V — Shakespeare', extrait: '« Va-t-en, tache maudite ! va-t-en, dis-je ! »', dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', emotion: 'Folie', niveau: 'Difficile', epoque: 'Classique' },
   { id: 'harpagon-cassette', titre: 'Harpagon et sa cassette', source: "L'Avare, acte IV — Molière", extrait: "« Au voleur ! au voleur ! à l'assassin ! au meurtrier ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', emotion: 'Panique', niveau: 'Intermédiaire', epoque: 'Classique' },
   { id: 'antigone-loi', titre: 'Antigone face à Créon', source: 'Antigone — Sophocle', extrait: "« Ce n'est pas Zeus qui avait proclamé pour moi cet ordre… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Femme', emotion: 'Colère', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'stances-cid', titre: 'Les stances de Rodrigue', source: 'Le Cid, acte I — Corneille', extrait: "« Percé jusques au fond du cœur / D'une atteinte imprévue aussi bien que mortelle… »", dureeMin: 3, duree: '≈ 3 min', pour: 'Homme', emotion: 'Déchirement', niveau: 'Difficile', epoque: 'Classique' },
 ];
 
 export const CITATIONS: Citation[] = [
