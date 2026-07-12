@@ -1,12 +1,14 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { PERSONNAGES } from '../data/characters';
 import { MONOLOGUES } from '../data/content';
+import { DRAMATURGES } from '../data/dramaturges';
 
 export default function FichePersonnage() {
   const { id } = useParams();
   const nav = useNavigate();
   const c = PERSONNAGES.find((x) => x.id === id);
   const mono = c?.monologueId ? MONOLOGUES.find((m) => m.id === c.monologueId) : undefined;
+  const auteur = c?.auteurId ? DRAMATURGES.find((d) => d.id === c.auteurId) : undefined;
 
   if (!c) {
     return (
@@ -78,6 +80,15 @@ export default function FichePersonnage() {
         )}
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {auteur && (
+            <div onClick={() => nav(`/explorer/dramaturge/${auteur.id}`)} className="card card-16 card-tap" style={{ padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>L'auteur</div>
+                <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600, marginTop: 2 }}>{auteur.nom}</div>
+              </div>
+              <div style={{ fontSize: 20, color: 'var(--gold)' }}>→</div>
+            </div>
+          )}
           {c.pieceId && (
             <div onClick={() => nav(`/pieces/${c.pieceId}`)} className="card card-16 card-tap" style={{ padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ flex: 1 }}>
