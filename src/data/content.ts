@@ -169,6 +169,29 @@ export const MONOLOGUES: Monologue[] = [
 
   // ─── Jarry (moderne) ───
   { id: 'pere-ubu-finances', titre: 'Ubu et les finances', source: 'Ubu roi, acte III — Jarry', pieceId: 'ubu-roi', extrait: "« Cornegidouille ! nous allons faire notre grande machine à décerveler ! »", dureeMin: 1, duree: '≈ 1 min', pour: 'Homme', age: 'Adulte', emotion: 'Grotesque', niveau: 'Facile', epoque: 'Contemporain' },
+
+  // ─── Grands récits & tirades longues (> 3 min) ───
+  { id: 'theramene-recit', titre: 'Le récit de Théramène', source: 'Phèdre, acte V — Racine', pieceId: 'phedre', extrait: "« À peine nous sortions des portes de Trézène, il était sur son char… »", dureeMin: 5, duree: '≈ 5 min', pour: 'Homme', age: 'Mûr', emotion: 'Effroi', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'cleante-devots', titre: 'Les vrais et les faux dévots', source: 'Tartuffe, acte I — Molière', pieceId: 'tartuffe', extrait: "« Il est de faux dévots ainsi que de faux braves… »", dureeMin: 4, duree: '≈ 4 min', pour: 'Homme', age: 'Adulte', emotion: 'Conviction', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'nora-depart', titre: "Nora quitte Torvald", source: 'Une maison de poupée, acte III — Ibsen', pieceId: 'maison-poupee', extrait: "« Nous sommes mariés depuis huit ans, et voici la première fois que nous causons sérieusement. »", dureeMin: 4, duree: '≈ 4 min', pour: 'Femme', age: 'Adulte', emotion: 'Émancipation', niveau: 'Difficile', epoque: 'Contemporain' },
+  { id: 'dom-juan-inconstance', titre: "L'éloge de l'inconstance", source: 'Dom Juan, acte I — Molière', pieceId: 'dom-juan', extrait: "« Quoi ? tu voudrais qu'on se liât pour toujours au premier objet qui nous prend ? »", dureeMin: 4, duree: '≈ 4 min', pour: 'Homme', age: 'Adulte', emotion: 'Cynisme', niveau: 'Difficile', epoque: 'Classique' },
+
+  // ─── Chœurs & voix collectives (Mixte) ───
+  { id: 'choeur-antigone', titre: "Le chœur — Hymne à l'homme", source: 'Antigone — Sophocle', pieceId: 'antigone-sophocle', extrait: "« Il existe bien des merveilles en ce monde ; il n'en est pas de plus grande que l'homme. »", dureeMin: 2, duree: '≈ 2 min', pour: 'Mixte', age: 'Adulte', emotion: 'Gravité', niveau: 'Intermédiaire', epoque: 'Classique' },
+  { id: 'choeur-oedipe', titre: 'Le chœur sur le destin', source: 'Œdipe roi — Sophocle', pieceId: 'oedipe-roi', extrait: "« Ô générations des mortels, je vous compte pour rien tant que vous vivez ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Mixte', age: 'Adulte', emotion: 'Mélancolie', niveau: 'Intermédiaire', epoque: 'Classique' },
+  { id: 'choeur-grenouilles', titre: 'Le chœur des grenouilles', source: 'Les Grenouilles — Aristophane', pieceId: 'les-grenouilles', extrait: "« Brekekekex, koax, koax ! »", dureeMin: 1, duree: '≈ 1 min 30', pour: 'Mixte', emotion: 'Comique', niveau: 'Facile', epoque: 'Classique' },
+
+  // ─── Faciles / comiques ───
+  { id: 'scapin-fourbe', titre: "Scapin fait l'éloge de ses talents", source: 'Les Fourberies de Scapin, acte I — Molière', pieceId: 'fourberies-scapin', extrait: "« À vous dire vrai, il y a peu de choses qui me soient impossibles… »", dureeMin: 1, duree: '≈ 1 min 30', pour: 'Homme', age: 'Adulte', emotion: 'Assurance', niveau: 'Facile', epoque: 'Classique' },
+  { id: 'toinette-medecin', titre: 'Toinette déguisée en médecin', source: 'Le Malade imaginaire, acte III — Molière', pieceId: 'malade-imaginaire', extrait: "« Donnez-moi votre pouls. Allons donc, que l'on batte comme il faut. »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Adulte', emotion: 'Comique', niveau: 'Facile', epoque: 'Classique' },
+  { id: 'cyrano-cadets', titre: 'Ce sont les cadets de Gascogne', source: 'Cyrano de Bergerac, acte II — Rostand', pieceId: 'cyrano', extrait: "« Ce sont les cadets de Gascogne / De Carbon de Castel-Jaloux… »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Adulte', emotion: 'Panache', niveau: 'Facile', epoque: 'Contemporain' },
+  { id: 'agnes-recit', titre: 'Le récit naïf d\'Agnès', source: "L'École des femmes, acte II — Molière", pieceId: 'ecole-des-femmes', extrait: "« Il m'a pris le ruban que vous m'aviez donné… »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Jeune', emotion: 'Naïveté', niveau: 'Facile', epoque: 'Classique' },
+
+  // ─── Classiques (compléments) ───
+  { id: 'camille-horace', titre: 'Les imprécations de Camille', source: 'Horace, acte IV — Corneille', pieceId: 'horace', extrait: "« Rome, l'unique objet de mon ressentiment ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Femme', age: 'Jeune', emotion: 'Fureur', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'antiochus-berenice', titre: "L'aveu d'Antiochus", source: 'Bérénice, acte I — Racine', pieceId: 'berenice', extrait: "« Dans l'Orient désert quel devint mon ennui ! »", dureeMin: 2, duree: '≈ 2 min 30', pour: 'Homme', age: 'Adulte', emotion: 'Mélancolie', niveau: 'Difficile', epoque: 'Classique' },
+  { id: 'hippolyte-aveu', titre: "L'aveu d'Hippolyte à Aricie", source: 'Phèdre, acte II — Racine', pieceId: 'phedre', extrait: "« Moi vous haïr, Madame ? »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Jeune', emotion: 'Trouble', niveau: 'Intermédiaire', epoque: 'Classique' },
+  { id: 'fantasio-melancolie', titre: 'La mélancolie de Fantasio', source: 'Fantasio, acte I — Musset', pieceId: 'fantasio', extrait: "« Comme tous les hommes sont plats et peu de chose ! »", dureeMin: 2, duree: '≈ 2 min', pour: 'Homme', age: 'Jeune', emotion: 'Spleen', niveau: 'Intermédiaire', epoque: 'Contemporain' },
 ];
 
 export const CITATIONS: Citation[] = [

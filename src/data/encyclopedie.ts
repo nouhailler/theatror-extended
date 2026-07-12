@@ -284,6 +284,169 @@ export const ARTICLES: Article[] = [
     ],
     anecdote: "Au XVIIe siècle, les comédiens jouaient les tragédies antiques en costume de leur propre temps : perruques et habits à la mode de Versailles.",
   },
+
+  // ─────────────── HISTOIRE (compléments) ───────────────
+  {
+    id: 'hist-lumieres', categorie: 'Histoire', titre: 'Le théâtre des Lumières', soustitre: 'XVIIIe siècle', initiale: 'L',
+    intro: "Au siècle des Lumières, la comédie s'affine (Marivaux, le « marivaudage ») et se fait plus hardie socialement (Beaumarchais). Diderot invente le drame bourgeois, qui met en scène les gens du commun et leurs sentiments.",
+    points: [
+      "Marivaux : la surprise de l'amour et le jeu des masques sociaux.",
+      "Beaumarchais : Figaro, valet plus fin que ses maîtres, et une satire qui annonce la Révolution.",
+      'Diderot théorise le « drame sérieux », entre tragédie et comédie.',
+    ],
+    citation: { txt: "« Sans la liberté de blâmer, il n'est point d'éloge flatteur. »", src: 'Beaumarchais, Le Mariage de Figaro' },
+  },
+  {
+    id: 'hist-realisme', categorie: 'Histoire', titre: 'Réalisme & naturalisme', soustitre: 'Fin du XIXe siècle', initiale: 'R',
+    intro: "À la fin du XIXe siècle, la scène cherche la vérité du quotidien. André Antoine fonde le Théâtre Libre et impose le « quatrième mur » ; Ibsen et Tchekhov peignent l'intime et les non-dits.",
+    points: [
+      "Le « quatrième mur » : jouer comme si le public n'existait pas.",
+      'Décors et jeu cherchent le vrai, contre l\'emphase romantique.',
+      'Ibsen, Tchekhov, Strindberg : naissance du théâtre moderne.',
+    ],
+    anecdote: "Antoine faisait apporter de vrais quartiers de viande sur scène pour une pièce sur des bouchers : le naturalisme jusqu'au bout.",
+  },
+  {
+    id: 'hist-boulevard', categorie: 'Histoire', titre: 'Le théâtre de boulevard', soustitre: 'XIXe – XXe siècle', initiale: 'B',
+    intro: "Sur les « Grands Boulevards » parisiens, un théâtre populaire et commercial triomphe : vaudevilles à quiproquos, comédies légères et rires en cascade, pour un public en quête de divertissement.",
+    points: [
+      'Le vaudeville : mécanique implacable des portes qui claquent (Feydeau, Labiche).',
+      'Courteline : la satire des petits travers et de l\'administration.',
+      'Un art du rythme, du timing et de la réplique.',
+    ],
+    citation: { txt: "« Il est plus facile d'être héros que honnête homme. »", src: 'Courteline' },
+  },
+  {
+    id: 'hist-decentralisation', categorie: 'Histoire', titre: 'La décentralisation théâtrale', soustitre: 'France · après 1945', initiale: 'D',
+    intro: "Après la guerre, l'État porte le théâtre hors de Paris : centres dramatiques nationaux, maisons de la culture, festivals. Jean Vilar et le TNP rêvent d'un « théâtre populaire » de service public.",
+    points: [
+      'Jean Vilar fonde le Festival d\'Avignon (1947) puis dirige le TNP.',
+      'Création des Centres dramatiques nationaux (CDN) en région.',
+      'Un théâtre exigeant pour le plus grand nombre.',
+    ],
+    anecdote: "Vilar jouait dans la Cour d'honneur du Palais des papes, sans rideau ni décor, misant tout sur l'acteur, le texte et la lumière.",
+  },
+
+  // ─────────────── MOUVEMENTS (compléments) ───────────────
+  {
+    id: 'mvt-baroque', categorie: 'Mouvements', titre: 'Le baroque', soustitre: 'Fin XVIe – début XVIIe siècle', initiale: 'B',
+    intro: "Avant l'ordre classique, le théâtre baroque cultive l'illusion, le mouvement et la métamorphose : le monde est un théâtre, la vie un songe. Machines, apparitions et coups de théâtre s'y multiplient.",
+    points: [
+      'Goût de l\'illusion et du théâtre dans le théâtre.',
+      "Instabilité, déguisements, renversements de situation.",
+      "Corneille jeune (L'Illusion comique), Shakespeare, Calderón.",
+    ],
+    citation: { txt: "« Nous sommes de l'étoffe dont sont faits les songes. »", src: 'Shakespeare, La Tempête' },
+  },
+  {
+    id: 'mvt-commedia', categorie: 'Mouvements', titre: "La commedia dell'arte", soustitre: 'Italie · XVIe – XVIIIe siècle', initiale: 'C',
+    intro: "Théâtre italien de comédiens ambulants, la commedia dell'arte repose sur des types fixes et masqués (Arlequin, Pantalon, le Docteur) improvisant sur un canevas. Son énergie irrigue Molière et Marivaux.",
+    points: [
+      'Des personnages-types reconnaissables, aux masques codifiés.',
+      'Le jeu est improvisé sur un scénario (canevas).',
+      'Les « lazzi » : gags physiques et numéros comiques.',
+    ],
+    anecdote: "Arlequin, avec son habit de losanges colorés et sa batte, est né misérable valet avant de devenir l'amoureux virtuose que l'on connaît.",
+  },
+  {
+    id: 'mvt-cruaute', categorie: 'Mouvements', titre: 'Avant-gardes & théâtre de la cruauté', soustitre: 'Première moitié du XXe siècle', initiale: 'A',
+    intro: "Contre le théâtre psychologique, les avant-gardes veulent choquer et régénérer la scène. Jarry ouvre la voie avec Ubu ; Antonin Artaud rêve d'un « théâtre de la cruauté » agissant sur les sens comme un rite.",
+    points: [
+      'Jarry (Ubu roi) : provocation et grotesque fondateurs.',
+      "Artaud : un théâtre physique, incantatoire, au-delà des mots.",
+      'Influence majeure sur toute la scène moderne.',
+    ],
+    citation: { txt: "« Le théâtre, c'est le double non pas de cette réalité quotidienne… mais d'une autre réalité dangereuse. »", src: 'Antonin Artaud' },
+  },
+  {
+    id: 'mvt-quotidien', categorie: 'Mouvements', titre: 'Le théâtre du quotidien', soustitre: 'Fin XXe siècle', initiale: 'Q',
+    intro: "Dans les années 1970-90, des auteurs captent la langue ordinaire, ses ratés et ses silences. Le drame naît du banal, de la parole empêchée : c'est le théâtre de Michel Vinaver ou de Jean-Luc Lagarce.",
+    points: [
+      'La matière : la conversation, le travail, la famille.',
+      'Une langue faite de reprises, de blancs, d\'inachèvement.',
+      'Vinaver, Lagarce, Koltès dans son sillage.',
+    ],
+    citation: { txt: "« Je ne me souviens plus très bien des mots. »", src: 'Jean-Luc Lagarce, Juste la fin du monde' },
+  },
+
+  // ─────────────── GENRES (compléments) ───────────────
+  {
+    id: 'genre-comedie-ballet', categorie: 'Genres', titre: 'La comédie-ballet', initiale: 'C',
+    intro: "Née de la collaboration entre Molière et le compositeur Lully, la comédie-ballet mêle comédie parlée, musique et danse en un spectacle total, très en faveur à la cour de Louis XIV.",
+    points: [
+      'Alternance de scènes parlées et d\'intermèdes chantés et dansés.',
+      'Chefs-d\'œuvre : Le Bourgeois gentilhomme, Le Malade imaginaire.',
+      'Un divertissement de cour, mais aussi une satire sociale.',
+    ],
+  },
+  {
+    id: 'genre-melodrame', categorie: 'Genres', titre: 'Le mélodrame', initiale: 'M',
+    intro: "Genre populaire du XIXe siècle, le mélodrame joue des émotions fortes : innocence persécutée, traîtres, coups du sort et musique soulignant les moments clés. Il triomphe sur les boulevards.",
+    points: [
+      'Manichéisme : le bon, la victime, le traître.',
+      'Grands sentiments, péripéties et pathos assumé.',
+      'La musique ponctue et amplifie l\'émotion.',
+    ],
+    anecdote: "Le mot « mélodrame » vient du grec melos (chant) : à l'origine, un drame accompagné de musique.",
+  },
+  {
+    id: 'genre-feerie', categorie: 'Genres', titre: 'La féerie', initiale: 'F',
+    intro: "Spectacle du merveilleux, la féerie déploie décors à transformations, machineries et effets visuels pour figurer fées, palais enchantés et métamorphoses. Un théâtre du rêve et de l'émerveillement.",
+    points: [
+      'Décors à changements « à vue » et machines spectaculaires.',
+      'Sujets tirés des contes et des légendes.',
+      'Ancêtre de la grande scène à effets et des comédies musicales.',
+    ],
+  },
+  {
+    id: 'genre-monologue', categorie: 'Genres', titre: 'Le monologue', initiale: 'M',
+    intro: "Discours d'un personnage seul en scène qui pense tout haut, le monologue révèle l'intériorité : délibération, aveu, désespoir. Du soliloque tragique à la tirade virtuose, c'est un sommet du jeu d'acteur.",
+    points: [
+      'Le personnage se parle à lui-même (ou au public).',
+      "Moment de vérité et d'introspection.",
+      'Exemples : « Être ou ne pas être », les stances de Rodrigue.',
+    ],
+    citation: { txt: "« Être, ou ne pas être : telle est la question. »", src: 'Shakespeare, Hamlet' },
+  },
+
+  // ─────────────── MÉTIERS (compléments) ───────────────
+  {
+    id: 'metier-eclairagiste', categorie: 'Métiers', titre: "L'éclairagiste", initiale: 'É',
+    intro: "Créateur de la lumière, l'éclairagiste sculpte l'espace, le temps et l'émotion. Un même décor devient aube, orage ou huis clos selon la lumière : c'est un art à part entière de la scène moderne.",
+    points: [
+      'Conçoit les ambiances lumineuses et leurs changements.',
+      'Révèle les corps, guide le regard, rythme le spectacle.',
+      'Travaille étroitement avec le metteur en scène et le scénographe.',
+    ],
+  },
+  {
+    id: 'metier-machiniste', categorie: 'Métiers', titre: 'Le machiniste', initiale: 'M',
+    intro: "Technicien du plateau, le machiniste monte les décors, manœuvre les changements et fait fonctionner les machineries. De l'ombre, il rend possible la magie visible du spectacle.",
+    points: [
+      'Montage, démontage et manipulation des décors.',
+      'Changements « à vue » ou dans le noir, au cordeau.',
+      'Héritier des machinistes du théâtre baroque à machines.',
+    ],
+    anecdote: "L'expression « côté cour » et « côté jardin » sert aux machinistes à ne jamais confondre la gauche et la droite du plateau.",
+  },
+  {
+    id: 'metier-souffleur', categorie: 'Métiers', titre: 'Le souffleur', initiale: 'S',
+    intro: "Longtemps installé dans son « trou » au bord de la scène, le souffleur soufflait discrètement leur texte aux comédiens. Métier en voie de disparition, il reste le symbole d'un théâtre de la mémoire et du secours.",
+    points: [
+      'Suit le texte et relance l\'acteur en cas de trou de mémoire.',
+      'Autrefois installé dans une niche à l\'avant-scène.',
+      'Aujourd\'hui rare, remplacé par le travail de mémorisation.',
+    ],
+  },
+  {
+    id: 'metier-directeur', categorie: 'Métiers', titre: 'Le directeur de théâtre', initiale: 'D',
+    intro: "À la tête d'une salle ou d'une troupe, le directeur choisit la programmation, porte un projet artistique et gère l'institution — entre ambition esthétique et réalités économiques.",
+    points: [
+      'Définit la ligne artistique et la saison.',
+      'Dirige équipes, budget et relations aux tutelles.',
+      'De Molière chef de troupe aux directeurs de CDN.',
+    ],
+  },
 ];
 
 export function articlesFor(categorie: EncycloCategorie): Article[] {
