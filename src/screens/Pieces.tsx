@@ -42,6 +42,9 @@ export default function Pieces() {
   const [q, setQ] = useState('');
   const [active, setActive] = useState<Set<number>>(new Set());
 
+  // Nombre de pièces du catalogue correspondant à chaque filtre (indicatif, statique).
+  const counts = useMemo(() => FILTERS.map((f) => PIECES.filter(f.test).length), []);
+
   const toggle = (i: number) =>
     setActive((prev) => {
       const next = new Set(prev);
@@ -95,7 +98,7 @@ export default function Pieces() {
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {FILTERS.map((f, i) => (
           <button key={f.label} className={`chip${active.has(i) ? ' active' : ''}`} onClick={() => toggle(i)}>
-            {f.label}
+            {f.label} <span style={{ opacity: 0.6, fontSize: '0.85em' }}>{counts[i]}</span>
           </button>
         ))}
       </div>

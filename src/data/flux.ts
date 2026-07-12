@@ -27,6 +27,12 @@ export const FLUX: FluxSource[] = [
     url: 'https://radiofrance-podcast.net/podcast09/podcast_9381f6a5-7774-44a1-86a5-fd3b5c2c14d8.xml' },
   { id: 'fc-feuilleton', titre: 'Le Feuilleton', source: 'France Culture', type: 'podcast',
     url: 'https://radiofrance-podcast.net/podcast09/podcast_3c1c2e55-41a0-11e5-9fe0-005056a87c89.xml' },
+  { id: 'fc-lectures', titre: 'Lectures sans frontières', source: 'France Culture', type: 'podcast',
+    url: 'https://radiofrance-podcast.net/podcast09/rss_24435.xml' },
+
+  // ─── France Inter ───
+  { id: 'inter-masque', titre: 'Le Masque et la Plume', source: 'France Inter', type: 'podcast',
+    url: 'https://radiofrance-podcast.net/podcast09/podcast_c266b241-3ed9-47ed-912f-4eabdc2f0275.xml' },
 
   // ─── Comédie-Française ───
   { id: 'cf-quelle-comedie', titre: 'Quelle Comédie !', source: 'Comédie-Française', type: 'podcast',

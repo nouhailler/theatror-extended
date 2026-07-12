@@ -9,6 +9,7 @@ export const KEYS = {
   onb: 'theathror-onb', // flag onboarding vu (localStorage, lecture synchrone au boot)
   miseEnScene: 'theathror-miseenscene', // plateau de mise en scène virtuelle
   flux: 'theathror-flux', // cache des nouveautés RSS (podcasts/vidéos)
+  fluxUser: 'theathror-flux-user', // sources RSS ajoutées par l'utilisateur
 } as const;
 
 // ─── IndexedDB (idb-keyval) : favoris, journal, préférences ───

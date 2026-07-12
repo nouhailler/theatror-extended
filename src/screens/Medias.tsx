@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { BackHeader } from '../components/ui';
 import { MEDIAS, MEDIA_COULEUR, type MediaCategorie } from '../data/medias';
-import { chargerNouveautes, type FeedItem } from '../lib/feeds';
+import { chargerNouveautes, listerSources, ajouterSource, retirerSource, type FeedItem, type UserSource } from '../lib/feeds';
 
 const CATEGORIES: MediaCategorie[] = ['Podcast', 'Captation', 'Conférence', 'Interview', 'Analyse', 'Lecture'];
 
@@ -38,6 +38,7 @@ function Nouveautes() {
   const [items, setItems] = useState<FeedItem[]>([]);
   const [from, setFrom] = useState<'live' | 'cache' | 'empty'>('empty');
   const [source, setSource] = useState<string | null>(null);
+  const [gestion, setGestion] = useState(false);
 
   const load = (force = false) => {
     setState('load');
@@ -57,8 +58,13 @@ function Nouveautes() {
         <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>
           {state === 'ok' ? `${list.length} épisode${list.length > 1 ? 's' : ''}${from === 'cache' ? ' · en cache' : ''}` : state === 'load' ? 'Chargement…' : ''}
         </div>
-        <button onClick={() => load(true)} style={{ fontSize: 13, padding: '5px 12px', borderRadius: 999, background: 'transparent', border: '1px solid var(--b-chip)', color: 'var(--gold)', cursor: 'pointer' }}>↻ Actualiser</button>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <button onClick={() => setGestion((g) => !g)} style={{ fontSize: 13, padding: '5px 12px', borderRadius: 999, background: gestion ? 'var(--gold)' : 'transparent', border: '1px solid var(--b-chip)', color: gestion ? 'var(--on-gold)' : 'var(--gold)', cursor: 'pointer' }}>+ Source</button>
+          <button onClick={() => load(true)} style={{ fontSize: 13, padding: '5px 12px', borderRadius: 999, background: 'transparent', border: '1px solid var(--b-chip)', color: 'var(--gold)', cursor: 'pointer' }}>↻</button>
+        </div>
       </div>
+
+      {gestion && <GestionSources onChange={() => load(true)} />}
 
       {state === 'ok' && sources.length > 1 && (
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
@@ -79,18 +85,71 @@ function Nouveautes() {
 
       {state === 'ok' && list.map((it) => (
         <a key={it.key} href={it.lien} target="_blank" rel="noreferrer noopener" className="card card-tap"
-          style={{ display: 'flex', gap: 12, padding: 13, textDecoration: 'none', color: 'inherit', alignItems: 'center' }}>
-          <div style={{ fontSize: 22, flex: 'none', width: 42, height: 42, borderRadius: 10, background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {it.type === 'video' ? '🎬' : '🎙️'}
-          </div>
+          style={{ display: 'flex', gap: 12, padding: 12, textDecoration: 'none', color: 'inherit', alignItems: 'flex-start' }}>
+          <Vignette item={it} />
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.3 }}>{it.titre}</div>
-            <div style={{ fontSize: 12.5, color: 'var(--text-muted)', marginTop: 2 }}>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>
               {it.programme}{it.dateLabel ? ` · ${it.dateLabel}` : ''} <span style={{ color: 'var(--gold)' }}>↗</span>
             </div>
+            {it.resume && <div style={{ fontSize: 12.5, color: 'var(--text-2)', marginTop: 5, lineHeight: 1.4 }}>{it.resume}</div>}
           </div>
         </a>
       ))}
+    </div>
+  );
+}
+
+function Vignette({ item }: { item: FeedItem }) {
+  const [broken, setBroken] = useState(false);
+  if (item.image && !broken) {
+    return <img src={item.image} alt="" loading="lazy" onError={() => setBroken(true)}
+      style={{ width: 56, height: 56, borderRadius: 10, flex: 'none', objectFit: 'cover', background: 'var(--bg-field)' }} />;
+  }
+  return (
+    <div style={{ fontSize: 22, flex: 'none', width: 56, height: 56, borderRadius: 10, background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {item.type === 'video' ? '🎬' : '🎙️'}
+    </div>
+  );
+}
+
+function GestionSources({ onChange }: { onChange: () => void }) {
+  const [url, setUrl] = useState('');
+  const [msg, setMsg] = useState('');
+  const [liste, setListe] = useState<UserSource[]>([]);
+
+  const refresh = () => { void listerSources().then(setListe); };
+  useEffect(() => { refresh(); }, []);
+
+  const add = async () => {
+    const r = await ajouterSource(url);
+    if (r.ok) { setUrl(''); setMsg('Source ajoutée ✓'); refresh(); onChange(); }
+    else setMsg(r.error ?? 'Erreur');
+  };
+  const remove = async (id: string) => { await retirerSource(id); refresh(); onChange(); };
+
+  return (
+    <div className="card card-16" style={{ padding: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>Ajouter un flux RSS</div>
+      <div style={{ display: 'flex', gap: 8 }}>
+        <input value={url} onChange={(e) => { setUrl(e.target.value); setMsg(''); }} placeholder="https://…/rss.xml"
+          style={{ flex: 1, background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '9px 12px', color: 'var(--text)', fontSize: 14, fontFamily: 'var(--font-body)', outline: 'none' }} />
+        <button className="gold-btn" style={{ padding: '9px 16px', fontSize: 14, opacity: url.trim() ? 1 : 0.5 }} disabled={!url.trim()} onClick={add}>Ajouter</button>
+      </div>
+      {msg && <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>{msg}</div>}
+      {liste.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {liste.map((s) => (
+            <div key={s.id} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13 }}>
+              <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'var(--text-2)' }}>{s.titre}</span>
+              <button onClick={() => remove(s.id)} style={{ fontSize: 12, padding: '3px 10px', borderRadius: 999, background: 'var(--red-chip-bg)', border: '1px solid var(--red-chip-border)', color: 'var(--red-chip-text)', cursor: 'pointer' }}>Retirer</button>
+            </div>
+          ))}
+        </div>
+      )}
+      <div style={{ fontSize: 11.5, color: 'var(--text-muted)', fontStyle: 'italic', lineHeight: 1.4 }}>
+        Collez l'URL d'un flux RSS/Atom (podcast, chaîne YouTube via channel_id…). Enregistré sur cet appareil.
+      </div>
     </div>
   );
 }
