@@ -86,7 +86,7 @@ function Monologues({ focus }: { focus?: string | null }) {
           <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
             {g.items.map((it, ii) => {
               const k = `${gi}-${ii}`;
-              return <button key={it.label} className={`chip${active.has(k) ? ' active' : ''}`} onClick={() => toggle(k)}>{it.label}</button>;
+              return <button key={it.label} className={`chip${active.has(k) ? ' active' : ''}`} onClick={() => toggle(k)}>{it.label} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{MONOLOGUES.filter(it.test).length}</span></button>;
             })}
           </div>
         </div>
@@ -143,13 +143,13 @@ function CitationsSeg() {
       <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>Thème</div>
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {themes.map((t) => (
-          <button key={t} className={`chip${theme === t ? ' active' : ''}`} onClick={() => setTheme(theme === t ? null : t)}>{t}</button>
+          <button key={t} className={`chip${theme === t ? ' active' : ''}`} onClick={() => setTheme(theme === t ? null : t)}>{t} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{CITATIONS.filter((c) => c.theme === t).length}</span></button>
         ))}
       </div>
       <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)', marginTop: 2 }}>Auteur</div>
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {auteurs.map((a) => (
-          <button key={a} className={`chip${auteur === a ? ' active' : ''}`} onClick={() => setAuteur(auteur === a ? null : a)}>{a}</button>
+          <button key={a} className={`chip${auteur === a ? ' active' : ''}`} onClick={() => setAuteur(auteur === a ? null : a)}>{a} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{CITATIONS.filter((c) => c.auteur === a).length}</span></button>
         ))}
       </div>
 
@@ -187,7 +187,7 @@ function Glossaire() {
           return (
             <button key={L} onClick={() => setLettre(active ? null : L)}
               style={{ padding: '3px 8px', borderRadius: 6, fontSize: 13, cursor: 'pointer', border: 'none', fontWeight: active ? 600 : 400, background: active ? 'var(--gold)' : 'transparent', color: active ? 'var(--on-gold)' : 'var(--text-muted)' }}>
-              {L}
+              {L} <span style={{ opacity: 0.5, fontSize: '0.8em' }}>{GLOSSAIRE.filter((g) => g.lettre === L).length}</span>
             </button>
           );
         })}

@@ -27,7 +27,7 @@ export default function Festivals() {
 
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {REGIONS.map((r) => (
-          <button key={r} className={`chip${region === r ? ' active' : ''}`} onClick={() => setRegion(region === r ? null : r)}>{r}</button>
+          <button key={r} className={`chip${region === r ? ' active' : ''}`} onClick={() => setRegion(region === r ? null : r)}>{r} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{FESTIVALS.filter((f) => f.region === r).length}</span></button>
         ))}
       </div>
 

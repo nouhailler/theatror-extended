@@ -30,7 +30,7 @@ export default function Costumes() {
         <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>Époque</div>
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
           {EPOQUES.map((e) => (
-            <button key={e} className={`chip${epoque === e ? ' active' : ''}`} onClick={() => setEpoque(epoque === e ? null : e)}>{e}</button>
+            <button key={e} className={`chip${epoque === e ? ' active' : ''}`} onClick={() => setEpoque(epoque === e ? null : e)}>{e} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{COSTUMES.filter((c) => c.epoque === e).length}</span></button>
           ))}
         </div>
       </div>
@@ -39,7 +39,7 @@ export default function Costumes() {
         <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>Genre</div>
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
           {GENRES.map((g) => (
-            <button key={g} className={`chip${genre === g ? ' active' : ''}`} onClick={() => setGenre(genre === g ? null : g)}>{g}</button>
+            <button key={g} className={`chip${genre === g ? ' active' : ''}`} onClick={() => setGenre(genre === g ? null : g)}>{g} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{COSTUMES.filter((c) => c.genre === g).length}</span></button>
           ))}
         </div>
       </div>

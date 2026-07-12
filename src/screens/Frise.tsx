@@ -40,11 +40,15 @@ export default function Frise() {
   const nav = useNavigate();
   const [filtre, setFiltre] = useState<FriseType | 'tout'>('tout');
 
-  const items = useMemo(() => {
-    const tous = [...FRISE.map((f) => ({ ...f, type: f.type ?? 'evenement' as FriseType })), ...naissancesAuteurs()];
-    tous.sort((a, b) => a.anNum - b.anNum);
-    return filtre === 'tout' ? tous : tous.filter((f) => f.type === filtre);
-  }, [filtre]);
+  const tous = useMemo(
+    () => [...FRISE.map((f) => ({ ...f, type: f.type ?? 'evenement' as FriseType })), ...naissancesAuteurs()].sort((a, b) => a.anNum - b.anNum),
+    [],
+  );
+  const items = useMemo(
+    () => (filtre === 'tout' ? tous : tous.filter((f) => f.type === filtre)),
+    [filtre, tous],
+  );
+  const compte = (k: FriseType | 'tout') => (k === 'tout' ? tous.length : tous.filter((f) => f.type === k).length);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '18px 18px 28px' }} data-screen-label="Frise chronologique">
@@ -52,7 +56,7 @@ export default function Frise() {
 
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {FILTRES.map((f) => (
-          <button key={f.k} className={`chip${filtre === f.k ? ' active' : ''}`} onClick={() => setFiltre(f.k)}>{f.label}</button>
+          <button key={f.k} className={`chip${filtre === f.k ? ' active' : ''}`} onClick={() => setFiltre(f.k)}>{f.label} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{compte(f.k)}</span></button>
         ))}
       </div>
 

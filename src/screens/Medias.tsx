@@ -69,7 +69,7 @@ function Nouveautes() {
       {state === 'ok' && sources.length > 1 && (
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
           {sources.map((s) => (
-            <button key={s} className={`chip${source === s ? ' active' : ''}`} onClick={() => setSource(source === s ? null : s)}>{s}</button>
+            <button key={s} className={`chip${source === s ? ' active' : ''}`} onClick={() => setSource(source === s ? null : s)}>{s} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{items.filter((i) => i.source === s).length}</span></button>
           ))}
         </div>
       )}
@@ -176,9 +176,9 @@ function Annuaire() {
 
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {CATEGORIES.map((c) => (
-          <button key={c} className={`chip${cat === c ? ' active' : ''}`} onClick={() => setCat(cat === c ? null : c)}>{c}</button>
+          <button key={c} className={`chip${cat === c ? ' active' : ''}`} onClick={() => setCat(cat === c ? null : c)}>{c} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{MEDIAS.filter((m) => m.categorie === c).length}</span></button>
         ))}
-        <button className={`chip${gratuit ? ' active' : ''}`} onClick={() => setGratuit((g) => !g)}>Gratuit</button>
+        <button className={`chip${gratuit ? ' active' : ''}`} onClick={() => setGratuit((g) => !g)}>Gratuit <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{MEDIAS.filter((m) => m.acces === 'Gratuit').length}</span></button>
       </div>
 
       <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>{list.length} ressource{list.length > 1 ? 's' : ''}</div>

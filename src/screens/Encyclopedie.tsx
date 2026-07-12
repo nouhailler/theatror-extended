@@ -11,6 +11,13 @@ const CATEGORIES: EncycloCategorie[] = [
   'Dramaturges', 'Auteurs contemporains', 'Histoire', 'Mouvements', 'Genres', 'Métiers', 'Théâtres', 'Festivals',
 ];
 
+function compteCat(c: EncycloCategorie): number {
+  if (c === 'Dramaturges' || c === 'Auteurs contemporains') return DRAMATURGES.filter((d) => d.categorie === c).length;
+  if (c === 'Théâtres') return LIEUX.filter((l) => l.type === 'theatre').length;
+  if (c === 'Festivals') return LIEUX.filter((l) => l.type === 'festival').length;
+  return articlesFor(c).length;
+}
+
 export default function Encyclopedie() {
   const nav = useNavigate();
   const [params, setParams] = useSearchParams();
@@ -31,7 +38,7 @@ export default function Encyclopedie() {
 
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {CATEGORIES.map((c) => (
-          <button key={c} className={`chip${c === cat ? ' active' : ''}`} onClick={() => setCat(c)}>{c}</button>
+          <button key={c} className={`chip${c === cat ? ' active' : ''}`} onClick={() => setCat(c)}>{c} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{compteCat(c)}</span></button>
         ))}
       </div>
 

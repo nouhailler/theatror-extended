@@ -86,7 +86,7 @@ export default function Carte() {
         {FILTRES.map((f) => (
           <button key={f.label} className={`chip${active === f.type ? ' active' : ''}`}
             onClick={() => setActive(active === f.type ? null : (f.type as Lieu['type']))}>
-            {f.label}
+            {f.label} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{LIEUX.filter((l) => l.type === f.type).length}</span>
           </button>
         ))}
       </div>

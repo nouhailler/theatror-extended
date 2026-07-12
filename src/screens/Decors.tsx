@@ -25,7 +25,7 @@ export default function Decors() {
 
       <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
         {CATEGORIES.map((c) => (
-          <button key={c} className={`chip${cat === c ? ' active' : ''}`} onClick={() => setCat(cat === c ? null : c)}>{c}</button>
+          <button key={c} className={`chip${cat === c ? ' active' : ''}`} onClick={() => setCat(cat === c ? null : c)}>{c} <span style={{ opacity: 0.55, fontSize: '0.85em' }}>{DECORS.filter((d) => d.categorie === c).length}</span></button>
         ))}
       </div>
 
