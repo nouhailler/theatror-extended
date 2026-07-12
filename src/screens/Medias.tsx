@@ -37,6 +37,7 @@ function Nouveautes() {
   const [state, setState] = useState<'load' | 'ok' | 'empty'>('load');
   const [items, setItems] = useState<FeedItem[]>([]);
   const [from, setFrom] = useState<'live' | 'cache' | 'empty'>('empty');
+  const [source, setSource] = useState<string | null>(null);
 
   const load = (force = false) => {
     setState('load');
@@ -47,14 +48,25 @@ function Nouveautes() {
   };
   useEffect(() => { load(false); }, []);
 
+  const sources = useMemo(() => Array.from(new Set(items.map((i) => i.source))).sort(), [items]);
+  const list = useMemo(() => (source ? items.filter((i) => i.source === source) : items), [items, source]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
         <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>
-          {state === 'ok' ? `${items.length} épisodes récents${from === 'cache' ? ' · en cache' : ''}` : state === 'load' ? 'Chargement…' : ''}
+          {state === 'ok' ? `${list.length} épisode${list.length > 1 ? 's' : ''}${from === 'cache' ? ' · en cache' : ''}` : state === 'load' ? 'Chargement…' : ''}
         </div>
         <button onClick={() => load(true)} style={{ fontSize: 13, padding: '5px 12px', borderRadius: 999, background: 'transparent', border: '1px solid var(--b-chip)', color: 'var(--gold)', cursor: 'pointer' }}>↻ Actualiser</button>
       </div>
+
+      {state === 'ok' && sources.length > 1 && (
+        <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+          {sources.map((s) => (
+            <button key={s} className={`chip${source === s ? ' active' : ''}`} onClick={() => setSource(source === s ? null : s)}>{s}</button>
+          ))}
+        </div>
+      )}
 
       {state === 'load' && <div style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontSize: 14, padding: '10px 2px' }}>Récupération des flux…</div>}
 
@@ -65,7 +77,7 @@ function Nouveautes() {
         </div>
       )}
 
-      {state === 'ok' && items.map((it) => (
+      {state === 'ok' && list.map((it) => (
         <a key={it.key} href={it.lien} target="_blank" rel="noreferrer noopener" className="card card-tap"
           style={{ display: 'flex', gap: 12, padding: 13, textDecoration: 'none', color: 'inherit', alignItems: 'center' }}>
           <div style={{ fontSize: 22, flex: 'none', width: 42, height: 42, borderRadius: 10, background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -74,7 +86,7 @@ function Nouveautes() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.3 }}>{it.titre}</div>
             <div style={{ fontSize: 12.5, color: 'var(--text-muted)', marginTop: 2 }}>
-              {it.source}{it.dateLabel ? ` · ${it.dateLabel}` : ''} <span style={{ color: 'var(--gold)' }}>↗</span>
+              {it.programme}{it.dateLabel ? ` · ${it.dateLabel}` : ''} <span style={{ color: 'var(--gold)' }}>↗</span>
             </div>
           </div>
         </a>

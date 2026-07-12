@@ -8,11 +8,14 @@ import { KEYS, idbGet, idbSet } from './storage';
 
 const PROXY = '/.netlify/functions/feed?url=';
 const TTL_MS = 30 * 60 * 1000; // 30 min
+const PAR_SOURCE = 20; // épisodes conservés par flux (les plus récents)
+const MAX_TOTAL = 150;
 
 export interface FeedItem {
   key: string;
   titre: string;
-  source: string;
+  source: string; // institution (pour le filtre)
+  programme: string; // nom du flux (« Quelle Comédie ! », « Théâtre & Cie »…)
   type: 'podcast' | 'video';
   lien: string;
   dateNum: number;
@@ -32,8 +35,8 @@ function pushItem(out: FeedItem[], src: FluxSource, titre: string, lien: string,
   const parsed = dRaw ? Date.parse(dRaw) : NaN;
   const dateNum = Number.isNaN(parsed) ? 0 : parsed;
   out.push({
-    key: `${src.id}|${lien || titre}`,
-    titre, source: src.source, type: src.type, lien,
+    key: `${src.id}|${out.length}`, // unique par flux et par position (certains flux réutilisent le même <link>)
+    titre, source: src.source, programme: src.titre, type: src.type, lien,
     dateNum,
     dateLabel: dateNum ? new Date(dateNum).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : '',
   });
@@ -77,14 +80,16 @@ export async function chargerNouveautes(force = false): Promise<Nouveautes> {
     FLUX.map(async (src) => {
       const res = await fetch(PROXY + encodeURIComponent(src.url));
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return parse(await res.text(), src);
+      // Chaque flux ne contribue que ses PAR_SOURCE items les plus récents,
+      // pour qu'un flux ancien (peu importe sa date) reste représenté.
+      return parse(await res.text(), src).slice(0, PAR_SOURCE);
     }),
   );
   const items = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
 
   if (items.length) {
     items.sort((a, b) => b.dateNum - a.dateNum);
-    const top = items.slice(0, 50);
+    const top = items.slice(0, MAX_TOTAL);
     await idbSet<FluxCache>(KEYS.flux, { at: Date.now(), items: top });
     return { items: top, from: 'live' };
   }

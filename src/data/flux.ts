@@ -28,9 +28,13 @@ export const FLUX: FluxSource[] = [
   { id: 'fc-feuilleton', titre: 'Le Feuilleton', source: 'France Culture', type: 'podcast',
     url: 'https://radiofrance-podcast.net/podcast09/podcast_3c1c2e55-41a0-11e5-9fe0-005056a87c89.xml' },
 
-  // ─── YouTube (vidéos / captations) ───
-  { id: 'yt-comedie-francaise', titre: 'Comédie-Française', source: 'YouTube', type: 'video',
+  // ─── Comédie-Française ───
+  { id: 'cf-quelle-comedie', titre: 'Quelle Comédie !', source: 'Comédie-Française', type: 'podcast',
+    url: 'https://feeds.audiomeans.fr/feed/03dab4f8-0af9-4ce3-b6bd-bc1997108b65.xml' },
+  { id: 'yt-comedie-francaise', titre: 'Comédie-Française (vidéos)', source: 'Comédie-Française', type: 'video',
     url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCiO6XES6COOJYcp8aBv-NpQ' },
-  { id: 'yt-arte-concert', titre: 'ARTE Concert', source: 'YouTube', type: 'video',
+
+  // ─── ARTE ───
+  { id: 'yt-arte-concert', titre: 'ARTE Concert', source: 'ARTE', type: 'video',
     url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UC-smeLB9AnOTeypr1YyjJ3A' },
 ];
