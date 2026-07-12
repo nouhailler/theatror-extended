@@ -2,23 +2,33 @@ import { useState } from 'react';
 import { useAI, humanError } from '../../lib/useAI';
 import { useStore } from '../../store';
 import { todayISO } from '../../lib/date';
+import { DRAMATURGES } from '../../data/dramaturges';
 import AiText from '../../components/AiText';
 import { fieldStyle, Label } from './parts';
 
+// article = « un »/« une » pour une phrase correcte (« un dialogue », « une scène comique »).
 const TYPES = [
-  { v: 'scène comique', label: 'Scène comique' },
-  { v: 'dialogue', label: 'Dialogue' },
-  { v: 'scène tragique', label: 'Scène tragique' },
-  { v: 'monologue', label: 'Monologue' },
-  { v: "exercice d'improvisation", label: "Exercice d'impro" },
+  { v: 'scène comique', label: 'Scène comique', art: 'une' },
+  { v: 'dialogue', label: 'Dialogue', art: 'un' },
+  { v: 'scène tragique', label: 'Scène tragique', art: 'une' },
+  { v: 'monologue', label: 'Monologue', art: 'un' },
+  { v: "exercice d'improvisation", label: "Exercice d'impro", art: 'un' },
 ];
 const TONS = ['libre', 'classique (vers)', 'contemporain', 'absurde', 'poétique'];
+const LONGUEURS = [
+  { v: 'courte', label: 'Court', hint: 'une demi-page environ' },
+  { v: 'moyenne', label: 'Moyen', hint: 'une page environ' },
+  { v: 'longue', label: 'Long', hint: 'deux pages environ' },
+];
+const AUTEURS = [...DRAMATURGES].sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
 
 export default function Generateur() {
   const { run, busy } = useAI();
   const addEntry = useStore((s) => s.addEntry);
-  const [type, setType] = useState(TYPES[0].v);
+  const [type, setType] = useState(TYPES[0]);
   const [ton, setTon] = useState(TONS[0]);
+  const [longueur, setLongueur] = useState(LONGUEURS[1]);
+  const [maniere, setManiere] = useState(''); // id dramaturge ou ''
   const [persos, setPersos] = useState('');
   const [consigne, setConsigne] = useState('');
   const [out, setOut] = useState('');
@@ -27,17 +37,20 @@ export default function Generateur() {
   const generer = async () => {
     setOut('');
     setSaved(false);
+    const dram = maniere ? DRAMATURGES.find((d) => d.id === maniere) : undefined;
     const prompt = [
-      `Écris ${type === "exercice d'improvisation" ? 'un' : 'une'} ${type} pour le théâtre, en français.`,
+      `Écris ${type.art} ${type.v} pour le théâtre, en français.`,
       persos.trim() ? `Personnages : ${persos.trim()}.` : 'Invente les personnages.',
       `Ton / style : ${ton}.`,
+      dram ? `À la manière de ${dram.nom}${dram.style ? ` — ${dram.style.replace(/\.$/, '')}` : ''}.` : '',
       consigne.trim() ? `Consigne : ${consigne.trim()}.` : '',
-      'Format scène : noms de personnages en majuscules, répliques, et didascalies entre parenthèses. Longueur : une page environ.',
+      `Longueur : ${longueur.hint}.`,
+      'Format scène : noms de personnages en MAJUSCULES en début de réplique, didascalies entre parenthèses. Le texte doit être vivant et jouable.',
     ].filter(Boolean).join(' ');
     try {
       await run(
         [
-          { role: 'system', content: "Tu es un dramaturge francophone. Tu écris des textes de théâtre vivants, jouables, au style soigné." },
+          { role: 'system', content: "Tu es un dramaturge francophone. Tu écris des textes de théâtre vivants, jouables et bien construits, au style soigné. Respecte le format scénique, le ton et les personnages demandés." },
           { role: 'user', content: prompt },
         ],
         (full) => setOut(full),
@@ -50,7 +63,7 @@ export default function Generateur() {
 
   const copier = () => { void navigator.clipboard?.writeText(out); };
   const versJournal = () => {
-    addEntry({ titre: `Texte généré — ${type}`, type: 'Idée', date: todayISO(), txt: out });
+    addEntry({ titre: `Texte généré — ${type.v}`, type: 'Idée', date: todayISO(), txt: out });
     setSaved(true);
   };
 
@@ -60,7 +73,7 @@ export default function Generateur() {
         <Label>Type</Label>
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
           {TYPES.map((t) => (
-            <button key={t.v} className={`chip${type === t.v ? ' active' : ''}`} onClick={() => setType(t.v)}>{t.label}</button>
+            <button key={t.v} className={`chip${type.v === t.v ? ' active' : ''}`} onClick={() => setType(t)}>{t.label}</button>
           ))}
         </div>
       </div>
@@ -72,6 +85,20 @@ export default function Generateur() {
             {TONS.map((t) => <option key={t} value={t}>{t}</option>)}
           </select>
         </div>
+        <div style={{ flex: 1 }}>
+          <Label>Longueur</Label>
+          <select style={fieldStyle} value={longueur.v} onChange={(e) => setLongueur(LONGUEURS.find((l) => l.v === e.target.value)!)}>
+            {LONGUEURS.map((l) => <option key={l.v} value={l.v}>{l.label}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <Label>À la manière de (optionnel)</Label>
+        <select style={fieldStyle} value={maniere} onChange={(e) => setManiere(e.target.value)}>
+          <option value="">— libre —</option>
+          {AUTEURS.map((d) => <option key={d.id} value={d.id}>{d.nom}</option>)}
+        </select>
       </div>
 
       <div>
@@ -93,6 +120,7 @@ export default function Generateur() {
           <AiText text={out} />
           {!busy && (
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <button onClick={generer} style={{ ...fieldStyle, width: 'auto', cursor: 'pointer', padding: '8px 14px', fontSize: 13.5 }}>↻ Régénérer</button>
               <button onClick={copier} style={{ ...fieldStyle, width: 'auto', cursor: 'pointer', padding: '8px 14px', fontSize: 13.5 }}>Copier</button>
               <button onClick={versJournal} style={{ ...fieldStyle, width: 'auto', cursor: 'pointer', padding: '8px 14px', fontSize: 13.5, color: saved ? 'var(--gold)' : 'var(--text)' }}>
                 {saved ? 'Ajouté au Journal ✓' : 'Ajouter au Journal'}
