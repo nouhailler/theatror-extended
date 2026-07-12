@@ -18,15 +18,56 @@ export const ERES = {
   Absurde: '#b0563a',
 } as const;
 
+// Frise curée : styles, événements et œuvres majeures. Les naissances d'auteurs
+// sont ajoutées dynamiquement depuis DRAMATURGES par l'écran Frise.
 export const FRISE: FriseItem[] = [
-  { id: 'thespis', ere: 'Antiquité', couleur: '#c98b4e', an: '~534 av. J.-C.', anNum: -534, titre: 'Thespis, premier acteur', txt: "Aux Grandes Dionysies d'Athènes, un homme sort du chœur : le théâtre est né." },
-  { id: 'antigone', ere: 'Antiquité', couleur: '#c98b4e', an: '~441 av. J.-C.', anNum: -441, titre: 'Antigone de Sophocle', txt: 'La tragédie grecque à son sommet — loi des hommes contre loi des dieux.' },
-  { id: 'mysteres', ere: 'Moyen Âge', couleur: '#8e9e5a', an: 'XVe s.', anNum: 1450, titre: 'Mystères et farces', txt: 'Sur les parvis, la Passion se joue trois jours durant ; la farce de Maître Pathelin fait rire les foules.' },
-  { id: 'globe', ere: 'Élisabéthain', couleur: '#5f8ea8', an: '1599', anNum: 1599, titre: 'Le Globe ouvre à Londres', txt: 'La troupe de Shakespeare y créera Hamlet, Othello, Le Roi Lear.' },
-  { id: 'tartuffe', ere: 'Classicisme', couleur: '#d4a94e', an: '1664', anNum: 1664, titre: 'Tartuffe fait scandale', txt: 'Molière défie les dévots ; la règle des trois unités règne sur la scène française.' },
-  { id: 'hernani', ere: 'Romantisme', couleur: '#a85a72', an: '1830', anNum: 1830, titre: "La bataille d'Hernani", txt: 'Hugo fait exploser les règles classiques — clameurs et pugilats dans la salle.' },
-  { id: 'ubu', ere: 'Moderne', couleur: '#9e2b3a', an: '1896', anNum: 1896, titre: 'Ubu roi', txt: '« Merdre ! » — Jarry ouvre la voie aux avant-gardes du XXe siècle.' },
-  { id: 'godot', ere: 'Absurde', couleur: '#b0563a', an: '1953', anNum: 1953, titre: 'En attendant Godot', txt: "Beckett met l'attente elle-même en scène ; le théâtre de l'absurde triomphe." },
+  // ─── Antiquité ───
+  { id: 'thespis', ere: 'Antiquité', couleur: '#c98b4e', an: '~534 av. J.-C.', anNum: -534, type: 'evenement', titre: 'Thespis, premier acteur', txt: "Aux Grandes Dionysies d'Athènes, un homme sort du chœur : le théâtre est né." },
+  { id: 'tragedie-grecque', ere: 'Antiquité', couleur: '#8e9e5a', an: 'Ve s. av. J.-C.', anNum: -480, type: 'style', titre: 'L\'âge de la tragédie grecque', txt: 'Eschyle, Sophocle et Euripide inventent la tragédie ; la comédie naît avec Aristophane.' },
+  { id: 'antigone', ere: 'Antiquité', couleur: '#c98b4e', an: '~441 av. J.-C.', anNum: -441, type: 'oeuvre', pieceId: 'antigone-sophocle', titre: 'Antigone de Sophocle', txt: 'La tragédie grecque à son sommet — loi des hommes contre loi des dieux.' },
+  { id: 'oedipe-roi', ere: 'Antiquité', couleur: '#c98b4e', an: '~430 av. J.-C.', anNum: -430, type: 'oeuvre', pieceId: 'oedipe-roi', titre: 'Œdipe roi de Sophocle', txt: "Le modèle même de la tragédie du destin, que commentera Aristote." },
+  { id: 'grenouilles', ere: 'Antiquité', couleur: '#c98b4e', an: '405 av. J.-C.', anNum: -405, type: 'oeuvre', pieceId: 'les-grenouilles', titre: 'Les Grenouilles d\'Aristophane', txt: 'La comédie grecque met la poésie elle-même en procès aux Enfers.' },
+
+  // ─── Moyen Âge ───
+  { id: 'mysteres', ere: 'Moyen Âge', couleur: '#8e9e5a', an: 'XVe s.', anNum: 1450, type: 'style', titre: 'Mystères et farces', txt: 'Sur les parvis, la Passion se joue trois jours durant ; la farce de Maître Pathelin fait rire les foules.' },
+
+  // ─── Élisabéthain ───
+  { id: 'globe', ere: 'Élisabéthain', couleur: '#5f8ea8', an: '1599', anNum: 1599, type: 'evenement', titre: 'Le Globe ouvre à Londres', txt: 'La troupe de Shakespeare y créera Hamlet, Othello, Le Roi Lear.' },
+  { id: 'romeo', ere: 'Élisabéthain', couleur: '#5f8ea8', an: '~1597', anNum: 1597, type: 'oeuvre', pieceId: 'romeo-juliette', titre: 'Roméo et Juliette', txt: 'Shakespeare porte au sommet la tragédie amoureuse.' },
+  { id: 'hamlet-oeuvre', ere: 'Élisabéthain', couleur: '#5f8ea8', an: '~1601', anNum: 1601, type: 'oeuvre', pieceId: 'hamlet', titre: 'Hamlet', txt: '« Être ou ne pas être » — la tragédie du doute et de la conscience.' },
+  { id: 'macbeth-oeuvre', ere: 'Élisabéthain', couleur: '#5f8ea8', an: '~1606', anNum: 1606, type: 'oeuvre', pieceId: 'macbeth', titre: 'Macbeth', txt: "L'ambition et le crime chez Shakespeare, sous le signe des sorcières." },
+
+  // ─── Classicisme ───
+  { id: 'classicisme', ere: 'Classicisme', couleur: '#8e9e5a', an: 'XVIIe s.', anNum: 1630, type: 'style', titre: 'Le classicisme français', txt: 'La règle des trois unités (temps, lieu, action) et la bienséance règnent sur la scène.' },
+  { id: 'le-cid', ere: 'Classicisme', couleur: '#d4a94e', an: '1637', anNum: 1637, type: 'oeuvre', pieceId: 'le-cid', titre: 'Le Cid de Corneille', txt: "Triomphe et « Querelle du Cid » : l'honneur contre l'amour enflamme le public." },
+  { id: 'tartuffe', ere: 'Classicisme', couleur: '#d4a94e', an: '1664', anNum: 1664, type: 'oeuvre', pieceId: 'tartuffe', titre: 'Tartuffe fait scandale', txt: 'Molière défie les dévots ; la pièce sera interdite cinq ans.' },
+  { id: 'dom-juan', ere: 'Classicisme', couleur: '#d4a94e', an: '1665', anNum: 1665, type: 'oeuvre', pieceId: 'dom-juan', titre: 'Dom Juan', txt: 'Le grand seigneur libertin défie le Ciel — audace qui inquiète la cour.' },
+  { id: 'misanthrope', ere: 'Classicisme', couleur: '#d4a94e', an: '1666', anNum: 1666, type: 'oeuvre', pieceId: 'le-misanthrope', titre: 'Le Misanthrope', txt: 'La plus haute comédie de Molière : Alceste contre le monde.' },
+  { id: 'andromaque-oeuvre', ere: 'Classicisme', couleur: '#d4a94e', an: '1667', anNum: 1667, type: 'oeuvre', pieceId: 'andromaque', titre: 'Andromaque de Racine', txt: 'Racine impose la tragédie de la passion fatale.' },
+  { id: 'phedre-oeuvre', ere: 'Classicisme', couleur: '#d4a94e', an: '1677', anNum: 1677, type: 'oeuvre', pieceId: 'phedre', titre: 'Phèdre', txt: 'Le chef-d\'œuvre de Racine — la passion coupable portée à l\'incandescence.' },
+  { id: 'comedie-francaise', ere: 'Classicisme', couleur: '#a85a72', an: '1680', anNum: 1680, type: 'evenement', titre: 'Fondation de la Comédie-Française', txt: "Louis XIV réunit les troupes parisiennes : la « Maison de Molière » est née." },
+
+  // ─── Lumières ───
+  { id: 'barbier', ere: 'Lumières', couleur: '#d4a94e', an: '1775', anNum: 1775, type: 'oeuvre', pieceId: 'barbier-seville', titre: 'Le Barbier de Séville', txt: 'Beaumarchais lance Figaro, valet plus fin que ses maîtres.' },
+  { id: 'mariage', ere: 'Lumières', couleur: '#d4a94e', an: '1784', anNum: 1784, type: 'oeuvre', pieceId: 'mariage-figaro', titre: 'Le Mariage de Figaro', txt: "La « folle journée » qui, dit-on, annonce la Révolution." },
+
+  // ─── Romantisme ───
+  { id: 'romantisme', ere: 'Romantisme', couleur: '#8e9e5a', an: '1830', anNum: 1829, type: 'style', titre: 'Le drame romantique', txt: 'Hugo (préface de Cromwell) brise les unités et mêle le sublime au grotesque.' },
+  { id: 'hernani', ere: 'Romantisme', couleur: '#a85a72', an: '1830', anNum: 1830, type: 'evenement', pieceId: 'hernani', titre: "La bataille d'Hernani", txt: 'Hugo fait exploser les règles classiques — clameurs et pugilats dans la salle.' },
+  { id: 'lorenzaccio-oeuvre', ere: 'Romantisme', couleur: '#a85a72', an: '1834', anNum: 1834, type: 'oeuvre', pieceId: 'lorenzaccio', titre: 'Lorenzaccio de Musset', txt: 'Le grand drame romantique du doute et de l\'action vaine.' },
+  { id: 'ruy-blas-oeuvre', ere: 'Romantisme', couleur: '#a85a72', an: '1838', anNum: 1838, type: 'oeuvre', pieceId: 'ruy-blas', titre: 'Ruy Blas', txt: '« Ver de terre amoureux d\'une étoile » — le sommet du théâtre de Hugo.' },
+
+  // ─── Théâtre moderne ───
+  { id: 'realisme', ere: 'Moderne', couleur: '#8e9e5a', an: 'Fin XIXe s.', anNum: 1875, type: 'style', titre: 'Naissance du théâtre moderne', txt: 'Ibsen et Tchekhov inventent un théâtre de l\'intime et du réel ; naît la mise en scène.' },
+  { id: 'maison-poupee-oeuvre', ere: 'Moderne', couleur: '#5f8ea8', an: '1879', anNum: 1879, type: 'oeuvre', pieceId: 'maison-poupee', titre: 'Une maison de poupée', txt: "Ibsen : Nora claque la porte — scandale et acte fondateur du théâtre moderne." },
+  { id: 'mouette-oeuvre', ere: 'Moderne', couleur: '#5f8ea8', an: '1896', anNum: 1896, type: 'oeuvre', pieceId: 'la-mouette', titre: 'La Mouette de Tchekhov', txt: 'Un four à sa création, un triomphe deux ans plus tard au Théâtre d\'Art de Moscou.' },
+  { id: 'ubu', ere: 'Moderne', couleur: '#9e2b3a', an: '1896', anNum: 1896, type: 'evenement', pieceId: 'ubu-roi', titre: 'Ubu roi', txt: '« Merdre ! » — Jarry ouvre la voie aux avant-gardes du XXe siècle.' },
+  { id: 'cyrano-oeuvre', ere: 'Moderne', couleur: '#d4a94e', an: '1897', anNum: 1897, type: 'oeuvre', pieceId: 'cyrano', titre: 'Cyrano de Bergerac', txt: 'Rostand offre un triomphe au drame en vers, à contre-courant de son époque.' },
+  { id: 'cerisaie-oeuvre', ere: 'Moderne', couleur: '#5f8ea8', an: '1904', anNum: 1904, type: 'oeuvre', pieceId: 'cerisaie', titre: 'La Cerisaie', txt: 'Le testament théâtral de Tchekhov — un monde qui s\'efface.' },
+
+  // ─── Absurde & contemporain ───
+  { id: 'absurde', ere: 'Absurde', couleur: '#8e9e5a', an: 'Années 1950', anNum: 1950, type: 'style', titre: 'Le théâtre de l\'absurde', txt: 'Beckett, Ionesco, Adamov : le langage et le sens se délitent sur scène.' },
+  { id: 'godot', ere: 'Absurde', couleur: '#b0563a', an: '1953', anNum: 1953, type: 'evenement', titre: 'En attendant Godot', txt: "Beckett met l'attente elle-même en scène ; le théâtre de l'absurde triomphe." },
 ];
 
 export const LIEUX: Lieu[] = [

@@ -63,6 +63,8 @@ export type EncycloCategorie =
   | 'Théâtres'
   | 'Festivals';
 
+export type FriseType = 'auteur' | 'oeuvre' | 'evenement' | 'style';
+
 export interface FriseItem {
   id: string;
   ere: string;
@@ -71,6 +73,9 @@ export interface FriseItem {
   anNum: number;
   titre: string;
   txt: string;
+  type?: FriseType; // catégorie (défaut : 'evenement')
+  pieceId?: string; // lien vers une fiche pièce
+  auteurId?: string; // lien vers une fiche dramaturge
 }
 
 export interface Lieu {
