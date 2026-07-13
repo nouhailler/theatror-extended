@@ -117,6 +117,10 @@ export const CREDITS: Record<string, Credit> = {
   'Heinrich Vogtherr d. J. Schalksnarr.JPG': { auteur: 'Heinrich Vogtherr le Jeune', licence: 'Domaine public' },
   'Sans-culotte.jpg': { auteur: 'Louis-Léopold Boilly', licence: 'Domaine public' },
   'Dandies of 1831.jpg': { auteur: "Caricature d'époque (1831)", licence: 'Domaine public' },
+  'Charles Nègre, André Jammes, Planche XIII – Cathédrale de Chartres, Statues Colonnes de la Porte Centrale du Portail Royal, 1855, NGA 210763.jpg': { auteur: 'Charles Nègre', licence: 'CC0' },
+  'François-Joseph Talma (1763-1826), by Aimée Perlet.jpg': { auteur: "Aimée Perlet (d'après É. Picot)", licence: 'Domaine public' },
+  "Suit, three-piece, man's (AM 1970.37-1).jpg": { auteur: 'Auckland Museum', licence: 'CC BY 4.0' },
+  'School of Gobert - Anne Louise Bénédicte de Bourbon-Condé.png': { auteur: 'École de Pierre Gobert', licence: 'Domaine public' },
   // Personnages célèbres
   'Tartuffe Moliere.jpg': { auteur: 'Gravure ancienne', licence: 'Domaine public' },
   'Orgon verdedigt Tartuffe, RP-P-2019-3455.jpg': { auteur: 'Rijksmuseum', licence: 'CC0' },

@@ -45,13 +45,13 @@ export const COSTUMES: Costume[] = [
     elements: ['Cothurnes (semelles hautes)', 'Masque tragique', 'Onkos (coiffe)'], personnages: 'Tragédiens' },
 
   // ─── Moyen Âge ───
-  { id: 'bliaud', nom: 'Bliaud', epoque: 'Moyen Âge', pays: 'France', genre: 'Femme', initiale: 'B',
+  { id: 'bliaud', nom: 'Bliaud', epoque: 'Moyen Âge', pays: 'France', genre: 'Femme', initiale: 'B', img: 'Charles Nègre, André Jammes, Planche XIII – Cathédrale de Chartres, Statues Colonnes de la Porte Centrale du Portail Royal, 1855, NGA 210763.jpg',
     description: "Longue robe ajustée au buste et évasée, aux manches amples, portée par les dames du XIIe siècle. Élégance de la cour féodale.",
     elements: ['Robe ajustée', 'Manches pendantes', 'Ceinture basse'], personnages: 'Dames, reines médiévales' },
   { id: 'houppelande', nom: 'Houppelande', epoque: 'Moyen Âge', pays: 'France', genre: 'Homme', initiale: 'H', img: '15th century costume - the Houppelande.jpg',
     description: "Ample robe longue à larges manches, souvent doublée de fourrure, marque de richesse à la fin du Moyen Âge.",
     elements: ['Robe ample', 'Larges manches', 'Ceinture', 'Fourrure'], personnages: 'Bourgeois, seigneurs' },
-  { id: 'mysteres-medievaux', nom: 'Costumes de mystères', epoque: 'Moyen Âge', pays: 'France', genre: 'Mixte', initiale: 'M',
+  { id: 'mysteres-medievaux', nom: 'Costumes de mystères', epoque: 'Moyen Âge', pays: 'France', genre: 'Mixte', initiale: 'M', img: 'Mystery Play Metz.jpg',
     description: "Sur les parvis, anges aux ailes dorées et diables cornus et velus jouaient la Passion. Théâtre religieux haut en couleur et en symboles.",
     elements: ['Ailes dorées', 'Masques de diable', 'Cornes et queue', 'Robes de saints'], personnages: 'Anges, diables, saints' },
 
@@ -73,7 +73,7 @@ export const COSTUMES: Costume[] = [
   { id: 'robe-cour-17', nom: 'Robe de cour', epoque: 'Grand Siècle', pays: 'France', genre: 'Femme', initiale: 'R', img: 'Mantua MET DT6543.jpg',
     description: "Corps très serré, jupe ouverte sur un jupon brodé, dentelles et rubans. L'élégance grave et fastueuse du siècle de Louis XIV.",
     elements: ['Corps baleiné', 'Jupon brodé', 'Dentelles', 'Coiffure Fontanges'], personnages: 'Célimène, dames de cour' },
-  { id: 'romaine-tragedie', nom: 'Costume « à la romaine »', epoque: 'Grand Siècle', pays: 'France', genre: 'Homme', initiale: 'R',
+  { id: 'romaine-tragedie', nom: 'Costume « à la romaine »', epoque: 'Grand Siècle', pays: 'France', genre: 'Homme', initiale: 'R', img: 'François-Joseph Talma (1763-1826), by Aimée Perlet.jpg',
     description: "Convention de la tragédie classique : casque à plumes, cuirasse et tonnelet (jupe rigide plissée) par-dessus des bas, quelle que soit l'époque du sujet.",
     elements: ['Casque à plumes', 'Cuirasse', 'Tonnelet', 'Bas de soie'], personnages: 'Héros de tragédie (Racine, Corneille)' },
 
@@ -84,7 +84,7 @@ export const COSTUMES: Costume[] = [
   { id: 'habit-brode-18', nom: 'Habit et gilet brodé', epoque: 'Lumières', pays: 'France', genre: 'Homme', initiale: 'H', img: 'Costumes historiques Costume Louis XVI (1774), N°82, G.12342(1).jpg',
     description: "Habit à la française, gilet brodé, culotte serrée au genou, bas et souliers à boucle. L'élégance masculine des salons du siècle des Lumières.",
     elements: ['Habit à la française', 'Gilet brodé', 'Culotte', 'Souliers à boucle'], personnages: 'Le Comte Almaviva, marquis' },
-  { id: 'costume-valet-18', nom: 'Livrée de valet', epoque: 'Lumières', pays: 'France', genre: 'Homme', initiale: 'L',
+  { id: 'costume-valet-18', nom: 'Livrée de valet', epoque: 'Lumières', pays: 'France', genre: 'Homme', initiale: 'L', img: 'Ramberg figaro 1.jpg',
     description: "Habit de couleur vive, parfois galonné, du valet de comédie — vif et malicieux comme Figaro ou Scapin.",
     elements: ['Livrée galonnée', 'Gilet', 'Bas', 'Chapeau'], personnages: 'Figaro, Scapin, Arlequin' },
 
@@ -95,12 +95,12 @@ export const COSTUMES: Costume[] = [
   { id: 'crinoline', nom: 'Robe à crinoline', epoque: 'Romantique', pays: 'France', genre: 'Femme', initiale: 'C', img: 'Princess Dagmar of Denmark with her dog.jpg',
     description: "Ample jupe portée sur une armature de crinoline, taille resserrée par le corset. Le volume spectaculaire du Second Empire.",
     elements: ['Crinoline (armature)', 'Corset', 'Volants', 'Ombrelle'], personnages: 'Héroïnes du drame romantique' },
-  { id: 'troubadour', nom: 'Costume troubadour', epoque: 'Romantique', pays: 'France', genre: 'Mixte', initiale: 'T',
+  { id: 'troubadour', nom: 'Costume troubadour', epoque: 'Romantique', pays: 'France', genre: 'Mixte', initiale: 'T', img: 'Hernani Act I - Sc. III. by Paris & Martin after Vierge.png',
     description: "Reconstitutions historicisantes, colorées et pittoresques, du drame romantique à la Hugo : velours, toques à plumes, pourpoints d'apparat.",
     elements: ['Velours', 'Toque à plume', 'Pourpoint', 'Cape'], personnages: 'Hernani, Ruy Blas, Lorenzo' },
 
   // ─── Moderne (XXe) ───
-  { id: 'trois-pieces', nom: 'Costume trois-pièces', epoque: 'Moderne', pays: 'International', genre: 'Homme', initiale: 'C',
+  { id: 'trois-pieces', nom: 'Costume trois-pièces', epoque: 'Moderne', pays: 'International', genre: 'Homme', initiale: 'C', img: "Suit, three-piece, man's (AM 1970.37-1).jpg",
     description: "Veste, gilet et pantalon assortis : le costume moderne, tenue neutre du théâtre réaliste et contemporain.",
     elements: ['Veste', 'Gilet', 'Pantalon', 'Cravate'], personnages: 'Rôles contemporains' },
   { id: 'charleston', nom: 'Robe charleston', epoque: 'Moderne', pays: 'International', genre: 'Femme', initiale: 'C', img: 'Louise Brooks ggbain 32453u crop.jpg',
@@ -123,7 +123,7 @@ export const COSTUMES: Costume[] = [
   { id: 'bouffon', nom: 'Costume de bouffon', epoque: 'Renaissance', pays: 'Europe', genre: 'Mixte', initiale: 'B', img: 'Heinrich Vogtherr d. J. Schalksnarr.JPG',
     description: "Habit bariolé à grelots, capuchon à oreilles d'âne et marotte : le fou du roi, libre de tout dire en riant.",
     elements: ['Habit bicolore', 'Capuchon à grelots', 'Marotte', 'Grelots'], personnages: 'Fous du roi, Triboulet' },
-  { id: 'precieuse', nom: 'Toilette de précieuse', epoque: 'Grand Siècle', pays: 'France', genre: 'Femme', initiale: 'P',
+  { id: 'precieuse', nom: 'Toilette de précieuse', epoque: 'Grand Siècle', pays: 'France', genre: 'Femme', initiale: 'P', img: 'School of Gobert - Anne Louise Bénédicte de Bourbon-Condé.png',
     description: "Soies, rubans et falbalas de la précieuse de salon, coiffée « à la Fontanges » ; l'apprêt raffiné que raille Molière.",
     elements: ['Robe à falbalas', 'Coiffure Fontanges', 'Mouches', 'Éventail'], personnages: 'Les Précieuses, Cathos et Madelon' },
   { id: 'sans-culotte', nom: 'Costume de sans-culotte', epoque: 'Lumières', pays: 'France', genre: 'Homme', initiale: 'S', img: 'Sans-culotte.jpg',
