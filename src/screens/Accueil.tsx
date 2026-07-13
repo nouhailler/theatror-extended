@@ -1,9 +1,11 @@
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store';
 import { Overline } from '../components/ui';
 import WikiImage from '../components/WikiImage';
 import { LIEUX, CITATIONS } from '../data/content';
 import { PIECES } from '../data/pieces';
+import { searchAll } from '../lib/search';
 
 // Rotation quotidienne déterministe.
 function jourDeLAnnee(): number {
@@ -33,6 +35,10 @@ const quickStyle: React.CSSProperties = {
 
 export default function Accueil() {
   const nav = useNavigate();
+  const [q, setQ] = useState('');
+  const query = q.trim();
+  const searching = query.length >= 2;
+  const hits = useMemo(() => (query.length >= 2 ? searchAll(query, 40) : []), [query]);
   const favCount = useStore((s) => s.favCount());
   const favLabel = favCount === 0
     ? 'Encore vide — touchez ☆ pour ajouter des favoris'
@@ -53,6 +59,36 @@ export default function Accueil() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 22, padding: '18px 18px 28px' }} data-screen-label="Accueil">
       <Overline size={13}>Le compagnon du comédien</Overline>
 
+      {/* Recherche globale sur toute l'application */}
+      <div style={{ position: 'relative' }}>
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Rechercher dans toute l'application…"
+          style={{ width: '100%', background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '11px 38px 11px 12px', color: 'var(--text)', fontSize: 15, fontFamily: 'var(--font-body)', outline: 'none' }} />
+        {q && (
+          <button onClick={() => setQ('')} aria-label="Effacer la recherche"
+            style={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--gold)', fontSize: 20, cursor: 'pointer', lineHeight: 1 }}>×</button>
+        )}
+      </div>
+
+      {searching ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>{hits.length} résultat{hits.length > 1 ? 's' : ''}</div>
+          {hits.map((h, i) => (
+            <div key={`${h.route}-${i}`} onClick={() => nav(h.route)} className="card-tap"
+              style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', background: 'var(--bg-card)', border: '1px solid var(--b-rest2)', borderRadius: 10, cursor: 'pointer' }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontFamily: 'var(--font-title)', fontSize: 15.5, fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{h.label}</div>
+                {h.sub && <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontStyle: 'italic', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{h.sub}</div>}
+              </div>
+              <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 999, border: '1px solid var(--b-chip)', color: 'var(--gold-chip-text)', flex: 'none', whiteSpace: 'nowrap' }}>{h.type}</span>
+              <span style={{ color: 'var(--gold)', fontSize: 16, flex: 'none' }}>→</span>
+            </div>
+          ))}
+          {hits.length === 0 && (
+            <div style={{ color: 'var(--text-muted)', fontStyle: 'italic', fontSize: 14.5, padding: '10px 2px' }}>Aucun résultat pour «&nbsp;{query}&nbsp;».</div>
+          )}
+        </div>
+      ) : (
+      <>
       {/* Hero théâtre du jour */}
       <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(212,169,78,.25)', background: 'var(--hero-red)' }}>
         <WikiImage
@@ -130,6 +166,8 @@ export default function Accueil() {
         </div>
         <div style={{ fontSize: 20, color: 'var(--gold)' }}>→</div>
       </div>
+      </>
+      )}
     </div>
   );
 }
