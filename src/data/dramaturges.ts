@@ -189,6 +189,7 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Un deal est une transaction commerciale portant sur des valeurs prohibées ou strictement contrôlées. »", src: 'Dans la solitude des champs de coton, 1986' },
     oeuvres: ['Combat de nègre et de chiens · 1983', 'Quai ouest · 1985', 'Dans la solitude des champs de coton · 1986', 'Le Retour au désert · 1988', 'Roberto Zucco · 1990'],
     influence: "Devenu un classique du répertoire, Koltès est l'un des auteurs français contemporains les plus joués au monde ; son écriture inspire toute une génération de dramaturges.",
+    themes: ["Le désir et la solitude", "La marge et l'exclusion", "Le deal et l'échange", "La violence", "L'altérité (Nord/Sud)"],
   },
   {
     id: 'lagarce', nom: 'Jean-Luc Lagarce', nomComplet: 'Jean-Luc Lagarce',
@@ -205,6 +206,7 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Plus tard, l'année d'après — j'allais mourir à mon tour — j'ai près de trente-quatre ans maintenant. »", src: 'Juste la fin du monde, 1990' },
     oeuvres: ['Derniers remords avant l’oubli · 1987', 'Juste la fin du monde · 1990', "J'étais dans ma maison… · 1994", 'Le Pays lointain · 1995'],
     influence: "Entré au répertoire de la Comédie-Française, adapté au cinéma par Xavier Dolan (2016), Lagarce est devenu une référence des concours et des scènes contemporaines.",
+    themes: ["La famille et le retour", "La mort et la maladie", "La parole empêchée", "Le temps qui passe", "L'incommunicabilité"],
   },
   {
     id: 'reza', nom: 'Yasmina Reza', nomComplet: 'Yasmina Reza',
@@ -264,6 +266,8 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Le théâtre, c'est l'art du présent, l'art de ce qui est en train de se faire. »", src: 'Entretiens' },
     oeuvres: ['Le Petit Chaperon rouge · 2004', 'Cercles/Fictions · 2010', 'Cendrillon · 2011', 'Ça ira (1) Fin de Louis · 2015'],
     influence: "Son écriture de plateau et ses contes revisités ont profondément renouvelé le rapport entre auteur, acteur et mise en scène dans le théâtre français.",
+    recompenses: ["Molières 2016 pour Ça ira (1) Fin de Louis (spectacle de théâtre public et mise en scène)"],
+    themes: ["La famille et le conte", "Le réel et l'illusion", "Le pouvoir et la Révolution", "L'enfance", "Le travail et l'argent"],
   },
   {
     id: 'zeller', nom: 'Florian Zeller', nomComplet: 'Florian Zeller',
@@ -280,6 +284,8 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Qui êtes-vous, exactement, pour vous permettre de disposer de moi ? »", src: 'Le Père, 2012' },
     oeuvres: ['La Mère · 2010', 'La Vérité · 2011', 'Le Père · 2012', 'Le Fils · 2018'],
     influence: "Adapté au cinéma avec un Oscar à la clé, Zeller incarne le rayonnement international du théâtre français contemporain sur les grandes scènes anglo-saxonnes.",
+    recompenses: ["Oscar du meilleur scénario adapté (2021) pour The Father, d'après Le Père", "BAFTA du meilleur scénario adapté (2021)"],
+    themes: ["La famille", "La mémoire et la vieillesse", "La vérité et le mensonge", "Le couple", "La perception du réel"],
   },
   {
     id: 'copi', nom: 'Copi', nomComplet: 'Raúl Damonte Botana',
@@ -296,6 +302,7 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Je ne suis pas un auteur pour rire, je suis un auteur qui fait rire de la mort. »", src: 'Entretiens' },
     oeuvres: ['La Journée d’une rêveuse · 1968', "L'Homosexuel ou la difficulté de s'exprimer · 1971", 'Les Quatre Jumelles · 1973', 'La Tour de la Défense · 1978', 'Une visite inopportune · 1988'],
     influence: "Figure culte du théâtre underground, Copi ouvre la scène française à une liberté de ton et à une écriture queer qui inspirent durablement les créateurs contemporains.",
+    themes: ["La transgression", "L'identité et le travestissement", "La provocation", "L'absurde", "La marge"],
   },
   {
     id: 'novarina', nom: 'Valère Novarina', nomComplet: 'Valère Novarina',
@@ -312,6 +319,7 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« L'acteur ne doit pas jouer, il doit brûler la parole. »", src: 'Le Théâtre des paroles' },
     oeuvres: ['L’Atelier volant · 1974', 'Le Jardin de reconnaissance · 1997', "L'Opérette imaginaire · 1998", "L'Acte inconnu · 2007"],
     influence: "Son travail radical sur la langue et la présence de l'acteur en fait l'une des voix les plus singulières du théâtre contemporain, étudiée bien au-delà de la France.",
+    themes: ["Le langage", "Le corps et le souffle", "Le sacré", "La création", "Le vertige des mots"],
   },
   {
     id: 'vinaver', nom: 'Michel Vinaver', nomComplet: 'Michel Grinberg',
@@ -328,6 +336,7 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Le théâtre, c'est ce qui arrive quand les gens parlent en travaillant, en vivant. »", src: 'Écrits sur le théâtre' },
     oeuvres: ['Les Coréens · 1956', 'Par-dessus bord · 1973', 'Les Travaux et les jours · 1977', 'L’Ordinaire · 1983', '11 septembre 2001 · 2002'],
     influence: "Chef de file du « théâtre du quotidien », il a fait entrer le monde du travail et l'économie sur scène, marquant profondément l'écriture dramatique française.",
+    themes: ["Le monde du travail", "L'entreprise et l'économie", "La parole quotidienne", "La politique", "Le fait divers"],
   },
   {
     id: 'ndiaye', nom: 'Marie NDiaye', nomComplet: 'Marie NDiaye',
@@ -344,6 +353,8 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« On peut être là et n'être pour personne, n'exister aux yeux d'aucun. »", src: 'Hilda, 1999' },
     oeuvres: ['Hilda · 1999', 'Papa doit manger · 2003', 'Les Serpents · 2004', 'Rien d’humain · 2004'],
     influence: "Deuxième autrice vivante entrée au répertoire de la Comédie-Française, elle a ouvert la scène nationale à une écriture féminine contemporaine exigeante.",
+    recompenses: ["Prix Femina (2001)", "Prix Goncourt (2009) pour Trois femmes puissantes"],
+    themes: ["La famille", "L'identité et l'origine", "L'étrangeté", "La culpabilité", "Les rapports de domination"],
   },
   {
     id: 'melquiot', nom: 'Fabrice Melquiot', nomComplet: 'Fabrice Melquiot',
@@ -360,6 +371,7 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Écrire pour les enfants, c'est écrire pour ce qu'il y a de plus vivant en nous. »", src: 'Entretiens' },
     oeuvres: ['Le Diable en partage · 2002', 'Bouli Miro · 2002', "L'Inattendu · 2004", 'Alice et autres merveilles · 2018'],
     influence: "Par son abondante écriture pour la jeunesse, il a donné ses lettres de noblesse à un théâtre jeune public exigeant, largement traduit et joué à l'international.",
+    themes: ["L'enfance", "L'imaginaire", "L'amour", "La poésie", "Le passage à l'âge adulte"],
   },
 
   // ─── Grands dramaturges du répertoire (fiches ajoutées) ───
@@ -773,6 +785,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1971", txt: "Naissance à Paris." }, { an: "2016", txt: "La Chose commune, « concert théâtral » sur la Commune de Paris." }],
     oeuvres: ["La Commission centrale de l'enfance · 2008", "Un homme en faillite", "La Chose commune · 2016"],
     style: "Théâtre musical",
+    themes: ["L'Histoire", "La musique et le jazz", "La mémoire", "La transmission", "Le récit"],
   },
   {
     id: "grumberg", nom: "Jean-Claude Grumberg", nomComplet: "Jean-Claude Grumberg",
@@ -797,6 +810,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1986", txt: "Naissance." }, { an: "2017", txt: "Poings, sur l'emprise amoureuse." }],
     oeuvres: ["Ctrl-X · 2013", "Poings · 2017"],
     style: "Écriture contemporaine de l'intime",
+    themes: ["La violence", "L'emprise", "L'intime", "Le corps", "La mémoire"],
   },
   {
     id: "aubert", nom: "Marion Aubert", nomComplet: "Marion Aubert",
@@ -805,6 +819,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1977", txt: "Naissance." }],
     oeuvres: ["Les Histrions", "Tumultes", "Saga des habitants du val de Moldavie"],
     style: "Comédie baroque et grinçante",
+    themes: ["La comédie et le grotesque", "La famille", "La langue et le jeu", "La cruauté", "La société"],
   },
   {
     id: "marchais", nom: "Stéphanie Marchais", nomComplet: "Stéphanie Marchais",
@@ -813,6 +828,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1971", txt: "Naissance." }],
     oeuvres: ["Une boîte"],
     style: "Théâtre de l'intime",
+    themes: ["L'intime", "La fragilité", "Le deuil", "La famille", "Le silence"],
   },
   {
     id: "grangeat", nom: "Simon Grangeat", nomComplet: "Simon Grangeat",
@@ -821,6 +837,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1981", txt: "Naissance." }, { an: "2018", txt: "Les Petites Reines, d'après le roman de Clémentine Beauvais." }],
     oeuvres: ["De la démocratie", "Les Petites Reines · 2018"],
     style: "Théâtre documentaire et social",
+    themes: ["La démocratie", "L'engagement", "La jeunesse", "La société", "Le documentaire"],
   },
   {
     id: "levey", nom: "Sylvain Levey", nomComplet: "Sylvain Levey",
@@ -829,6 +846,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1973", txt: "Naissance." }, { an: "2013", txt: "Cent culottes et sans papiers." }],
     oeuvres: ["Ouasmok ? · 2004", "Cent culottes et sans papiers · 2013", "Alice pour le moment"],
     style: "Théâtre jeunesse",
+    themes: ["L'enfance", "L'exil et les papiers", "L'école", "La société", "La jeunesse"],
   },
   {
     id: "papin", nom: "Nathalie Papin", nomComplet: "Nathalie Papin",
@@ -838,6 +856,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1960", txt: "Naissance." }],
     oeuvres: ["Le Pays de Rien", "Debout", "Mange-moi"],
     style: "Théâtre jeunesse poétique",
+    themes: ["L'enfance", "L'imaginaire", "La philosophie", "La vie et la mort", "La liberté"],
   },
   {
     id: "kery-james", nom: "Kery James", nomComplet: "Kery James",
@@ -847,6 +866,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1977", txt: "Naissance aux Abymes (Guadeloupe)." }, { an: "2017", txt: "À vif, duel d'éloquence entre deux jeunes avocats." }],
     oeuvres: ["À vif · 2017"],
     style: "Théâtre social et oratoire",
+    themes: ["La justice sociale", "Les banlieues", "L'éloquence", "L'engagement", "L'identité"],
   },
   {
     id: "minyana", nom: "Philippe Minyana", nomComplet: "Philippe Minyana",
@@ -855,6 +875,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1946", txt: "Naissance à Besançon." }, { an: "1987", txt: "Inventaires, portraits de trois femmes." }],
     oeuvres: ["Inventaires · 1987", "Chambres", "Voilà"],
     style: "Théâtre du quotidien",
+    themes: ["Le quotidien", "La parole fragmentée", "La famille", "La mémoire", "Le portrait"],
   },
   {
     id: "renaude", nom: "Noëlle Renaude", nomComplet: "Noëlle Renaude",
@@ -864,6 +885,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1949", txt: "Naissance." }, { an: "1996", txt: "Ma Solange…, monologue-fleuve écrit sur plusieurs années." }],
     oeuvres: ["Ma Solange, comment t'écrire mon désastre, Alex Roux", "Le Renard du Nord"],
     style: "Écriture expérimentale",
+    themes: ["Le langage", "La voix et le flux", "Le quotidien", "L'expérimentation", "Le territoire"],
   },
   {
     id: "piemme", nom: "Jean-Marie Piemme", nomComplet: "Jean-Marie Piemme",
@@ -872,6 +894,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1944", txt: "Naissance à Seraing." }],
     oeuvres: ["Dialogue d'un chien avec son maître sur la nécessité de mordre ses amis", "Commerce gourmand"],
     style: "Théâtre politique et populaire",
+    themes: ["Le monde du travail", "La politique", "La colère sociale", "La mémoire ouvrière", "Le populaire"],
   },
   {
     id: "cormann", nom: "Enzo Cormann", nomComplet: "Enzo Cormann",
@@ -881,6 +904,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1953", txt: "Naissance." }, { an: "1997", txt: "Toujours l'orage." }],
     oeuvres: ["Toujours l'orage · 1997", "Sang et eau", "Cairns"],
     style: "Théâtre lyrique et jazz-poésie",
+    themes: ["Le jazz et la musique", "La poésie", "La révolte", "La mémoire", "L'engagement"],
   },
   {
     id: "catherine-anne", nom: "Catherine Anne", nomComplet: "Catherine Anne",
@@ -890,6 +914,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1960", txt: "Naissance." }, { an: "1994", txt: "Ah ! Anabelle." }],
     oeuvres: ["Une année sans été", "Ah ! Anabelle · 1994", "Petites histoires de la nuit"],
     style: "Théâtre sensible, de l'enfance à l'engagement",
+    themes: ["L'enfance", "La famille", "L'engagement", "La condition des femmes", "La transmission"],
   },
   {
     id: "frechette", nom: "Carole Fréchette", nomComplet: "Carole Fréchette",
@@ -899,6 +924,8 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1949", txt: "Naissance à Montréal." }, { an: "1996", txt: "Les Sept Jours de Simon Labrosse." }],
     oeuvres: ["Les Quatre Morts de Marie", "Les Sept Jours de Simon Labrosse · 1996", "Jean et Béatrice · 2002"],
     style: "Théâtre de l'intime",
+    recompenses: ["Prix Siminovitch en théâtre (2002)", "Prix littéraire du Gouverneur général du Canada"],
+    themes: ["L'intime", "Le désir et la quête de sens", "La solitude", "Les femmes", "Le quotidien"],
   },
   {
     id: "devos", nom: "Rémi De Vos", nomComplet: "Rémi De Vos",
@@ -907,6 +934,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1963", txt: "Naissance à Dunkerque." }, { an: "1995", txt: "Débrayage." }],
     oeuvres: ["Débrayage · 1995", "Ma petite jeune fille", "Cassé"],
     style: "Comédie à l'humour noir",
+    themes: ["Le monde du travail", "L'humour noir", "Les rapports de pouvoir", "La famille", "La comédie de mœurs"],
   },
   {
     id: "valletti", nom: "Serge Valletti", nomComplet: "Serge Valletti",
@@ -916,6 +944,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1951", txt: "Naissance à Marseille." }, { an: "2004", txt: "Poeub." }],
     oeuvres: ["Mary's à minuit", "Sale août", "Poeub · 2004"],
     style: "Théâtre à la langue orale et méditerranéenne",
+    themes: ["La langue orale", "La Méditerranée", "La solitude", "La comédie", "Le monologue"],
   },
   {
     id: "kacimi", nom: "Mohamed Kacimi", nomComplet: "Mohamed Kacimi",
@@ -924,6 +953,7 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1955", txt: "Naissance en Algérie." }, { an: "1997", txt: "Terre sainte." }],
     oeuvres: ["Terre sainte · 1997", "La Confession d'Abraham", "Congo Jazz Band"],
     style: "Théâtre politique et poétique",
+    themes: ["L'exil", "Les religions", "La violence de l'Histoire", "L'identité", "La Méditerranée"],
   },
   {
     id: "lemoine", nom: "Jean-René Lemoine", nomComplet: "Jean-René Lemoine",
@@ -933,5 +963,6 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1959", txt: "Naissance à Cap-Haïtien." }, { an: "2012", txt: "Face à la mère." }],
     oeuvres: ["Erzuli Dahomey, déesse de l'amour", "Face à la mère · 2012", "Médée poème enragé"],
     style: "Théâtre poétique et incantatoire",
+    themes: ["L'exil", "Le deuil et la mère", "L'amour", "La mémoire (Haïti)", "Le corps"],
   },
 ];
