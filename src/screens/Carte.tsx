@@ -73,7 +73,9 @@ export default function Carte() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '18px 18px 28px' }} data-screen-label="Carte du monde">
       <BackHeader to="/explorer" title="Carte du monde" />
 
-      <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: '1px solid var(--b-input)', height: 260 }}>
+      {/* zIndex:0 confine le contexte d'empilement de Leaflet (ses contrôles sont en
+          z-index 1000) pour qu'il ne passe pas par-dessus le menu (Drawer, z-index 50). */}
+      <div style={{ position: 'relative', zIndex: 0, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--b-input)', height: 260 }}>
         <MapContainer center={[30, 18]} zoom={2} minZoom={2} worldCopyJump style={{ height: '100%', width: '100%' }} scrollWheelZoom={false} attributionControl>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
