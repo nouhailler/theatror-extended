@@ -1,4 +1,5 @@
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import { EXERCICES, type ExerciceCategorie } from '../data/exercices';
 
@@ -37,8 +38,15 @@ const NIVEAU_COLOR: Record<string, string> = {
 };
 
 export default function Exercices() {
+  const [params] = useSearchParams();
+  const focus = params.get('focus');
   const [cat, setCat] = useState<ExerciceCategorie | null>(null);
-  const [ouvert, setOuvert] = useState<string | null>(null);
+  const [ouvert, setOuvert] = useState<string | null>(focus);
+
+  // Ouverture directe depuis la recherche globale (/exercices?focus=id).
+  useEffect(() => {
+    if (focus) setTimeout(() => document.getElementById(`exo-${focus}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+  }, [focus]);
 
   const cats = useMemo(
     () => CAT_ORDER.filter((c) => EXERCICES.some((e) => e.categorie === c)),
@@ -65,7 +73,7 @@ export default function Exercices() {
         {list.map((e) => {
           const open = ouvert === e.id;
           return (
-            <div key={e.id} className="card card-tap" onClick={() => setOuvert(open ? null : e.id)}
+            <div key={e.id} id={`exo-${e.id}`} className="card card-tap" onClick={() => setOuvert(open ? null : e.id)}
               style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 8, cursor: 'pointer' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <CatIcon cat={e.categorie} />

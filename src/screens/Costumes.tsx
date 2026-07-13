@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import WikiImage from '../components/WikiImage';
 import { COSTUMES, COSTUME_COULEUR, type CostumeEpoque } from '../data/costumes';
@@ -7,7 +8,8 @@ const EPOQUES: CostumeEpoque[] = ['Antiquité', 'Moyen Âge', 'Renaissance', 'Gr
 const GENRES = ['Homme', 'Femme', 'Mixte'] as const;
 
 export default function Costumes() {
-  const [q, setQ] = useState('');
+  const [params] = useSearchParams();
+  const [q, setQ] = useState(() => params.get('q') ?? '');
   const [epoque, setEpoque] = useState<CostumeEpoque | null>(null);
   const [genre, setGenre] = useState<string | null>(null);
 

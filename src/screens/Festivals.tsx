@@ -1,11 +1,13 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import { FESTIVALS, moisCourt, saisonCouleur, type Region } from '../data/festivals';
 
 const REGIONS: Region[] = ['Europe', 'Amériques', 'Océanie'];
 
 export default function Festivals() {
-  const [q, setQ] = useState('');
+  const [params] = useSearchParams();
+  const [q, setQ] = useState(() => params.get('q') ?? '');
   const [region, setRegion] = useState<Region | null>(null);
 
   const list = useMemo(() => {

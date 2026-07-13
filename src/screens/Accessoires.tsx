@@ -1,11 +1,13 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import { ACCESSOIRES, ACCESSOIRE_COULEUR, type AccessoireCategorie } from '../data/accessoires';
 
 const CATEGORIES: AccessoireCategorie[] = ['Armes', 'Mobilier', 'Objets anciens'];
 
 export default function Accessoires() {
-  const [q, setQ] = useState('');
+  const [params] = useSearchParams();
+  const [q, setQ] = useState(() => params.get('q') ?? '');
   const [cat, setCat] = useState<AccessoireCategorie | null>(null);
 
   const list = useMemo(() => {
