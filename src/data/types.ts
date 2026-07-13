@@ -50,6 +50,8 @@ export interface Dramaturge {
   style?: string; // style dramatique / écriture
   manuscrits?: string; // état des manuscrits, fonds, autographes
   adaptations?: string[]; // adaptations célèbres (opéra, cinéma…)
+  recompenses?: string[]; // prix et distinctions (Molières, Tony, Académies…)
+  themes?: string[]; // grands thèmes de l'œuvre (famille, guerre, exil…)
   categorie: EncycloCategorie;
 }
 

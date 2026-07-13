@@ -221,6 +221,12 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« Je souris parce que je pense à autre chose. »", src: '« Art », 1994' },
     oeuvres: ['Conversations après un enterrement · 1987', '« Art » · 1994', 'Trois versions de la vie · 2000', 'Le Dieu du carnage · 2006'],
     influence: "L'une des autrices de théâtre francophones les plus jouées au monde ; sa comédie de mœurs acide a redéfini le succès populaire et critique du théâtre contemporain.",
+    recompenses: [
+      "3 Molières 1995 pour « Art » (dont meilleur auteur)",
+      "Tony Award de la meilleure pièce (« Art », 1998 ; Le Dieu du carnage, 2009)",
+      "Laurence Olivier Award (« Art », 1997 ; Le Dieu du carnage, 2009)",
+    ],
+    themes: ['Le couple et l\'amitié', 'La bourgeoisie et ses masques', 'La violence sous le vernis social', 'L\'art et le goût', 'La comédie de mœurs'],
   },
   {
     id: 'mouawad', nom: 'Wajdi Mouawad', nomComplet: 'Wajdi Mouawad',
@@ -237,6 +243,11 @@ export const DRAMATURGES: Dramaturge[] = [
     citation: { txt: "« L'enfance est un couteau planté dans la gorge et tu as su l'en retirer. »", src: 'Incendies, 2003' },
     oeuvres: ['Littoral · 1999', 'Incendies · 2003', 'Forêts · 2006', 'Ciels · 2009', 'Tous des oiseaux · 2017'],
     influence: "Ses fresques sur la mémoire et l'exil connaissent un rayonnement international ; Incendies est devenu un classique moderne, au théâtre comme au cinéma.",
+    recompenses: [
+      "Grand Prix du théâtre de l'Académie française (2009)",
+      "Directeur du Théâtre national de la Colline, à Paris (depuis 2016)",
+    ],
+    themes: ['L\'exil et les origines', 'La guerre (Liban)', 'La filiation et le secret de famille', 'La mémoire', 'La quête d\'identité'],
   },
   {
     id: 'pommerat', nom: 'Joël Pommerat', nomComplet: 'Joël Pommerat',
@@ -717,6 +728,13 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1982", txt: "Naissance à Paris." }, { an: "2016", txt: "Triomphe d'Edmond, sur la création de Cyrano de Bergerac." }],
     oeuvres: ["Le Porteur d'histoire · 2011", "Le Cercle des illusionnistes · 2014", "Edmond · 2016", "Intra Muros · 2017"],
     style: "Théâtre populaire à la narration virtuose",
+    recompenses: [
+      "Molières 2014 : auteur francophone vivant et metteur en scène (Le Porteur d'histoire)",
+      "Molières 2017 : 5 récompenses pour Edmond (dont meilleur spectacle de théâtre privé et meilleur auteur)",
+      "Prix du théâtre de l'Académie française 2019 (Edmond)",
+      "3 Césars 2019 pour l'adaptation d'Edmond au cinéma",
+    ],
+    themes: ["Le récit et la transmission", "L'Histoire", "La création artistique", "L'aventure", "Le hasard et le destin"],
   },
   {
     id: "schmitt", nom: "Éric-Emmanuel Schmitt", nomComplet: "Éric-Emmanuel Schmitt",
@@ -726,15 +744,27 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1960", txt: "Naissance à Sainte-Foy-lès-Lyon." }, { an: "1993", txt: "Le Visiteur, où Freud dialogue avec un mystérieux inconnu." }],
     oeuvres: ["Le Visiteur · 1993", "Variations énigmatiques · 1996", "Le Libertin · 1997", "Oscar et la dame rose · 2003"],
     style: "Théâtre philosophique",
+    recompenses: [
+      "3 Molières 1993 pour Le Visiteur (dont révélation théâtrale et meilleur auteur)",
+      "Grand Prix du théâtre de l'Académie française (2001)",
+      "Prix Goncourt de la nouvelle (2010)",
+      "Membre de l'Académie Goncourt (depuis 2016)",
+    ],
+    themes: ["La foi et le doute", "Le sens de la vie", "Le bien et le mal", "La tolérance", "L'enfance et la maladie"],
   },
   {
     id: "py", nom: "Olivier Py", nomComplet: "Olivier Py",
     dates: "1965", naissance: 1965, initiale: "P", categorie: 'Auteurs contemporains',
     img: "Olivier py (cropped).jpg",
     bio: "Auteur, metteur en scène, comédien et ancien directeur du Festival d'Avignon, Olivier Py signe un théâtre poétique, lyrique et engagé, hanté par le sacré et par la fête.",
-    chrono: [{ an: "1965", txt: "Naissance à Grasse." }, { an: "1995", txt: "La Servante, cycle-fleuve joué sans interruption durant vingt-quatre heures." }],
+    chrono: [{ an: "1965", txt: "Naissance à Grasse." }, { an: "1995", txt: "La Servante, cycle-fleuve joué sans interruption durant vingt-quatre heures." }, { an: "2013", txt: "Prend la direction du Festival d'Avignon (jusqu'en 2022)." }, { an: "2023", txt: "Nommé directeur du Théâtre du Châtelet, à Paris." }],
     oeuvres: ["La Servante · 1995", "Le Visage d'Orphée · 1997", "Illusions comiques · 2006"],
     style: "Théâtre poétique et baroque",
+    recompenses: [
+      "Grand Prix du Syndicat de la critique (mise en scène)",
+      "Directeur du Festival d'Avignon (2013–2022), du Théâtre de l'Odéon puis du Châtelet",
+    ],
+    themes: ["Le sacré et la foi", "Le désir", "L'engagement politique", "Le théâtre lui-même", "La marginalité"],
   },
   {
     id: "lescot", nom: "David Lescot", nomComplet: "David Lescot",
@@ -752,6 +782,12 @@ export const DRAMATURGES: Dramaturge[] = [
     chrono: [{ an: "1939", txt: "Naissance à Paris ; son père et son grand-père périront en déportation." }, { an: "1979", txt: "L'Atelier, d'après le souvenir des ateliers de confection." }],
     oeuvres: ["L'Atelier · 1979", "Zone libre · 1990", "L'Enfant do"],
     style: "Théâtre de la mémoire",
+    recompenses: [
+      "Molière du meilleur auteur : 1991 (Zone libre) et 1999 (L'Atelier)",
+      "Grand Prix de l'Académie française (1991) et Prix SACD (1999)",
+      "Césars du meilleur scénario : Le Dernier Métro (1981) et Amen. (2003)",
+    ],
+    themes: ["La mémoire de la Shoah", "L'identité juive", "Le monde ouvrier", "La famille", "L'humour face à l'horreur"],
   },
   {
     id: "peyrade", nom: "Pauline Peyrade", nomComplet: "Pauline Peyrade",

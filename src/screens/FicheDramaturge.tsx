@@ -79,6 +79,33 @@ export default function FicheDramaturge() {
           </div>
         </div>
 
+        {/* Thèmes */}
+        {d.themes && d.themes.length > 0 && (
+          <div>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>Thèmes</div>
+            <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+              {d.themes.map((t) => (
+                <span key={t} style={{ fontSize: 13, padding: '5px 12px', borderRadius: 999, background: 'var(--bg-field)', border: '1px solid var(--b-chip)', color: 'var(--text-2b)' }}>{t}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Récompenses */}
+        {d.recompenses && d.recompenses.length > 0 && (
+          <div>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 10 }}>Récompenses</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {d.recompenses.map((r) => (
+                <div key={r} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
+                  <span style={{ color: 'var(--gold)', fontSize: 13, flex: 'none' }}>🏆</span>
+                  <span style={{ fontSize: 14.5, color: 'var(--text-2b)', lineHeight: 1.45 }}>{r}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Style */}
         {d.style && (
           <div className="card card-16" style={{ padding: '14px 16px' }}>
