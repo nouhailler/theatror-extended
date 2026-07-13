@@ -1,20 +1,41 @@
 import { useEffect, useRef, useState } from 'react';
 import { BackHeader } from '../components/ui';
+import Credit from '../components/Credit';
+import { wiki } from '../lib/wikimedia';
 import { KEYS, idbGet, idbSet } from '../lib/storage';
 
 interface Acteur { id: string; nom: string; x: number; y: number; couleur: string }
 interface Plateau { acteurs: Acteur[]; decor: string; lumiere: string }
 
+// Chaque décor : dégradé de repli + photo/tableau réaliste (Wikimedia) en fond de scène.
 const DECORS = [
-  { id: 'grec', nom: 'Théâtre grec', bg: 'radial-gradient(circle at 50% 30%, #6b5d47, #3d3527)' },
-  { id: 'palais', nom: 'Palais', bg: 'linear-gradient(160deg, #4a1f28, #2a1018)' },
-  { id: 'rue', nom: 'Rue', bg: 'linear-gradient(160deg, #3a3d42, #26282c)' },
-  { id: 'foret', nom: 'Forêt', bg: 'linear-gradient(160deg, #26402a, #16261a)' },
-  { id: 'interieur', nom: 'Intérieur bourgeois', bg: 'linear-gradient(160deg, #4a3826, #2c2015)' },
-  { id: 'taverne', nom: 'Taverne', bg: 'linear-gradient(160deg, #3d2c1a, #241810)' },
-  { id: 'jardin', nom: 'Jardin', bg: 'linear-gradient(160deg, #2f4a33, #1c3021)' },
-  { id: 'mer', nom: 'Bord de mer', bg: 'linear-gradient(160deg, #23485c, #142d3c)' },
+  { id: 'grec', nom: 'Théâtre grec', bg: 'radial-gradient(circle at 50% 30%, #6b5d47, #3d3527)', img: 'Epidaurus Theater.jpg' },
+  { id: 'palais', nom: 'Palais', bg: 'linear-gradient(160deg, #4a1f28, #2a1018)', img: 'Chateau Versailles Galerie des Glaces.jpg' },
+  { id: 'rue', nom: 'Rue', bg: 'linear-gradient(160deg, #3a3d42, #26282c)', img: 'Rothenburg BW 4.JPG' },
+  { id: 'foret', nom: 'Forêt', bg: 'linear-gradient(160deg, #26402a, #16261a)', img: 'Fairmead Road at High Beach, Epping Forest, Essex England.jpg' },
+  { id: 'interieur', nom: 'Intérieur bourgeois', bg: 'linear-gradient(160deg, #4a3826, #2c2015)', img: "Autour d'une partition - Charles Baude after Albert Aublet.jpg" },
+  { id: 'taverne', nom: 'Taverne', bg: 'linear-gradient(160deg, #3d2c1a, #241810)', img: 'Teniers le Jeune, Intérieur de cabaret.jpg' },
+  { id: 'jardin', nom: 'Jardin', bg: 'linear-gradient(160deg, #2f4a33, #1c3021)', img: '0 Château de Vaux-le-Vicomte - Jardins (5).JPG' },
+  { id: 'mer', nom: 'Bord de mer', bg: 'linear-gradient(160deg, #23485c, #142d3c)', img: "Vue d'Étretat.jpg" },
 ];
+
+// Petite figurine de comédien (silhouette en robe), teintée par la couleur du rôle.
+function Figurine({ couleur, selected }: { couleur: string; selected: boolean }) {
+  return (
+    <svg width={30} height={46} viewBox="0 0 24 46" style={{
+      display: 'block',
+      filter: selected
+        ? 'drop-shadow(0 0 3px #fff) drop-shadow(0 2px 3px rgba(0,0,0,.55))'
+        : 'drop-shadow(0 2px 3px rgba(0,0,0,.55))',
+    }}>
+      <ellipse cx="12" cy="44" rx="8" ry="2.2" fill="rgba(0,0,0,.4)" />
+      <g fill={couleur} stroke="rgba(0,0,0,.4)" strokeWidth="0.8">
+        <circle cx="12" cy="7" r="5" />
+        <path d="M12 12 C8 12 6 15 6 19 L3.5 40 C3.4 41 4 41.6 5 41.6 L19 41.6 C20 41.6 20.6 41 20.5 40 L18 19 C18 15 16 12 12 12 Z" />
+      </g>
+    </svg>
+  );
+}
 
 const LUMIERES = [
   { id: 'plein-feu', nom: 'Plein feu', overlay: 'radial-gradient(circle at 50% 38%, rgba(255,244,214,.14), rgba(0,0,0,.06))' },
@@ -90,6 +111,11 @@ export default function MiseEnScene() {
       {/* Plateau vu de dessus */}
       <div ref={stageRef} onPointerDown={() => setSelected(null)}
         style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', borderRadius: 14, overflow: 'hidden', border: '1px solid var(--b-input)', background: decor.bg, touchAction: 'none', userSelect: 'none' }}>
+        {/* Décor réaliste en fond de scène (Wikimedia) */}
+        {decor.img && (
+          <img key={decor.img} src={wiki(decor.img, 800)} alt="" aria-hidden
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }} />
+        )}
         {/* Fond de scène / avant-scène (repères d'orientation) */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 22, background: 'linear-gradient(rgba(0,0,0,.35), transparent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(255,255,255,.5)' }}>Fond de scène</div>
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 22, background: 'linear-gradient(transparent, rgba(0,0,0,.4))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(255,255,255,.5)' }}>Public</div>
@@ -101,10 +127,8 @@ export default function MiseEnScene() {
         {plateau.acteurs.map((a) => (
           <div key={a.id}
             onPointerDown={(e) => onPinDown(e, a.id)} onPointerMove={onPinMove} onPointerUp={onPinUp}
-            style={{ position: 'absolute', left: `${a.x}%`, top: `${a.y}%`, transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, cursor: 'grab', touchAction: 'none' }}>
-            <div style={{ width: 30, height: 30, borderRadius: 999, background: a.couleur, border: selected === a.id ? '2px solid #fff' : '2px solid rgba(0,0,0,.35)', boxShadow: selected === a.id ? '0 0 0 3px rgba(255,255,255,.35)' : '0 2px 6px rgba(0,0,0,.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: 'rgba(0,0,0,.65)', fontFamily: 'var(--font-title)' }}>
-              {a.nom.trim().charAt(0).toUpperCase() || '?'}
-            </div>
+            style={{ position: 'absolute', left: `${a.x}%`, top: `${a.y}%`, transform: `translate(-50%, -80%) scale(${selected === a.id ? 1.12 : 1})`, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, cursor: 'grab', touchAction: 'none' }}>
+            <Figurine couleur={a.couleur} selected={selected === a.id} />
             <div style={{ fontSize: 10.5, color: '#fff', textShadow: '0 1px 3px rgba(0,0,0,.9)', whiteSpace: 'nowrap', maxWidth: 90, overflow: 'hidden', textOverflow: 'ellipsis' }}>{a.nom}</div>
           </div>
         ))}
@@ -149,6 +173,7 @@ export default function MiseEnScene() {
             <button key={d.id} className={`chip${plateau.decor === d.id ? ' active' : ''}`} onClick={() => setPlateau((p) => ({ ...p, decor: d.id }))}>{d.nom}</button>
           ))}
         </div>
+        <div style={{ marginTop: 8 }}><Credit file={decor.img} /></div>
       </div>
 
       {/* Lumière */}
