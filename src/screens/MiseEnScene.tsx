@@ -170,7 +170,12 @@ export default function MiseEnScene() {
         <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>Décor</div>
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
           {DECORS.map((d) => (
-            <button key={d.id} className={`chip${plateau.decor === d.id ? ' active' : ''}`} onClick={() => setPlateau((p) => ({ ...p, decor: d.id }))}>{d.nom}</button>
+            <button key={d.id} className={`chip${plateau.decor === d.id ? ' active' : ''}`} onClick={() => setPlateau((p) => ({ ...p, decor: d.id }))}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7, paddingLeft: 5 }}>
+              <img src={wiki(d.img, 60)} alt="" aria-hidden loading="lazy"
+                style={{ width: 22, height: 22, borderRadius: 6, objectFit: 'cover', flex: 'none', background: d.bg }} />
+              {d.nom}
+            </button>
           ))}
         </div>
         <div style={{ marginTop: 8 }}><Credit file={decor.img} /></div>
@@ -181,7 +186,11 @@ export default function MiseEnScene() {
         <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>Ambiance lumineuse</div>
         <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
           {LUMIERES.map((l) => (
-            <button key={l.id} className={`chip${plateau.lumiere === l.id ? ' active' : ''}`} onClick={() => setPlateau((p) => ({ ...p, lumiere: l.id }))}>{l.nom}</button>
+            <button key={l.id} className={`chip${plateau.lumiere === l.id ? ' active' : ''}`} onClick={() => setPlateau((p) => ({ ...p, lumiere: l.id }))}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7, paddingLeft: 6 }}>
+              <span aria-hidden style={{ width: 18, height: 18, borderRadius: 999, flex: 'none', border: '1px solid rgba(0,0,0,.4)', background: `${l.overlay}, linear-gradient(160deg,#6b5a44,#3a2f22)` }} />
+              {l.nom}
+            </button>
           ))}
         </div>
       </div>
