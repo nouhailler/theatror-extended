@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { BackHeader } from '../components/ui';
+import WikiImage from '../components/WikiImage';
 import { COSTUMES, COSTUME_COULEUR, type CostumeEpoque } from '../data/costumes';
 
 const EPOQUES: CostumeEpoque[] = ['Antiquité', 'Moyen Âge', 'Renaissance', 'Grand Siècle', 'Lumières', 'Romantique', 'Moderne'];
@@ -51,9 +52,9 @@ export default function Costumes() {
           const col = COSTUME_COULEUR[c.epoque];
           return (
             <div key={c.id} className="card" style={{ display: 'flex', gap: 14, padding: 14 }}>
-              <div style={{ width: 60, height: 60, borderRadius: 10, flex: 'none', background: `linear-gradient(150deg, ${col}, rgba(0,0,0,.35))`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, color: 'rgba(0,0,0,.55)' }}>
-                {c.initiale}
-              </div>
+              <WikiImage file={c.img} initial={c.initiale} initialSize={26} objectPosition="center"
+                fallbackBg={`linear-gradient(150deg, ${col}, rgba(0,0,0,.35))`}
+                style={{ width: 60, height: 60, borderRadius: 10, flex: 'none' }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
                   <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{c.nom}</div>
@@ -74,6 +75,10 @@ export default function Costumes() {
         {list.length === 0 && (
           <div style={{ textAlign: 'center', padding: '26px 18px', color: 'var(--text-muted)', fontStyle: 'italic', fontSize: 14.5 }}>Aucun costume pour ces critères.</div>
         )}
+      </div>
+
+      <div style={{ fontSize: 12, color: 'var(--text-muted)', fontStyle: 'italic', lineHeight: 1.5, borderTop: '1px solid var(--b-rest)', paddingTop: 10 }}>
+        Vignettes : œuvres et pièces de musée via Wikimedia Commons (domaine public, CC0 &amp; CC BY).
       </div>
     </div>
   );
