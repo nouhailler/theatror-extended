@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import WikiImage from '../components/WikiImage';
 import Credit from '../components/Credit';
+import { useBack } from '../components/ui';
 import { PERSONNAGES } from '../data/characters';
 import { MONOLOGUES } from '../data/content';
 import { DRAMATURGES } from '../data/dramaturges';
@@ -8,6 +9,7 @@ import { DRAMATURGES } from '../data/dramaturges';
 export default function FichePersonnage() {
   const { id } = useParams();
   const nav = useNavigate();
+  const goBack = useBack('/explorer/personnages');
   const c = PERSONNAGES.find((x) => x.id === id);
   const mono = c?.monologueId ? MONOLOGUES.find((m) => m.id === c.monologueId) : undefined;
   const auteur = c?.auteurId ? DRAMATURGES.find((d) => d.id === c.auteurId) : undefined;
@@ -33,7 +35,7 @@ export default function FichePersonnage() {
       <div style={{ position: 'relative', height: 168, overflow: 'hidden' }}>
         <WikiImage file={c.img} initial={c.initiale} initialSize={92} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
-        <button onClick={() => nav('/explorer/personnages')} aria-label="Retour"
+        <button onClick={goBack} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>
         <div style={{ position: 'absolute', left: 18, bottom: 12, right: 18 }}>
           <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>{c.emploi}</div>

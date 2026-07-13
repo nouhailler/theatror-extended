@@ -1,5 +1,20 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+/**
+ * Retour « intelligent » pour les fiches de détail : revient à la page précédente
+ * (donc à la Frise, la Carte, une autre fiche… d'où l'on vient), et retombe sur
+ * `fallback` seulement en cas d'accès direct sans historique interne (lien partagé,
+ * rechargement de la PWA sur cette route).
+ */
+export function useBack(fallback: string): () => void {
+  const nav = useNavigate();
+  const loc = useLocation();
+  return () => {
+    if (loc.key && loc.key !== 'default') nav(-1);
+    else nav(fallback);
+  };
+}
 
 /** Surtitre or en capitales. */
 export function Overline({ children, size = 12 }: { children: ReactNode; size?: number }) {

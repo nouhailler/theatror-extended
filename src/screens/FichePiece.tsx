@@ -5,7 +5,7 @@ import { PERSONNAGES } from '../data/personnages';
 import { ficheFor } from '../data/characters';
 import { hasTexte } from '../data/pieceTextes';
 import { DRAMATURGES } from '../data/dramaturges';
-import { difficulteLabel } from '../components/ui';
+import { difficulteLabel, useBack } from '../components/ui';
 import Star from '../components/Star';
 
 const chip: React.CSSProperties = {
@@ -16,6 +16,7 @@ const chip: React.CSSProperties = {
 export default function FichePiece() {
   const { id } = useParams();
   const nav = useNavigate();
+  const goBack = useBack('/pieces');
   const p = PIECES.find((x) => x.id === id);
 
   if (!p) {
@@ -39,7 +40,7 @@ export default function FichePiece() {
       <div style={{ position: 'relative', height: 168, background: 'var(--hero-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
         <span style={{ fontFamily: 'var(--font-title)', fontSize: 84, color: 'rgba(242,233,220,.14)', lineHeight: 1 }}>{p.titre.charAt(0)}</span>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
-        <button onClick={() => nav('/pieces')} aria-label="Retour"
+        <button onClick={goBack} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>
         <div style={{ position: 'absolute', top: 14, right: 16 }}>
           <Star cat="pieces" id={p.id} size={22} shadow />
