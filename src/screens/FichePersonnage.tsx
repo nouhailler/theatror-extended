@@ -1,4 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import WikiImage from '../components/WikiImage';
+import Credit from '../components/Credit';
 import { PERSONNAGES } from '../data/characters';
 import { MONOLOGUES } from '../data/content';
 import { DRAMATURGES } from '../data/dramaturges';
@@ -28,8 +30,8 @@ export default function FichePersonnage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Personnage ${c.nom}`}>
-      <div style={{ position: 'relative', height: 168, background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <span style={{ fontFamily: 'var(--font-title)', fontSize: 92, color: 'rgba(212,169,78,.22)', lineHeight: 1 }}>{c.initiale}</span>
+      <div style={{ position: 'relative', height: 168, overflow: 'hidden' }}>
+        <WikiImage file={c.img} initial={c.initiale} initialSize={92} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
         <button onClick={() => nav('/explorer/personnages')} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>
@@ -109,6 +111,8 @@ export default function FichePersonnage() {
             </div>
           )}
         </div>
+
+        <Credit file={c.img} />
       </div>
     </div>
   );

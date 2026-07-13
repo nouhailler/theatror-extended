@@ -2,6 +2,7 @@ export interface Personnage {
   id: string;
   nom: string;
   initiale: string;
+  img?: string;
   piece: string;
   pieceId?: string;
   auteur: string;
@@ -18,7 +19,7 @@ export interface Personnage {
 
 export const PERSONNAGES: Personnage[] = [
   {
-    id: 'tartuffe', nom: 'Tartuffe', initiale: 'T', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'tartuffe', nom: 'Tartuffe', initiale: 'T', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Faux dévot',
     psychologie: "Hypocrite consommé, Tartuffe masque une avidité charnelle et matérielle sous les dehors de la piété. Manipulateur habile, il exploite la crédulité d'Orgon pour s'emparer de ses biens et de sa femme.",
     evolution: "D'abord tout-puissant et intouchable, il se démasque lui-même en cédant à son désir pour Elmire, avant d'être confondu et arrêté par la justice du roi.",
@@ -26,7 +27,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Le ciel défend, de vrai, certains contentements ; mais on trouve avec lui des accommodements. »",
   },
   {
-    id: 'cyrano', nom: 'Cyrano', initiale: 'C', piece: 'Cyrano de Bergerac', pieceId: 'cyrano',
+    id: 'cyrano', nom: 'Cyrano', initiale: 'C', img: 'Coquelin ainé.jpg', piece: 'Cyrano de Bergerac', pieceId: 'cyrano',
     auteur: 'Edmond Rostand', auteurId: 'rostand', emploi: 'Héros bretteur et poète',
     psychologie: "Bretteur génial et poète flamboyant, Cyrano cache sous son panache une blessure profonde : la honte de son nez, qui le persuade d'être indigne d'être aimé de Roxane.",
     evolution: "Il aime en secret, prête ses mots à Christian, puis garde le silence quinze ans durant. Il ne révèle son amour qu'à l'instant de mourir — fidèle à son panache jusqu'au bout.",
@@ -35,7 +36,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Mon panache. »",
   },
   {
-    id: 'antigone', nom: 'Antigone', initiale: 'A', piece: 'Antigone', pieceId: 'antigone-sophocle',
+    id: 'antigone', nom: 'Antigone', initiale: 'A', img: 'Antigone Gives Token Burial to the Body of Her Brother Polynices MET DP807380.jpg', piece: 'Antigone', pieceId: 'antigone-sophocle',
     auteur: 'Sophocle', auteurId: 'sophocle', emploi: 'Héroïne tragique',
     psychologie: "Jeune femme d'une droiture absolue, Antigone place la loi divine et le devoir familial au-dessus de la loi de la cité. Son intransigeance la rend à la fois sublime et vouée à la mort.",
     evolution: "De la décision d'ensevelir son frère à sa condamnation, elle ne fléchit jamais. Emmurée vivante, elle se donne la mort, entraînant la chute de Créon.",
@@ -44,7 +45,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Je suis née pour partager l'amour et non la haine. »",
   },
   {
-    id: 'dom-juan', nom: 'Dom Juan', initiale: 'D', piece: 'Dom Juan', pieceId: 'dom-juan',
+    id: 'dom-juan', nom: 'Dom Juan', initiale: 'D', img: "Frontispiece to Molière's Dom Juan by P Brissart 1682 - césar.jpg", piece: 'Dom Juan', pieceId: 'dom-juan',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Grand seigneur libertin',
     psychologie: "Séducteur insatiable et libre-penseur, Dom Juan défie toutes les lois — morales, sociales, divines. Son courage se double d'un cynisme qui confine au blasphème.",
     evolution: "De conquête en provocation, il refuse tout repentir jusqu'au bout et disparaît, foudroyé, englouti par la statue du Commandeur.",
@@ -52,7 +53,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Je crois que deux et deux sont quatre, Sganarelle, et que quatre et quatre sont huit. »",
   },
   {
-    id: 'figaro', nom: 'Figaro', initiale: 'F', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    id: 'figaro', nom: 'Figaro', initiale: 'F', img: 'BarberSeville.jpg', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
     auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Valet frondeur',
     psychologie: "Vif, débrouillard et lucide, Figaro incarne l'intelligence populaire qui tient tête aux puissants. Sous la gaieté perce une conscience aiguë de l'injustice sociale.",
     evolution: "Du barbier complice au valet qui déjoue son maître, il gagne en profondeur jusqu'au grand monologue où il médite sur sa condition et le hasard des naissances.",
@@ -61,7 +62,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Vous vous êtes donné la peine de naître, et rien de plus. »",
   },
   {
-    id: 'phedre', nom: 'Phèdre', initiale: 'P', piece: 'Phèdre', pieceId: 'phedre',
+    id: 'phedre', nom: 'Phèdre', initiale: 'P', img: 'Alexandre Cabanel - Phèdre.jpg', piece: 'Phèdre', pieceId: 'phedre',
     auteur: 'Jean Racine', auteurId: 'racine', emploi: 'Héroïne tragique',
     psychologie: "Dévorée par une passion incestueuse pour son beau-fils Hippolyte, Phèdre lutte contre un désir qu'elle sait monstrueux. Sa lucidité même fait son supplice.",
     evolution: "De l'aveu arraché à la calomnie qui perd Hippolyte, elle sombre dans le remords, puis s'empoisonne en confessant la vérité.",
@@ -70,7 +71,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« C'est Vénus tout entière à sa proie attachée. »",
   },
   {
-    id: 'hamlet', nom: 'Hamlet', initiale: 'H', piece: 'Hamlet', pieceId: 'hamlet',
+    id: 'hamlet', nom: 'Hamlet', initiale: 'H', img: 'Hamlet William Morris Hunt.jpeg', piece: 'Hamlet', pieceId: 'hamlet',
     auteur: 'William Shakespeare', auteurId: 'shakespeare', emploi: 'Prince vengeur',
     psychologie: "Intellectuel tourmenté, Hamlet est paralysé par le doute et la conscience. Sa quête de vengeance se heurte à ses interrogations sur l'action, la mort et le sens de l'existence.",
     evolution: "De la révélation du spectre à la feinte folie, il diffère sa vengeance jusqu'au massacre final où il périt avec toute la cour.",
@@ -81,7 +82,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Molière ───────────────────────────────────────────────────────────
   {
-    id: 'harpagon', nom: 'Harpagon', initiale: 'H', piece: "L'Avare", pieceId: 'lavare',
+    id: 'harpagon', nom: 'Harpagon', initiale: 'H', img: "Charles Dullin, L'Avare, 1944.jpg", piece: "L'Avare", pieceId: 'lavare',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Barbon avare',
     psychologie: "Vieillard dévoré par l'avarice, Harpagon voit des voleurs partout et fait passer son argent avant ses enfants. Sa passion pour sa cassette confine à la folie et le rend tyrannique, ridicule et pathétique à la fois.",
     evolution: "Rival de son propre fils auprès de Mariane, il est floué de toutes parts ; le vol de sa cassette le plonge dans le délire, avant qu'un dénouement de comédie ne dénoue tout et le laisse retrouver, ému, son or.",
@@ -91,7 +92,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Sans dot ! »",
   },
   {
-    id: 'alceste', nom: 'Alceste', initiale: 'A', piece: 'Le Misanthrope', pieceId: 'le-misanthrope',
+    id: 'alceste', nom: 'Alceste', initiale: 'A', img: 'LeMisanthrope.jpg', piece: 'Le Misanthrope', pieceId: 'le-misanthrope',
     auteur: 'Molière', auteurId: 'moliere', emploi: "L'atrabilaire amoureux",
     psychologie: "Épris d'absolu et de sincérité, Alceste hait l'hypocrisie sociale et exige une franchise totale. Son intransigeance, à la fois admirable et intenable, le rend malheureux — d'autant qu'il aime la coquette Célimène, tout ce qu'il déteste.",
     evolution: "De procès en brouilles, son exigence morale le coupe du monde. Après avoir démasqué Célimène, il refuse ses demi-mesures et choisit de fuir la société des hommes pour un « désert ».",
@@ -100,7 +101,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Je veux qu'on soit sincère, et qu'en homme d'honneur, on ne lâche aucun mot qui ne parte du cœur. »",
   },
   {
-    id: 'argan', nom: 'Argan', initiale: 'A', piece: 'Le Malade imaginaire', pieceId: 'malade-imaginaire',
+    id: 'argan', nom: 'Argan', initiale: 'A', img: 'Le Malade imaginaire.jpg', piece: 'Le Malade imaginaire', pieceId: 'malade-imaginaire',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Hypocondriaque',
     psychologie: "Persuadé d'être malade, Argan est en réalité prisonnier de sa peur de la mort et des médecins qui l'exploitent. Égoïste et crédule, il veut marier sa fille à un médecin pour avoir un praticien sous la main.",
     evolution: "Manipulé par sa seconde femme Béline et par la Faculté, il est peu à peu détrompé par Toinette et son frère Béralde, jusqu'à la fausse mort qui lui révèle les cœurs — et son intronisation burlesque en médecin.",
@@ -109,7 +110,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Il y a plus de quatre-vingts et douze prises de médecine... »",
   },
   {
-    id: 'scapin', nom: 'Scapin', initiale: 'S', piece: 'Les Fourberies de Scapin', pieceId: 'fourberies-scapin',
+    id: 'scapin', nom: 'Scapin', initiale: 'S', img: 'Les Fourberies de Scapin frontispice.jpg', piece: 'Les Fourberies de Scapin', pieceId: 'fourberies-scapin',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Valet fourbe',
     psychologie: "Valet rusé et virtuose de l'intrigue, Scapin manie le mensonge en artiste, par goût du jeu autant que par dévouement. Effronté, inventif, il se réjouit de sa propre habileté à mener les vieillards par le bout du nez.",
     evolution: "Sollicité par deux fils sans le sou, il extorque l'argent aux pères par des ruses de plus en plus audacieuses — dont la fameuse scène du sac — avant de feindre l'agonie pour se faire pardonner.",
@@ -118,7 +119,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Que diable allait-il faire dans cette galère ? »",
   },
   {
-    id: 'arnolphe', nom: 'Arnolphe', initiale: 'A', piece: 'L\'École des femmes', pieceId: 'ecole-des-femmes',
+    id: 'arnolphe', nom: 'Arnolphe', initiale: 'A', img: "L'EcoledesFemmes.jpg", piece: 'L\'École des femmes', pieceId: 'ecole-des-femmes',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Barbon jaloux',
     psychologie: "Obsédé par la peur d'être trompé, Arnolphe a fait élever Agnès dans l'ignorance pour s'en faire une épouse docile. Sous le tyran domestique perce, malgré lui, un homme qui finit par aimer vraiment — et en souffre.",
     evolution: "Son système vole en éclats à mesure qu'Agnès s'éveille à l'amour pour Horace. De maître assuré, il devient suppliant ridicule, puis dépassé par le dénouement qui lui arrache Agnès.",
@@ -129,7 +130,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Corneille ─────────────────────────────────────────────────────────
   {
-    id: 'rodrigue', nom: 'Rodrigue', initiale: 'R', piece: 'Le Cid', pieceId: 'le-cid', aka: ['Don Rodrigue'],
+    id: 'rodrigue', nom: 'Rodrigue', initiale: 'R', img: '3402440-Le Cid performed in Paris 1637-Burgos.jpg', piece: 'Le Cid', pieceId: 'le-cid', aka: ['Don Rodrigue'],
     auteur: 'Corneille', auteurId: 'corneille', emploi: 'Héros cornélien',
     psychologie: "Jeune homme déchiré entre l'amour et l'honneur, Rodrigue incarne le héros cornélien : la gloire et le devoir l'emportent sur la passion, mais au prix d'un déchirement intime que rien n'apaise.",
     evolution: "Contraint de venger son père en tuant celui de Chimène, il conquiert ensuite sa légende en repoussant les Maures (« le Cid »), transformant sa faute privée en gloire publique pour mériter enfin Chimène.",
@@ -139,7 +140,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Percé jusques au fond du cœur / D'une atteinte imprévue aussi bien que mortelle… »",
   },
   {
-    id: 'chimene', nom: 'Chimène', initiale: 'C', piece: 'Le Cid', pieceId: 'le-cid',
+    id: 'chimene', nom: 'Chimène', initiale: 'C', img: '1868, Mugeres célebres de España y Portugal, Gimena mujer del Cid, AB195 0363 (cropped).jpg', piece: 'Le Cid', pieceId: 'le-cid',
     auteur: 'Corneille', auteurId: 'corneille', emploi: 'Héroïne cornélienne',
     psychologie: "Aussi entière que Rodrigue, Chimène aime celui qui a tué son père et se doit pourtant de réclamer sa mort. Son honneur et sa passion la déchirent à égalité, dans une lutte où l'amour affleure sous chaque exigence de vengeance.",
     evolution: "Elle poursuit Rodrigue en justice tout en tremblant pour sa vie, jusqu'à laisser paraître son amour ; le roi impose un délai qui, sans effacer le deuil, ouvre la voie à leur union.",
@@ -150,7 +151,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Racine ────────────────────────────────────────────────────────────
   {
-    id: 'neron', nom: 'Néron', initiale: 'N', piece: 'Britannicus', pieceId: 'britannicus',
+    id: 'neron', nom: 'Néron', initiale: 'N', img: 'Racine - Britannicus, Barbin, 1670, 2.jpg', piece: 'Britannicus', pieceId: 'britannicus',
     auteur: 'Racine', auteurId: 'racine', emploi: 'Tyran naissant',
     psychologie: "« Monstre naissant », Néron bascule de l'empereur encore vertueux au tyran. La jalousie envers Britannicus et le désir pour Junie réveillent en lui une cruauté que ni sa mère Agrippine ni son gouverneur Burrhus ne peuvent plus contenir.",
     evolution: "D'abord retenu par la crainte d'Agrippine et les conseils de Burrhus, il s'affranchit peu à peu de toute tutelle, écoute le perfide Narcisse et empoisonne Britannicus — franchissant le seuil du crime dont il ne reviendra pas.",
@@ -159,7 +160,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« J'embrasse mon rival, mais c'est pour l'étouffer. »",
   },
   {
-    id: 'hermione', nom: 'Hermione', initiale: 'H', piece: 'Andromaque', pieceId: 'andromaque',
+    id: 'hermione', nom: 'Hermione', initiale: 'H', img: 'Andromaque 1668 title page.JPG', piece: 'Andromaque', pieceId: 'andromaque',
     auteur: 'Racine', auteurId: 'racine', emploi: 'Amoureuse jalouse',
     psychologie: "Promise à Pyrrhus qui lui préfère Andromaque, Hermione est ravagée par une passion humiliée. Orgueil et amour se confondent en une jalousie dévorante qui la pousse au bord de la folie meurtrière.",
     evolution: "Ballottée entre l'espoir et le dépit, elle arme la main d'Oreste pour tuer Pyrrhus, puis, apprenant le meurtre accompli, se retourne contre Oreste, maudit son crime et se donne la mort sur le corps de l'aimé.",
@@ -168,7 +169,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Qui te l'a dit ? »",
   },
   {
-    id: 'andromaque', nom: 'Andromaque', initiale: 'A', piece: 'Andromaque', pieceId: 'andromaque',
+    id: 'andromaque', nom: 'Andromaque', initiale: 'A', img: 'Jacques-Louis David- Andromache Mourning Hector.JPG', piece: 'Andromaque', pieceId: 'andromaque',
     auteur: 'Racine', auteurId: 'racine', emploi: 'Veuve fidèle',
     psychologie: "Veuve d'Hector et captive de Pyrrhus, Andromaque n'est plus que mère : tout son être se voue à sauver son fils Astyanax. Fidèle à la mémoire d'Hector, elle oppose à la passion de Pyrrhus une dignité inébranlable.",
     evolution: "Sommée d'épouser Pyrrhus pour sauver l'enfant, elle imagine un « innocent stratagème » — l'épouser puis se tuer. La mort de Pyrrhus la laisse paradoxalement reine d'Épire, gardienne de son fils.",
@@ -179,7 +180,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Musset ────────────────────────────────────────────────────────────
   {
-    id: 'lorenzo', nom: 'Lorenzo', initiale: 'L', piece: 'Lorenzaccio', pieceId: 'lorenzaccio',
+    id: 'lorenzo', nom: 'Lorenzo', initiale: 'L', img: 'Alfons Mucha - 1896 - Lorenzaccio.jpg', piece: 'Lorenzaccio', pieceId: 'lorenzaccio',
     auteur: 'Musset', auteurId: 'musset', emploi: 'Héros romantique',
     psychologie: "Idéaliste qui s'est fait débauché pour approcher le tyran, Lorenzo (« Lorenzaccio ») s'est perdu dans le masque : à force de jouer le vice, il ne sait plus s'il agit par vertu ou par vertige. Figure du doute romantique par excellence.",
     evolution: "Résolu à assassiner le duc Alexandre pour libérer Florence, il accomplit son meurtre — mais le peuple ne se soulève pas ; désabusé, il erre puis se laisse tuer, ayant sacrifié son âme pour un geste vain.",
@@ -188,7 +189,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Je suis plus creux et plus vide qu'une statue de fer-blanc. »",
   },
   {
-    id: 'perdican', nom: 'Perdican', initiale: 'P', piece: "On ne badine pas avec l'amour", pieceId: 'on-ne-badine-pas',
+    id: 'perdican', nom: 'Perdican', initiale: 'P', img: "Musset - On ne badine pas avec l'amour, 1884.djvu", piece: "On ne badine pas avec l'amour", pieceId: 'on-ne-badine-pas',
     auteur: 'Musset', auteurId: 'musset', emploi: 'Jeune premier',
     psychologie: "Jeune homme brillant et orgueilleux, Perdican aime Camille mais se pique de son refus. Blessé dans sa fierté, il joue avec les sentiments de la petite Rosette pour piquer Camille — sans mesurer que l'on ne badine pas avec l'amour.",
     evolution: "De la cour blessée au dépit, il en vient à un aveu sincère ; mais son jeu cruel a fait une victime : Rosette meurt de chagrin, et cette mort sépare à jamais les deux amants qui s'aimaient.",
@@ -199,7 +200,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Shakespeare ───────────────────────────────────────────────────────
   {
-    id: 'romeo', nom: 'Roméo', initiale: 'R', piece: 'Roméo et Juliette', pieceId: 'romeo-juliette',
+    id: 'romeo', nom: 'Roméo', initiale: 'R', img: 'Romeo and juliet brown.jpg', piece: 'Roméo et Juliette', pieceId: 'romeo-juliette',
     auteur: 'Shakespeare', auteurId: 'shakespeare', emploi: 'Jeune amoureux',
     psychologie: "Cœur ardent et lyrique, Roméo passe de la mélancolie amoureuse (pour Rosaline) au coup de foudre absolu pour Juliette. Impulsif et entier, il aime et agit sans mesure, jusqu'au tragique.",
     evolution: "Le mariage secret, puis le meurtre de Tybalt et l'exil précipitent sa chute ; croyant Juliette morte, il s'empoisonne près d'elle — une seconde trop tôt, scellant la fatalité des amants.",
@@ -208,7 +209,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Mais doucement ! Quelle lumière jaillit par cette fenêtre ? »",
   },
   {
-    id: 'juliette', nom: 'Juliette', initiale: 'J', piece: 'Roméo et Juliette', pieceId: 'romeo-juliette',
+    id: 'juliette', nom: 'Juliette', initiale: 'J', img: 'Frank Bernard Dicksee - Romeo and Juliet, 1884.jpg', piece: 'Roméo et Juliette', pieceId: 'romeo-juliette',
     auteur: 'Shakespeare', auteurId: 'shakespeare', emploi: 'Jeune amoureuse',
     psychologie: "À peine quatorze ans, Juliette révèle une maturité et un courage que rien ne laissait présager. D'enfant obéissante, elle devient une femme résolue, prête à défier sa famille et à risquer la mort par amour.",
     evolution: "Du bal au balcon, du mariage secret au faux poison de Frère Laurent, elle brave tout pour rejoindre Roméo ; réveillée trop tard dans le tombeau, elle se tue sur son corps.",
@@ -217,7 +218,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Roméo, Roméo ! Pourquoi es-tu Roméo ? »",
   },
   {
-    id: 'macbeth', nom: 'Macbeth', initiale: 'M', piece: 'Macbeth', pieceId: 'macbeth',
+    id: 'macbeth', nom: 'Macbeth', initiale: 'M', img: 'Orson Welles as Macbeth.jpg', piece: 'Macbeth', pieceId: 'macbeth',
     auteur: 'Shakespeare', auteurId: 'shakespeare', emploi: 'Tyran tragique',
     psychologie: "Brave général rongé par l'ambition, Macbeth cède à la prophétie des sorcières et à l'aiguillon de sa femme. Lucide sur le mal qu'il commet, il s'y enfonce pourtant, hanté par la culpabilité et la peur.",
     evolution: "Du meurtre de Duncan à l'enchaînement de crimes pour garder le trône, il se coupe de tout et sombre dans la paranoïa ; les prophéties se retournent contre lui et il meurt les armes à la main face à Macduff.",
@@ -226,7 +227,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« La vie n'est qu'une ombre qui marche, un pauvre acteur qui se pavane… »",
   },
   {
-    id: 'lady-macbeth', nom: 'Lady Macbeth', initiale: 'L', piece: 'Macbeth', pieceId: 'macbeth',
+    id: 'lady-macbeth', nom: 'Lady Macbeth', initiale: 'L', img: 'Ellen Terry as Lady Macbeth.jpg', piece: 'Macbeth', pieceId: 'macbeth',
     auteur: 'Shakespeare', auteurId: 'shakespeare', emploi: 'Instigatrice',
     psychologie: "Ambitieuse et volontaire, Lady Macbeth est le moteur du crime : elle appelle les puissances des ténèbres à la « déviriliser » pour étouffer tout scrupule et pousse son mari au meurtre par la force de sa volonté.",
     evolution: "D'abord plus résolue que Macbeth, elle craque sous le poids du remords : la femme d'acier devient somnambule, se frottant les mains d'un sang qui ne part pas, avant de sombrer et de se donner la mort.",
@@ -238,7 +239,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Sophocle ──────────────────────────────────────────────────────────
   {
-    id: 'oedipe', nom: 'Œdipe', initiale: 'Œ', piece: 'Œdipe roi', pieceId: 'oedipe-roi',
+    id: 'oedipe', nom: 'Œdipe', initiale: 'Œ', img: 'Oedipus and Sphinx, pelike, 450-440 BC, Berlin F 2355, 141646.jpg', piece: 'Œdipe roi', pieceId: 'oedipe-roi',
     auteur: 'Sophocle', auteurId: 'sophocle', emploi: 'Roi tragique',
     psychologie: "Roi juste et intelligent, sauveur de Thèbes, Œdipe est aussi orgueilleux et emporté. Sa volonté acharnée de connaître la vérité — moteur de sa grandeur — devient l'instrument de sa perte.",
     evolution: "Menant l'enquête sur le meurtre de Laïos, il découvre qu'il est lui-même le coupable, qu'il a tué son père et épousé sa mère ; accablé, il se crève les yeux et s'exile, aveugle et clairvoyant à la fois.",
@@ -249,7 +250,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Hugo ──────────────────────────────────────────────────────────────
   {
-    id: 'ruy-blas', nom: 'Ruy Blas', initiale: 'R', piece: 'Ruy Blas', pieceId: 'ruy-blas',
+    id: 'ruy-blas', nom: 'Ruy Blas', initiale: 'R', img: 'Roybet, Ferdinand - Don César de Bazan - 195 - Maison de Victor Hugo.jpg', piece: 'Ruy Blas', pieceId: 'ruy-blas',
     auteur: 'Victor Hugo', auteurId: 'hugo', emploi: 'Laquais amoureux',
     psychologie: "« Ver de terre amoureux d'une étoile », Ruy Blas est un valet de génie qui aime en secret la reine d'Espagne. Instrument de la vengeance de Don Salluste, il porte avec noblesse un habit d'emprunt et une passion impossible.",
     evolution: "Devenu ministre sous une fausse identité, il gouverne avec grandeur et se fait aimer de la reine ; mais Don Salluste revient dénouer son piège. Pour sauver l'honneur de la reine, Ruy Blas tue son maître et s'empoisonne.",
@@ -258,7 +259,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Bon appétit, messieurs ! Ô ministres intègres ! »",
   },
   {
-    id: 'hernani', nom: 'Hernani', initiale: 'H', piece: 'Hernani', pieceId: 'hernani',
+    id: 'hernani', nom: 'Hernani', initiale: 'H', img: 'Hernani Act I - Sc. III. by Paris & Martin after Vierge.png', piece: 'Hernani', pieceId: 'hernani',
     auteur: 'Victor Hugo', auteurId: 'hugo', emploi: 'Proscrit romantique',
     psychologie: "Noble déguisé en bandit, Hernani est le héros romantique par excellence : proscrit, fatal, dévoré par l'amour de Doña Sol et par un serment d'honneur qui pèse sur lui comme une malédiction.",
     evolution: "Rival du roi Don Carlos et lié à Don Ruy Gomez par une dette d'honneur, il conquiert Doña Sol ; mais le cor fatal de Ruy Gomez retentit le soir de ses noces et l'oblige à tenir sa parole : les amants meurent ensemble.",
@@ -269,7 +270,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Rostand ───────────────────────────────────────────────────────────
   {
-    id: 'roxane', nom: 'Roxane', initiale: 'R', piece: 'Cyrano de Bergerac', pieceId: 'cyrano',
+    id: 'roxane', nom: 'Roxane', initiale: 'R', img: 'Le Baiser de Roxane, stances, tirées de la scène du Balcon, troisième acte de "Cyrano de Bergerac". Paroles de Edmond Rostand. Chant et piano - bpt6k393485g (1 of 6).jpg', piece: 'Cyrano de Bergerac', pieceId: 'cyrano',
     auteur: 'Edmond Rostand', auteurId: 'rostand', emploi: 'Précieuse aimée',
     psychologie: "Belle précieuse éprise de bel esprit, Roxane aime les mots autant que les hommes. Séduite par la beauté de Christian et les lettres de Cyrano, elle met du temps à comprendre qu'elle aimait, à travers deux hommes, une seule âme.",
     evolution: "Elle épouse Christian, puis le perd à la guerre ; retirée au couvent, elle vénère sa mémoire quinze ans durant, jusqu'à découvrir, à l'instant de la mort de Cyrano, que c'est lui l'auteur des lettres — et l'homme qu'elle aimait.",
@@ -280,7 +281,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Ibsen ─────────────────────────────────────────────────────────────
   {
-    id: 'nora', nom: 'Nora', initiale: 'N', piece: 'Maison de poupée', pieceId: 'maison-poupee',
+    id: 'nora', nom: 'Nora', initiale: 'N', img: "A Doll's House.jpeg", piece: 'Maison de poupée', pieceId: 'maison-poupee',
     auteur: 'Henrik Ibsen', auteurId: 'ibsen', emploi: 'Épouse en éveil',
     psychologie: "D'abord « petite alouette » et « écureuil » aux yeux de son mari, Nora joue le rôle de l'épouse-enfant tout en cachant un secret : elle a jadis emprunté en fraude pour sauver Torvald. Sous la poupée couve une conscience qui s'éveille.",
     evolution: "Le chantage de Krogstad et l'égoïsme de Torvald face au scandale lui ouvrent les yeux : elle comprend n'avoir jamais été qu'un jouet. Elle claque la porte de la « maison de poupée » pour se chercher elle-même — fin qui fit scandale.",
@@ -291,7 +292,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Molière (suite) ───────────────────────────────────────────────────
   {
-    id: 'orgon', nom: 'Orgon', initiale: 'O', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'orgon', nom: 'Orgon', initiale: 'O', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Bourgeois aveuglé',
     psychologie: "Père de famille autoritaire mais crédule, Orgon voue à Tartuffe une dévotion aveugle qui confine au fanatisme. Sa passion pour le faux dévot le rend sourd à sa famille et prêt à la sacrifier tout entière.",
     evolution: "De protecteur enthousiaste de l'imposteur, il devient sa victime : il lui donne sa fille, sa fortune, sa maison — jusqu'à ce que la scène de la table lui dessille enfin les yeux, trop tard pour éviter le désastre.",
@@ -299,7 +300,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Le pauvre homme ! »",
   },
   {
-    id: 'elmire', nom: 'Elmire', initiale: 'E', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'elmire', nom: 'Elmire', initiale: 'E', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Épouse habile',
     psychologie: "Femme d'Orgon, honnête et fine, Elmire préfère l'adresse à l'éclat. Plutôt que de s'indigner, elle tend un piège calculé à Tartuffe pour confondre l'hypocrite sous les yeux mêmes de son mari.",
     evolution: "Discrète d'abord face aux avances de Tartuffe, elle prend l'initiative décisive : la scène de la table où elle le pousse à se démasquer pendant qu'Orgon écoute, sauvant la famille par sa lucidité.",
@@ -307,7 +308,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Les gens comme vous savent flatter les sens. »",
   },
   {
-    id: 'dorine', nom: 'Dorine', initiale: 'D', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'dorine', nom: 'Dorine', initiale: 'D', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Suivante impertinente',
     psychologie: "Servante au franc-parler, Dorine incarne le bon sens populaire face à l'aveuglement des maîtres. Insolente et lucide, elle dit tout haut ce que la bienséance tait et défend Mariane contre la tyrannie d'Orgon.",
     evolution: "Elle raille sans relâche la fausse dévotion, tient tête à Orgon, souffle aux amoureux leur conduite et se démène pour déjouer le mariage forcé — véritable metteur en scène de la résistance familiale.",
@@ -315,7 +316,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Vous êtes donc bien tendre à la tentation. »",
   },
   {
-    id: 'agnes', nom: 'Agnès', initiale: 'A', piece: "L'École des femmes", pieceId: 'ecole-des-femmes',
+    id: 'agnes', nom: 'Agnès', initiale: 'A', img: "L'EcoledesFemmes.jpg", piece: "L'École des femmes", pieceId: 'ecole-des-femmes',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Ingénue',
     psychologie: "Élevée dans l'ignorance pour rester docile, Agnès est l'ingénue par excellence — mais sa naïveté cache une intelligence et un cœur qui s'éveillent d'un coup à l'amour, déjouant tous les calculs d'Arnolphe.",
     evolution: "De jeune fille candide récitant ses « maximes », elle découvre le désir avec Horace, apprend à ruser, à écrire, à désobéir — et affirme, dans l'acte V, une liberté neuve qui laisse Arnolphe désarmé.",
@@ -323,7 +324,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Le moyen de chasser ce qui fait du plaisir ? »",
   },
   {
-    id: 'sganarelle-dj', nom: 'Sganarelle', initiale: 'S', piece: 'Dom Juan', pieceId: 'dom-juan',
+    id: 'sganarelle-dj', nom: 'Sganarelle', initiale: 'S', img: 'Molière as Sganarelle.jpg', piece: 'Dom Juan', pieceId: 'dom-juan',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Valet couard',
     psychologie: "Valet de Dom Juan, Sganarelle est partagé entre la peur, la morale et la fascination pour son maître. Superstitieux et lâche, il désapprouve tout haut les débauches qu'il sert tout bas — double comique et conscience impuissante.",
     evolution: "Il assiste, mi-effrayé mi-complice, à toutes les provocations de Dom Juan ; après l'engloutissement du libertin, il ne lui reste que sa fameuse plainte matérielle : « Mes gages ! »",
@@ -333,7 +334,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Corneille (suite) ─────────────────────────────────────────────────
   {
-    id: 'auguste', nom: 'Auguste', initiale: 'A', piece: 'Cinna', pieceId: 'cinna',
+    id: 'auguste', nom: 'Auguste', initiale: 'A', img: 'Cinna corneille.jpg', piece: 'Cinna', pieceId: 'cinna',
     auteur: 'Corneille', auteurId: 'corneille', emploi: 'Empereur magnanime',
     psychologie: "Empereur parvenu au faîte du pouvoir par la violence, Auguste est las du trône et rongé par le doute. Découvrant la conjuration de Cinna qu'il aimait comme un fils, il livre en lui-même le combat entre la vengeance et la clémence.",
     evolution: "De la tentation d'abdiquer à la découverte du complot, il choisit finalement le pardon — geste souverain qui le grandit et fonde sa gloire : « Je suis maître de moi comme de l'univers. »",
@@ -341,7 +342,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Je suis maître de moi comme de l'univers. »",
   },
   {
-    id: 'cinna', nom: 'Cinna', initiale: 'C', piece: 'Cinna', pieceId: 'cinna',
+    id: 'cinna', nom: 'Cinna', initiale: 'C', img: 'Cinna corneille.jpg', piece: 'Cinna', pieceId: 'cinna',
     auteur: 'Corneille', auteurId: 'corneille', emploi: 'Conjuré partagé',
     psychologie: "Petit-fils de Pompée, Cinna conspire contre Auguste par amour pour Émilie autant que par idéal républicain. Mais la bonté du tyran qu'il veut tuer le déchire : sa parole donnée à Émilie s'oppose à sa reconnaissance grandissante.",
     evolution: "Meneur ardent de la conjuration, il vacille à mesure qu'Auguste le comble de bienfaits ; démasqué, il assume son crime avant d'être submergé par la clémence impériale qui le désarme et le rachète.",
@@ -351,7 +352,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Racine (suite) ────────────────────────────────────────────────────
   {
-    id: 'berenice', nom: 'Bérénice', initiale: 'B', piece: 'Bérénice', pieceId: 'berenice',
+    id: 'berenice', nom: 'Bérénice', initiale: 'B', img: 'Berenice 1671 title page.JPG', piece: 'Bérénice', pieceId: 'berenice',
     auteur: 'Racine', auteurId: 'racine', emploi: 'Reine sacrifiée',
     psychologie: "Reine de Palestine aimée de Titus, Bérénice croit au bonheur jusqu'à ce que la raison d'État le lui arrache. Femme entière et digne, elle passe de l'amour comblé à la douleur de l'absolu renoncement.",
     evolution: "De l'attente heureuse des noces à l'incompréhension, puis à la révolte et enfin à la grandeur : elle s'impose de partir pour que Titus règne, transformant sa souffrance en héroïsme de la retenue.",
@@ -359,7 +360,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Dans un mois, dans un an, comment souffrirons-nous, / Seigneur, que tant de mers me séparent de vous ? »",
   },
   {
-    id: 'titus', nom: 'Titus', initiale: 'T', piece: 'Bérénice', pieceId: 'berenice',
+    id: 'titus', nom: 'Titus', initiale: 'T', img: 'Berenice 1671 title page.JPG', piece: 'Bérénice', pieceId: 'berenice',
     auteur: 'Racine', auteurId: 'racine', emploi: 'Empereur déchiré',
     psychologie: "Nouvel empereur de Rome, Titus aime Bérénice mais découvre que Rome n'acceptera jamais une reine. Le devoir impérial et la passion se livrent en lui un combat où l'homme s'efface douloureusement devant le souverain.",
     evolution: "Il diffère l'aveu, cherche des détours, songe même à mourir, avant de trouver la force de renoncer publiquement à Bérénice — sacrifice qui scelle sa gloire au prix de son bonheur.",
@@ -369,7 +370,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Beaumarchais (suite) ──────────────────────────────────────────────
   {
-    id: 'suzanne', nom: 'Suzanne', initiale: 'S', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    id: 'suzanne', nom: 'Suzanne', initiale: 'S', img: 'Beaumarchais Le mariage de Figaro Ruault Paris 1785 Titel.jpg', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
     auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Camériste rusée',
     psychologie: "Fiancée de Figaro et camériste de la Comtesse, Suzanne est vive, spirituelle et plus fine encore que Figaro. C'est elle qui déjoue le Comte : l'intelligence pratique et le sang-froid au service de son mariage et de sa vertu.",
     evolution: "Menacée par le « droit du seigneur » que convoite le Comte, elle mène le jeu des travestissements de la « folle journée », piège Almaviva dans le noir des marronniers et sauve à la fois son honneur et son amour.",
@@ -377,7 +378,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Est-ce qu'on n'est pas toujours assez riche pour attendre ? »",
   },
   {
-    id: 'cherubin', nom: 'Chérubin', initiale: 'C', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    id: 'cherubin', nom: 'Chérubin', initiale: 'C', img: 'Ramberg figaro 1.jpg', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
     auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Page amoureux',
     psychologie: "Adolescent que l'amour trouble tout entier, Chérubin aime toutes les femmes et surtout la Comtesse. Figure de l'éveil du désir, il incarne la grâce, l'émoi et l'impertinence de la jeunesse.",
     evolution: "Renvoyé par le Comte jaloux, il se cache, se travestit, multiplie les émois et les quiproquos ; son innocence espiègle alimente toute l'intrigue avant qu'on l'expédie à l'armée — sans qu'il cesse de revenir.",
@@ -387,7 +388,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Musset (suite) ────────────────────────────────────────────────────
   {
-    id: 'camille', nom: 'Camille', initiale: 'C', piece: "On ne badine pas avec l'amour", pieceId: 'on-ne-badine-pas',
+    id: 'camille', nom: 'Camille', initiale: 'C', img: "Musset - On ne badine pas avec l'amour, 1884.djvu", piece: "On ne badine pas avec l'amour", pieceId: 'on-ne-badine-pas',
     auteur: 'Musset', auteurId: 'musset', emploi: 'Jeune fille blessée',
     psychologie: "Élevée au couvent et marquée par les confidences amères des religieuses, Camille se méfie de l'amour et des hommes. Orgueil, peur d'être trahie et passion refoulée pour Perdican se disputent en elle.",
     evolution: "De la froideur affichée au duel verbal avec Perdican, elle laisse enfin paraître son amour ; mais l'orgueil des deux jeunes gens et la mort de Rosette brisent tout : « Adieu, Perdican. »",
@@ -396,7 +397,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Adieu, Perdican. »",
   },
   {
-    id: 'celimene', nom: 'Célimène', initiale: 'C', piece: 'Le Misanthrope', pieceId: 'le-misanthrope',
+    id: 'celimene', nom: 'Célimène', initiale: 'C', img: 'LeMisanthrope.jpg', piece: 'Le Misanthrope', pieceId: 'le-misanthrope',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Coquette mondaine',
     psychologie: "Jeune veuve brillante et médisante, Célimène règne sur les salons par son esprit. Coquette assumée, elle aime être courtisée et redoute l'engagement — tout ce qui rend Alceste furieux et amoureux à la fois.",
     evolution: "Maîtresse du jeu des soupirants, elle est prise à son propre piège quand ses lettres contradictoires sont dévoilées ; démasquée, elle refuse pourtant de suivre Alceste au « désert » : elle a vingt ans et aime le monde.",
@@ -406,7 +407,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Hugo (suite) ──────────────────────────────────────────────────────
   {
-    id: 'don-salluste', nom: 'Don Salluste', initiale: 'D', piece: 'Ruy Blas', pieceId: 'ruy-blas',
+    id: 'don-salluste', nom: 'Don Salluste', initiale: 'D', img: 'Roybet, Ferdinand - Don César de Bazan - 195 - Maison de Victor Hugo.jpg', piece: 'Ruy Blas', pieceId: 'ruy-blas',
     auteur: 'Victor Hugo', auteurId: 'hugo', emploi: 'Grand d\'Espagne vindicatif',
     psychologie: "Ministre disgracié et froid, Don Salluste met toute son intelligence au service d'une seule passion : la vengeance contre la reine qui l'a chassé. Cynique et méthodique, il manie les êtres comme des instruments.",
     evolution: "Il façonne son valet Ruy Blas en faux seigneur pour perdre la reine, tisse patiemment son piège — mais son mépris pour ceux qu'il utilise le perd : Ruy Blas se retourne et le tue avant de mourir.",
@@ -416,7 +417,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Sophocle (suite) ──────────────────────────────────────────────────
   {
-    id: 'creon', nom: 'Créon', initiale: 'C', piece: 'Antigone', pieceId: 'antigone-sophocle',
+    id: 'creon', nom: 'Créon', initiale: 'C', img: 'Antigone Gives Token Burial to the Body of Her Brother Polynices MET DP807380.jpg', piece: 'Antigone', pieceId: 'antigone-sophocle',
     auteur: 'Sophocle', auteurId: 'sophocle', emploi: 'Roi intransigeant',
     psychologie: "Nouveau maître de Thèbes, Créon confond l'ordre de l'État avec sa propre volonté. Soucieux d'autorité et de cohérence, il fait de l'intransigeance une vertu — jusqu'à l'aveuglement tragique qui le dresse contre les lois non écrites.",
     evolution: "De législateur assuré condamnant Antigone, il s'obstine malgré les avertissements de son fils Hémon et du devin Tirésias ; quand il cède enfin, il est trop tard : Antigone, Hémon et Eurydice sont morts, et il reste anéanti.",
@@ -427,7 +428,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Molière (suite 2) ─────────────────────────────────────────────────
   {
-    id: 'monsieur-jourdain', nom: 'Monsieur Jourdain', initiale: 'J', piece: 'Le Bourgeois gentilhomme', pieceId: 'bourgeois-gentilhomme',
+    id: 'monsieur-jourdain', nom: 'Monsieur Jourdain', initiale: 'J', img: 'Le Bourgeois Gentilhomme, Molière, couverture.png', piece: 'Le Bourgeois gentilhomme', pieceId: 'bourgeois-gentilhomme',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Bourgeois vaniteux', aka: ['Jourdain'],
     psychologie: "Riche bourgeois obsédé par la noblesse, Monsieur Jourdain veut acheter les manières des gens de qualité. Vaniteux, crédule et touchant, il se fait plumer par tous ceux qui flattent sa lubie de paraître ce qu'il n'est pas.",
     evolution: "De leçon de danse en leçon de philosophie, il s'enfonce dans le ridicule ; manipulé par Dorante et grisé par la cérémonie turque du « Mamamouchi », il finit dupé mais heureux, roi de sa propre comédie.",
@@ -436,7 +437,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Par ma foi ! il y a plus de quarante ans que je dis de la prose sans que j'en susse rien. »",
   },
   {
-    id: 'philaminte', nom: 'Philaminte', initiale: 'P', piece: 'Les Femmes savantes', pieceId: 'femmes-savantes',
+    id: 'philaminte', nom: 'Philaminte', initiale: 'P', img: 'LesFemmesSavantes.jpg', piece: 'Les Femmes savantes', pieceId: 'femmes-savantes',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Bel esprit autoritaire',
     psychologie: "Maîtresse femme éprise de savoir et de beaux discours, Philaminte règne en despote sur sa maison au nom de la philosophie et des lettres. Sincère dans sa soif de culture, elle en devient tyrannique et aveugle au ridicule de son pédantisme.",
     evolution: "Elle impose Trissotin comme gendre et méprise le bon sens de son mari ; une fausse ruine dévoile l'imposteur, et Philaminte, détrompée sur le faux savant, retrouve un peu de mesure au dénouement.",
@@ -444,7 +445,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Nul n'aura de l'esprit hors nous et nos amis. »",
   },
   {
-    id: 'trissotin', nom: 'Trissotin', initiale: 'T', piece: 'Les Femmes savantes', pieceId: 'femmes-savantes',
+    id: 'trissotin', nom: 'Trissotin', initiale: 'T', img: 'LesFemmesSavantes.jpg', piece: 'Les Femmes savantes', pieceId: 'femmes-savantes',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Faux bel esprit',
     psychologie: "Poète de salon vaniteux et intéressé, Trissotin séduit les femmes savantes par ses vers précieux pour mettre la main sur la dot d'Henriette. Sous le bel esprit affecté perce le cuistre cupide.",
     evolution: "Adulé par Philaminte, il triomphe jusqu'à ce que la nouvelle d'une ruine de la famille le fasse fuir : l'amour du savoir n'était qu'appât, et son masque tombe d'un coup.",
@@ -454,7 +455,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Beaumarchais (suite 2) ────────────────────────────────────────────
   {
-    id: 'comte-almaviva', nom: 'Le Comte Almaviva', initiale: 'A', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
+    id: 'comte-almaviva', nom: 'Le Comte Almaviva', initiale: 'A', img: 'Beaumarchais Le mariage de Figaro Ruault Paris 1785 Titel.jpg', piece: 'Le Mariage de Figaro', pieceId: 'mariage-figaro',
     auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Grand seigneur libertin', aka: ['Le Comte'],
     psychologie: "Grand d'Espagne séduisant et autoritaire, le Comte règne sur son domaine et sur les femmes. Jaloux de son épouse tout en convoitant Suzanne, il incarne l'arbitraire du privilège que la « folle journée » va mettre en échec.",
     evolution: "Décidé à rétablir le « droit du seigneur » sur Suzanne, il est déjoué à chaque tour par les valets et par la Comtesse ; pris dans le noir des marronniers, il doit demander pardon publiquement — le maître humilié par ses domestiques.",
@@ -463,7 +464,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Tandis que je m'agite, elle est tranquille ? »",
   },
   {
-    id: 'rosine', nom: 'Rosine', initiale: 'R', piece: 'Le Barbier de Séville', pieceId: 'barbier-seville',
+    id: 'rosine', nom: 'Rosine', initiale: 'R', img: 'BarberSeville.jpg', piece: 'Le Barbier de Séville', pieceId: 'barbier-seville',
     auteur: 'Beaumarchais', auteurId: 'beaumarchais', emploi: 'Jeune pupille amoureuse',
     psychologie: "Pupille séquestrée par le vieux Bartholo qui veut l'épouser, Rosine est vive, spirituelle et bien décidée à conquérir sa liberté. Sous la docilité de façade, une jeune femme rusée qui mène sa propre évasion sentimentale.",
     evolution: "Éprise du mystérieux « Lindor » (le Comte déguisé), elle déjoue avec Figaro la surveillance de Bartholo, échange billets et signes, et finit par épouser son amant — future Comtesse Almaviva.",
@@ -473,7 +474,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Hugo (suite 2) ────────────────────────────────────────────────────
   {
-    id: 'dona-sol', nom: 'Doña Sol', initiale: 'S', piece: 'Hernani', pieceId: 'hernani',
+    id: 'dona-sol', nom: 'Doña Sol', initiale: 'S', img: 'Hernani Act I - Sc. III. by Paris & Martin after Vierge.png', piece: 'Hernani', pieceId: 'hernani',
     auteur: 'Victor Hugo', auteurId: 'hugo', emploi: 'Amoureuse passionnée',
     psychologie: "Nièce et promise du vieux Don Ruy Gomez, Doña Sol aime le proscrit Hernani d'un amour absolu qui défie sa famille et le roi. Entière et courageuse, elle place la passion au-dessus de tout, jusqu'au sacrifice.",
     evolution: "Convoitée par trois hommes — Hernani, le roi Don Carlos et Don Ruy Gomez —, elle reste fidèle à Hernani ; le soir de leurs noces, quand le cor fatal résonne, elle boit le poison avant lui pour ne pas lui survivre.",
@@ -483,7 +484,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Shakespeare (suite 2) ─────────────────────────────────────────────
   {
-    id: 'ophelie', nom: 'Ophélie', initiale: 'O', piece: 'Hamlet', pieceId: 'hamlet',
+    id: 'ophelie', nom: 'Ophélie', initiale: 'O', img: 'John William Waterhouse - Ophelia (1894).jpg', piece: 'Hamlet', pieceId: 'hamlet',
     auteur: 'Shakespeare', auteurId: 'shakespeare', emploi: 'Jeune fille brisée', aka: ['Ophélia', 'Ophelia'],
     psychologie: "Fille de Polonius et aimée de Hamlet, Ophélie est prise entre l'obéissance filiale et son amour. Douce et fragile, elle devient le jouet des manœuvres de la cour, jusqu'à ce que la folie l'emporte.",
     evolution: "Éconduite puis brutalisée par un Hamlet feignant (ou non) la démence, bouleversée par la mort de son père tué par Hamlet, elle sombre dans la folie et se noie — figure tragique de l'innocence sacrifiée.",
@@ -494,7 +495,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Musset (suite 2) ──────────────────────────────────────────────────
   {
-    id: 'fantasio', nom: 'Fantasio', initiale: 'F', piece: 'Fantasio', pieceId: 'fantasio',
+    id: 'fantasio', nom: 'Fantasio', initiale: 'F', img: "Umberto Brunelleschi, illustration pour Fantasio d'Alfred de Musset.jpg", piece: 'Fantasio', pieceId: 'fantasio',
     auteur: 'Musset', auteurId: 'musset', emploi: 'Bouffon mélancolique',
     psychologie: "Jeune homme désœuvré, spirituel et mélancolique, Fantasio fuit ses dettes et son ennui en se déguisant en bouffon du roi. Sous la fantaisie et l'ironie affleure le mal du siècle romantique : le vertige de l'inutilité.",
     evolution: "Endossant le costume du fou mort, il s'immisce à la cour et, par une pirouette poétique, empêche le mariage politique de la princesse Elsbeth — sauvant, presque par jeu, un royaume et une jeune fille du malheur.",
@@ -504,7 +505,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Marivaux ──────────────────────────────────────────────────────────
   {
-    id: 'silvia', nom: 'Silvia', initiale: 'S', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
+    id: 'silvia', nom: 'Silvia', initiale: 'S', img: 'MarivauxGameLoveChance.jpg', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
     auteur: 'Marivaux', auteurId: 'marivaux', emploi: 'Amoureuse déguisée',
     psychologie: "Pour observer librement le prétendant qu'on lui destine, Silvia échange son rôle avec sa servante Lisette. Fine et fière, elle veut aimer par choix, non par convention — et se trouve troublée par un « valet » plus digne qu'il ne devrait.",
     evolution: "Le déguisement croisé (Dorante s'est lui aussi travesti en valet) la met à l'épreuve : elle lutte contre son cœur qui s'éprend d'un homme qu'elle croit domestique, jusqu'à la reconnaissance qui couronne l'amour né du hasard.",
@@ -512,7 +513,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Ah ! je vois clair dans mon cœur. »",
   },
   {
-    id: 'dorante-jeu', nom: 'Dorante', initiale: 'D', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
+    id: 'dorante-jeu', nom: 'Dorante', initiale: 'D', img: 'MarivauxGameLoveChance.jpg', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
     auteur: 'Marivaux', auteurId: 'marivaux', emploi: 'Amoureux déguisé',
     psychologie: "Venu incognito sous l'habit de son valet pour juger sa promise, Dorante est un jeune homme délicat et sincère. Son amour naissant pour une « suivante » le met en guerre avec les préjugés de son rang.",
     evolution: "Épris de celle qu'il croit servante (Silvia déguisée), il ose braver les convenances et lui offrir son cœur avant de connaître sa vraie condition — preuve d'un amour vrai que la révélation finale récompense.",
@@ -520,7 +521,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Il n'y a point de bonheur pour moi que par toi. »",
   },
   {
-    id: 'arlequin', nom: 'Arlequin', initiale: 'A', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
+    id: 'arlequin', nom: 'Arlequin', initiale: 'A', img: 'SAND Maurice Masques et bouffons 01.jpg', piece: "Le Jeu de l'amour et du hasard", pieceId: 'le-jeu-amour-hasard',
     auteur: 'Marivaux', auteurId: 'marivaux', emploi: 'Valet bouffon',
     psychologie: "Valet de Dorante travesti en maître, Arlequin est truculent, gourmand et sans façons. Héritier de la commedia dell'arte, il fait éclater sous la préciosité marivaudienne un comique franc et populaire.",
     evolution: "Jouant le grand seigneur avec maladresse, il courtise Lisette (elle-même déguisée en maîtresse) ; les deux valets tombent amoureux et se démasquent avec un naturel réjouissant, doublant en miroir l'intrigue des maîtres.",
@@ -530,7 +531,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Corneille (suite 2) ───────────────────────────────────────────────
   {
-    id: 'medee', nom: 'Médée', initiale: 'M', piece: 'Médée', pieceId: 'medee-corneille',
+    id: 'medee', nom: 'Médée', initiale: 'M', img: 'Médée furieuse - Eugène Delacroix - Musée du Louvre Peintures RF 1402.jpg', piece: 'Médée', pieceId: 'medee-corneille',
     auteur: 'Corneille', auteurId: 'corneille', emploi: 'Magicienne vengeresse',
     psychologie: "Magicienne trahie par Jason pour qui elle a tout sacrifié, Médée est la passion portée à l'incandescence. Bafouée, elle transforme son amour en fureur vengeresse d'une froide et terrible lucidité.",
     evolution: "Répudiée et menacée d'exil, elle feint la soumission pour mieux frapper : elle empoisonne sa rivale Créuse et le roi Créon, puis égorge ses propres enfants pour anéantir Jason — et s'envole, invincible dans le crime.",
@@ -541,7 +542,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Ibsen (suite) ─────────────────────────────────────────────────────
   {
-    id: 'hedda', nom: 'Hedda Gabler', initiale: 'H', piece: 'Hedda Gabler', pieceId: 'hedda-gabler',
+    id: 'hedda', nom: 'Hedda Gabler', initiale: 'H', img: 'Nazimova 1907.jpg', piece: 'Hedda Gabler', pieceId: 'hedda-gabler',
     auteur: 'Henrik Ibsen', auteurId: 'ibsen', emploi: 'Bourgeoise étouffée', aka: ['Hedda'],
     psychologie: "Fille du général Gabler, Hedda a épousé sans amour un universitaire terne. Étouffée par l'ennui et la médiocrité, avide de beauté et de pouvoir sur les autres, elle manipule son entourage par pur besoin de sentir sa liberté.",
     evolution: "Jalouse de l'œuvre et de la vie de Lövborg, elle le pousse au « beau » suicide en lui offrant un pistolet ; mais la mort qu'elle a orchestrée est sordide, et prise au piège du chantage de Brack, elle se tue à son tour.",
@@ -552,7 +553,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Jarry ─────────────────────────────────────────────────────────────
   {
-    id: 'pere-ubu', nom: 'Père Ubu', initiale: 'U', piece: 'Ubu roi', pieceId: 'ubu-roi',
+    id: 'pere-ubu', nom: 'Père Ubu', initiale: 'U', img: 'Programme for the première of Ubu Roi.jpg', piece: 'Ubu roi', pieceId: 'ubu-roi',
     auteur: 'Alfred Jarry', auteurId: 'jarry', emploi: 'Tyran grotesque',
     psychologie: "Lâche, glouton, cupide et cruel, le Père Ubu est la caricature bouffonne du tyran et de la bêtise au pouvoir. Poussé par sa femme et par son appétit sans limites, il incarne l'absurde et la sauvagerie sous des dehors de pantin.",
     evolution: "De capitaine félon, il assassine le roi Venceslas, s'empare du trône de Pologne, y règne par la « débraillade » et la « décervelage », avant d'être chassé et de fuir sur la mer — toujours aussi ignoble et impuni.",
