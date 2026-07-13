@@ -41,6 +41,10 @@ export default function LecturePiece() {
   // Lecture à voix haute
   const [reading, setReading] = useState<'idle' | 'playing' | 'paused'>('idle');
   const idxRef = useRef(0);
+  // Jeton de « génération » : incrémenté à chaque stop/pause pour invalider les
+  // callbacks onend/onerror de la synthèse en cours (sinon cancel() relance la
+  // réplique suivante et le STOP semble ne rien faire).
+  const genRef = useRef(0);
 
   useEffect(() => {
     let alive = true;
@@ -55,17 +59,19 @@ export default function LecturePiece() {
   useEffect(() => { localStorage.setItem(SIZE_KEY, String(sizeIdx)); }, [sizeIdx]);
 
   // Arrête la synthèse en quittant l'écran.
-  useEffect(() => () => { if (hasSpeech) window.speechSynthesis.cancel(); }, []);
+  useEffect(() => () => { genRef.current++; if (hasSpeech) window.speechSynthesis.cancel(); }, []);
 
   const items = useMemo(() => (texte ? speakables(texte.blocs) : []), [texte]);
 
   const speakFrom = useCallback((start: number) => {
     if (!hasSpeech || !items.length) return;
     const synth = window.speechSynthesis;
+    const gen = ++genRef.current; // nouvelle génération : invalide les callbacks précédents
     synth.cancel();
     idxRef.current = start;
     const voice = frVoice();
     const next = () => {
+      if (gen !== genRef.current) return; // stop/pause survenu → on n'enchaîne pas
       const i = idxRef.current;
       if (i >= items.length) { setReading('idle'); return; }
       const it = items[i];
@@ -74,20 +80,29 @@ export default function LecturePiece() {
       if (voice) u.voice = voice;
       u.rate = 0.98;
       u.onstart = () => document.getElementById(`bloc-${it.i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      u.onend = () => { idxRef.current = i + 1; next(); };
-      u.onerror = () => { idxRef.current = i + 1; next(); };
+      u.onend = () => { if (gen !== genRef.current) return; idxRef.current = i + 1; next(); };
+      u.onerror = () => { if (gen !== genRef.current) return; idxRef.current = i + 1; next(); };
       synth.speak(u);
     };
     setReading('playing');
     next();
   }, [items]);
 
+  // Arrête la synthèse en cours et invalide sa génération (sinon cancel() relance
+  // la réplique suivante via onend/onerror).
+  const stopSpeech = useCallback(() => {
+    genRef.current++;
+    if (hasSpeech) window.speechSynthesis.cancel();
+  }, []);
+
   const onRead = () => {
     if (reading === 'idle') speakFrom(0);
-    else if (reading === 'playing') { window.speechSynthesis.pause(); setReading('paused'); }
-    else { window.speechSynthesis.resume(); setReading('playing'); }
+    // Pause/reprise gérées « à la main » : pause() est ignoré par la plupart des
+    // navigateurs mobiles. On coupe la synthèse et on reprend à la réplique en cours.
+    else if (reading === 'playing') { stopSpeech(); setReading('paused'); }
+    else speakFrom(idxRef.current);
   };
-  const onStop = () => { if (hasSpeech) window.speechSynthesis.cancel(); setReading('idle'); };
+  const onStop = useCallback(() => { stopSpeech(); setReading('idle'); }, [stopSpeech]);
 
   // Index des actes pour la navigation rapide.
   const actes = useMemo(
