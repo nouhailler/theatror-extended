@@ -47,7 +47,7 @@ export default function App() {
   return (
     <div className="app-frame">
       <TopBar />
-      <main style={{ flex: 1, overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ flex: 1, minHeight: 0, overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
         <Routes>
           <Route path="/" element={<Accueil />} />
           <Route path="/collection" element={<MaCollection />} />

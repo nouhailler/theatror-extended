@@ -52,7 +52,8 @@ button {
 .app-frame {
   width: 100%;
   max-width: 428px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--bg-app);
