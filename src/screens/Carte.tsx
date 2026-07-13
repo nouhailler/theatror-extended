@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { BackHeader } from '../components/ui';
@@ -47,8 +47,22 @@ function FitBounds({ lieux }: { lieux: Lieu[] }) {
   return null;
 }
 
+// Expose l'instance Leaflet au composant parent (pour zoomer au clic sur un pin).
+function CaptureMap({ mapRef }: { mapRef: React.MutableRefObject<L.Map | null> }) {
+  mapRef.current = useMap();
+  return null;
+}
+
 export default function Carte() {
   const [active, setActive] = useState<Lieu['type'] | null>(null);
+  const mapRef = useRef<L.Map | null>(null);
+
+  // Zoom animé sur le lieu cliqué (évite d'appuyer 10 fois sur « + »).
+  const zoomTo = (l: Lieu) => {
+    const map = mapRef.current;
+    if (!map) return;
+    map.flyTo([l.lat, l.lng], Math.max(map.getZoom(), 11), { duration: 0.8 });
+  };
 
   const lieux = useMemo(
     () => (active ? LIEUX.filter((l) => l.type === active) : LIEUX),
@@ -65,9 +79,11 @@ export default function Carte() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
+          <CaptureMap mapRef={mapRef} />
           <FitBounds lieux={lieux} />
           {lieux.map((l) => (
-            <Marker key={l.id} position={[l.lat, l.lng]} icon={pinIcon(l.type)}>
+            <Marker key={l.id} position={[l.lat, l.lng]} icon={pinIcon(l.type)}
+              eventHandlers={{ click: () => zoomTo(l) }}>
               <Popup>
                 <strong style={{ fontFamily: 'var(--font-title)' }}>{l.nom}</strong>
                 <br />
