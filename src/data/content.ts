@@ -73,17 +73,17 @@ export const FRISE: FriseItem[] = [
 export const LIEUX: Lieu[] = [
   // ─── Grands théâtres ───
   { id: 'epidaure', nom: "Théâtre d'Épidaure", lieu: 'Grèce · IVe s. av. J.-C.', txt: '14 000 places, acoustique légendaire.', initiale: 'É', img: 'Epidaurus Theater.jpg', type: 'theatre', lat: 37.596, lng: 23.079 },
-  { id: 'dionysos', nom: 'Théâtre de Dionysos', lieu: "Athènes · Ve s. av. J.-C.", txt: 'Le berceau de la tragédie, au pied de l\'Acropole.', initiale: 'D', img: '', type: 'theatre', lat: 37.970, lng: 23.727 },
-  { id: 'olimpico', nom: 'Teatro Olimpico', lieu: 'Vicence · 1585', txt: 'Le plus ancien théâtre couvert du monde, dessiné par Palladio.', initiale: 'O', img: '', type: 'theatre', lat: 45.549, lng: 11.548 },
+  { id: 'dionysos', nom: 'Théâtre de Dionysos', lieu: "Athènes · Ve s. av. J.-C.", txt: 'Le berceau de la tragédie, au pied de l\'Acropole.', initiale: 'D', img: 'Theatre of Dionysus 2017.jpg', type: 'theatre', lat: 37.970, lng: 23.727 },
+  { id: 'olimpico', nom: 'Teatro Olimpico', lieu: 'Vicence · 1585', txt: 'Le plus ancien théâtre couvert du monde, dessiné par Palladio.', initiale: 'O', img: 'Interior of Teatro Olimpico (Vicenza) scena .jpg', type: 'theatre', lat: 45.549, lng: 11.548 },
   { id: 'comedie-francaise', nom: 'Comédie-Française', lieu: 'Paris · fondée en 1680', txt: 'La « Maison de Molière », plus ancienne troupe au monde.', initiale: 'C', img: 'Comédie-Française.jpg', type: 'theatre', lat: 48.863, lng: 2.336 },
   { id: 'globe', nom: "Shakespeare's Globe", lieu: 'Londres · reconstruit en 1997', txt: 'Théâtre élisabéthain à ciel ouvert, spectateurs debout.', initiale: 'G', img: 'Shakespeare’s Globe Theatre, London.jpg', type: 'theatre', lat: 51.508, lng: -0.097 },
   { id: 'garnier', nom: 'Palais Garnier', lieu: 'Paris · inauguré en 1875', txt: "Chef-d'œuvre du Second Empire, temple de l'opéra et du ballet.", initiale: 'G', img: 'Paris Opera full frontal architecture, May 2009.jpg', type: 'theatre', lat: 48.872, lng: 2.332 },
-  { id: 'scala', nom: 'Teatro alla Scala', lieu: 'Milan · 1778', txt: 'La plus prestigieuse scène lyrique du monde.', initiale: 'S', img: '', type: 'theatre', lat: 45.467, lng: 9.189 },
-  { id: 'bolshoi', nom: 'Théâtre Bolchoï', lieu: 'Moscou · 1825', txt: 'Haut lieu de l\'opéra et du ballet russes.', initiale: 'B', img: '', type: 'theatre', lat: 55.760, lng: 37.618 },
-  { id: 'burgtheater', nom: 'Burgtheater', lieu: 'Vienne · 1741', txt: 'Le « Burg », l\'un des plus grands théâtres de langue allemande.', initiale: 'B', img: '', type: 'theatre', lat: 48.210, lng: 16.361 },
-  { id: 'broadway', nom: 'Broadway', lieu: 'New York · quartier des théâtres', txt: 'Une quarantaine de salles autour de Times Square.', initiale: 'B', img: '', type: 'theatre', lat: 40.759, lng: -73.985 },
-  { id: 'colon', nom: 'Teatro Colón', lieu: 'Buenos Aires · 1908', txt: 'Réputé pour son acoustique parmi les meilleures au monde.', initiale: 'C', img: '', type: 'theatre', lat: -34.601, lng: -58.383 },
-  { id: 'sydney', nom: 'Opéra de Sydney', lieu: 'Australie · 1973', txt: 'Icône mondiale de l\'architecture, aux voiles de béton.', initiale: 'S', img: '', type: 'theatre', lat: -33.857, lng: 151.215 },
+  { id: 'scala', nom: 'Teatro alla Scala', lieu: 'Milan · 1778', txt: 'La plus prestigieuse scène lyrique du monde.', initiale: 'S', img: 'Exterior Teatro Alla Scala high quality 01.jpg', type: 'theatre', lat: 45.467, lng: 9.189 },
+  { id: 'bolshoi', nom: 'Théâtre Bolchoï', lieu: 'Moscou · 1825', txt: 'Haut lieu de l\'opéra et du ballet russes.', initiale: 'B', img: 'Moscow-Bolshoi-Theare-1.jpg', type: 'theatre', lat: 55.760, lng: 37.618 },
+  { id: 'burgtheater', nom: 'Burgtheater', lieu: 'Vienne · 1741', txt: 'Le « Burg », l\'un des plus grands théâtres de langue allemande.', initiale: 'B', img: 'Wien - Burgtheater.JPG', type: 'theatre', lat: 48.210, lng: 16.361 },
+  { id: 'broadway', nom: 'Broadway', lieu: 'New York · quartier des théâtres', txt: 'Une quarantaine de salles autour de Times Square.', initiale: 'B', img: 'New york times square-terabass.jpg', type: 'theatre', lat: 40.759, lng: -73.985 },
+  { id: 'colon', nom: 'Teatro Colón', lieu: 'Buenos Aires · 1908', txt: 'Réputé pour son acoustique parmi les meilleures au monde.', initiale: 'C', img: 'Fachada del Teatro Colón en Buenos Aires, Argentina.jpg', type: 'theatre', lat: -34.601, lng: -58.383 },
+  { id: 'sydney', nom: 'Opéra de Sydney', lieu: 'Australie · 1973', txt: 'Icône mondiale de l\'architecture, aux voiles de béton.', initiale: 'S', img: 'Sydney Australia. (21339175489).jpg', type: 'theatre', lat: -33.857, lng: 151.215 },
 
   // ─── Festivals ───
   { id: 'avignon', nom: "Festival d'Avignon", lieu: 'France · chaque juillet', txt: "Cour d'honneur du Palais des papes + 1 500 spectacles au Off.", initiale: 'A', img: 'Avignon, Palais des Papes by JM Rosier.jpg', type: 'festival', lat: 43.951, lng: 4.807 },
@@ -107,10 +107,10 @@ export const LIEUX: Lieu[] = [
   { id: 'gitis', nom: 'GITIS', lieu: 'Moscou · 1878', txt: 'Grande école russe, héritière de Stanislavski.', initiale: 'G', img: '', type: 'ecole', lat: 55.766, lng: 37.607 },
 
   // ─── Grands théâtres (compléments) ───
-  { id: 'national-theatre', nom: 'National Theatre', lieu: 'Londres · 1963', txt: 'La grande scène publique britannique, sur la rive sud de la Tamise.', initiale: 'N', img: '', type: 'theatre', lat: 51.507, lng: -0.114 },
-  { id: 'berliner-ensemble', nom: 'Berliner Ensemble', lieu: 'Berlin · 1949', txt: 'Le théâtre fondé par Bertolt Brecht, foyer du théâtre épique.', initiale: 'B', img: '', type: 'theatre', lat: 52.522, lng: 13.386 },
-  { id: 'teatro-real', nom: 'Teatro Real', lieu: 'Madrid · 1850', txt: 'Le grand opéra royal d\'Espagne, sur la Plaza de Oriente.', initiale: 'R', img: '', type: 'theatre', lat: 40.418, lng: -3.710 },
-  { id: 'mariinsky', nom: 'Théâtre Mariinsky', lieu: 'Saint-Pétersbourg · 1860', txt: 'Temple de l\'opéra et du ballet russes, berceau des Ballets russes.', initiale: 'M', img: '', type: 'theatre', lat: 59.925, lng: 30.296 },
+  { id: 'national-theatre', nom: 'National Theatre', lieu: 'Londres · 1963', txt: 'La grande scène publique britannique, sur la rive sud de la Tamise.', initiale: 'N', img: 'The National Theatre, South Bank, London - geograph.org.uk - 1861458.jpg', type: 'theatre', lat: 51.507, lng: -0.114 },
+  { id: 'berliner-ensemble', nom: 'Berliner Ensemble', lieu: 'Berlin · 1949', txt: 'Le théâtre fondé par Bertolt Brecht, foyer du théâtre épique.', initiale: 'B', img: 'Berlin Berliner Ensemble.jpg', type: 'theatre', lat: 52.522, lng: 13.386 },
+  { id: 'teatro-real', nom: 'Teatro Real', lieu: 'Madrid · 1850', txt: 'Le grand opéra royal d\'Espagne, sur la Plaza de Oriente.', initiale: 'R', img: 'Teatro Real de Madrid 2025.jpg', type: 'theatre', lat: 40.418, lng: -3.710 },
+  { id: 'mariinsky', nom: 'Théâtre Mariinsky', lieu: 'Saint-Pétersbourg · 1860', txt: 'Temple de l\'opéra et du ballet russes, berceau des Ballets russes.', initiale: 'M', img: 'Санкт-Петербург, Мариинский театр, фасад (edited version).jpg', type: 'theatre', lat: 59.925, lng: 30.296 },
 
   // ─── Festivals (compléments) ───
   { id: 'festwochen', nom: 'Wiener Festwochen', lieu: 'Vienne · mai-juin', txt: 'Les « Semaines festives » de Vienne : théâtre, opéra et performance.', initiale: 'W', img: '', type: 'festival', lat: 48.203, lng: 16.365 },
