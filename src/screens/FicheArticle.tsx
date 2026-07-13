@@ -1,4 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import WikiImage from '../components/WikiImage';
+import Credit from '../components/Credit';
 import { articleById } from '../data/encyclopedie';
 
 export default function FicheArticle() {
@@ -21,9 +23,9 @@ export default function FicheArticle() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Fiche ${a.titre}`}>
-      {/* Bandeau initiale */}
-      <div style={{ position: 'relative', height: 150, background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <span style={{ fontFamily: 'var(--font-title)', fontSize: 84, color: 'rgba(212,169,78,.22)', lineHeight: 1 }}>{a.initiale}</span>
+      {/* Bandeau image (repli initiale) */}
+      <div style={{ position: 'relative', height: 150, overflow: 'hidden' }}>
+        <WikiImage file={a.img} initial={a.initiale} initialSize={84} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
         <button onClick={() => nav(`/explorer/encyclopedie?cat=${encodeURIComponent(a.categorie)}`)} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>
@@ -85,6 +87,8 @@ export default function FicheArticle() {
             <div style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-2b)', marginTop: 5 }}>{a.anecdote}</div>
           </div>
         )}
+
+        <Credit file={a.img} />
       </div>
     </div>
   );

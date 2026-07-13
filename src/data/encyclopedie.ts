@@ -6,6 +6,7 @@ export interface Article {
   titre: string;
   soustitre?: string;
   initiale: string;
+  img?: string;
   intro: string;
   points?: string[]; // faits clés
   sections?: { titre: string; texte: string }[];
@@ -17,7 +18,7 @@ export interface Article {
 export const ARTICLES: Article[] = [
   // ─────────────── HISTOIRE ───────────────
   {
-    id: 'hist-antiquite', categorie: 'Histoire', titre: 'Le théâtre antique', soustitre: 'Grèce & Rome · Ve s. av. J.-C.', initiale: 'A',
+    id: 'hist-antiquite', categorie: 'Histoire', titre: 'Le théâtre antique', soustitre: 'Grèce & Rome · Ve s. av. J.-C.', initiale: 'A', img: 'Greek - Actor - Walters 541067.jpg',
     intro: "Né des fêtes religieuses en l'honneur de Dionysos, le théâtre grec invente la tragédie et la comédie. À Rome, le spectacle se fait plus populaire, mêlant farces, pantomimes et jeux du cirque.",
     points: [
       'Le chœur, collectif chantant, dialogue avec les acteurs.',
@@ -34,7 +35,7 @@ export const ARTICLES: Article[] = [
     anecdote: "Le théâtre d'Épidaure, aux 14 000 places, possède une acoustique si parfaite qu'une pièce de monnaie tombée sur la scène s'entend au dernier rang.",
   },
   {
-    id: 'hist-moyen-age', categorie: 'Histoire', titre: 'Le théâtre médiéval', soustitre: 'Ve – XVe siècle', initiale: 'M',
+    id: 'hist-moyen-age', categorie: 'Histoire', titre: 'Le théâtre médiéval', soustitre: 'Ve – XVe siècle', initiale: 'M', img: 'Mystery Play Metz.jpg',
     intro: "Après l'effacement du théâtre antique, le drame renaît dans l'Église : on met en scène les épisodes bibliques. Peu à peu, le spectacle gagne les parvis puis les places, entre ferveur religieuse et rire populaire.",
     points: [
       'Les mystères : vastes fresques religieuses jouées plusieurs jours durant.',
@@ -47,7 +48,7 @@ export const ARTICLES: Article[] = [
     anecdote: "Les mystères pouvaient mobiliser toute une ville : des centaines d'acteurs amateurs et des machineries spectaculaires pour figurer l'enfer ou le paradis.",
   },
   {
-    id: 'hist-renaissance', categorie: 'Histoire', titre: 'Renaissance & théâtre élisabéthain', soustitre: 'XVIe – début XVIIe siècle', initiale: 'R',
+    id: 'hist-renaissance', categorie: 'Histoire', titre: 'Renaissance & théâtre élisabéthain', soustitre: 'XVIe – début XVIIe siècle', initiale: 'R', img: 'The Swan cropped.png',
     intro: "La redécouverte des Anciens relance le théâtre savant, tandis qu'en Angleterre, l'ère élisabéthaine fait éclore un théâtre populaire et grandiose porté par Shakespeare et Marlowe.",
     points: [
       "La commedia dell'arte italienne : masques, canevas improvisés, personnages types (Arlequin, Pantalon).",
@@ -62,7 +63,7 @@ export const ARTICLES: Article[] = [
     anecdote: "Au Globe, les spectateurs les plus modestes, les « groundlings », restaient debout dans la fosse pour un penny.",
   },
   {
-    id: 'hist-classicisme', categorie: 'Histoire', titre: 'Le Grand Siècle', soustitre: 'XVIIe siècle · classicisme français', initiale: 'C',
+    id: 'hist-classicisme', categorie: 'Histoire', titre: 'Le Grand Siècle', soustitre: 'XVIIe siècle · classicisme français', initiale: 'C', img: 'Pierre Mignard - Portrait de Jean-Baptiste Poquelin dit Molière (1622-1673) - Google Art Project (cropped).jpg',
     intro: "Sous Louis XIV, le théâtre français atteint son apogée. Corneille, Racine et Molière portent la tragédie et la comédie à la perfection, dans le respect des règles héritées d'Aristote.",
     points: [
       'La règle des trois unités : action, lieu, temps.',
@@ -77,7 +78,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: "« Le devoir de la comédie étant de corriger les hommes en les divertissant. »", src: 'Molière' },
   },
   {
-    id: 'hist-romantisme', categorie: 'Histoire', titre: 'Le théâtre romantique', soustitre: 'Première moitié du XIXe siècle', initiale: 'R',
+    id: 'hist-romantisme', categorie: 'Histoire', titre: 'Le théâtre romantique', soustitre: 'Première moitié du XIXe siècle', initiale: 'R', img: 'Victor Hugo by Étienne Carjat 1876 - full.jpg',
     intro: "Contre la rigidité classique, les romantiques réclament la liberté : mélange des genres, couleur locale, héros passionnés. La bataille d'Hernani, en 1830, consacre cette révolution.",
     points: [
       "La préface de Cromwell (Hugo, 1827) est le manifeste du drame romantique.",
@@ -87,7 +88,7 @@ export const ARTICLES: Article[] = [
     anecdote: "À la première d'Hernani, partisans et adversaires en vinrent aux mains dans la salle : le gilet rouge de Théophile Gautier fit scandale.",
   },
   {
-    id: 'hist-contemporain', categorie: 'Histoire', titre: 'Le théâtre contemporain', soustitre: 'XXe – XXIe siècle', initiale: 'C',
+    id: 'hist-contemporain', categorie: 'Histoire', titre: 'Le théâtre contemporain', soustitre: 'XXe – XXIe siècle', initiale: 'C', img: 'Ariane Mnouchkine.jpg',
     intro: "Le XXe siècle bouleverse la scène : le metteur en scène devient auteur du spectacle, les avant-gardes multiplient les ruptures, de l'absurde au théâtre engagé jusqu'aux formes performatives d'aujourd'hui.",
     points: [
       'Antoine et le naturalisme, Copeau et le renouveau du jeu.',
@@ -99,7 +100,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── MOUVEMENTS ───────────────
   {
-    id: 'mvt-classicisme', categorie: 'Mouvements', titre: 'Le classicisme', soustitre: 'XVIIe siècle', initiale: 'C',
+    id: 'mvt-classicisme', categorie: 'Mouvements', titre: 'Le classicisme', soustitre: 'XVIIe siècle', initiale: 'C', img: "Portrait de Jean Racine d'après Jean-Baptiste Santerre.jpg",
     intro: "Idéal de mesure, d'ordre et de raison, le classicisme cherche à plaire et instruire en imitant les Anciens. Il impose des règles strictes pour atteindre le naturel et l'universel.",
     points: [
       'Les trois unités : un lieu, un jour, une action.',
@@ -109,7 +110,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Figures', texte: 'Corneille, Racine, Molière, Boileau (théoricien de l’Art poétique).' }],
   },
   {
-    id: 'mvt-romantisme', categorie: 'Mouvements', titre: 'Le romantisme', soustitre: 'XIXe siècle', initiale: 'R',
+    id: 'mvt-romantisme', categorie: 'Mouvements', titre: 'Le romantisme', soustitre: 'XIXe siècle', initiale: 'R', img: 'Caspar David Friedrich - Wanderer above the sea of fog.jpg',
     intro: "Révolte contre les règles classiques, le romantisme exalte la passion, la liberté et le mélange des tons. Le drame romantique refuse de séparer le sublime du grotesque.",
     points: [
       'Rejet des trois unités.',
@@ -119,7 +120,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Figures', texte: 'Victor Hugo, Alfred de Vigny, Alexandre Dumas, Alfred de Musset.' }],
   },
   {
-    id: 'mvt-naturalisme', categorie: 'Mouvements', titre: 'Le naturalisme', soustitre: 'Fin XIXe siècle', initiale: 'N',
+    id: 'mvt-naturalisme', categorie: 'Mouvements', titre: 'Le naturalisme', soustitre: 'Fin XIXe siècle', initiale: 'N', img: 'MissJulie1906.jpg',
     intro: "Prolongement du réalisme, le naturalisme veut porter la vie quotidienne et les milieux sociaux sur scène, avec une exactitude presque scientifique. André Antoine en fait un théâtre du vrai.",
     points: [
       'Décors réalistes, jeu naturel, « quatrième mur ».',
@@ -129,7 +130,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Figures', texte: 'Émile Zola (théoricien), Henry Becque, Henrik Ibsen, Anton Tchekhov.' }],
   },
   {
-    id: 'mvt-symbolisme', categorie: 'Mouvements', titre: 'Le symbolisme', soustitre: 'Fin XIXe siècle', initiale: 'S',
+    id: 'mvt-symbolisme', categorie: 'Mouvements', titre: 'Le symbolisme', soustitre: 'Fin XIXe siècle', initiale: 'S', img: 'Maurice Maeterlinck 2.jpg',
     intro: "En réaction au naturalisme, le symbolisme cherche à suggérer plutôt qu'à montrer. Il privilégie le rêve, le mystère et la musicalité, ouvrant la voie aux avant-gardes.",
     points: [
       'Atmosphères oniriques, langage poétique.',
@@ -139,7 +140,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Figures', texte: 'Maurice Maeterlinck, Villiers de l’Isle-Adam, Paul Fort (Théâtre d’Art).' }],
   },
   {
-    id: 'mvt-absurde', categorie: 'Mouvements', titre: "Le théâtre de l'absurde", soustitre: 'Années 1950', initiale: 'A',
+    id: 'mvt-absurde', categorie: 'Mouvements', titre: "Le théâtre de l'absurde", soustitre: 'Années 1950', initiale: 'A', img: "En attendant Godot, Festival d'Avignon, 1978.jpeg",
     intro: "Au lendemain de la guerre, un théâtre naît qui met en scène l'absurdité de la condition humaine : langage qui se délite, actions sans but, attente sans fin. Le sens même est questionné.",
     points: [
       'Dialogues déréglés, répétitions, non-sens.',
@@ -153,7 +154,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Figures', texte: 'Samuel Beckett, Eugène Ionesco, Arthur Adamov, Jean Genet.' }],
   },
   {
-    id: 'mvt-epique', categorie: 'Mouvements', titre: 'Le théâtre épique', soustitre: 'XXe siècle · Brecht', initiale: 'É',
+    id: 'mvt-epique', categorie: 'Mouvements', titre: 'Le théâtre épique', soustitre: 'XXe siècle · Brecht', initiale: 'É', img: 'Bertolt-Brecht.jpg',
     intro: "Théorisé par Bertolt Brecht, le théâtre épique veut faire réfléchir plutôt qu'émouvoir. Par la « distanciation », il empêche le spectateur de s'identifier pour le rendre critique et lucide.",
     points: [
       "Effet de distanciation (Verfremdungseffekt).",
@@ -165,7 +166,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── GENRES ───────────────
   {
-    id: 'genre-tragedie', categorie: 'Genres', titre: 'La tragédie', initiale: 'T',
+    id: 'genre-tragedie', categorie: 'Genres', titre: 'La tragédie', initiale: 'T', img: 'Ny Carlsberg Glyptothek - Melpomene.jpg',
     intro: "Genre noble par excellence, la tragédie met en scène de grands personnages aux prises avec le destin, la passion ou le devoir. Sa fin malheureuse suscite terreur et pitié — la catharsis.",
     points: [
       'Héros de haut rang, sujet grave.',
@@ -175,7 +176,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Exemples', texte: 'Antigone (Sophocle), Phèdre (Racine), Hamlet (Shakespeare).' }],
   },
   {
-    id: 'genre-comedie', categorie: 'Genres', titre: 'La comédie', initiale: 'C',
+    id: 'genre-comedie', categorie: 'Genres', titre: 'La comédie', initiale: 'C', img: 'Tragic comic masks - roman mosaic.jpg',
     intro: "La comédie peint les travers des hommes pour en rire et les corriger. Des personnages ordinaires, un dénouement heureux — souvent un mariage — et une satire des mœurs de son temps.",
     points: [
       'Personnages de condition moyenne.',
@@ -186,7 +187,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: '« Castigat ridendo mores » — elle corrige les mœurs en riant.', src: 'Devise de la comédie' },
   },
   {
-    id: 'genre-farce', categorie: 'Genres', titre: 'La farce', initiale: 'F',
+    id: 'genre-farce', categorie: 'Genres', titre: 'La farce', initiale: 'F', img: 'Theatre Farce (Petrov-Vodkin).jpg',
     intro: "Courte et populaire, la farce cherche le rire franc par la caricature, les coups, les ruses et les jeux de mots. Héritière du Moyen Âge, elle nourrit toute la comédie française.",
     points: [
       'Comique de geste et de situation appuyé.',
@@ -196,7 +197,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Exemples', texte: 'La Farce de Maître Pathelin, Les Fourberies de Scapin (Molière), Ubu roi (Jarry).' }],
   },
   {
-    id: 'genre-drame', categorie: 'Genres', titre: 'Le drame', initiale: 'D',
+    id: 'genre-drame', categorie: 'Genres', titre: 'Le drame', initiale: 'D', img: "A Doll's House.jpeg",
     intro: "Né au XVIIIe siècle et épanoui avec le romantisme, le drame mêle le tragique et le comique pour peindre la vie dans sa complexité. Il rompt avec la séparation classique des genres.",
     points: [
       'Mélange des tons et des conditions sociales.',
@@ -206,7 +207,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Exemples', texte: 'Hernani, Ruy Blas (Hugo), Une maison de poupée (Ibsen).' }],
   },
   {
-    id: 'genre-tragicomedie', categorie: 'Genres', titre: 'La tragi-comédie', initiale: 'T',
+    id: 'genre-tragicomedie', categorie: 'Genres', titre: 'La tragi-comédie', initiale: 'T', img: '3402440-Le Cid performed in Paris 1637-Burgos.jpg',
     intro: "À la croisée des genres, la tragi-comédie propose une action grave et périlleuse mais un dénouement heureux. En vogue au début du XVIIe siècle, elle précède le triomphe du classicisme.",
     points: [
       'Péripéties nombreuses, tension dramatique.',
@@ -216,7 +217,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Exemple', texte: 'Le Cid (Corneille, 1637), longtemps qualifié de tragi-comédie.' }],
   },
   {
-    id: 'genre-vaudeville', categorie: 'Genres', titre: 'Le vaudeville', initiale: 'V',
+    id: 'genre-vaudeville', categorie: 'Genres', titre: 'Le vaudeville', initiale: 'V', img: "La puce à l'oreille, pièce de Georges Feydeau - défets de presse - btv1b525109326 (1 of 8).jpg",
     intro: "Comédie légère et enlevée du XIXe siècle, le vaudeville repose sur une mécanique d'intrigue implacable : quiproquos, portes qui claquent, situations d'adultère. Feydeau en est le maître horloger.",
     points: [
       'Rythme effréné, mécanique de précision.',
@@ -228,7 +229,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── MÉTIERS ───────────────
   {
-    id: 'metier-comedien', categorie: 'Métiers', titre: 'Le comédien', initiale: 'C',
+    id: 'metier-comedien', categorie: 'Métiers', titre: 'Le comédien', initiale: 'C', img: 'David Garrick by Thomas Gainsborough.jpg',
     intro: "Au cœur du théâtre, le comédien prête son corps et sa voix à un personnage. Son art conjugue technique (diction, présence, mémoire) et sensibilité, pour rendre vivant et vrai ce qui est écrit.",
     points: [
       'Travail du texte, de la voix et du corps.',
@@ -238,7 +239,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: "« Le monde entier est un théâtre, et tous, hommes et femmes, n'en sont que les acteurs. »", src: 'Shakespeare' },
   },
   {
-    id: 'metier-metteur-scene', categorie: 'Métiers', titre: 'Le metteur en scène', initiale: 'M',
+    id: 'metier-metteur-scene', categorie: 'Métiers', titre: 'Le metteur en scène', initiale: 'M', img: 'Constantin Stanislavski.jpg',
     intro: "Apparu à la fin du XIXe siècle, le metteur en scène est le maître d'œuvre du spectacle. Il interprète le texte, dirige les comédiens et coordonne décor, lumière et son pour donner sa vision.",
     points: [
       'Choisit un parti pris de lecture de l’œuvre.',
@@ -248,7 +249,7 @@ export const ARTICLES: Article[] = [
     sections: [{ titre: 'Pionniers', texte: 'André Antoine, Jacques Copeau, Constantin Stanislavski, Bertolt Brecht.' }],
   },
   {
-    id: 'metier-dramaturge', categorie: 'Métiers', titre: 'Le dramaturge', initiale: 'D',
+    id: 'metier-dramaturge', categorie: 'Métiers', titre: 'Le dramaturge', initiale: 'D', img: 'Shakespeare.jpg',
     intro: "Le dramaturge écrit pour la scène. Le mot désigne aussi, dans le théâtre moderne, le conseiller littéraire qui accompagne le metteur en scène dans l'analyse et l'adaptation des textes.",
     points: [
       'Auteur du texte théâtral (dialogues, didascalies).',
@@ -257,7 +258,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'metier-scenographe', categorie: 'Métiers', titre: 'Le scénographe', initiale: 'S',
+    id: 'metier-scenographe', categorie: 'Métiers', titre: 'Le scénographe', initiale: 'S', img: 'Marcel Jambon - Giuseppe Verdi - Otello Act I set design model.jpg',
     intro: "Le scénographe conçoit l'espace du spectacle : décor, volumes, matières et parfois lumière. Il traduit dans l'espace la vision du metteur en scène et guide le regard du spectateur.",
     points: [
       'Conçoit décors et espace scénique.',
@@ -266,7 +267,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'metier-regisseur', categorie: 'Métiers', titre: 'Le régisseur', initiale: 'R',
+    id: 'metier-regisseur', categorie: 'Métiers', titre: 'Le régisseur', initiale: 'R', img: 'Stage managers panel.jpg',
     intro: "Chef d'orchestre invisible, le régisseur assure le bon déroulement technique de la représentation : il donne les tops de lumière, de son et de plateau, et coordonne les équipes en coulisses.",
     points: [
       'Conduite du spectacle en temps réel.',
@@ -275,7 +276,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'metier-costumier', categorie: 'Métiers', titre: 'Le costumier', initiale: 'C',
+    id: 'metier-costumier', categorie: 'Métiers', titre: 'Le costumier', initiale: 'C', img: 'Léon Bakst - Costume Design for a Ballet (1916).jpg',
     intro: "Le costumier imagine et réalise les vêtements des personnages. Le costume situe une époque, révèle un caractère et participe pleinement au sens du spectacle — bien au-delà de l'habillage.",
     points: [
       'Conçoit et fabrique les costumes.',
@@ -287,7 +288,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── HISTOIRE (compléments) ───────────────
   {
-    id: 'hist-lumieres', categorie: 'Histoire', titre: 'Le théâtre des Lumières', soustitre: 'XVIIIe siècle', initiale: 'L',
+    id: 'hist-lumieres', categorie: 'Histoire', titre: 'Le théâtre des Lumières', soustitre: 'XVIIIe siècle', initiale: 'L', img: 'Figaro-1785-title-page.jpg',
     intro: "Au siècle des Lumières, la comédie s'affine (Marivaux, le « marivaudage ») et se fait plus hardie socialement (Beaumarchais). Diderot invente le drame bourgeois, qui met en scène les gens du commun et leurs sentiments.",
     points: [
       "Marivaux : la surprise de l'amour et le jeu des masques sociaux.",
@@ -297,7 +298,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: "« Sans la liberté de blâmer, il n'est point d'éloge flatteur. »", src: 'Beaumarchais, Le Mariage de Figaro' },
   },
   {
-    id: 'hist-realisme', categorie: 'Histoire', titre: 'Réalisme & naturalisme', soustitre: 'Fin du XIXe siècle', initiale: 'R',
+    id: 'hist-realisme', categorie: 'Histoire', titre: 'Réalisme & naturalisme', soustitre: 'Fin du XIXe siècle', initiale: 'R', img: 'André Antoine actor.jpg',
     intro: "À la fin du XIXe siècle, la scène cherche la vérité du quotidien. André Antoine fonde le Théâtre Libre et impose le « quatrième mur » ; Ibsen et Tchekhov peignent l'intime et les non-dits.",
     points: [
       "Le « quatrième mur » : jouer comme si le public n'existait pas.",
@@ -307,7 +308,7 @@ export const ARTICLES: Article[] = [
     anecdote: "Antoine faisait apporter de vrais quartiers de viande sur scène pour une pièce sur des bouchers : le naturalisme jusqu'au bout.",
   },
   {
-    id: 'hist-boulevard', categorie: 'Histoire', titre: 'Le théâtre de boulevard', soustitre: 'XIXe – XXe siècle', initiale: 'B',
+    id: 'hist-boulevard', categorie: 'Histoire', titre: 'Le théâtre de boulevard', soustitre: 'XIXe – XXe siècle', initiale: 'B', img: "Louis Léopold Boilly - L'entrée du théâtre.jpg",
     intro: "Sur les « Grands Boulevards » parisiens, un théâtre populaire et commercial triomphe : vaudevilles à quiproquos, comédies légères et rires en cascade, pour un public en quête de divertissement.",
     points: [
       'Le vaudeville : mécanique implacable des portes qui claquent (Feydeau, Labiche).',
@@ -317,7 +318,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: "« Il est plus facile d'être héros que honnête homme. »", src: 'Courteline' },
   },
   {
-    id: 'hist-decentralisation', categorie: 'Histoire', titre: 'La décentralisation théâtrale', soustitre: 'France · après 1945', initiale: 'D',
+    id: 'hist-decentralisation', categorie: 'Histoire', titre: 'La décentralisation théâtrale', soustitre: 'France · après 1945', initiale: 'D', img: 'Jean Vilar, April 1955.jpg',
     intro: "Après la guerre, l'État porte le théâtre hors de Paris : centres dramatiques nationaux, maisons de la culture, festivals. Jean Vilar et le TNP rêvent d'un « théâtre populaire » de service public.",
     points: [
       'Jean Vilar fonde le Festival d\'Avignon (1947) puis dirige le TNP.',
@@ -329,7 +330,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── MOUVEMENTS (compléments) ───────────────
   {
-    id: 'mvt-baroque', categorie: 'Mouvements', titre: 'Le baroque', soustitre: 'Fin XVIe – début XVIIe siècle', initiale: 'B',
+    id: 'mvt-baroque', categorie: 'Mouvements', titre: 'Le baroque', soustitre: 'Fin XVIe – début XVIIe siècle', initiale: 'B', img: 'Parma-teatro-farnese-in-national-gallery.jpg',
     intro: "Avant l'ordre classique, le théâtre baroque cultive l'illusion, le mouvement et la métamorphose : le monde est un théâtre, la vie un songe. Machines, apparitions et coups de théâtre s'y multiplient.",
     points: [
       'Goût de l\'illusion et du théâtre dans le théâtre.',
@@ -339,7 +340,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: "« Nous sommes de l'étoffe dont sont faits les songes. »", src: 'Shakespeare, La Tempête' },
   },
   {
-    id: 'mvt-commedia', categorie: 'Mouvements', titre: "La commedia dell'arte", soustitre: 'Italie · XVIe – XVIIIe siècle', initiale: 'C',
+    id: 'mvt-commedia', categorie: 'Mouvements', titre: "La commedia dell'arte", soustitre: 'Italie · XVIe – XVIIIe siècle', initiale: 'C', img: 'Jean-Antoine Watteau, The Italian Comedians - Getty Museum.jpg',
     intro: "Théâtre italien de comédiens ambulants, la commedia dell'arte repose sur des types fixes et masqués (Arlequin, Pantalon, le Docteur) improvisant sur un canevas. Son énergie irrigue Molière et Marivaux.",
     points: [
       'Des personnages-types reconnaissables, aux masques codifiés.',
@@ -349,7 +350,7 @@ export const ARTICLES: Article[] = [
     anecdote: "Arlequin, avec son habit de losanges colorés et sa batte, est né misérable valet avant de devenir l'amoureux virtuose que l'on connaît.",
   },
   {
-    id: 'mvt-cruaute', categorie: 'Mouvements', titre: 'Avant-gardes & théâtre de la cruauté', soustitre: 'Première moitié du XXe siècle', initiale: 'A',
+    id: 'mvt-cruaute', categorie: 'Mouvements', titre: 'Avant-gardes & théâtre de la cruauté', soustitre: 'Première moitié du XXe siècle', initiale: 'A', img: 'Antonin Artaud 1926.jpg',
     intro: "Contre le théâtre psychologique, les avant-gardes veulent choquer et régénérer la scène. Jarry ouvre la voie avec Ubu ; Antonin Artaud rêve d'un « théâtre de la cruauté » agissant sur les sens comme un rite.",
     points: [
       'Jarry (Ubu roi) : provocation et grotesque fondateurs.',
@@ -359,7 +360,7 @@ export const ARTICLES: Article[] = [
     citation: { txt: "« Le théâtre, c'est le double non pas de cette réalité quotidienne… mais d'une autre réalité dangereuse. »", src: 'Antonin Artaud' },
   },
   {
-    id: 'mvt-quotidien', categorie: 'Mouvements', titre: 'Le théâtre du quotidien', soustitre: 'Fin XXe siècle', initiale: 'Q',
+    id: 'mvt-quotidien', categorie: 'Mouvements', titre: 'Le théâtre du quotidien', soustitre: 'Fin XXe siècle', initiale: 'Q', img: 'Michel Vinaver - 2006.jpg',
     intro: "Dans les années 1970-90, des auteurs captent la langue ordinaire, ses ratés et ses silences. Le drame naît du banal, de la parole empêchée : c'est le théâtre de Michel Vinaver ou de Jean-Luc Lagarce.",
     points: [
       'La matière : la conversation, le travail, la famille.',
@@ -371,7 +372,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── GENRES (compléments) ───────────────
   {
-    id: 'genre-comedie-ballet', categorie: 'Genres', titre: 'La comédie-ballet', initiale: 'C',
+    id: 'genre-comedie-ballet', categorie: 'Genres', titre: 'La comédie-ballet', initiale: 'C', img: 'BourgeoisGentilhomme1688.jpg',
     intro: "Née de la collaboration entre Molière et le compositeur Lully, la comédie-ballet mêle comédie parlée, musique et danse en un spectacle total, très en faveur à la cour de Louis XIV.",
     points: [
       'Alternance de scènes parlées et d\'intermèdes chantés et dansés.',
@@ -380,7 +381,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'genre-melodrame', categorie: 'Genres', titre: 'Le mélodrame', initiale: 'M',
+    id: 'genre-melodrame', categorie: 'Genres', titre: 'Le mélodrame', initiale: 'M', img: 'Honoré Daumier 026.jpg',
     intro: "Genre populaire du XIXe siècle, le mélodrame joue des émotions fortes : innocence persécutée, traîtres, coups du sort et musique soulignant les moments clés. Il triomphe sur les boulevards.",
     points: [
       'Manichéisme : le bon, la victime, le traître.',
@@ -390,7 +391,7 @@ export const ARTICLES: Article[] = [
     anecdote: "Le mot « mélodrame » vient du grec melos (chant) : à l'origine, un drame accompagné de musique.",
   },
   {
-    id: 'genre-feerie', categorie: 'Genres', titre: 'La féerie', initiale: 'F',
+    id: 'genre-feerie', categorie: 'Genres', titre: 'La féerie', initiale: 'F', img: 'La Biche au bois, Alfred Choubrac.jpg',
     intro: "Spectacle du merveilleux, la féerie déploie décors à transformations, machineries et effets visuels pour figurer fées, palais enchantés et métamorphoses. Un théâtre du rêve et de l'émerveillement.",
     points: [
       'Décors à changements « à vue » et machines spectaculaires.',
@@ -399,7 +400,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'genre-monologue', categorie: 'Genres', titre: 'Le monologue', initiale: 'M',
+    id: 'genre-monologue', categorie: 'Genres', titre: 'Le monologue', initiale: 'M', img: 'Edwin Booth Hamlet 1870.jpg',
     intro: "Discours d'un personnage seul en scène qui pense tout haut, le monologue révèle l'intériorité : délibération, aveu, désespoir. Du soliloque tragique à la tirade virtuose, c'est un sommet du jeu d'acteur.",
     points: [
       'Le personnage se parle à lui-même (ou au public).',
@@ -411,7 +412,7 @@ export const ARTICLES: Article[] = [
 
   // ─────────────── MÉTIERS (compléments) ───────────────
   {
-    id: 'metier-eclairagiste', categorie: 'Métiers', titre: "L'éclairagiste", initiale: 'É',
+    id: 'metier-eclairagiste', categorie: 'Métiers', titre: "L'éclairagiste", initiale: 'É', img: 'Classical spectacular10.jpg',
     intro: "Créateur de la lumière, l'éclairagiste sculpte l'espace, le temps et l'émotion. Un même décor devient aube, orage ou huis clos selon la lumière : c'est un art à part entière de la scène moderne.",
     points: [
       'Conçoit les ambiances lumineuses et leurs changements.',
@@ -420,7 +421,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'metier-machiniste', categorie: 'Métiers', titre: 'Le machiniste', initiale: 'M',
+    id: 'metier-machiniste', categorie: 'Métiers', titre: 'Le machiniste', initiale: 'M', img: 'Scenic Design by Glenn Davis, Hospital Set 2013.jpg',
     intro: "Technicien du plateau, le machiniste monte les décors, manœuvre les changements et fait fonctionner les machineries. De l'ombre, il rend possible la magie visible du spectacle.",
     points: [
       'Montage, démontage et manipulation des décors.',
@@ -430,7 +431,7 @@ export const ARTICLES: Article[] = [
     anecdote: "L'expression « côté cour » et « côté jardin » sert aux machinistes à ne jamais confondre la gauche et la droite du plateau.",
   },
   {
-    id: 'metier-souffleur', categorie: 'Métiers', titre: 'Le souffleur', initiale: 'S',
+    id: 'metier-souffleur', categorie: 'Métiers', titre: 'Le souffleur', initiale: 'S', img: 'Apuntador (souffleur) del siglo XVIII.jpg',
     intro: "Longtemps installé dans son « trou » au bord de la scène, le souffleur soufflait discrètement leur texte aux comédiens. Métier en voie de disparition, il reste le symbole d'un théâtre de la mémoire et du secours.",
     points: [
       'Suit le texte et relance l\'acteur en cas de trou de mémoire.',
@@ -439,7 +440,7 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
-    id: 'metier-directeur', categorie: 'Métiers', titre: 'Le directeur de théâtre', initiale: 'D',
+    id: 'metier-directeur', categorie: 'Métiers', titre: 'Le directeur de théâtre', initiale: 'D', img: 'Peter Brook.JPG',
     intro: "À la tête d'une salle ou d'une troupe, le directeur choisit la programmation, porte un projet artistique et gère l'institution — entre ambition esthétique et réalités économiques.",
     points: [
       'Définit la ligne artistique et la saison.',

@@ -87,10 +87,10 @@ export const LIEUX: Lieu[] = [
 
   // ─── Festivals ───
   { id: 'avignon', nom: "Festival d'Avignon", lieu: 'France · chaque juillet', txt: "Cour d'honneur du Palais des papes + 1 500 spectacles au Off.", initiale: 'A', img: 'Avignon, Palais des Papes by JM Rosier.jpg', type: 'festival', lat: 43.951, lng: 4.807 },
-  { id: 'edimbourg', nom: 'Edinburgh Fringe', lieu: 'Écosse · chaque août', txt: 'Le plus grand festival des arts du spectacle au monde.', initiale: 'E', img: '', type: 'festival', lat: 55.953, lng: -3.188 },
-  { id: 'epidaure-festival', nom: "Festival d'Athènes-Épidaure", lieu: 'Grèce · chaque été', txt: 'Les tragédies grecques rejouées dans les théâtres antiques.', initiale: 'É', img: '', type: 'festival', lat: 37.972, lng: 23.726 },
-  { id: 'bitef', nom: 'BITEF', lieu: 'Belgrade · chaque automne', txt: 'Grand festival des nouvelles tendances du théâtre.', initiale: 'B', img: '', type: 'festival', lat: 44.816, lng: 20.460 },
-  { id: 'almada', nom: 'Festival d\'Almada', lieu: 'Portugal · chaque juillet', txt: 'Rendez-vous majeur du théâtre en péninsule ibérique.', initiale: 'A', img: '', type: 'festival', lat: 38.677, lng: -9.158 },
+  { id: 'edimbourg', nom: 'Edinburgh Fringe', lieu: 'Écosse · chaque août', txt: 'Le plus grand festival des arts du spectacle au monde.', initiale: 'E', img: 'Edinburgh Fringe 037.jpg', type: 'festival', lat: 55.953, lng: -3.188 },
+  { id: 'epidaure-festival', nom: "Festival d'Athènes-Épidaure", lieu: 'Grèce · chaque été', txt: 'Les tragédies grecques rejouées dans les théâtres antiques.', initiale: 'É', img: 'Odeon of Herodes Atticus (34580450331).jpg', type: 'festival', lat: 37.972, lng: 23.726 },
+  { id: 'bitef', nom: 'BITEF', lieu: 'Belgrade · chaque automne', txt: 'Grand festival des nouvelles tendances du théâtre.', initiale: 'B', img: 'Panorama Belgrad.jpg', type: 'festival', lat: 44.816, lng: 20.460 },
+  { id: 'almada', nom: 'Festival d\'Almada', lieu: 'Portugal · chaque juillet', txt: 'Rendez-vous majeur du théâtre en péninsule ibérique.', initiale: 'A', img: 'Vista de Almada by Juntas (cropped).jpg', type: 'festival', lat: 38.677, lng: -9.158 },
 
   // ─── Traditions ───
   { id: 'kabuki', nom: 'Kabuki-za', lieu: 'Tokyo · Japon', txt: 'Le grand théâtre du kabuki ; le nô, plus ancien, lui est proche.', initiale: 'K', img: '', type: 'tradition', lat: 35.669, lng: 139.767 },
@@ -113,14 +113,14 @@ export const LIEUX: Lieu[] = [
   { id: 'mariinsky', nom: 'Théâtre Mariinsky', lieu: 'Saint-Pétersbourg · 1860', txt: 'Temple de l\'opéra et du ballet russes, berceau des Ballets russes.', initiale: 'M', img: 'Санкт-Петербург, Мариинский театр, фасад (edited version).jpg', type: 'theatre', lat: 59.925, lng: 30.296 },
 
   // ─── Festivals (compléments) ───
-  { id: 'festwochen', nom: 'Wiener Festwochen', lieu: 'Vienne · mai-juin', txt: 'Les « Semaines festives » de Vienne : théâtre, opéra et performance.', initiale: 'W', img: '', type: 'festival', lat: 48.203, lng: 16.365 },
-  { id: 'automne-paris', nom: "Festival d'Automne", lieu: 'Paris · sept.-déc.', txt: 'Grand festival parisien de création contemporaine.', initiale: 'A', img: '', type: 'festival', lat: 48.858, lng: 2.350 },
-  { id: 'theatertreffen', nom: 'Theatertreffen', lieu: 'Berlin · mai', txt: 'Les dix mises en scène les plus marquantes de la saison germanophone.', initiale: 'T', img: '', type: 'festival', lat: 52.507, lng: 13.353 },
-  { id: 'grec-barcelone', nom: 'Festival Grec', lieu: 'Barcelone · juin-juil.', txt: 'Le festival estival de Barcelone, au Teatre Grec de Montjuïc.', initiale: 'G', img: '', type: 'festival', lat: 41.363, lng: 2.155 },
-  { id: 'mess', nom: 'MESS', lieu: 'Sarajevo · octobre', txt: 'Un des plus anciens festivals de théâtre expérimental d\'Europe.', initiale: 'M', img: '', type: 'festival', lat: 43.858, lng: 18.413 },
-  { id: 'under-radar', nom: 'Under the Radar', lieu: 'New York · janvier', txt: 'Vitrine new-yorkaise de la création théâtrale d\'avant-garde.', initiale: 'U', img: '', type: 'festival', lat: 40.735, lng: -73.990 },
-  { id: 'adelaide-fringe', nom: 'Adelaide Fringe', lieu: 'Adélaïde · fév.-mars', txt: 'Deuxième plus grand festival off du monde après Édimbourg.', initiale: 'A', img: '', type: 'festival', lat: -34.928, lng: 138.600 },
-  { id: 'santiago-mil', nom: 'Santiago a Mil', lieu: 'Santiago · janvier', txt: 'Grand carrefour des arts de la scène latino-américains.', initiale: 'S', img: '', type: 'festival', lat: -33.447, lng: -70.673 },
+  { id: 'festwochen', nom: 'Wiener Festwochen', lieu: 'Vienne · mai-juin', txt: 'Les « Semaines festives » de Vienne : théâtre, opéra et performance.', initiale: 'W', img: '2020-05-23 Theater an der Wien Linke Wienzeile.jpg', type: 'festival', lat: 48.203, lng: 16.365 },
+  { id: 'automne-paris', nom: "Festival d'Automne", lieu: 'Paris · sept.-déc.', txt: 'Grand festival parisien de création contemporaine.', initiale: 'A', img: 'Théâtre Sarah-Bernhardt 1.jpg', type: 'festival', lat: 48.858, lng: 2.350 },
+  { id: 'theatertreffen', nom: 'Theatertreffen', lieu: 'Berlin · mai', txt: 'Les dix mises en scène les plus marquantes de la saison germanophone.', initiale: 'T', img: 'Haus der Berliner Festspiele 02-2014.jpg', type: 'festival', lat: 52.507, lng: 13.353 },
+  { id: 'grec-barcelone', nom: 'Festival Grec', lieu: 'Barcelone · juin-juil.', txt: 'Le festival estival de Barcelone, au Teatre Grec de Montjuïc.', initiale: 'G', img: 'Teatre Grec Barcelona.jpg', type: 'festival', lat: 41.363, lng: 2.155 },
+  { id: 'mess', nom: 'MESS', lieu: 'Sarajevo · octobre', txt: 'Un des plus anciens festivals de théâtre expérimental d\'Europe.', initiale: 'M', img: 'Sarajevo National Theatre.JPG', type: 'festival', lat: 43.858, lng: 18.413 },
+  { id: 'under-radar', nom: 'Under the Radar', lieu: 'New York · janvier', txt: 'Vitrine new-yorkaise de la création théâtrale d\'avant-garde.', initiale: 'U', img: 'The Public Theater (48072652481).jpg', type: 'festival', lat: 40.735, lng: -73.990 },
+  { id: 'adelaide-fringe', nom: 'Adelaide Fringe', lieu: 'Adélaïde · fév.-mars', txt: 'Deuxième plus grand festival off du monde après Édimbourg.', initiale: 'A', img: 'Sammy J in the Garden of Unearthly Delights at the 2018 Adelaide Fringe Festival.jpg', type: 'festival', lat: -34.928, lng: 138.600 },
+  { id: 'santiago-mil', nom: 'Santiago a Mil', lieu: 'Santiago · janvier', txt: 'Grand carrefour des arts de la scène latino-américains.', initiale: 'S', img: 'Festival Santiago a Mil 2023 - Palacio de la Moneda.jpg', type: 'festival', lat: -33.447, lng: -70.673 },
 
   // ─── Traditions (compléments) ───
   { id: 'no-theatre', nom: 'Théâtre nô', lieu: 'Kyoto · Japon', txt: 'Le plus ancien théâtre japonais : masques, lenteur et poésie codifiées.', initiale: 'N', img: '', type: 'tradition', lat: 35.011, lng: 135.768 },

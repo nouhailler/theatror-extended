@@ -66,9 +66,7 @@ export default function Encyclopedie() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {articles.map((a) => (
             <div key={a.id} onClick={() => nav(`/explorer/article/${a.id}`)} className="card card-tap" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
-              <div style={{ width: 54, height: 54, borderRadius: 10, flex: 'none', background: 'var(--fallback-grad)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: 'var(--font-title)', fontSize: 26, color: 'rgba(212,169,78,.4)' }}>{a.initiale}</span>
-              </div>
+              <WikiImage file={a.img} initial={a.initiale} initialSize={26} style={{ width: 54, height: 54, borderRadius: 10, flex: 'none' }} objectPosition="center" />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600 }}>{a.titre}</div>
                 <div style={{ fontSize: 13, color: 'var(--text-muted)', fontStyle: 'italic' }}>{a.soustitre ?? a.intro.slice(0, 60) + '…'}</div>
