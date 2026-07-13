@@ -292,7 +292,7 @@ export const PERSONNAGES: Personnage[] = [
 
   // ─── Molière (suite) ───────────────────────────────────────────────────
   {
-    id: 'orgon', nom: 'Orgon', initiale: 'O', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'orgon', nom: 'Orgon', initiale: 'O', img: 'Orgon verdedigt Tartuffe, RP-P-2019-3455.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Bourgeois aveuglé',
     psychologie: "Père de famille autoritaire mais crédule, Orgon voue à Tartuffe une dévotion aveugle qui confine au fanatisme. Sa passion pour le faux dévot le rend sourd à sa famille et prêt à la sacrifier tout entière.",
     evolution: "De protecteur enthousiaste de l'imposteur, il devient sa victime : il lui donne sa fille, sa fortune, sa maison — jusqu'à ce que la scène de la table lui dessille enfin les yeux, trop tard pour éviter le désastre.",
@@ -300,7 +300,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Le pauvre homme ! »",
   },
   {
-    id: 'elmire', nom: 'Elmire', initiale: 'E', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'elmire', nom: 'Elmire', initiale: 'E', img: "Willem van Mieris - Tartuffe et Élmire supris par Damis, fils d'Orgon, lot-6325101.jpg", piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Épouse habile',
     psychologie: "Femme d'Orgon, honnête et fine, Elmire préfère l'adresse à l'éclat. Plutôt que de s'indigner, elle tend un piège calculé à Tartuffe pour confondre l'hypocrite sous les yeux mêmes de son mari.",
     evolution: "Discrète d'abord face aux avances de Tartuffe, elle prend l'initiative décisive : la scène de la table où elle le pousse à se démasquer pendant qu'Orgon écoute, sauvant la famille par sa lucidité.",
@@ -308,7 +308,7 @@ export const PERSONNAGES: Personnage[] = [
     citation: "« Les gens comme vous savent flatter les sens. »",
   },
   {
-    id: 'dorine', nom: 'Dorine', initiale: 'D', img: 'Tartuffe Moliere.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
+    id: 'dorine', nom: 'Dorine', initiale: 'D', img: 'Orgon in gesprek met Dorine, RP-P-2019-3453.jpg', piece: 'Tartuffe', pieceId: 'tartuffe',
     auteur: 'Molière', auteurId: 'moliere', emploi: 'Suivante impertinente',
     psychologie: "Servante au franc-parler, Dorine incarne le bon sens populaire face à l'aveuglement des maîtres. Insolente et lucide, elle dit tout haut ce que la bienséance tait et défend Mariane contre la tyrannie d'Orgon.",
     evolution: "Elle raille sans relâche la fausse dévotion, tient tête à Orgon, souffle aux amoureux leur conduite et se démène pour déjouer le mariage forcé — véritable metteur en scène de la résistance familiale.",

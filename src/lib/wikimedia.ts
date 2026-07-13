@@ -98,6 +98,9 @@ export const CREDITS: Record<string, Credit> = {
   'Peter Brook.JPG': { auteur: 'John Thaxter', licence: 'CC0' },
   // Personnages célèbres
   'Tartuffe Moliere.jpg': { auteur: 'Gravure ancienne', licence: 'Domaine public' },
+  'Orgon verdedigt Tartuffe, RP-P-2019-3455.jpg': { auteur: 'Rijksmuseum', licence: 'CC0' },
+  "Willem van Mieris - Tartuffe et Élmire supris par Damis, fils d'Orgon, lot-6325101.jpg": { auteur: 'Willem van Mieris', licence: 'Domaine public' },
+  'Orgon in gesprek met Dorine, RP-P-2019-3453.jpg': { auteur: 'Rijksmuseum', licence: 'CC0' },
   'Coquelin ainé.jpg': { auteur: 'Anonyme (Coquelin dans Cyrano)', licence: 'Domaine public' },
   'Antigone Gives Token Burial to the Body of Her Brother Polynices MET DP807380.jpg': { auteur: 'Eugène Lenepveu', licence: 'CC0' },
   "Frontispiece to Molière's Dom Juan by P Brissart 1682 - césar.jpg": { auteur: 'Pierre Brissart / Jean Sauvé', licence: 'Domaine public' },
