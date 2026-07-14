@@ -55,6 +55,14 @@ export const CREDITS: Record<string, Credit> = {
   'The Public Theater (48072652481).jpg': { auteur: 'Ajay Suresh', licence: 'CC BY 2.0' },
   'Sammy J in the Garden of Unearthly Delights at the 2018 Adelaide Fringe Festival.jpg': { auteur: 'Linh Chameleon', licence: 'CC BY-SA 2.0' },
   'Festival Santiago a Mil 2023 - Palacio de la Moneda.jpg': { auteur: 'LuisCG11', licence: 'CC BY-SA 4.0' },
+  // Festivals (fiches détail — lieux/villes)
+  'Teatro Colon Bogota.jpg': { auteur: 'Baiji', licence: 'CC BY-SA 3.0' },
+  'Kaaitheater Brussels 2.jpg': { auteur: 'Sam.Donvil', licence: 'CC BY-SA 4.0' },
+  'Place des Arts.jpg': { auteur: 'Ske', licence: 'CC BY-SA 3.0' },
+  'Stadsschouwburg amsterdam.jpg': { auteur: 'Jvhertum', licence: 'CC BY-SA 3.0' },
+  'Place de la Comédie Montpellier.jpg': { auteur: 'Choinowski', licence: 'CC BY-SA 4.0' },
+  'Teatro romano - Mérida.jpg': { auteur: 'Vafernandez95', licence: 'CC BY-SA 3.0' },
+  'Festival Theatre (408960988).jpg': { auteur: 'Mike Murry', licence: 'CC BY-SA 2.0' },
   // Encyclopédie — Histoire
   'Greek - Actor - Walters 541067.jpg': { auteur: 'Anonyme (Grèce antique)', licence: 'Domaine public' },
   'Mystery Play Metz.jpg': { auteur: 'Auguste Migette', licence: 'Domaine public' },
