@@ -6,6 +6,8 @@ import BottomNav from './components/shell/BottomNav';
 import Drawer from './components/shell/Drawer';
 import Onboarding from './components/Onboarding';
 import GuidedTour from './components/GuidedTour';
+import HelpSheet from './components/HelpSheet';
+import ScreenTip from './components/ScreenTip';
 
 import Accueil from './screens/Accueil';
 import MaCollection from './screens/MaCollection';
@@ -83,7 +85,9 @@ export default function App() {
       </main>
       <BottomNav />
 
+      <ScreenTip />
       <Drawer />
+      <HelpSheet />
       <GuidedTour />
       <Onboarding />
     </div>

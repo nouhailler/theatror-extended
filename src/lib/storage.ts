@@ -7,6 +7,7 @@ export const KEYS = {
   settings: 'theathror-settings',
   seeded: 'theathror-seeded', // journal d'exemple inséré une fois
   onb: 'theathror-onb', // flag onboarding vu (localStorage, lecture synchrone au boot)
+  tips: 'theathror-tips', // astuces d'écran déjà vues (localStorage, lecture synchrone)
   miseEnScene: 'theathror-miseenscene', // plateau de mise en scène virtuelle
   flux: 'theathror-flux', // cache des nouveautés RSS (podcasts/vidéos)
   fluxUser: 'theathror-flux-user', // sources RSS ajoutées par l'utilisateur
@@ -58,6 +59,33 @@ export function markOnbSeen(): void {
 export function clearOnbSeen(): void {
   try {
     localStorage.removeItem(KEYS.onb);
+  } catch {
+    /* ignore */
+  }
+}
+
+// ─── localStorage : astuces d'écran déjà vues (lecture synchrone) ───
+export function seenTips(): Record<string, true> {
+  try {
+    return JSON.parse(localStorage.getItem(KEYS.tips) ?? '{}') as Record<string, true>;
+  } catch {
+    return {};
+  }
+}
+
+export function markTipSeen(id: string): void {
+  try {
+    const map = seenTips();
+    map[id] = true;
+    localStorage.setItem(KEYS.tips, JSON.stringify(map));
+  } catch {
+    /* ignore */
+  }
+}
+
+export function clearTips(): void {
+  try {
+    localStorage.removeItem(KEYS.tips);
   } catch {
     /* ignore */
   }

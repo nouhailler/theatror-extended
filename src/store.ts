@@ -6,6 +6,9 @@ import {
   onbSeen,
   markOnbSeen,
   clearOnbSeen,
+  seenTips,
+  markTipSeen,
+  clearTips,
 } from './lib/storage';
 import { JOURNAL_SEED } from './data/journalSeed';
 
@@ -27,6 +30,7 @@ export interface JournalEntry {
 export interface Settings {
   openRouterKey: string;
   openRouterModel: string;
+  tipsEnabled: boolean; // astuces contextuelles au fil de la navigation
 }
 
 interface State {
@@ -53,6 +57,16 @@ interface State {
   openMenu: () => void;
   closeMenu: () => void;
 
+  // Aide contextuelle (fiche d'aide de l'écran)
+  helpOpen: boolean;
+  openHelp: () => void;
+  closeHelp: () => void;
+
+  // Astuces d'écran (déjà vues)
+  tipsSeen: Record<string, true>;
+  markTip: (id: string) => void;
+  resetTips: () => void;
+
   // Onboarding (0–2 | null)
   onbStep: number | null;
   onbNext: () => void;
@@ -76,6 +90,7 @@ function uid(): string {
 const DEFAULT_SETTINGS: Settings = {
   openRouterKey: '',
   openRouterModel: 'anthropic/claude-3.5-sonnet',
+  tipsEnabled: true,
 };
 
 export const useStore = create<State>((set, getState) => ({
@@ -122,6 +137,20 @@ export const useStore = create<State>((set, getState) => ({
   menuOpen: false,
   openMenu: () => set({ menuOpen: true }),
   closeMenu: () => set({ menuOpen: false }),
+
+  helpOpen: false,
+  openHelp: () => set({ helpOpen: true, menuOpen: false }),
+  closeHelp: () => set({ helpOpen: false }),
+
+  tipsSeen: seenTips(),
+  markTip: (id) => {
+    markTipSeen(id);
+    set({ tipsSeen: { ...getState().tipsSeen, [id]: true } });
+  },
+  resetTips: () => {
+    clearTips();
+    set({ tipsSeen: {} });
+  },
 
   onbStep: onbSeen() ? null : 0,
   onbNext: () => set({ onbStep: Math.min(2, (getState().onbStep ?? 0) + 1) }),

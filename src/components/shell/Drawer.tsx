@@ -17,6 +17,7 @@ export default function Drawer() {
   const close = useStore((s) => s.closeMenu);
   const startTour = useStore((s) => s.startTour);
   const onbReplay = useStore((s) => s.onbReplay);
+  const openHelp = useStore((s) => s.openHelp);
   const nav = useNavigate();
 
   if (!open) return null;
@@ -47,15 +48,21 @@ export default function Drawer() {
         { label: 'Monologues', onGo: go('/scene?seg=mono') },
         { label: 'Citations', onGo: go('/scene?seg=cit') },
         { label: 'Glossaire', onGo: go('/scene?seg=glos') },
+        { label: "Exercices d'acteur", onGo: go('/exercices') },
+        { label: 'Voix & diction', onGo: go('/voix') },
+        { label: 'Parcours', onGo: go('/parcours') },
+        { label: 'Médias', note: 'podcasts, vidéos', onGo: go('/medias') },
         { label: 'Mode IA', note: 'assistant', onGo: go('/ia') },
       ],
     },
     {
-      titre: 'Aide',
+      titre: 'Scène & spectacle',
       items: [
-        { label: 'Visite guidée (démo)', onGo: () => { close(); startTour(); } },
-        { label: "Revoir l'introduction", onGo: () => { onbReplay(); } },
-        { label: 'Réglages', onGo: go('/reglages') },
+        { label: 'Mise en scène', note: 'plateau', onGo: go('/mise-en-scene') },
+        { label: 'Costumes', onGo: go('/costumes') },
+        { label: 'Décors', onGo: go('/decors') },
+        { label: 'Accessoires', onGo: go('/accessoires') },
+        { label: 'Festivals', onGo: go('/festivals') },
       ],
     },
     {
@@ -66,12 +73,12 @@ export default function Drawer() {
       ],
     },
     {
-      titre: 'À venir',
+      titre: 'Aide',
       items: [
-        { label: "Exercices d'acteur & voix", soon: true },
-        { label: 'Lecture interactive', soon: true },
-        { label: 'Costumes, décors, accessoires', soon: true },
-        { label: 'Festivals & agenda', soon: true },
+        { label: 'Aide de cet écran', note: '?', onGo: () => { close(); openHelp(); } },
+        { label: 'Mode démo', note: 'visite guidée', onGo: () => { close(); startTour(); } },
+        { label: "Revoir l'introduction", onGo: () => { onbReplay(); } },
+        { label: 'Réglages', onGo: go('/reglages') },
       ],
     },
   ];

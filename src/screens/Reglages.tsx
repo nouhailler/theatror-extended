@@ -15,9 +15,13 @@ const MODELES = [
 export default function Reglages() {
   const settings = useStore((s) => s.settings);
   const setSettings = useStore((s) => s.setSettings);
+  const startTour = useStore((s) => s.startTour);
+  const onbReplay = useStore((s) => s.onbReplay);
+  const resetTips = useStore((s) => s.resetTips);
   const [key, setKey] = useState(settings.openRouterKey);
   const [reveal, setReveal] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [tipsReset, setTipsReset] = useState(false);
 
   // Modèles gratuits d'OpenRouter (chargés à la demande).
   const [freeModels, setFreeModels] = useState<OpenRouterModel[] | null>(null);
@@ -118,6 +122,41 @@ export default function Reglages() {
 
         <button className="gold-btn" style={{ padding: '11px 18px', fontSize: 15 }} onClick={save}>
           {saved ? 'Enregistré ✓' : 'Enregistrer la clé'}
+        </button>
+      </section>
+
+      <section className="card card-16" style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div>
+          <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Aide & découverte</div>
+          <div style={{ fontSize: 13.5, color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.5 }}>
+            Le mode démo traverse chaque section. Le bouton « ? » en haut ouvre l'aide de l'écran courant, et les astuces s'affichent une fois par section.
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <button className="gold-btn" style={{ padding: '10px 18px', fontSize: 14.5 }} onClick={startTour}>
+            Lancer le mode démo
+          </button>
+          <button onClick={onbReplay}
+            style={{ background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 999, padding: '10px 16px', color: 'var(--gold-chip-text)', fontSize: 13.5, fontFamily: 'var(--font-body)', cursor: 'pointer' }}>
+            Revoir l'introduction
+          </button>
+        </div>
+
+        <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, cursor: 'pointer' }}>
+          <span style={{ fontSize: 14.5, color: 'var(--text-2b)' }}>Astuces au fil de la navigation</span>
+          <input
+            type="checkbox"
+            checked={settings.tipsEnabled}
+            onChange={(e) => setSettings({ tipsEnabled: e.target.checked })}
+            style={{ width: 18, height: 18, flex: 'none' }}
+          />
+        </label>
+
+        <button
+          onClick={() => { resetTips(); setTipsReset(true); setTimeout(() => setTipsReset(false), 1800); }}
+          style={{ alignSelf: 'flex-start', background: 'none', border: 'none', padding: 0, color: 'var(--gold-chip-text)', fontSize: 13.5, fontFamily: 'var(--font-body)', cursor: 'pointer' }}>
+          {tipsReset ? 'Astuces réinitialisées ✓' : 'Réafficher toutes les astuces'}
         </button>
       </section>
 

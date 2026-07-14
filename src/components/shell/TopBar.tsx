@@ -3,6 +3,7 @@ import { dateCourte } from '../../lib/date';
 
 export default function TopBar() {
   const openMenu = useStore((s) => s.openMenu);
+  const openHelp = useStore((s) => s.openHelp);
 
   return (
     <header
@@ -56,6 +57,29 @@ export default function TopBar() {
       >
         {dateCourte()}
       </div>
+      <button
+        onClick={openHelp}
+        aria-label="Aide de l'écran"
+        title="Aide de l'écran"
+        style={{
+          cursor: 'pointer',
+          width: 26,
+          height: 26,
+          borderRadius: 999,
+          border: '1px solid rgba(212,169,78,.55)',
+          background: 'none',
+          color: 'var(--gold)',
+          fontSize: 14,
+          fontWeight: 700,
+          lineHeight: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flex: 'none',
+        }}
+      >
+        ?
+      </button>
     </header>
   );
 }
