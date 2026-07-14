@@ -65,8 +65,15 @@ function Player({ playId, onPosition }: { playId: string; onPosition: (i: number
   };
   const playClip = (url: string) => { const a = new Audio(url); void a.play(); };
 
-  // Coupe l'enregistrement en cours si on change de réplique ; libère à la sortie.
-  useEffect(() => { if (recordingRef.current) void stopRec(); }, [machine.index, stopRec]);
+  // Coupe l'enregistrement en cours si on change *réellement* de réplique.
+  // (stopRec change d'identité à chaque rendu ; sans ce garde, l'effet
+  // couperait l'enregistrement dès qu'il démarre.)
+  const prevIndexRef = useRef(machine.index);
+  useEffect(() => {
+    if (prevIndexRef.current === machine.index) return;
+    prevIndexRef.current = machine.index;
+    if (recordingRef.current) void stopRec();
+  }, [machine.index, stopRec]);
   useEffect(() => () => { Object.values(clipsRef.current).forEach(URL.revokeObjectURL); }, []);
 
   const label = (k?: string) => play.script.characters.find((c) => c.key === k)?.label ?? k ?? '';
