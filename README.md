@@ -2,8 +2,9 @@
 
 PWA en français pour comédiens et passionnés de théâtre : encyclopédie, bibliothèque de
 **330 pièces** filtrable (dont **320 avec le texte intégral** lisible hors-ligne), fiches de
-**57 personnages célèbres**, atelier du comédien (monologues, citations, glossaire), exercices
-d'acteur et vocaux, mise en scène 2D, costumes / décors / accessoires, agenda des festivals,
+**57 personnages célèbres**, atelier du comédien (monologues, citations, **glossaire de 309 termes**),
+exercices d'acteur et vocaux, **mode répétition** (l'app lit les autres rôles à voix haute +
+enregistrement de la sienne), mise en scène 2D, costumes / décors / accessoires, agenda des festivals,
 quiz, mode IA, podcasts & vidéos, parcours d'apprentissage, collection de favoris et journal de
 répétitions. Mobile Android d'abord, installable, fonctionne hors-ligne.
 
@@ -70,7 +71,10 @@ scripts/wikisource/  Outils Python de génération des textes (Wikisource + text
 - **Lecture interactive** : noms de personnages cliquables → fiche, **lecture à voix haute** (Web Speech)
 - **Personnages célèbres** : 57 fiches (psychologie, évolution, scènes, adaptations, monologue lié)
 - **Encyclopédie** + fiches dramaturges (40 auteurs, portraits) ; **Frise** interactive et **Carte** du monde
-- **Scène** : monologues, citations et glossaire, tous filtrables
+- **Scène** : monologues, citations et **glossaire (309 termes)**, tous filtrables (glossaire par lettre)
+- **Mode répétition** : importez une pièce du catalogue ou saisissez votre texte, choisissez votre rôle ;
+  l'app lit les autres répliques à voix haute (Web Speech) et vous pouvez **enregistrer votre voix** pour
+  vous réécouter
 - **Exercices d'acteur** et **Entraînement vocal** (déroulés pas à pas)
 - **Mise en scène** : plateau 2D — placez vos acteurs, choisissez décor et lumière (sauvegarde locale)
 - **Costumes · Décors · Accessoires** : galeries historiques filtrables
@@ -92,4 +96,5 @@ Portraits et lieux proviennent de Wikimedia Commons via `Special:FilePath`, avec
 
 ## État du projet
 
-**Roadmap complète (26/26) livrée.** Détail et historique dans `CONTEXT.md`.
+**Roadmap complète (26/26) livrée.** Historique des évolutions dans `CHANGELOG.md`, détail
+technique et notes de chantier dans `CONTEXT.md`.

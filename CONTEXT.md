@@ -1,6 +1,21 @@
 # CONTEXT — état du projet
 
-_Dernière mise à jour : 2026-07-12._
+_Dernière mise à jour : 2026-07-14._
+
+## Fait (session du 2026-07-14)
+- **Mode répétition** (`/repetition`, `src/screens/rehearsal/`) : import d'une pièce du catalogue ou
+  saisie libre, choix du rôle, lecture des autres répliques à voix haute (Web Speech via
+  `rehearsalEngine`), masquage/révélation de ses propres répliques, et **enregistrement vocal** de sa
+  voix pour se réécouter (`src/lib/useRecorder.ts`, MediaRecorder — nécessite HTTPS + autorisation micro).
+- **Correctif enregistrement vocal** (`RepPlayer.tsx`) : l'effet « couper l'enregistrement au changement
+  de réplique » se redéclenchait à chaque rendu (dépendance `stopRec` instable) et arrêtait
+  l'enregistrement dès son démarrage. Garde ajoutée sur un **vrai** changement d'index (`prevIndexRef`).
+- **Glossaire enrichi** : `GLOSSAIRE` (`src/data/content.ts`) passé de 10 à **309 termes**, triés
+  alphabétiquement, doublons fusionnés. Déjà branché à l'écran Scène (nav par lettre) et à la recherche.
+- Autres améliorations poussées le même jour : **recherche globale** sur l'accueil (`src/lib/search.ts`),
+  aide/mode démo contextuels, sélection d'un modèle gratuit OpenRouter dans les Réglages, vignettes
+  illustrées + fiches détail pour costumes / décors / accessoires / festivals, collections curées,
+  favoris étendus, images offline et améliorations d'accessibilité.
 
 ## 🎉 Roadmap complète (26/26) + agrégation RSS
 Toute la roadmap fournie par l'utilisateur (priorités 1 → 26) est **livrée**, testée et poussée sur
@@ -53,7 +68,7 @@ et corrections.
 - **21. Journal du comédien** ✅ (CRUD local + stats).
 - **22. Collection personnelle** ✅ (favoris 4 catégories).
 - **23. Podcasts et vidéos** ✅ — `/medias`, annuaire curé + onglet Nouveautés (flux RSS live, sources perso).
-- **24. Glossaire** ✅ (Scène/Glossaire, filtres par lettre).
+- **24. Glossaire** ✅ (Scène/Glossaire, 309 termes, filtres par lettre).
 - **25. Parcours d'apprentissage** ✅ — `/parcours`, 6 profils, étapes cliquables vers les écrans.
 - **26. Collections thématiques** ✅ (écran Collections).
 
