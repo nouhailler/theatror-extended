@@ -365,6 +365,23 @@ export const HELP: HelpEntry[] = [
     test: (p) => p.startsWith('/parcours'),
   },
   {
+    id: 'repetition',
+    title: 'Mode répétition',
+    resume: "Répétez votre rôle : collez le texte, choisissez votre personnage, et l'app lit à voix haute les répliques des autres pendant que le texte défile.",
+    tips: [
+      'Collez le texte au format « NOM : réplique » (ou importez un .txt), puis vérifiez les personnages détectés.',
+      "Choisissez votre rôle, une voix par personnage, la vitesse, et le sort des didascalies.",
+      "Sur vos répliques, l'app attend : touchez l'écran pour continuer (ou mode chronométré / masqué pour tester la mémoire).",
+      'La session reprend là où vous vous étiez arrêté ; tout est enregistré sur votre appareil.',
+    ],
+    situe: "Explorer › Mode répétition, ou menu ☰ › L'atelier › Mode répétition.",
+    relations: [
+      { label: 'Pièces (textes intégraux)', path: '/pieces' },
+      { label: "Exercices d'acteur", path: '/exercices' },
+    ],
+    test: (p) => p.startsWith('/repetition'),
+  },
+  {
     id: 'scene',
     title: "Scène — l'atelier",
     resume: "L'atelier du comédien : monologues d'audition, citations classées et glossaire des termes du théâtre.",

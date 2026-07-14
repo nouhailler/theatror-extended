@@ -6,6 +6,7 @@ const CARDS = [
   { titre: 'Personnages célèbres', sub: 'Tartuffe, Cyrano, Antigone, Dom Juan, Figaro…', to: '/explorer/personnages' },
   { titre: 'Frise chronologique', sub: "D'Eschyle à Ionesco — auteurs, œuvres, événements", to: '/explorer/frise' },
   { titre: 'Carte du monde', sub: 'Grands théâtres, festivals, traditions, écoles', to: '/explorer/carte' },
+  { titre: 'Mode répétition', sub: 'Répétez votre rôle : l\'app lit les autres à voix haute', to: '/repetition' },
   { titre: "Exercices d'acteur", sub: 'Respiration, diction, impro, émotions, mémoire, écoute…', to: '/exercices' },
   { titre: 'Entraînement vocal', sub: 'Échauffement, placement, projection, virelangues, justesse', to: '/voix' },
   { titre: 'Mise en scène', sub: 'Plateau 2D : placez vos acteurs, décor et lumière', to: '/mise-en-scene' },
@@ -15,7 +16,7 @@ const CARDS = [
   { titre: 'Festivals', sub: 'Agenda mondial : Avignon, Édimbourg, Athènes…', to: '/festivals' },
   { titre: 'Podcasts & vidéos', sub: 'Ressources gratuites : Comédie-Française, France Culture, INA…', to: '/medias' },
   { titre: "Parcours d'apprentissage", sub: 'Un chemin par profil : débutant, comédien, metteur en scène…', to: '/parcours' },
-  { titre: 'Collections thématiques', sub: 'Les 100 incontournables, tragédies grecques, femmes dramaturges…', to: '/explorer/collections' },
+  { titre: 'Collections thématiques', sub: 'Molière, tragédie classique, pièces courtes, jeune public…', to: '/explorer/collections' },
   { titre: 'Quiz', sub: 'Testez vos connaissances : auteurs, citations, chronologie', to: '/quiz' },
 ];
 

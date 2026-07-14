@@ -35,6 +35,10 @@ import Accessoires from './screens/Accessoires';
 import Festivals from './screens/Festivals';
 import Medias from './screens/Medias';
 import Parcours from './screens/Parcours';
+import Repetition from './screens/rehearsal/Repetition';
+import RepImport from './screens/rehearsal/RepImport';
+import RepConfig from './screens/rehearsal/RepConfig';
+import RepPlayer from './screens/rehearsal/RepPlayer';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Reglages from './screens/Reglages';
@@ -77,6 +81,10 @@ export default function App() {
           <Route path="/festivals" element={<Festivals />} />
           <Route path="/medias" element={<Medias />} />
           <Route path="/parcours" element={<Parcours />} />
+          <Route path="/repetition" element={<Repetition />} />
+          <Route path="/repetition/nouveau" element={<RepImport />} />
+          <Route path="/repetition/:id/config" element={<RepConfig />} />
+          <Route path="/repetition/:id/jouer" element={<RepPlayer />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/reglages" element={<Reglages />} />

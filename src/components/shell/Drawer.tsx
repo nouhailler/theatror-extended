@@ -48,6 +48,7 @@ export default function Drawer() {
         { label: 'Monologues', onGo: go('/scene?seg=mono') },
         { label: 'Citations', onGo: go('/scene?seg=cit') },
         { label: 'Glossaire', onGo: go('/scene?seg=glos') },
+        { label: 'Mode répétition', note: 'lecture vocale', onGo: go('/repetition') },
         { label: "Exercices d'acteur", onGo: go('/exercices') },
         { label: 'Voix & diction', onGo: go('/voix') },
         { label: 'Parcours', onGo: go('/parcours') },

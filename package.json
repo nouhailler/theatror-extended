@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && node --max-old-space-size=6144 node_modules/vite/bin/vite.js build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit"
+    "typecheck": "tsc -b --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "idb-keyval": "^6.2.1",
@@ -27,6 +29,7 @@
     "playwright": "^1.61.1",
     "typescript": "^5.6.2",
     "vite": "^5.4.8",
-    "vite-plugin-pwa": "^0.20.5"
+    "vite-plugin-pwa": "^0.20.5",
+    "vitest": "^2.1.9"
   }
 }

@@ -11,6 +11,7 @@ export const KEYS = {
   miseEnScene: 'theathror-miseenscene', // plateau de mise en scène virtuelle
   flux: 'theathror-flux', // cache des nouveautés RSS (podcasts/vidéos)
   fluxUser: 'theathror-flux-user', // sources RSS ajoutées par l'utilisateur
+  rehearsal: 'theathror-rehearsal', // pièces du mode répétition
 } as const;
 
 // ─── IndexedDB (idb-keyval) : favoris, journal, préférences ───
