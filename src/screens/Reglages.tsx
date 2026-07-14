@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useStore } from '../store';
 import { BackHeader } from '../components/ui';
+import { fetchFreeModels, type OpenRouterModel } from '../lib/openrouter';
 
-// Modèles OpenRouter courants (préparation du « Mode IA » — étape suivante).
+// Modèles OpenRouter courants (repli si la liste en ligne n'est pas chargée).
 const MODELES = [
   'anthropic/claude-3.5-sonnet',
   'anthropic/claude-3-haiku',
@@ -18,11 +19,40 @@ export default function Reglages() {
   const [reveal, setReveal] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  // Modèles gratuits d'OpenRouter (chargés à la demande).
+  const [freeModels, setFreeModels] = useState<OpenRouterModel[] | null>(null);
+  const [loadingModels, setLoadingModels] = useState(false);
+  const [modelsError, setModelsError] = useState<string | null>(null);
+  const [onlyFree, setOnlyFree] = useState(false);
+
+  const loadFreeModels = async () => {
+    setLoadingModels(true);
+    setModelsError(null);
+    try {
+      const list = await fetchFreeModels();
+      setFreeModels(list);
+      setOnlyFree(true);
+      if (list.length === 0) setModelsError("Aucun modèle gratuit trouvé pour l'instant.");
+    } catch {
+      setModelsError('Impossible de charger la liste (réseau ?).');
+    } finally {
+      setLoadingModels(false);
+    }
+  };
+
   const save = () => {
     setSettings({ openRouterKey: key.trim() });
     setSaved(true);
     setTimeout(() => setSaved(false), 1800);
   };
+
+  // Options du sélecteur : modèles gratuits si chargés, sinon la liste par défaut.
+  // On garde toujours le modèle courant sélectionnable, même absent de la liste.
+  const baseOptions = onlyFree && freeModels ? freeModels.map((m) => m.id) : MODELES;
+  const options = baseOptions.includes(settings.openRouterModel)
+    ? baseOptions
+    : [settings.openRouterModel, ...baseOptions];
+  const labelFor = (id: string) => freeModels?.find((m) => m.id === id)?.name ?? id;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: '18px 18px 28px' }} data-screen-label="Réglages">
@@ -60,9 +90,31 @@ export default function Reglages() {
             onChange={(e) => setSettings({ openRouterModel: e.target.value })}
             style={{ background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '10px 12px', color: 'var(--text)', fontSize: 15, fontFamily: 'var(--font-body)', outline: 'none' }}
           >
-            {MODELES.map((m) => <option key={m} value={m}>{m}</option>)}
+            {options.map((m) => <option key={m} value={m}>{labelFor(m)}</option>)}
           </select>
         </label>
+
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+          <button
+            onClick={loadFreeModels}
+            disabled={loadingModels}
+            style={{ background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 999, padding: '7px 14px', color: 'var(--gold-chip-text)', fontSize: 13, fontFamily: 'var(--font-body)', cursor: loadingModels ? 'default' : 'pointer', opacity: loadingModels ? 0.6 : 1 }}
+          >
+            {loadingModels ? 'Chargement…' : freeModels ? 'Actualiser les modèles gratuits' : 'Charger les modèles gratuits (OpenRouter)'}
+          </button>
+          {freeModels && freeModels.length > 0 && (
+            <label style={{ fontSize: 12.5, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}>
+              <input type="checkbox" checked={onlyFree} onChange={(e) => setOnlyFree(e.target.checked)} />
+              Gratuits seulement ({freeModels.length})
+            </label>
+          )}
+        </div>
+        {modelsError && <div style={{ fontSize: 12.5, color: 'var(--danger, #c0563a)' }}>{modelsError}</div>}
+        {onlyFree && freeModels && freeModels.length > 0 && (
+          <div style={{ fontSize: 12, color: 'var(--text-muted)', fontStyle: 'italic', lineHeight: 1.5 }}>
+            Liste des modèles gratuits d'OpenRouter (tarif à 0). Ces modèles peuvent avoir des limites d'usage ou évoluer.
+          </div>
+        )}
 
         <button className="gold-btn" style={{ padding: '11px 18px', fontSize: 15 }} onClick={save}>
           {saved ? 'Enregistré ✓' : 'Enregistrer la clé'}

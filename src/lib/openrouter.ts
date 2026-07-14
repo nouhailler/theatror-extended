@@ -2,6 +2,37 @@
 // La clé n'est jamais codée en dur : elle vient des Réglages (store.settings).
 
 const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
+const MODELS_ENDPOINT = 'https://openrouter.ai/api/v1/models';
+
+export interface OpenRouterModel {
+  id: string;
+  name: string;
+}
+
+/**
+ * Liste des modèles *gratuits* d'OpenRouter (tarif prompt et complétion à 0).
+ * Endpoint public, sans clé. Triés par nom.
+ */
+export async function fetchFreeModels(signal?: AbortSignal): Promise<OpenRouterModel[]> {
+  let res: Response;
+  try {
+    res = await fetch(MODELS_ENDPOINT, { signal });
+  } catch (e) {
+    if ((e as Error).name === 'AbortError') return [];
+    throw new OpenRouterError('Réseau indisponible', 'network');
+  }
+  if (!res.ok) throw new OpenRouterError(`Erreur ${res.status}`, 'http');
+
+  const json = (await res.json()) as { data?: Array<{ id: string; name?: string; pricing?: { prompt?: string; completion?: string } }> };
+  const list = (json.data ?? [])
+    .filter((m) => {
+      const p = m.pricing;
+      return p && Number(p.prompt) === 0 && Number(p.completion) === 0;
+    })
+    .map((m) => ({ id: m.id, name: m.name ?? m.id }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+  return list;
+}
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
