@@ -47,7 +47,7 @@ export default function Encyclopedie() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           {dramaturges.map((d) => (
             <div key={d.id} onClick={() => nav(`/explorer/dramaturge/${d.id}`)} className="card card-tap" style={{ overflow: 'hidden' }}>
-              <WikiImage file={d.img} initial={d.initiale} initialSize={44} style={{ height: 150, position: 'relative' }}>
+              <WikiImage file={d.img} initial={d.initiale} initialSize={44} alt={d.nom} style={{ height: 150, position: 'relative' }}>
                 <div style={{ position: 'absolute', top: 6, right: 8 }}>
                   <Star cat="auteurs" id={d.id} shadow />
                 </div>
@@ -66,7 +66,7 @@ export default function Encyclopedie() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {articles.map((a) => (
             <div key={a.id} onClick={() => nav(`/explorer/article/${a.id}`)} className="card card-tap" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
-              <WikiImage file={a.img} initial={a.initiale} initialSize={26} style={{ width: 54, height: 54, borderRadius: 10, flex: 'none' }} objectPosition="center" />
+              <WikiImage file={a.img} initial={a.initiale} initialSize={26} alt={a.titre} style={{ width: 54, height: 54, borderRadius: 10, flex: 'none' }} objectPosition="center" />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 600 }}>{a.titre}</div>
                 <div style={{ fontSize: 13, color: 'var(--text-muted)', fontStyle: 'italic' }}>{a.soustitre ?? a.intro.slice(0, 60) + '…'}</div>
@@ -82,7 +82,7 @@ export default function Encyclopedie() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {lieux.map((l) => (
             <div key={l.id} onClick={() => nav('/explorer/carte')} className="card card-tap" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
-              <WikiImage file={l.img} initial={l.initiale} initialSize={24} style={{ width: 64, height: 64, borderRadius: 10, flex: 'none' }} objectPosition="center" />
+              <WikiImage file={l.img} initial={l.initiale} initialSize={24} alt={l.nom} style={{ width: 64, height: 64, borderRadius: 10, flex: 'none' }} objectPosition="center" />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{l.nom}</div>
                 <div style={{ fontSize: 13.5, color: 'var(--text-muted)', fontStyle: 'italic' }}>{l.lieu}</div>

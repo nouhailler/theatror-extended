@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import WikiImage from '../components/WikiImage';
 import Credit from '../components/Credit';
+import Star from '../components/Star';
 import { FESTIVALS, moisCourt, saisonCouleur, type Region } from '../data/festivals';
 
 const REGIONS: Region[] = ['Europe', 'Amériques', 'Océanie'];
@@ -52,7 +53,7 @@ export default function Festivals() {
           const col = saisonCouleur(f.moisNum);
           return (
             <div key={f.id} className="card card-tap" onClick={() => setOpenId(f.id)} style={{ display: 'flex', gap: 14, padding: 14, cursor: 'pointer' }}>
-              <WikiImage file={f.img} initial={moisCourt(f.moisNum)} initialSize={14} objectPosition="center"
+              <WikiImage file={f.img} initial={moisCourt(f.moisNum)} initialSize={14} objectPosition="center" alt={`${f.nom} — ${f.ville}`}
                 fallbackBg={`linear-gradient(150deg, ${col}, rgba(0,0,0,.4))`}
                 style={{ width: 58, height: 58, borderRadius: 10, flex: 'none' }}>
                 {/* Pastille calendrier (mois + région) par-dessus l'image */}
@@ -86,7 +87,7 @@ export default function Festivals() {
           <div onClick={(e) => e.stopPropagation()}
             style={{ width: '100%', maxWidth: 520, maxHeight: '90%', overflow: 'auto', background: 'var(--bg-app)', border: '1px solid var(--b-input)', borderRadius: 14, boxShadow: '0 30px 80px rgba(0,0,0,.6)' }}>
             <div style={{ position: 'relative' }}>
-              <WikiImage file={open.img} initial={moisCourt(open.moisNum)} initialSize={40}
+              <WikiImage file={open.img} initial={moisCourt(open.moisNum)} initialSize={40} alt={`${open.nom} — ${open.ville}, ${open.pays}`}
                 fallbackBg={`linear-gradient(150deg, ${saisonCouleur(open.moisNum)}, rgba(0,0,0,.4))`}
                 width={900} objectPosition="center" style={{ height: 240, borderRadius: '14px 14px 0 0' }}>
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(0,0,0,.05) 45%,rgba(0,0,0,.62) 100%)' }} />
@@ -99,9 +100,12 @@ export default function Festivals() {
                 style={{ position: 'absolute', top: 10, right: 10, width: 34, height: 34, borderRadius: 999, background: 'rgba(19,13,18,.6)', border: 'none', color: 'var(--text)', fontSize: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>×</button>
             </div>
             <div style={{ padding: '16px 18px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'baseline' }}>
-                <span style={{ fontSize: 11.5, padding: '2px 10px', borderRadius: 999, border: `1px solid ${saisonCouleur(open.moisNum)}`, color: saisonCouleur(open.moisNum) }}>{open.periode}</span>
-                {open.depuis && <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>depuis {open.depuis}</span>}
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'baseline' }}>
+                  <span style={{ fontSize: 11.5, padding: '2px 10px', borderRadius: 999, border: `1px solid ${saisonCouleur(open.moisNum)}`, color: saisonCouleur(open.moisNum) }}>{open.periode}</span>
+                  {open.depuis && <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>depuis {open.depuis}</span>}
+                </div>
+                <Star cat="festivals" id={open.id} size={20} />
               </div>
               <div style={{ fontSize: 15, color: 'var(--text-2b)', lineHeight: 1.55 }}>{open.description}</div>
               {open.detail && <div style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.6 }}>{open.detail}</div>}

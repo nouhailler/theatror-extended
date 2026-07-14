@@ -33,7 +33,7 @@ export default function FichePersonnage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Personnage ${c.nom}`}>
       <div style={{ position: 'relative', height: 168, overflow: 'hidden' }}>
-        <WikiImage file={c.img} initial={c.initiale} initialSize={92} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
+        <WikiImage file={c.img} initial={c.initiale} initialSize={92} alt={c.nom} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
         <button onClick={goBack} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>

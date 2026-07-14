@@ -95,7 +95,7 @@ export interface Lieu {
 export interface Collection {
   id: string;
   titre: string;
-  nb: string;
+  desc: string; // sous-titre thématique (le nombre de pièces est calculé)
   initiale: string;
   fond: string;
   img?: string;

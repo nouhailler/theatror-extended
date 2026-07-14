@@ -12,6 +12,8 @@ interface Props {
   width?: number;
   /** object-position de l'image (ex. "center top", "center 20%"). */
   objectPosition?: string;
+  /** Texte alternatif (accessibilité). Vide par défaut = image décorative. */
+  alt?: string;
   /** Dégradé de repli (par défaut #3a2028 → #221219). */
   fallbackBg?: string;
   /** Opacité de l'image (collections : .85). */
@@ -32,6 +34,7 @@ export default function WikiImage({
   initialSize = 44,
   width = 500,
   objectPosition = 'center top',
+  alt = '',
   fallbackBg = 'linear-gradient(180deg,#3a2028,#221219)',
   imgOpacity,
   style,
@@ -68,7 +71,7 @@ export default function WikiImage({
       {showImg && (
         <img
           src={src}
-          alt=""
+          alt={alt}
           loading="lazy"
           onError={() => setFailed(true)}
           style={{

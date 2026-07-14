@@ -7,13 +7,19 @@ import WikiImage from '../components/WikiImage';
 import { PIECES } from '../data/pieces';
 import { DRAMATURGES } from '../data/dramaturges';
 import { MONOLOGUES, CITATIONS } from '../data/content';
+import { COSTUMES, COSTUME_COULEUR } from '../data/costumes';
+import { DECORS } from '../data/decors';
+import { ACCESSOIRES, ACCESSOIRE_COULEUR } from '../data/accessoires';
+import { FESTIVALS, moisCourt, saisonCouleur } from '../data/festivals';
+import type { FavCategory } from '../store';
 
-type Seg = 'p' | 'a' | 'c' | 'm';
+type Seg = 'p' | 'a' | 'c' | 'm' | 'v';
 const SEGS: { k: Seg; label: string }[] = [
   { k: 'p', label: 'Pièces' },
   { k: 'a', label: 'Auteurs' },
   { k: 'c', label: 'Citations' },
   { k: 'm', label: 'Monologues' },
+  { k: 'v', label: 'Spectacle' },
 ];
 
 function Empty({ children }: { children: React.ReactNode }) {
@@ -36,6 +42,15 @@ export default function MaCollection() {
   const citations = CITATIONS.filter((c) => isFav('citations', c.id));
   const monologues = MONOLOGUES.filter((m) => isFav('monologues', m.id));
 
+  // Favoris « Spectacle » : costumes, décors, accessoires, festivals réunis.
+  interface Visuel { cat: FavCategory; id: string; nom: string; img?: string; initiale: string; bg: string; typeLabel: string; sub: string; route: string; }
+  const spectacle: Visuel[] = [
+    ...COSTUMES.filter((c) => isFav('costumes', c.id)).map((c): Visuel => ({ cat: 'costumes', id: c.id, nom: c.nom, img: c.img, initiale: c.initiale, bg: `linear-gradient(150deg, ${COSTUME_COULEUR[c.epoque]}, rgba(0,0,0,.4))`, typeLabel: 'Costume', sub: c.epoque, route: `/costumes?focus=${c.id}` })),
+    ...DECORS.filter((d) => isFav('decors', d.id)).map((d): Visuel => ({ cat: 'decors', id: d.id, nom: d.nom, img: d.img, initiale: d.initiale, bg: d.bg, typeLabel: 'Décor', sub: d.categorie, route: `/decors?focus=${d.id}` })),
+    ...ACCESSOIRES.filter((a) => isFav('accessoires', a.id)).map((a): Visuel => ({ cat: 'accessoires', id: a.id, nom: a.nom, img: a.img, initiale: a.initiale, bg: `linear-gradient(150deg, ${ACCESSOIRE_COULEUR[a.categorie]}, rgba(0,0,0,.4))`, typeLabel: 'Accessoire', sub: a.categorie, route: `/accessoires?focus=${a.id}` })),
+    ...FESTIVALS.filter((f) => isFav('festivals', f.id)).map((f): Visuel => ({ cat: 'festivals', id: f.id, nom: f.nom, img: f.img, initiale: moisCourt(f.moisNum), bg: `linear-gradient(150deg, ${saisonCouleur(f.moisNum)}, rgba(0,0,0,.4))`, typeLabel: 'Festival', sub: f.ville, route: `/festivals?focus=${f.id}` })),
+  ];
+
   const favLabel = favCount === 0
     ? 'Encore vide — touchez ☆ pour ajouter des favoris'
     : `${favCount} favori${favCount > 1 ? 's' : ''}`;
@@ -49,7 +64,7 @@ export default function MaCollection() {
           const active = s.k === seg;
           return (
             <button key={s.k} onClick={() => setSeg(s.k)}
-              style={{ flex: 1, textAlign: 'center', padding: '7px 0', borderRadius: 999, fontSize: 13, cursor: 'pointer', border: 'none', fontWeight: 600, background: active ? 'var(--gold)' : 'transparent', color: active ? 'var(--on-gold)' : 'var(--nav-inactive)' }}>
+              style={{ flex: 1, textAlign: 'center', padding: '7px 2px', borderRadius: 999, fontSize: 11.5, cursor: 'pointer', border: 'none', fontWeight: 600, background: active ? 'var(--gold)' : 'transparent', color: active ? 'var(--on-gold)' : 'var(--nav-inactive)' }}>
               {s.label}
             </button>
           );
@@ -76,7 +91,7 @@ export default function MaCollection() {
           {auteurs.length === 0 && <Empty>Aucun favori pour l'instant.<br />Touchez ☆ sur un dramaturge pour l'ajouter ici.</Empty>}
           {auteurs.map((d) => (
             <div key={d.id} onClick={() => nav(`/explorer/dramaturge/${d.id}`)} className="card card-tap" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
-              <WikiImage file={d.img} initial={d.initiale} initialSize={20} style={{ width: 52, height: 52, borderRadius: 999, flex: 'none' }} />
+              <WikiImage file={d.img} initial={d.initiale} initialSize={20} alt={d.nom} style={{ width: 52, height: 52, borderRadius: 999, flex: 'none' }} />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{d.nom}</div>
                 <div style={{ fontSize: 13, color: 'var(--text-muted)', fontStyle: 'italic' }}>{d.dates}</div>
@@ -112,6 +127,23 @@ export default function MaCollection() {
                 <Star cat="monologues" id={m.id} />
               </div>
               <div style={{ fontSize: 14, color: 'var(--text-2)', fontStyle: 'italic' }}>{m.source}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {seg === 'v' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {spectacle.length === 0 && <Empty>Aucun favori pour l'instant.<br />Touchez ☆ sur un costume, un décor, un accessoire ou un festival.</Empty>}
+          {spectacle.map((it) => (
+            <div key={`${it.cat}:${it.id}`} onClick={() => nav(it.route)} className="card card-tap" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
+              <WikiImage file={it.img} initial={it.initiale} initialSize={18} objectPosition="center" fallbackBg={it.bg} alt={`${it.typeLabel} : ${it.nom}`}
+                style={{ width: 52, height: 52, borderRadius: 10, flex: 'none' }} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{it.nom}</div>
+                <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontStyle: 'italic' }}>{it.typeLabel} · {it.sub}</div>
+              </div>
+              <Star cat={it.cat} id={it.id} />
             </div>
           ))}
         </div>

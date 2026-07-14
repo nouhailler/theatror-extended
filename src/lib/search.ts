@@ -36,13 +36,12 @@ function build(): Entry[] {
   (CHARACTERS as any[]).forEach((c) => push(c.nom, c.piece ?? '', 'Personnage', `/explorer/personnage/${c.id}`, true, `${c.auteur ?? ''} ${(c.aka ?? []).join(' ')} ${c.emploi ?? ''}`));
   (ARTICLES as any[]).forEach((a) => push(a.titre, a.categorie, 'Encyclopédie', `/explorer/article/${a.id}`, true, a.soustitre ?? ''));
   (MONOLOGUES as any[]).forEach((m) => push(m.titre, m.source ?? '', 'Monologue', `/scene?seg=mono&focus=${m.id}`, true, `${m.extrait ?? ''} ${m.pour ?? ''}`));
-  (COLLECTIONS as any[]).forEach((c) => push(c.titre, c.nb ?? '', 'Collection', `/explorer/collections/${c.id}`, true));
-  const enc = (s: string) => encodeURIComponent(s);
+  (COLLECTIONS as any[]).forEach((c) => push(c.titre, c.desc ?? '', 'Collection', `/explorer/collections/${c.id}`, true));
   (LIEUX as any[]).forEach((l) => push(l.nom, l.lieu ?? '', LIEU_TYPE[l.type] ?? 'Lieu', '/explorer/carte', false, l.txt ?? ''));
-  (COSTUMES as any[]).forEach((c) => push(c.nom, c.epoque, 'Costume', `/costumes?q=${enc(c.nom)}`, false, `${c.pays ?? ''} ${c.personnages ?? ''} ${(c.elements ?? []).join(' ')}`));
+  (COSTUMES as any[]).forEach((c) => push(c.nom, c.epoque, 'Costume', `/costumes?focus=${c.id}`, true, `${c.pays ?? ''} ${c.personnages ?? ''} ${(c.elements ?? []).join(' ')}`));
   (DECORS as any[]).forEach((d) => push(d.nom, d.categorie ?? '', 'Décor', `/decors?focus=${d.id}`, true, d.description ?? ''));
-  (ACCESSOIRES as any[]).forEach((a) => push(a.nom, a.categorie ?? '', 'Accessoire', `/accessoires?q=${enc(a.nom)}`, false, `${a.epoque ?? ''} ${a.description ?? ''}`));
-  (FESTIVALS as any[]).forEach((f) => push(f.nom, [f.ville, f.pays].filter(Boolean).join(' · '), 'Festival', `/festivals?q=${enc(f.nom)}`, false, `${f.periode ?? ''} ${f.region ?? ''}`));
+  (ACCESSOIRES as any[]).forEach((a) => push(a.nom, a.categorie ?? '', 'Accessoire', `/accessoires?focus=${a.id}`, true, `${a.epoque ?? ''} ${a.description ?? ''}`));
+  (FESTIVALS as any[]).forEach((f) => push(f.nom, [f.ville, f.pays].filter(Boolean).join(' · '), 'Festival', `/festivals?focus=${f.id}`, true, `${f.periode ?? ''} ${f.region ?? ''}`));
   (EXERCICES as any[]).forEach((x) => push(x.titre, x.categorie, 'Exercice', `/exercices?focus=${x.id}`, false, x.objectif ?? ''));
   (EXERCICES_VOCAUX as any[]).forEach((x) => push(x.titre, x.categorie, 'Voix', `/voix?focus=${x.id}`, false, x.objectif ?? ''));
   (GLOSSAIRE as any[]).forEach((g) => push(g.terme, g.cat ?? '', 'Glossaire', '/scene?seg=glos', false, g.def ?? ''));

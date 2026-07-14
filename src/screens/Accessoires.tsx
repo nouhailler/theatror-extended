@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import WikiImage from '../components/WikiImage';
 import Credit from '../components/Credit';
+import Star from '../components/Star';
 import { ACCESSOIRES, ACCESSOIRE_COULEUR, type AccessoireCategorie } from '../data/accessoires';
 
 const CATEGORIES: AccessoireCategorie[] = ['Armes', 'Mobilier', 'Objets anciens'];
@@ -49,7 +50,7 @@ export default function Accessoires() {
           const col = ACCESSOIRE_COULEUR[a.categorie];
           return (
             <div key={a.id} className="card card-tap" onClick={() => setOpenId(a.id)} style={{ display: 'flex', gap: 14, padding: 14, cursor: 'pointer' }}>
-              <WikiImage file={a.img} initial={a.initiale} initialSize={24} objectPosition="center"
+              <WikiImage file={a.img} initial={a.initiale} initialSize={24} objectPosition="center" alt={`Accessoire : ${a.nom}`}
                 fallbackBg={`linear-gradient(150deg, ${col}, rgba(0,0,0,.4))`}
                 style={{ width: 56, height: 56, borderRadius: 10, flex: 'none' }} />
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -75,7 +76,7 @@ export default function Accessoires() {
           <div onClick={(e) => e.stopPropagation()}
             style={{ width: '100%', maxWidth: 520, maxHeight: '90%', overflow: 'auto', background: 'var(--bg-app)', border: '1px solid var(--b-input)', borderRadius: 14, boxShadow: '0 30px 80px rgba(0,0,0,.6)' }}>
             <div style={{ position: 'relative' }}>
-              <WikiImage file={open.img} initial={open.initiale} initialSize={72}
+              <WikiImage file={open.img} initial={open.initiale} initialSize={72} alt={`Accessoire : ${open.nom}`}
                 fallbackBg={`linear-gradient(150deg, ${ACCESSOIRE_COULEUR[open.categorie]}, rgba(0,0,0,.4))`}
                 width={900} objectPosition="center" style={{ height: 280, borderRadius: '14px 14px 0 0' }} />
               <button onClick={() => setOpenId(null)} aria-label="Fermer"
@@ -84,7 +85,10 @@ export default function Accessoires() {
             <div style={{ padding: '16px 18px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
                 <div style={{ fontFamily: 'var(--font-title)', fontSize: 22, fontWeight: 700 }}>{open.nom}</div>
-                <span style={{ fontSize: 11.5, padding: '2px 10px', borderRadius: 999, border: `1px solid ${ACCESSOIRE_COULEUR[open.categorie]}`, color: ACCESSOIRE_COULEUR[open.categorie], whiteSpace: 'nowrap' }}>{open.categorie}{open.epoque ? ` · ${open.epoque}` : ''}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 'none' }}>
+                  <span style={{ fontSize: 11.5, padding: '2px 10px', borderRadius: 999, border: `1px solid ${ACCESSOIRE_COULEUR[open.categorie]}`, color: ACCESSOIRE_COULEUR[open.categorie], whiteSpace: 'nowrap' }}>{open.categorie}{open.epoque ? ` · ${open.epoque}` : ''}</span>
+                  <Star cat="accessoires" id={open.id} size={20} />
+                </div>
               </div>
               <div style={{ fontSize: 15, color: 'var(--text-2b)', lineHeight: 1.55 }}>{open.description}</div>
               {open.detail && <div style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.6 }}>{open.detail}</div>}

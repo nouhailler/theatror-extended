@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { BackHeader } from '../components/ui';
 import WikiImage from '../components/WikiImage';
 import Credit from '../components/Credit';
+import Star from '../components/Star';
 import { COSTUMES, COSTUME_COULEUR, type CostumeEpoque } from '../data/costumes';
 
 const EPOQUES: CostumeEpoque[] = ['Antiquité', 'Moyen Âge', 'Renaissance', 'Grand Siècle', 'Lumières', 'Romantique', 'Moderne'];
@@ -64,7 +65,7 @@ export default function Costumes() {
           const col = COSTUME_COULEUR[c.epoque];
           return (
             <div key={c.id} className="card card-tap" onClick={() => setOpenId(c.id)} style={{ display: 'flex', gap: 14, padding: 14, cursor: 'pointer' }}>
-              <WikiImage file={c.img} initial={c.initiale} initialSize={26} objectPosition="center"
+              <WikiImage file={c.img} initial={c.initiale} initialSize={26} objectPosition="center" alt={`Costume : ${c.nom}`}
                 fallbackBg={`linear-gradient(150deg, ${col}, rgba(0,0,0,.35))`}
                 style={{ width: 60, height: 60, borderRadius: 10, flex: 'none' }} />
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -91,7 +92,7 @@ export default function Costumes() {
           <div onClick={(e) => e.stopPropagation()}
             style={{ width: '100%', maxWidth: 520, maxHeight: '90%', overflow: 'auto', background: 'var(--bg-app)', border: '1px solid var(--b-input)', borderRadius: 14, boxShadow: '0 30px 80px rgba(0,0,0,.6)' }}>
             <div style={{ position: 'relative' }}>
-              <WikiImage file={open.img} initial={open.initiale} initialSize={72}
+              <WikiImage file={open.img} initial={open.initiale} initialSize={72} alt={`Costume : ${open.nom}`}
                 fallbackBg={`linear-gradient(150deg, ${COSTUME_COULEUR[open.epoque]}, rgba(0,0,0,.35))`}
                 width={900} objectPosition="center top" style={{ height: 300, borderRadius: '14px 14px 0 0' }} />
               <button onClick={() => setOpenId(null)} aria-label="Fermer"
@@ -101,7 +102,10 @@ export default function Costumes() {
               <div>
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
                   <div style={{ fontFamily: 'var(--font-title)', fontSize: 22, fontWeight: 700 }}>{open.nom}</div>
-                  <span style={{ fontSize: 11.5, padding: '2px 10px', borderRadius: 999, border: `1px solid ${COSTUME_COULEUR[open.epoque]}`, color: COSTUME_COULEUR[open.epoque], whiteSpace: 'nowrap' }}>{open.epoque}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 'none' }}>
+                    <span style={{ fontSize: 11.5, padding: '2px 10px', borderRadius: 999, border: `1px solid ${COSTUME_COULEUR[open.epoque]}`, color: COSTUME_COULEUR[open.epoque], whiteSpace: 'nowrap' }}>{open.epoque}</span>
+                    <Star cat="costumes" id={open.id} size={20} />
+                  </div>
                 </div>
                 <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontStyle: 'italic', marginTop: 2 }}>{open.pays} · {open.genre}</div>
               </div>

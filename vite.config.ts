@@ -68,13 +68,15 @@ export default defineConfig({
           },
           {
             // Images Wikimedia déjà consultées — cache offline.
+            // ~260 images distinctes, chacune servie en 2 tailles (vignette +
+            // fiche) → plafond large pour couvrir toute l'app une fois parcourue.
             urlPattern: ({ url }) =>
               url.hostname.includes('wikimedia.org') ||
               url.hostname.includes('wikipedia.org'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'wikimedia-images',
-              expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 60 },
+              expiration: { maxEntries: 900, maxAgeSeconds: 60 * 60 * 24 * 60 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },

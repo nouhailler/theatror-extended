@@ -27,7 +27,7 @@ export default function FicheArticle() {
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Fiche ${a.titre}`}>
       {/* Bandeau image (repli initiale) */}
       <div style={{ position: 'relative', height: 150, overflow: 'hidden' }}>
-        <WikiImage file={a.img} initial={a.initiale} initialSize={84} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
+        <WikiImage file={a.img} initial={a.initiale} initialSize={84} alt={a.titre} style={{ position: 'absolute', inset: 0 }} objectPosition="center" />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
         <button onClick={goBack} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>

@@ -139,13 +139,18 @@ export const LIEUX: Lieu[] = [
   { id: 'ecole-tns', nom: 'École du TNS', lieu: 'Strasbourg · 1954', txt: 'L\'école du Théâtre National de Strasbourg, formant acteurs et metteurs en scène.', initiale: 'T', img: '', type: 'ecole', lat: 48.583, lng: 7.752 },
 ];
 
+// Collections thématiques — sélections réelles du catalogue (voir
+// collectionMembers.ts pour l'appartenance). Le nombre de pièces est calculé.
 export const COLLECTIONS: Collection[] = [
-  { id: 'incontournables', titre: 'Les 100 pièces incontournables', nb: '100 pièces', initiale: 'C', fond: 'linear-gradient(140deg,#7a1f2b,#43101a)', img: 'Tragic comic masks - roman mosaic.jpg' },
-  { id: 'tragedies-grecques', titre: 'Les grandes tragédies grecques', nb: '18 pièces', initiale: 'Τ', fond: 'linear-gradient(140deg,#8a6a3a,#4a3416)', img: 'Sophocles pushkin.jpg' },
-  { id: 'moliere', titre: 'Le théâtre de Molière', nb: '33 pièces', initiale: 'M', fond: 'linear-gradient(140deg,#3a4a6a,#1c2436)', img: 'Pierre Mignard - Portrait de Jean-Baptiste Poquelin dit Molière (1622-1673) - Google Art Project.jpg' },
-  { id: 'shakespeare', titre: 'Shakespeare en 20 œuvres', nb: '20 pièces', initiale: 'S', fond: 'linear-gradient(140deg,#4a5a3a,#242e1a)', img: 'Shakespeare.jpg' },
-  { id: 'femmes', titre: 'Les femmes dramaturges', nb: '24 autrices', initiale: 'F', fond: 'linear-gradient(140deg,#6a3a5a,#32182a)', img: 'George Sand by Nadar, 1864.jpg' },
-  { id: 'absurde', titre: "Le théâtre de l'absurde", nb: '12 pièces', initiale: 'A', fond: 'linear-gradient(140deg,#3a3a3a,#1a1a1a)', img: "En attendant Godot, Festival d'Avignon, 1978.jpeg" },
+  { id: 'moliere', titre: 'Le théâtre de Molière', desc: 'Le maître de la comédie française', initiale: 'M', fond: 'linear-gradient(140deg,#3a4a6a,#1c2436)', img: 'Pierre Mignard - Portrait de Jean-Baptiste Poquelin dit Molière (1622-1673) - Google Art Project.jpg' },
+  { id: 'tragedie-classique', titre: 'La tragédie classique', desc: 'Corneille & Racine, le Grand Siècle', initiale: 'T', fond: 'linear-gradient(140deg,#7a1f2b,#43101a)', img: 'Alexandre Cabanel - Phèdre.jpg' },
+  { id: 'tragedies-grecques', titre: 'Les tragédies grecques', desc: 'Eschyle, Sophocle, Euripide', initiale: 'Τ', fond: 'linear-gradient(140deg,#8a6a3a,#4a3416)', img: 'Sophocles pushkin.jpg' },
+  { id: 'rire', titre: 'Le grand rire', desc: 'Vaudevilles de Labiche, Feydeau, Courteline', initiale: 'R', fond: 'linear-gradient(140deg,#b0563a,#5a2416)', img: 'Honoré Daumier 026.jpg' },
+  { id: 'marivaux', titre: "Marivaux, le jeu de l'amour", desc: 'Le marivaudage et ses masques', initiale: 'M', fond: 'linear-gradient(140deg,#6a3a5a,#32182a)', img: 'MarivauxGameLoveChance.jpg' },
+  { id: 'shakespeare', titre: 'Shakespeare', desc: 'Le barde en français', initiale: 'S', fond: 'linear-gradient(140deg,#4a5a3a,#242e1a)', img: 'Shakespeare.jpg' },
+  { id: 'courtes', titre: 'Pièces courtes', desc: "Moins d'une heure — atelier & audition", initiale: '⏱', fond: 'linear-gradient(140deg,#5f8ea8,#243a44)', img: 'Tragic comic masks - roman mosaic.jpg' },
+  { id: 'petite-distribution', titre: 'Petites distributions', desc: '4 comédiens ou moins', initiale: '4', fond: 'linear-gradient(140deg,#7a6fae,#2e2842)', img: 'Comédie-Française.jpg' },
+  { id: 'jeune-public', titre: 'Pour le jeune public', desc: 'À jouer ou voir en famille', initiale: '★', fond: 'linear-gradient(140deg,#d4a94e,#6a5218)', img: 'La Biche au bois, Alfred Choubrac.jpg' },
 ];
 
 // Époque : Classique = XVIIe-XVIIIe (+ antique/élisabéthain) ; Contemporain = XIXe-XXe (romantiques, modernes).

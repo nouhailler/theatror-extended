@@ -13,7 +13,9 @@ import {
 import { JOURNAL_SEED } from './data/journalSeed';
 
 // ─── Types ───
-export type FavCategory = 'pieces' | 'auteurs' | 'citations' | 'monologues';
+export type FavCategory =
+  | 'pieces' | 'auteurs' | 'citations' | 'monologues'
+  | 'costumes' | 'decors' | 'accessoires' | 'festivals';
 export type FavMap = Record<string, true>; // clé « categorie::id »
 
 export type JournalType = 'Répétition' | 'Progrès' | 'Idée' | 'Note' | 'Audition';

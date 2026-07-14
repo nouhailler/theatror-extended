@@ -47,10 +47,10 @@ export const HELP: HelpEntry[] = [
   {
     id: 'collection',
     title: 'Ma collection',
-    resume: "Tous vos favoris réunis : pièces, auteurs, citations et monologues que vous avez marqués d'une étoile.",
+    resume: "Tous vos favoris réunis : pièces, auteurs, citations, monologues et éléments de spectacle (costumes, décors, accessoires, festivals) marqués d'une étoile.",
     tips: [
-      "Ajoutez un favori en touchant l'étoile ☆ sur une pièce, un auteur, une citation ou un monologue.",
-      'Les favoris sont classés par type pour les retrouver vite.',
+      "Ajoutez un favori en touchant l'étoile ☆ sur une pièce, un auteur, une citation, un monologue, ou une fiche costume/décor/accessoire/festival.",
+      "L'onglet « Spectacle » réunit vos costumes, décors, accessoires et festivals favoris.",
       'Tout est stocké sur votre appareil — aucun compte requis.',
     ],
     situe: "Depuis l'Accueil (onglet du bas) ou le menu ☰ › Personnel › Ma collection.",
@@ -162,7 +162,7 @@ export const HELP: HelpEntry[] = [
   {
     id: 'collections',
     title: 'Collections thématiques',
-    resume: "Des sélections prêtes à explorer : pièces courtes, rôles féminins forts, comédies, domaine public…",
+    resume: "Des sélections prêtes à explorer : Molière, la tragédie classique, pièces courtes, petites distributions, jeune public…",
     tips: [
       'Touchez une collection pour voir les pièces qu\'elle réunit.',
       'Un bon raccourci quand on ne sait pas quoi lire ou monter.',
@@ -276,6 +276,7 @@ export const HELP: HelpEntry[] = [
       'Filtrez par époque ou par genre (homme, femme, mixte).',
       'Touchez une carte pour la fiche détaillée : grande image et explication.',
       'La recherche accepte un pays, un style ou un personnage.',
+      "Touchez ☆ dans la fiche pour l'ajouter à Ma collection (onglet Spectacle).",
     ],
     situe: "Menu ☰ › Scène & spectacle › Costumes.",
     relations: [
@@ -292,6 +293,7 @@ export const HELP: HelpEntry[] = [
       'Filtrez par catégorie de décor.',
       'Touchez une carte pour l\'image en grand et le détail.',
       'Recherchez par lieu, pièce ou élément.',
+      "Touchez ☆ dans la fiche pour l'ajouter à Ma collection (onglet Spectacle).",
     ],
     situe: "Menu ☰ › Scène & spectacle › Décors.",
     relations: [
@@ -308,6 +310,7 @@ export const HELP: HelpEntry[] = [
       'Filtrez par catégorie : armes, mobilier, objets anciens.',
       'Touchez une carte pour la fiche : image, histoire et usages à la scène.',
       "Chaque objet cite les pièces où il joue un rôle.",
+      "Touchez ☆ dans la fiche pour l'ajouter à Ma collection (onglet Spectacle).",
     ],
     situe: "Menu ☰ › Scène & spectacle › Accessoires.",
     relations: [
@@ -324,6 +327,7 @@ export const HELP: HelpEntry[] = [
       'Filtrez par région ; les festivals sont classés par saison.',
       'Touchez une carte pour la fiche : image du lieu et présentation détaillée.',
       'Chaque fiche indique la période, l\'année de création et le genre.',
+      "Touchez ☆ dans la fiche pour l'ajouter à Ma collection (onglet Spectacle).",
     ],
     situe: "Menu ☰ › Scène & spectacle › Festivals.",
     relations: [

@@ -113,7 +113,7 @@ export default function Carte() {
 
       {lieux.map((l) => (
         <div key={l.id} className="card" style={{ display: 'flex', gap: 14, alignItems: 'center', padding: '12px 14px' }}>
-          <WikiImage file={l.img} initial={l.initiale} initialSize={24} style={{ width: 64, height: 64, borderRadius: 10, flex: 'none' }} objectPosition="center" />
+          <WikiImage file={l.img} initial={l.initiale} initialSize={24} alt={l.nom} style={{ width: 64, height: 64, borderRadius: 10, flex: 'none' }} objectPosition="center" />
           <div style={{ flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
               <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600, flex: 1 }}>{l.nom}</div>
