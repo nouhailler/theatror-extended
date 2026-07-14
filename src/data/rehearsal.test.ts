@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   parseScript,
+  scriptFromBlocs,
   mergeCharacters,
   renameCharacter,
   speakableText,
@@ -80,6 +81,34 @@ describe('mergeCharacters / renameCharacter', () => {
     const r = renameCharacter(s, 'ARGAN', 'Le malade imaginaire');
     expect(r.characters[0].key).toBe('ARGAN');
     expect(r.characters[0].label).toBe('Le malade imaginaire');
+  });
+});
+
+describe('scriptFromBlocs (import catalogue)', () => {
+  const blocs = [
+    { k: 'acte', t: 'ACTE I' },
+    { k: 'scene', t: 'Scène première' },
+    { k: 'didascalie', t: 'Chimène, Elvire' },
+    { k: 'perso', t: 'Chimène' },
+    { k: 'ligne', t: 'Elvire, m’as-tu fait un rapport bien sincère ?' },
+    { k: 'ligne', t: 'Ne déguises-tu rien ?' },
+    { k: 'perso', t: 'Elvire' },
+    { k: 'ligne', t: 'Tous mes sens sont charmés.' },
+  ];
+  const s = scriptFromBlocs(blocs);
+
+  it('convertit perso+ligne en répliques et regroupe les vers', () => {
+    const chimene = s.items.find((i) => i.speaker === 'CHIMÈNE');
+    expect(chimene?.text).toBe('Elvire, m’as-tu fait un rapport bien sincère ? Ne déguises-tu rien ?');
+  });
+
+  it('détecte les personnages avec libellé lisible', () => {
+    expect(s.characters.map((c) => c.key).sort()).toEqual(['CHIMÈNE', 'ELVIRE']);
+    expect(s.characters.find((c) => c.key === 'CHIMÈNE')?.label).toBe('Chimène');
+  });
+
+  it('conserve acte/scène/didascalie comme didascalies', () => {
+    expect(s.items.filter((i) => i.kind === 'didascalie').length).toBe(3);
   });
 });
 

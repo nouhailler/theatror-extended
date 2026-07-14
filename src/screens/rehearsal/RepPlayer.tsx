@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useRehearsalStore } from '../../lib/rehearsalStore';
 import { useRehearsalEngine } from '../../lib/rehearsalEngine';
+import { useRecorder } from '../../lib/useRecorder';
 import { DEFAULT_CONFIG } from '../../data/rehearsal';
 
 export default function RepPlayer() {
@@ -40,6 +41,33 @@ function Player({ playId, onPosition }: { playId: string; onPosition: (i: number
     startIndex: play.position,
     onIndexChange: onPosition,
   });
+
+  // Enregistrement vocal de ses propres répliques (pour se réécouter).
+  const rec = useRecorder();
+  const [clips, setClips] = useState<Record<number, string>>({});
+  const recIndexRef = useRef<number | null>(null);
+  const recordingRef = useRef(rec.recording);
+  recordingRef.current = rec.recording;
+  const clipsRef = useRef(clips);
+  clipsRef.current = clips;
+
+  const stopRec = useCallback(async () => {
+    const idx = recIndexRef.current;
+    const url = await rec.stop();
+    if (url && idx != null) {
+      setClips((c) => { if (c[idx]) URL.revokeObjectURL(c[idx]); return { ...c, [idx]: url }; });
+    }
+  }, [rec]);
+
+  const toggleRec = () => {
+    if (rec.recording) void stopRec();
+    else { recIndexRef.current = machine.index; void rec.start(); }
+  };
+  const playClip = (url: string) => { const a = new Audio(url); void a.play(); };
+
+  // Coupe l'enregistrement en cours si on change de réplique ; libère à la sortie.
+  useEffect(() => { if (recordingRef.current) void stopRec(); }, [machine.index, stopRec]);
+  useEffect(() => () => { Object.values(clipsRef.current).forEach(URL.revokeObjectURL); }, []);
 
   const label = (k?: string) => play.script.characters.find((c) => c.key === k)?.label ?? k ?? '';
 
@@ -117,16 +145,37 @@ function Player({ playId, onPosition }: { playId: string; onPosition: (i: number
         )}
 
         {waiting && (
-          <div style={{ display: 'flex', gap: 10 }}>
-            {masked && (
-              <button onClick={controls.reveal}
-                style={{ flex: 'none', background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '12px 14px', color: 'var(--gold-chip-text)', fontSize: 14, cursor: 'pointer' }}>
-                Révéler
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ display: 'flex', gap: 10 }}>
+              {masked && (
+                <button onClick={controls.reveal}
+                  style={{ flex: 'none', background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '12px 14px', color: 'var(--gold-chip-text)', fontSize: 14, cursor: 'pointer' }}>
+                  Révéler
+                </button>
+              )}
+              <button className="gold-btn" style={{ flex: 1, padding: '13px', fontSize: 15.5 }} onClick={controls.actorDone}>
+                {config.myLineMode === 'timed' ? 'Passer →' : 'J\'ai dit ma réplique →'}
               </button>
+            </div>
+            {rec.supported && (
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button onClick={toggleRec}
+                  style={{ flex: 1, background: rec.recording ? '#9e2b3a' : 'var(--bg-field)', border: `1px solid ${rec.recording ? '#9e2b3a' : 'var(--b-input)'}`, borderRadius: 10, padding: '10px', color: rec.recording ? '#fff' : 'var(--gold-chip-text)', fontSize: 13.5, cursor: 'pointer' }}>
+                  {rec.recording ? '⏹ Arrêter l\'enregistrement' : '● M\'enregistrer'}
+                </button>
+                {clips[machine.index] && !rec.recording && (
+                  <button onClick={() => playClip(clips[machine.index])}
+                    style={{ flex: 'none', background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '10px 14px', color: 'var(--gold-chip-text)', fontSize: 13.5, cursor: 'pointer' }}>
+                    ▶ Réécouter
+                  </button>
+                )}
+              </div>
             )}
-            <button className="gold-btn" style={{ flex: 1, padding: '13px', fontSize: 15.5 }} onClick={controls.actorDone}>
-              {config.myLineMode === 'timed' ? 'Passer →' : 'J\'ai dit ma réplique →'}
-            </button>
+            {rec.error === 'denied' && (
+              <div style={{ fontSize: 11.5, color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                Micro indisponible — autorisez l'accès au micro pour vous enregistrer.
+              </div>
+            )}
           </div>
         )}
 

@@ -13,6 +13,7 @@ interface RehearsalState {
   loaded: boolean;
   load: () => Promise<void>;
   create: (raw: string, titre?: string) => RepPlay;
+  importFromPiece: (sourceId: string, titre: string, script: RepScript) => RepPlay;
   get: (id: string) => RepPlay | undefined;
   update: (id: string, patch: Partial<RepPlay>) => void;
   setScript: (id: string, script: RepScript) => void;
@@ -50,6 +51,21 @@ export const useRehearsalStore = create<RehearsalState>((set, get) => {
         position: 0,
         createdAt: now,
         updatedAt: now,
+      };
+      const plays = [play, ...get().plays];
+      set({ plays });
+      persist(plays);
+      return play;
+    },
+
+    // Import depuis le catalogue : réutilise la pièce déjà importée (sourceId)
+    // pour ne pas créer de doublon à chaque clic.
+    importFromPiece: (sourceId, titre, script) => {
+      const existing = get().plays.find((p) => p.sourceId === sourceId);
+      if (existing) return existing;
+      const now = Date.now();
+      const play: RepPlay = {
+        id: uid(), sourceId, titre, raw: '', script, position: 0, createdAt: now, updatedAt: now,
       };
       const plays = [play, ...get().plays];
       set({ plays });

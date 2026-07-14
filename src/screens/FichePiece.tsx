@@ -3,10 +3,12 @@ import { PIECES } from '../data/pieces';
 import { PIECE_DETAILS } from '../data/pieceDetails';
 import { PERSONNAGES } from '../data/personnages';
 import { ficheFor } from '../data/characters';
-import { hasTexte } from '../data/pieceTextes';
+import { hasTexte, loadTexte } from '../data/pieceTextes';
 import { DRAMATURGES } from '../data/dramaturges';
 import { difficulteLabel, useBack } from '../components/ui';
 import Star from '../components/Star';
+import { useRehearsalStore } from '../lib/rehearsalStore';
+import { scriptFromBlocs } from '../data/rehearsal';
 
 const chip: React.CSSProperties = {
   fontSize: 12.5, padding: '4px 11px', borderRadius: 999,
@@ -17,6 +19,8 @@ export default function FichePiece() {
   const { id } = useParams();
   const nav = useNavigate();
   const goBack = useBack('/pieces');
+  const loadRehearsal = useRehearsalStore((s) => s.load);
+  const importFromPiece = useRehearsalStore((s) => s.importFromPiece);
   const p = PIECES.find((x) => x.id === id);
 
   if (!p) {
@@ -33,6 +37,15 @@ export default function FichePiece() {
   const curated = !!(d.personnages && d.personnages.length);
   const personnages = curated ? d.personnages! : PERSONNAGES[p.id] ?? [];
   const auteur = p.auteurId ? DRAMATURGES.find((x) => x.id === p.auteurId) : undefined;
+
+  // Envoie la pièce dans le mode répétition (réutilise l'import existant).
+  const repeter = async () => {
+    await loadRehearsal();
+    const t = await loadTexte(p.id);
+    if (!t) return;
+    const play = importFromPiece(p.id, p.titre, scriptFromBlocs(t.blocs));
+    nav(play.config ? `/repetition/${play.id}/jouer` : `/repetition/${play.id}/config`);
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Fiche ${p.titre}`}>
@@ -75,6 +88,19 @@ export default function FichePiece() {
               boxShadow: 'var(--sh-btn)',
             }}>
             📖 Lire le texte intégral
+          </button>
+        )}
+
+        {/* Répéter cette pièce (mode répétition, lecture vocale) */}
+        {hasTexte(p.id) && (
+          <button onClick={repeter}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              width: '100%', padding: '12px 16px', cursor: 'pointer', marginTop: -8,
+              background: 'none', color: 'var(--gold-chip-text)', border: '1px solid rgba(212,169,78,.45)',
+              borderRadius: 10, fontFamily: 'var(--font-title)', fontSize: 15, fontWeight: 600,
+            }}>
+            🎭 Répéter cette pièce
           </button>
         )}
 

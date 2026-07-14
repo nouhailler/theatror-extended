@@ -370,8 +370,9 @@ export const HELP: HelpEntry[] = [
     resume: "Répétez votre rôle : collez le texte, choisissez votre personnage, et l'app lit à voix haute les répliques des autres pendant que le texte défile.",
     tips: [
       'Collez le texte au format « NOM : réplique » (ou importez un .txt), puis vérifiez les personnages détectés.',
+      'Plus rapide : sur une fiche de pièce à texte intégral, touchez « 🎭 Répéter cette pièce » — tout est pré-rempli.',
       "Choisissez votre rôle, une voix par personnage, la vitesse, et le sort des didascalies.",
-      "Sur vos répliques, l'app attend : touchez l'écran pour continuer (ou mode chronométré / masqué pour tester la mémoire).",
+      "Sur vos répliques, l'app attend : touchez l'écran pour continuer (ou mode chronométré / masqué pour tester la mémoire). Vous pouvez aussi vous enregistrer et vous réécouter.",
       'La session reprend là où vous vous étiez arrêté ; tout est enregistré sur votre appareil.',
     ],
     situe: "Explorer › Mode répétition, ou menu ☰ › L'atelier › Mode répétition.",

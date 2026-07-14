@@ -40,6 +40,7 @@ export interface RepPlay {
   position: number; // dernier index de lecture
   createdAt: number;
   updatedAt: number;
+  sourceId?: string; // id de la pièce du catalogue (import « Répéter cette pièce »)
 }
 
 export const DEFAULT_CONFIG: Omit<RepConfig, 'myRole'> = {
@@ -188,6 +189,32 @@ export function estimateMs(text: string, rate = 1): number {
   const words = speakableText(text).split(/\s+/).filter(Boolean).length;
   const ms = (words / 150) * 60000 / Math.max(0.5, rate);
   return Math.min(30000, Math.max(1400, Math.round(ms)));
+}
+
+// Convertit les blocs du lecteur intégral (pieceTextes : perso/ligne/didascalie/
+// acte/scene) en script de répétition. Sans dépendance sur pieceTextes (type
+// minimal) pour éviter tout couplage.
+export function scriptFromBlocs(blocs: { k: string; t: string }[]): RepScript {
+  const items: RepItem[] = [];
+  let id = 0;
+  let current: RepItem | null = null;
+  for (const b of blocs) {
+    const t = (b.t ?? '').trim();
+    if (!t) continue;
+    if (b.k === 'perso') {
+      current = { id: id++, kind: 'line', speaker: normKey(t), text: '' };
+      items.push(current);
+    } else if (b.k === 'ligne') {
+      if (current && current.kind === 'line') current.text = current.text ? `${current.text} ${t}` : t;
+      else { current = { id: id++, kind: 'line', text: t }; items.push(current); }
+    } else {
+      // didascalie / acte / scene → didascalie affichable
+      items.push({ id: id++, kind: 'didascalie', text: t });
+      current = null;
+    }
+  }
+  const clean = items.filter((it) => it.kind === 'didascalie' || it.text.trim().length > 0);
+  return { items: reindex(clean), characters: buildChars(clean) };
 }
 
 // Titre proposé à partir du texte (1re ligne non vide, tronquée).
