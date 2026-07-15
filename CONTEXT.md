@@ -39,6 +39,74 @@ _Dernière mise à jour : 2026-07-15._
 3. **`Themes.tsx` trie par volume** : `Colonisation` (2) et `Féminisme` (4) finissent en bas de liste
    alors que ce sont de bonnes portes d'entrée. Un tri alphabétique optionnel serait peu coûteux.
 
+## 🔭 À REPRENDRE — audit fonctionnel & design (2026-07-15)
+
+Constats issus d'un parcours de l'app **en la pilotant** (Playwright, viewport 412×915), pas d'une
+lecture du code. Chiffres mesurés, reproductibles. Classés par impact.
+
+### P1 — Le stock de monologues s'effondre sur la requête la plus courante
+**C'est le chantier prioritaire, et c'est du contenu, pas du code.** L'app se vend sur « Monologues —
+pour vos auditions ». Croisement réel des 45 monologues de `MONOLOGUES` (`src/data/content.ts`) :
+
+| | Classique | Contemporain |
+|---|---|---|
+| Femme | 11 | **2** |
+| Homme | 19 | 9 |
+| Mixte | 4 | 0 |
+
+Une comédienne cherchant un monologue **contemporain a 2 choix** (un homme : 9). Avec « Facile » en
+plus : **0**. Global : 28 masculins / 13 féminins, 34 classiques / 11 contemporains. Or les auditions
+demandent massivement du contemporain. Les filtres de l'écran Scène ne sont pas en cause — ils sont
+bons, ils rendent juste le trou visible. Cible : ~30 monologues féminins contemporains.
+⚠️ Contrainte : le contemporain n'est pas dans le domaine public — vérifier les droits (extraits
+courts, ou auteurs sous licence libre) avant d'intégrer.
+
+### P2 — Accessibilité : les cartes ne sont pas atteignables au clavier
+Systémique. Mesuré sur `/pieces` : **0 titre** (`h1`–`h4`), **0 lien** (`<a>`), **331 divs
+cliquables** sans `role`, sans `tabindex`, sans label. **60 pressions sur Tab n'atteignent aucune
+fiche de pièce.** Un utilisateur au clavier ou au lecteur d'écran ne peut pas naviguer la
+bibliothèque.
+Détail révélateur : les 332 `aria-label` de la page sont à 330 sur les **pastilles de difficulté**
+(`difficulté ●●●○`) et 2 sur des boutons — l'effort a porté sur la décoration, pas sur les cibles.
+Correctif concentré : `src/components/PieceCard.tsx` et les `.card-tap` des écrans → `<button>` ou
+`<a>` au lieu de `<div onClick>`. Bonus gratuit : clic-milieu et « ouvrir dans un nouvel onglet »,
+qui ne marchent pas aujourd'hui.
+
+### P3 — Bug : « Théâtre du jour » n'est pas un théâtre 2 fois sur 3
+`src/screens/Accueil.tsx:47` → `pick(LIEUX.filter((l) => l.img))` ne filtre pas le type, alors que
+`LIEUX` mélange **16 théâtres, 13 festivals, 11 traditions, 11 écoles** (51). Soit **31 %** de chances
+d'afficher un vrai théâtre ; le 15/07 l'accueil affichait « THÉÂTRE DU JOUR — Festival d'Automne ».
+`src/screens/Carte.tsx:68` filtre correctement, lui.
+Fix : `.filter((l) => l.img && l.type === 'theatre')`, ou renommer le bloc « Lieu du jour » si l'on
+veut garder la variété des 51. **Une ligne.**
+
+### P4 — Le plateau de mise en scène ne permet pas de faire du placement
+`/mise-en-scene` pose des pastilles sur une **photo en perspective** (galerie des Glaces). Or on place
+les acteurs en **vue de dessus** : cour, jardin, face, lointain — vocabulaire déjà présent dans le
+glossaire. Sur une perspective, « aller à jardin » n'a pas de sens géométrique.
+Piste : plan de scène schématique (rectangle, avant-scène en bas, coulisses sur les côtés) — plus
+juste *et* plus simple que les photos. Les photos gardent leur rôle de référence d'ambiance.
+
+### P5 — Design, points fins
+- **Bandeaux « Astuce »** : s'empilent au-dessus de la nav sur *tous* les écrans à la première visite
+  et masquent le contenu. Sur `/collection` (état vide), l'astuce est plus grande que l'écran qu'elle
+  explique. Piste : une seule astuce par session, ou placement en haut.
+- **Contraste** : sur le plateau, « Ajoutez un acteur pour glisser » est illisible sur la photo. Un
+  voile sombre suffirait — c'est déjà bien fait sur les bandeaux de `CollectionDetail`.
+- **États vides** minces (`/collection`).
+- **Onboarding** : l'overlay intercepte tous les clics au premier lancement, sans échappatoire autre
+  que « Passer ». Bloque tout pilotage automatisé — prévoir un flag ou un `localStorage` pré-rempli
+  si l'on veut des tests E2E.
+
+### Ce qui marche (pour ne pas casser en refactorant)
+DA cohérente et tenue partout (Playfair + or sur prune, surtitres en capitales) ; **compteurs sur
+chaque chip**, qui rendent la profondeur du catalogue lisible d'un coup ; mode répétition avec lecture
+vocale, proposition qu'aucune app de théâtre grand public n'offre ; 320 textes intégraux hors-ligne.
+
+### Ordre conseillé
+**P1** (le plus de valeur, le plus de travail) → **P2** (systémique, coûtera plus cher plus tard) →
+**P3** (une ligne, à faire tout de suite) → P4 → P5.
+
 ## Fait (session du 2026-07-14)
 - **Mode répétition** (`/repetition`, `src/screens/rehearsal/`) : import d'une pièce du catalogue ou
   saisie libre, choix du rôle, lecture des autres répliques à voix haute (Web Speech via
@@ -56,9 +124,9 @@ _Dernière mise à jour : 2026-07-15._
 
 ## 🎉 Roadmap complète (26/26) + agrégation RSS
 Toute la roadmap fournie par l'utilisateur (priorités 1 → 26) est **livrée**, testée et poussée sur
-`origin/main`, ainsi que l'**agrégation RSS en direct** (au-delà de la roadmap). Il n'y a plus de
-« prochaine priorité » : le projet est fonctionnellement complet. La suite = enrichissement de contenu
-et corrections.
+`origin/main`, ainsi que l'**agrégation RSS en direct** (au-delà de la roadmap). La roadmap initiale
+est donc close — mais « roadmap complète » ne veut pas dire « rien à faire » : l'audit du 2026-07-15
+ci-dessous a sorti des priorités nettes, dont un trou de contenu au cœur de la promesse de l'app.
 
 ### État actuel (résumé)
 - **330 pièces** au catalogue, **320 avec texte intégral** hors-ligne (fr.wikisource + texteslibres.fr).
