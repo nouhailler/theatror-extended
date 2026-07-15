@@ -1,6 +1,43 @@
 # CONTEXT — état du projet
 
-_Dernière mise à jour : 2026-07-14._
+_Dernière mise à jour : 2026-07-15._
+
+## Fait (session du 2026-07-15)
+- **Écran Thèmes** (`/explorer/themes`, `src/screens/Themes.tsx` + `ThemeDetail.tsx`) : le répertoire
+  indexé par sujet — **592 pièces, 47 thèmes**. Entrée par thème → pièces qui l'abordent, résumé en
+  sous-titre, chips de rebond vers les autres thèmes de l'œuvre. Branché dans Explorer et le Drawer.
+- **Pourquoi cet écran et pas un filtre sur `/pieces`** : sur les 592 pièces de la base, **102
+  seulement sont au catalogue**. Un filtre « Thème » sur le catalogue serait vide sur **179 des 281
+  pièces** (64 %), et les trous ne sont pas aléatoires — Labiche (43), Feydeau (24), Corneille (21),
+  Courteline (16), Marivaux (13), c'est-à-dire toute la masse importée de texteslibres.fr. Un écran
+  séparé évite ce filtre à moitié vide, et rend trouvables les **490 pièces hors catalogue**.
+- **Valeur de la base** : 154 auteurs absents du catalogue (Anouilh 11 pièces, Pinter 10, Beckett 9,
+  Brecht 8, Ionesco 8, Pirandello 8, Genet, Stoppard, Mamet, Churchill, Kane, Koltès, Pommerat…).
+  Le catalogue est borné au domaine public (31 auteurs, de Sophocle à Feydeau) ; cette base couvre
+  précisément l'angle mort du XXe–XXIe, qui n'a pas de texte libre.
+- **Génération** (`scripts/themes/`, versionné) : `source.md` (tableau de 1000 lignes) + `vocab.py`
+  (207 thèmes → 47, corrections) + `gen.py` → `src/data/themes.ts`. Idempotent, sans dépendance.
+  1000 lignes → 592 pièces : 9 écartées (romans de Beckett, *Poétique* d'Aristote, un film
+  d'Almodóvar), attributions corrigées (*Meurtre dans la cathédrale* = T.S. Eliot et non Jean Vilar
+  qui l'a montée ; *Le Mahabharata* = Jean-Claude Carrière et non Peter Brook), dé-duplication sur
+  (auteur, titre) — *Dialogues des Carmélites* revenait 10×, l'*Antigone* d'Anouilh 9×.
+- **Correctif** : la recherche de thèmes ignorait les accents. `norm` de `src/lib/search.ts` est
+  désormais exporté et réutilisé plutôt que dupliqué.
+
+### ⚠️ Dette assumée sur l'écran Thèmes
+1. **139 résumés perdus** (852 conservés sur 991, 14 %). Quand deux thèmes bruts d'une même pièce
+   retombent sur le même thème canonique (`Tyrannie` et `Pouvoir` → `Pouvoir`), seule la première
+   note survit — et ces notes ne sont **pas** des doublons : sur *Caligula*, « La cruauté devient un
+   instrument philosophique » a disparu. Correction : autoriser plusieurs notes par thème et garder
+   le thème brut comme nuance (`sujet`). Détail dans `scripts/themes/README.md`, liste via
+   `python3 scripts/themes/gen.py --perdus`.
+2. **Deux vocabulaires de thèmes concurrents.** La fiche pièce affiche déjà une section « Thèmes »
+   alimentée par `src/data/pieceDetails.ts` : 62 pièces, **151 termes en texte libre** (« Barbon
+   ridicule », « Fausse dévotion »). L'index en utilise 47, contrôlés. Une même pièce peut donc être
+   étiquetée différemment selon l'écran. `help.ts:66` promet déjà « thèmes » sur la fiche pièce :
+   c'est le point de jonction naturel.
+3. **`Themes.tsx` trie par volume** : `Colonisation` (2) et `Féminisme` (4) finissent en bas de liste
+   alors que ce sont de bonnes portes d'entrée. Un tri alphabétique optionnel serait peu coûteux.
 
 ## Fait (session du 2026-07-14)
 - **Mode répétition** (`/repetition`, `src/screens/rehearsal/`) : import d'une pièce du catalogue ou
@@ -32,6 +69,9 @@ et corrections.
 - **Contenu** : 45 monologues, 41 citations, encyclopédie (Histoire/Mouvements/Genres/Métiers = 10
   articles chacun), 51 lieux (théâtres/festivals/traditions/écoles), 31 costumes, 31 décors, 42
   accessoires, 20 festivals (agenda), 24 ressources (annuaire médias) + 8 flux RSS.
+- **Base de références thématiques** (`src/data/themes.ts`, généré) : **592 pièces / 47 thèmes**, dont
+  102 reliées au catalogue. Distincte du catalogue : elle couvre le répertoire moderne et
+  contemporain, sans texte. Voir la dette assumée en tête de fichier.
 - **Compteurs** : chaque chip de filtre de l'app affiche son nombre d'enregistrements.
 - **Mode IA** (OpenRouter, clé locale jamais hardcodée) : Assistant ancré sur le catalogue +
   personnages + monologues ; Générateur « à la manière de » ; Analyse (texte collé ou pièce du

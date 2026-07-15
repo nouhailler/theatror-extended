@@ -53,12 +53,14 @@ src/
   data/              Données typées : pieces (330), dramaturges (40), characters (57 fiches),
                      encyclopedie, frise, lieux (51), collections, monologues (45), citations (41),
                      glossaire, exercices, voix, costumes, decors, accessoires, festivals, medias,
-                     flux (RSS), parcours ; texts/<id>.ts = texte intégral par pièce
+                     flux (RSS), parcours ; themes (592 pièces / 47 thèmes, généré) ;
+                     texts/<id>.ts = texte intégral par pièce
   components/        WikiImage (repli « initiale dorée »), Star, shell, ui
   screens/           Un fichier par écran (+ ia/ pour le Mode IA)
   lib/               openrouter, aiContext, useAI, feeds (RSS), storage (idb), wikimedia, date
   store.ts           Zustand (favoris, journal, réglages, onboarding, visite guidée)
 scripts/wikisource/  Outils Python de génération des textes (Wikisource + texteslibres.fr)
+scripts/themes/      Génération de src/data/themes.ts (source.md → gen.py). Voir son README.
 ```
 
 ## Fonctionnalités
@@ -71,6 +73,9 @@ scripts/wikisource/  Outils Python de génération des textes (Wikisource + text
 - **Lecture interactive** : noms de personnages cliquables → fiche, **lecture à voix haute** (Web Speech)
 - **Personnages célèbres** : 57 fiches (psychologie, évolution, scènes, adaptations, monologue lié)
 - **Encyclopédie** + fiches dramaturges (40 auteurs, portraits) ; **Frise** interactive et **Carte** du monde
+- **Thèmes** : le répertoire par sujet — 592 pièces, 47 thèmes. Va **au-delà du catalogue** : couvre le
+  répertoire moderne et contemporain (Beckett, Brecht, Koltès, Pommerat…), dont le texte n'est pas
+  libre. Les 102 pièces au catalogue sont cliquables vers leur fiche, les autres sont des références
 - **Scène** : monologues, citations et **glossaire (309 termes)**, tous filtrables (glossaire par lettre)
 - **Mode répétition** : importez une pièce du catalogue ou saisissez votre texte, choisissez votre rôle ;
   l'app lit les autres répliques à voix haute (Web Speech) et vous pouvez **enregistrer votre voix** pour
