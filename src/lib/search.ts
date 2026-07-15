@@ -22,7 +22,8 @@ export interface SearchHit {
 }
 interface Entry extends SearchHit { hay: string; }
 
-const norm = (s: string) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+/** Minuscules sans accents, pour comparer « memoire » et « Mémoire ». */
+export const norm = (s: string) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 
 const LIEU_TYPE: Record<string, string> = { theatre: 'Théâtre', festival: 'Festival', tradition: 'Tradition', ecole: 'École' };
 

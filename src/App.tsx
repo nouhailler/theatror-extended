@@ -25,6 +25,8 @@ import ModeIA from './screens/ModeIA';
 import Frise from './screens/Frise';
 import Carte from './screens/Carte';
 import Collections from './screens/Collections';
+import Themes from './screens/Themes';
+import ThemeDetail from './screens/ThemeDetail';
 import CollectionDetail from './screens/CollectionDetail';
 import Exercices from './screens/Exercices';
 import Voix from './screens/Voix';
@@ -70,6 +72,8 @@ export default function App() {
           <Route path="/ia" element={<ModeIA />} />
           <Route path="/explorer/frise" element={<Frise />} />
           <Route path="/explorer/carte" element={<Carte />} />
+          <Route path="/explorer/themes" element={<Themes />} />
+          <Route path="/explorer/themes/:theme" element={<ThemeDetail />} />
           <Route path="/explorer/collections" element={<Collections />} />
           <Route path="/explorer/collections/:id" element={<CollectionDetail />} />
           <Route path="/exercices" element={<Exercices />} />

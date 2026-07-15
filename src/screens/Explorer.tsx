@@ -4,6 +4,7 @@ import { ScreenTitle } from '../components/ui';
 const CARDS = [
   { titre: 'Encyclopédie', sub: 'Histoire, dramaturges, auteurs contemporains, mouvements, genres, métiers', to: '/explorer/encyclopedie' },
   { titre: 'Personnages célèbres', sub: 'Tartuffe, Cyrano, Antigone, Dom Juan, Figaro…', to: '/explorer/personnages' },
+  { titre: 'Thèmes', sub: 'Le répertoire par sujet : pouvoir, exil, mémoire, révolte…', to: '/explorer/themes' },
   { titre: 'Frise chronologique', sub: "D'Eschyle à Ionesco — auteurs, œuvres, événements", to: '/explorer/frise' },
   { titre: 'Carte du monde', sub: 'Grands théâtres, festivals, traditions, écoles', to: '/explorer/carte' },
   { titre: 'Mode répétition', sub: 'Répétez votre rôle : l\'app lit les autres à voix haute', to: '/repetition' },

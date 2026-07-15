@@ -131,6 +131,22 @@ export interface Citation {
   emotion?: string; // émotion dominante
 }
 
+// ─── Base de références thématiques ───
+// Répertoire élargi (592 pièces) indexé par thème. Va au-delà du catalogue :
+// il couvre le répertoire moderne et contemporain, dont le texte n'est pas libre.
+
+export type RefTheme = string;
+
+export interface RefOeuvre {
+  id: string;
+  auteur: string;
+  piece: string;
+  pieceId?: string; // lien vers la fiche pièce, si l'œuvre est au catalogue
+  // Au plus une note par thème : la génération en écarte 139 quand deux thèmes
+  // du tableau source retombent sur le même thème canonique. Voir themes.ts.
+  notes: { theme: RefTheme; txt: string }[];
+}
+
 export interface GlossaireTerme {
   id: string;
   terme: string;
