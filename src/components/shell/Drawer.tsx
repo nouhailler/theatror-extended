@@ -35,6 +35,7 @@ export default function Drawer() {
         { label: 'Pièces & filtres', onGo: go('/pieces') },
         { label: 'Encyclopédie', onGo: go('/explorer/encyclopedie') },
         { label: 'Personnages célèbres', onGo: go('/explorer/personnages') },
+        { label: 'Thèmes', note: 'par sujet', onGo: go('/explorer/themes') },
         { label: 'Fiche dramaturge', note: 'ex. Molière', onGo: go('/explorer/dramaturge/moliere') },
         { label: 'Frise chronologique', onGo: go('/explorer/frise') },
         { label: 'Carte du monde', onGo: go('/explorer/carte') },
