@@ -8,6 +8,11 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Correctif import Répétition** : l'écran « Nouvelle pièce » n'avait qu'une petite flèche `←` pour
+  sortir — invisible en PWA installée, surtout quand le **sélecteur de fichier natif** (« Importer un .txt »)
+  recouvre toute l'app, d'où le sentiment d'être bloqué. Ajout d'un bouton **« ← Annuler et revenir »**
+  bien visible, et d'un rappel que le plus simple est de **coller** son texte (le fichier .txt reste
+  optionnel).
 - **Correctif Répétition** : l'import du texte (`scriptFromBlocs`) perdait le personnage d'une réplique
   quand une **didascalie s'intercalait entre le nom et la réplique** (« ALCESTE, *assis.* : Laissez-moi… »)
   → ces répliques n'étaient pas jouées/mémorisées correctement. Corrigé : le nom **annonce** le

@@ -67,6 +67,11 @@ export default function RepImport() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '18px 18px 28px' }} data-screen-label="Répétition — import">
       <BackHeader to="/repetition" title="Nouvelle pièce" sub="Collez le texte, ou importez un fichier .txt" />
 
+      <div style={{ fontSize: 13, color: 'var(--text-muted)', fontStyle: 'italic', lineHeight: 1.5, background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 10, padding: '10px 12px' }}>
+        Le plus simple : <strong>collez votre texte</strong> dans la zone ci-dessous, puis « Analyser ».
+        Le bouton « Importer un .txt » n'est utile que si votre texte est déjà dans un fichier .txt.
+      </div>
+
       <input value={titre} onChange={(e) => setTitre(e.target.value)} placeholder="Titre (ex. Le Malade imaginaire — I, 5)" style={field} />
 
       <textarea
@@ -135,6 +140,12 @@ export default function RepImport() {
           Continuer ({nbLignes} répliques) →
         </button>
       )}
+
+      {/* Sortie toujours accessible : annuler l'import et revenir à la liste. */}
+      <button onClick={() => nav('/repetition')}
+        style={{ padding: '11px 18px', fontSize: 14.5, borderRadius: 999, cursor: 'pointer', background: 'none', border: '1px solid var(--b-input)', color: 'var(--text-muted)', alignSelf: 'center', marginTop: 4 }}>
+        ← Annuler et revenir
+      </button>
     </div>
   );
 }
