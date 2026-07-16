@@ -8,6 +8,12 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Correctif Répétition** : l'import du texte (`scriptFromBlocs`) perdait le personnage d'une réplique
+  quand une **didascalie s'intercalait entre le nom et la réplique** (« ALCESTE, *assis.* : Laissez-moi… »)
+  → ces répliques n'étaient pas jouées/mémorisées correctement. Corrigé : le nom **annonce** le
+  personnage, la réplique démarre au premier vers, et une didascalie ne fait plus oublier qui parle.
+  Bénéfice pour le lecteur ET les cartes (Le Misanthrope : Alceste 181 → 200 cartes, plus aucune réplique
+  orpheline). 2 tests ajoutés.
 - **Répétition › Mémoriser mon rôle (cartes)** : système type Anki adapté au théâtre, sous « Commencer la
   lecture ». Une carte par réplique du rôle, en 3 modes — **Ping-Pong** (recto = dernière phrase du
   partenaire, verso = ta réplique), **Texte à trous** (mots porteurs masqués, densité réglable,

@@ -209,17 +209,26 @@ export function scriptFromBlocs(blocs: { k: string; t: string }[]): RepScript {
   const items: RepItem[] = [];
   let id = 0;
   let current: RepItem | null = null;
+  let speaker: string | undefined; // dernier personnage annoncé ; survit à une didascalie intercalée
   for (const b of blocs) {
     const t = (b.t ?? '').trim();
     if (!t) continue;
     if (b.k === 'perso') {
-      current = { id: id++, kind: 'line', speaker: normKey(t), text: '' };
-      items.push(current);
+      // Le nom annonce le personnage ; la réplique démarre au 1er bloc « ligne ».
+      speaker = normKey(t);
+      current = null;
     } else if (b.k === 'ligne') {
-      if (current && current.kind === 'line') current.text = current.text ? `${current.text} ${t}` : t;
-      else { current = { id: id++, kind: 'line', text: t }; items.push(current); }
+      if (current && current.kind === 'line') {
+        current.text = current.text ? `${current.text} ${t}` : t;
+      } else {
+        current = { id: id++, kind: 'line', speaker, text: t };
+        items.push(current);
+      }
     } else {
-      // didascalie / acte / scene → didascalie affichable
+      // didascalie / acte / scène : affichée telle quelle. On ferme la réplique en
+      // cours (l'ordre reste juste) SANS oublier le personnage — ainsi une
+      // didascalie intercalée entre le nom et la réplique (« ALCESTE, assis. »)
+      // laisse la réplique suivante attribuée à Alceste.
       items.push({ id: id++, kind: 'didascalie', text: t });
       current = null;
     }
