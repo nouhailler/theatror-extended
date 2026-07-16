@@ -3,6 +3,31 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Journal de répétition** (`/pieces/:id/journal`, `src/screens/rehearsal/RepJournal.tsx`) — bouton
+  « 📓 Journal de répétition » dans la fiche pièce, sous « Répéter cette pièce ». Carnet de bord **par
+  pièce du catalogue** (idb `theathror-rep-journal`, tout dans une clé, filtré par `pieceId`). Modules
+  découplés : `src/data/repJournal.ts` (types + `actsScenes(blocs)` qui extrait acte→scènes du texte
+  intégral + `emptyEntry`/`isEmptyEntry`, testés), `src/lib/repJournalStore.ts` (zustand/idb, `save`
+  crée-ou-met-à-jour), `src/lib/useVoiceMemo.ts` (MediaRecorder → **dataURL base64** persistable, ≠
+  `useRecorder` qui rend une URL objet éphémère ; garde-fou 60 s). L'entrée relie la note à l'**acte + aux
+  scènes travaillées** (puces issues du texte ; champ libre en repli), + énergie 1–5 (filtre liste), présences
+  (MES/régie/autres), notes de mise en scène (objectif : déplacements/rythme/intentions), interprétation
+  (subjectif : découvertes/ratés/physique/partenaires), régie (accessoires/costumes/lum-son), « le recul »
+  (retour MES/ressenti/devoirs) et note vocale. Chaque champ a son aide + doc dépliable en tête. Patron
+  **draft/save** (pas d'écriture idb par frappe). ⚠️ Piège évité : ne pas mémoïser la liste sur la
+  **méthode** `forPiece` du store (référence stable → pas de recalcul) ; on **sélectionne le tableau
+  `entries`** puis on filtre. Vérifié E2E Playwright : fiche → journal → doc → ACTE I/Scène première →
+  énergie/présences/champs → enregistrer → liste → filtres énergie → détail → persistance reload. 33/33
+  tests (dont 6 nouveaux). Zéro erreur console.
+- **Répétition › documentation « Configuration »** (`/repetition/:id/aide`,
+  `src/screens/rehearsal/AideRepetition.tsx`) — lien « 📖 Lire la documentation pour commencer » en tête de
+  RepConfig, sur le modèle du Mode IA. Écran d'aide pour comédiens (composants `Section`/`Sub`/`Step`/`Ex`) :
+  Didascalies (lire/afficher/ignorer), Mes répliques (pause manuelle/chronométré/masqué) et surtout les
+  **cartes** — les 3 modes (Ping-Pong, Trous, Indice), Révéler + auto-éval, et les compteurs « X/Y sues » /
+  « carte N/Y », le tout avec exemples du *Misanthrope*. Vérifié en pilotant l'app (toutes sections, retour).
+- **Correctif import Répétition** (`RepImport.tsx`) — l'écran « Nouvelle pièce » n'offrait qu'une flèche `←`
+  peu visible (et le sélecteur de fichier natif recouvre l'app → sensation de blocage). Ajout d'un bouton
+  « ← Annuler et revenir » (`nav('/repetition')`) + rappel que **coller** son texte est le plus simple.
 - **Répétition › cartes de mémorisation** (`/repetition/:id/cartes`, `src/screens/rehearsal/RepCards.tsx`,
   bouton sous « Commencer la lecture » dans RepConfig). Système type Anki : `src/lib/rehearsalCards.ts`
   (pur/testable) construit une carte par réplique du rôle via le script déjà parsé — Ping-Pong (dernière

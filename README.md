@@ -18,8 +18,8 @@ répétitions. Mobile Android d'abord, installable, fonctionne hors-ligne.
   (install léger malgré 320 textes)
 - **Routing** : `react-router-dom` (routes = onglets + sous-écrans)
 - **État / persistance** : `zustand` + `idb-keyval` (IndexedDB) — favoris, journal, préférences,
-  mise en scène, cache des flux RSS, carnet de contacts et rappels. Flag d'onboarding en
-  `localStorage` (`theathror-onb`)
+  mise en scène, cache des flux RSS, carnet de contacts et rappels, pièces du mode répétition et
+  **journal de répétition**. Flag d'onboarding en `localStorage` (`theathror-onb`)
 - **Carte** : `leaflet` + `react-leaflet` sur fond OpenStreetMap
 - **Mode IA** : OpenRouter (streaming SSE), clé fournie par l'utilisateur dans Réglages —
   **jamais en dur**, stockée localement
@@ -80,7 +80,15 @@ scripts/themes/      Génération de src/data/themes.ts (source.md → gen.py). 
 - **Scène** : monologues, citations et **glossaire (309 termes)**, tous filtrables (glossaire par lettre)
 - **Mode répétition** : importez une pièce du catalogue ou saisissez votre texte, choisissez votre rôle ;
   l'app lit les autres répliques à voix haute (Web Speech) et vous pouvez **enregistrer votre voix** pour
-  vous réécouter
+  vous réécouter. Réglages **Didascalies** (lire / afficher / ignorer) et **Mes répliques** (pause manuelle /
+  chronométré / masqué), avec une **documentation intégrée** (« Lire la documentation pour commencer »)
+  - **Mémoriser son rôle (cartes)** : entraînement type Anki adapté au théâtre — **Ping-Pong** (réplique du
+    partenaire → la vôtre), **Texte à trous** (mots masqués, densité réglable, adaptatif) et **Indice
+    contextuel** (acte/scène → amorce). « Révéler » puis auto-évaluation ; révision espacée persistante
+  - **Journal de répétition** (par pièce) : consignez chaque séance en la reliant à l'**acte et aux scènes
+    travaillées**. Énergie du jour (pour filtrer « en forme » / « fatigué »), présences, notes de mise en
+    scène (objectif), travail d'interprétation (subjectif), régie, bilan « le recul » et **note vocale** à
+    chaud — chaque champ documenté
 - **Exercices d'acteur** et **Entraînement vocal** (déroulés pas à pas)
 - **Mise en scène** : plateau 2D — placez vos acteurs, choisissez décor et lumière (sauvegarde locale)
 - **Costumes · Décors · Accessoires** : galeries historiques filtrables
