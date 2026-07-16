@@ -3,6 +3,18 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Répétition › cartes de mémorisation** (`/repetition/:id/cartes`, `src/screens/rehearsal/RepCards.tsx`,
+  bouton sous « Commencer la lecture » dans RepConfig). Système type Anki : `src/lib/rehearsalCards.ts`
+  (pur/testable) construit une carte par réplique du rôle via le script déjà parsé — Ping-Pong (dernière
+  phrase du partenaire), Indice (didascalie + acte/scène + amorce), Trous (`clozeTokens` masque les mots
+  porteurs, densité réglable, priorité aux mots ratés `miss`). Auto-éval 3 niveaux → SRS léger stocké dans
+  `RepPlay.memo[rôle][idCarte]` (box 0-2, seen, ok, miss), file qui remet les faibles devant. Aucune IA.
+  ⚠️ Limite connue : `scriptFromBlocs` perd le speaker d'une réplique quand une **didascalie s'intercale
+  entre `perso` et `ligne`** (ex. « ALCESTE, assis. »), donc ces répliques-là ne deviennent pas des cartes
+  (Alceste = 181 cartes). Corriger un jour dans `scriptFromBlocs` (ne pas remettre `current=null` sur une
+  didascalie), au risque de réordonner l'affichage — non fait pour ne pas toucher au lecteur/tests.
+  Vérifié E2E Playwright : fiche → Répéter → config → Mémoriser → 3 modes, révéler/évaluer, compteur
+  0/181→1/181, persistance après reload. Zéro erreur console.
 - **Castings — veille & candidatures** (`/casting`, `src/screens/Casting.tsx`, menu Personnel). Modules
   découplés en idb (comme `feeds.ts`, rien dans le store central) : `src/lib/castingStore.ts` (CRUD
   sources/annonces/profil, clés `theathror-casting-sources|castings|casting-profile`),

@@ -31,6 +31,14 @@ export interface RepConfig {
   myLineMode: MyLineMode;
 }
 
+// Mémorisation par cartes (type Anki). box : 0 = à revoir, 1 = presque, 2 = su.
+export interface CardMemo {
+  box: number;
+  seen: number;
+  ok: number;
+  miss?: string[]; // mots ratés en mode « texte à trous » (re-masqués en priorité)
+}
+
 export interface RepPlay {
   id: string;
   titre: string;
@@ -41,6 +49,9 @@ export interface RepPlay {
   createdAt: number;
   updatedAt: number;
   sourceId?: string; // id de la pièce du catalogue (import « Répéter cette pièce »)
+  // Mémorisation par cartes : mémo[rôle][idCarte]. Séparé par rôle (une même
+  // pièce peut se réviser pour des rôles différents).
+  memo?: Record<string, Record<number, CardMemo>>;
 }
 
 export const DEFAULT_CONFIG: Omit<RepConfig, 'myRole'> = {

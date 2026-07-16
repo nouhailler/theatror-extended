@@ -8,6 +8,14 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Répétition › Mémoriser mon rôle (cartes)** : système type Anki adapté au théâtre, sous « Commencer la
+  lecture ». Une carte par réplique du rôle, en 3 modes — **Ping-Pong** (recto = dernière phrase du
+  partenaire, verso = ta réplique), **Texte à trous** (mots porteurs masqués, densité réglable,
+  **adaptatif** : re-masque en priorité les mots déjà ratés), **Indice contextuel** (recto = mise en
+  scène / acte-scène, verso = l'amorce). « Révéler » puis auto-évaluation *À revoir / Presque / Su* : un
+  **SRS léger persistant** fait revenir les répliques faibles en priorité (mémorisé par pièce + rôle,
+  compteur « X/Y sues »). 100 % local, aucune IA. Modules `src/lib/rehearsalCards.ts` +
+  `src/screens/rehearsal/RepCards.tsx`.
 - **Castings — veille & candidatures** (`/casting`) : un outil pour surveiller des appels à candidatures
   et gérer ses castings. **Sources** = flux RSS + pages d'auditions que vous ajoutez, lues **à la demande**
   via le proxy Netlify existant (anti-SSRF) — une page à la fois, pas de crawl furtif. Pré-filtre local

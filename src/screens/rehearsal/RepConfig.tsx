@@ -76,6 +76,10 @@ export default function RepConfig() {
     setConfig(play.id, cfg);
     nav(`/repetition/${play.id}/jouer`);
   };
+  const memoriser = () => {
+    setConfig(play.id, cfg);
+    nav(`/repetition/${play.id}/cartes`);
+  };
 
   const modeHelp = MODES.find((m) => m.k === cfg.myLineMode)?.help;
 
@@ -146,6 +150,10 @@ export default function RepConfig() {
 
       <button className="gold-btn" style={{ padding: '13px 18px', fontSize: 16 }} onClick={commencer}>
         Commencer la lecture →
+      </button>
+      <button onClick={memoriser}
+        style={{ padding: '12px 18px', fontSize: 15, marginTop: -8, borderRadius: 12, cursor: 'pointer', background: 'none', border: '1px solid rgba(212,169,78,.45)', color: 'var(--gold-chip-text)', fontFamily: 'var(--font-title)', fontWeight: 600 }}>
+        🎴 Mémoriser mon rôle (cartes)
       </button>
     </div>
   );
