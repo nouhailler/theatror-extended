@@ -3,6 +3,13 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Miniatures dans l'écran Pièces** : `PieceCard.tsx` affiche une vignette 58×58 à gauche du titre via
+  `WikiImage` (repli initiale dorée). Correspondance `pieceId → fichier Wikimedia` centralisée dans
+  `src/data/pieceImages.ts` — **34 pièces** amorcées à partir d'images **déjà présentes dans l'app**
+  (`CREDITS` de `lib/wikimedia.ts`), donc garanties de se charger (URLs vérifiées 200). Les ~296
+  autres pièces gardent la tuile initiale : dégradation gracieuse, aucun trou. Vérifié visuellement
+  (Playwright, viewport 412×915) : vignettes réelles en tête de liste, tuiles dorées sur le filtre
+  Vaudeville (Feydeau/Labiche sans image). Complétable œuvre par œuvre sans toucher `pieces.ts`.
 - **Carnet d'adresses enrichi + suivi des interactions** — deux fonctionnalités bâties autour d'un
   même noyau `Contact`/`Reminder` (slice zustand dans `src/store.ts`, persistance idb
   `theathror-contacts` / `theathror-reminders`, hydratés au boot). Pattern CRUD calqué sur le Journal.
