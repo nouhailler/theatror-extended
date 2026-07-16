@@ -212,6 +212,7 @@ export const HELP: HelpEntry[] = [
     resume: "Un assistant qui explique une pièce, aide à la distribution ou répond à vos questions sur le théâtre.",
     tips: [
       "Nécessite une clé OpenRouter (gratuite) à renseigner dans les Réglages.",
+      "« Mon rôle » interroge le texte intégral de votre personnage — repérer où il parle d'un sujet, ou décrire son évolution émotionnelle. L'analyse se fait acte par acte pour tenir dans les modèles gratuits.",
       'Dans les Réglages, vous pouvez choisir un modèle gratuit d\'OpenRouter.',
       'La clé reste sur votre appareil et n\'est jamais transmise à Theathror.',
     ],

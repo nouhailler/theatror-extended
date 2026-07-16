@@ -8,6 +8,16 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Mode IA › « Mon rôle »** : nouvel outil qui interroge le **texte intégral** du personnage joué —
+  repérer où il évoque un sujet (« son père », « la mort »… mention directe ou implicite) avec
+  **citation exacte + scène**, ou décrire son **évolution émotionnelle** acte par acte. Conçu pour les
+  **modèles gratuits** (8k–32k) : on n'envoie que les répliques du rôle, groupées par acte et
+  redécoupées en morceaux ≤ ~4 500 car (`src/lib/scriptAnalysis.ts`) → une petite requête par acte.
+  Le comédien cible un acte pour un coût minimal (le plan « ≈ N requêtes » est affiché avant l'envoi).
+  Consignes anti-hallucination (citations vérifiables uniquement).
+- **Correctif accueil** : l'encart « Collection en vedette » pointait vers `/explorer/collections/absurde`
+  (id inexistant → « Collection introuvable »). Il affiche désormais une **vraie collection** en rotation
+  quotidienne, avec son titre/description réels — plus d'obsolescence possible.
 - **Accueil personnalisable** : la section « Accès rapides » de l'accueil est configurable depuis
   **Réglages › Accueil**. On coche parmi 20 raccourcis (Mode répétition, Exercices, Voix & diction,
   Carnet & contacts, Médias, Festivals, Mise en scène…) ceux à afficher sur sa page d'accueil — utile

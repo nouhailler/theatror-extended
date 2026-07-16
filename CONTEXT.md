@@ -3,6 +3,22 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Mode IA › « Mon rôle »** (`src/screens/ia/AnalyseRole.tsx`, branché dans `ModeIA.tsx`) : analyse du
+  texte intégral d'un personnage. Deux modes : « Repérer un sujet » (mentions directes/implicites, avec
+  citation exacte + scène) et « Évolution émotionnelle » (arc scène par scène). **Contrainte de
+  conception** : les comédiens utilisent les modèles gratuits d'OpenRouter (8k–32k de contexte) → on
+  n'envoie JAMAIS la pièce entière. `src/lib/scriptAnalysis.ts` isole les répliques du rôle (parsing
+  déterministe des blocs `perso`/`ligne`/`acte`/`scene`), les groupe par acte, et redécoupe un acte trop
+  long en morceaux ≤ 4 500 car (~1 400 tokens), avec fusion des micro-morceaux. Une requête légère par
+  morceau, envoyées séquentiellement (état `running` propre, pas le flicker de `busy`). Le comédien
+  choisit un acte (portée) pour minimiser le coût ; le plan « ≈ N requêtes » est affiché. Prompts avec
+  interdiction d'inventer des citations. Vérifié : extraction/découpage sur Le Misanthrope (Alceste = 12
+  morceaux sur toute la pièce, 1 pour l'Acte III) ; **E2E Playwright avec OpenRouter mocké** (SSE) — clé
+  → 1 requête pour un acte → citation streamée dans la carte → « Relancer », zéro erreur console.
+- **Correctif accueil** : encart « Collection en vedette » codé en dur vers `/explorer/collections/absurde`
+  (id inexistant, « Le théâtre de l'absurde » non plus) → « Collection introuvable ». Remplacé par
+  `pick(COLLECTIONS)` (rotation quotidienne comme le théâtre/citation/pièce du jour), titre/desc réels,
+  lien vers l'id réel. Vérifié en pilotant l'app.
 - **Accueil personnalisable** : la grille « Accès rapides » de `Accueil.tsx` est pilotée par
   `settings.homeShortcuts` (nouveau champ de `Settings`, défaut = les 4 accès historiques, merge au boot
   donc rétro-compatible). Catalogue de 20 raccourcis dans `src/data/homeShortcuts.ts` (id/label/sub/to).

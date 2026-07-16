@@ -6,10 +6,12 @@ import Assistant from './ia/Assistant';
 import Generateur from './ia/Generateur';
 import Distribution from './ia/Distribution';
 import Analyse from './ia/Analyse';
+import AnalyseRole from './ia/AnalyseRole';
 
-type Tool = 'assistant' | 'generer' | 'distribution' | 'analyse';
+type Tool = 'assistant' | 'generer' | 'distribution' | 'analyse' | 'role';
 const TOOLS: { k: Tool; label: string }[] = [
   { k: 'assistant', label: 'Assistant' },
+  { k: 'role', label: 'Mon rôle' },
   { k: 'generer', label: 'Générer' },
   { k: 'distribution', label: 'Distribution' },
   { k: 'analyse', label: 'Analyse' },
@@ -41,6 +43,7 @@ export default function ModeIA() {
       </div>
 
       {tool === 'assistant' && <Assistant />}
+      {tool === 'role' && <AnalyseRole />}
       {tool === 'generer' && <Generateur />}
       {tool === 'distribution' && <Distribution />}
       {tool === 'analyse' && <Analyse />}

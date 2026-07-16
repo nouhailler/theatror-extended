@@ -4,7 +4,7 @@ import { useStore } from '../store';
 import { Overline } from '../components/ui';
 import WikiImage from '../components/WikiImage';
 import RappelsBanner from '../components/RappelsBanner';
-import { LIEUX, CITATIONS } from '../data/content';
+import { LIEUX, CITATIONS, COLLECTIONS } from '../data/content';
 import { PIECES } from '../data/pieces';
 import { searchAll } from '../lib/search';
 import { HOME_SHORTCUTS_BY_ID } from '../data/homeShortcuts';
@@ -49,6 +49,7 @@ export default function Accueil() {
   const theatre = pick(LIEUX.filter((l) => l.img));
   const citation = pick(CITATIONS);
   const piece = pick(PIECES);
+  const collection = pick(COLLECTIONS);
 
   // Accès rapides personnalisables (choisis dans Réglages), dans l'ordre stocké.
   const homeShortcuts = useStore((s) => s.settings.homeShortcuts);
@@ -168,15 +169,16 @@ export default function Accueil() {
         <div style={{ fontSize: 20, color: 'var(--gold)' }}>→</div>
       </div>
 
-      {/* Collection en vedette */}
+      {/* Collection en vedette (rotation quotidienne, id réel) */}
       <div
-        onClick={() => nav('/explorer/collections/absurde')}
+        onClick={() => nav(`/explorer/collections/${collection.id}`)}
+        className="card-tap"
         style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'linear-gradient(120deg,#3a1520,#241019)', border: '1px solid rgba(158,43,58,.4)', borderRadius: 12, padding: '13px 16px', cursor: 'pointer' }}
       >
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Collection</div>
-          <div style={{ fontFamily: 'var(--font-title)', fontSize: 18, fontWeight: 600, marginTop: 2 }}>Le théâtre de l'absurde</div>
-          <div style={{ fontSize: 13.5, color: 'var(--text-2)', marginTop: 2, fontStyle: 'italic' }}>Ionesco, Beckett, Adamov — 12 pièces</div>
+          <div style={{ fontFamily: 'var(--font-title)', fontSize: 18, fontWeight: 600, marginTop: 2 }}>{collection.titre}</div>
+          <div style={{ fontSize: 13.5, color: 'var(--text-2)', marginTop: 2, fontStyle: 'italic' }}>{collection.desc}</div>
         </div>
         <div style={{ fontSize: 20, color: 'var(--gold)' }}>→</div>
       </div>
