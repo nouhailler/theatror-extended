@@ -8,6 +8,11 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Mode IA — prise en main** : deux liens toujours visibles en tête de l'écran — « 📖 Lire la
+  documentation pour commencer » et « ⚙️ Clé IA » (vers les Réglages). Nouvel écran de **documentation**
+  (`/ia/aide`) qui explique **pas à pas** chaque outil (Assistant, Mon rôle, Générer, Distribution,
+  Analyse) : ce qu'on obtient, l'effet de chaque réglage, un exemple — pensé pour des comédiens, pas des
+  informaticiens. Étape « Activer le Mode IA (la clé) » en tête, avec bouton direct vers les Réglages.
 - **Mode IA › « Mon rôle »** : nouvel outil qui interroge le **texte intégral** du personnage joué —
   repérer où il évoque un sujet (« son père », « la mort »… mention directe ou implicite) avec
   **citation exacte + scène**, ou décrire son **évolution émotionnelle** acte par acte. Conçu pour les

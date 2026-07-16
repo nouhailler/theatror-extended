@@ -3,6 +3,12 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Mode IA — prise en main & doc** : `ModeIA.tsx` affiche deux pills en tête (« Lire la documentation »
+  → `/ia/aide` ; « Clé IA » → `/reglages`), toujours visibles. Nouvel écran `src/screens/ia/AideIA.tsx`
+  (route `/ia/aide`) : documentation pas-à-pas de chaque outil (Assistant, Mon rôle, Générer,
+  Distribution, Analyse) — « Ce que vous obtenez / vos choix un par un / exemple » — plus une section
+  « Activer le Mode IA (la clé) » avec les 3 étapes OpenRouter et un bouton vers Réglages. Objectif :
+  zéro devinette, rendre l'outil utilisable par des comédiens non techniciens. Vérifié en pilotant l'app.
 - **Mode IA › « Mon rôle »** (`src/screens/ia/AnalyseRole.tsx`, branché dans `ModeIA.tsx`) : analyse du
   texte intégral d'un personnage. Deux modes : « Repérer un sujet » (mentions directes/implicites, avec
   citation exacte + scène) et « Évolution émotionnelle » (arc scène par scène). **Contrainte de
