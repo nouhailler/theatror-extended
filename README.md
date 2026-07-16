@@ -18,7 +18,8 @@ répétitions. Mobile Android d'abord, installable, fonctionne hors-ligne.
   (install léger malgré 320 textes)
 - **Routing** : `react-router-dom` (routes = onglets + sous-écrans)
 - **État / persistance** : `zustand` + `idb-keyval` (IndexedDB) — favoris, journal, préférences,
-  mise en scène, cache des flux RSS. Flag d'onboarding en `localStorage` (`theathror-onb`)
+  mise en scène, cache des flux RSS, carnet de contacts et rappels. Flag d'onboarding en
+  `localStorage` (`theathror-onb`)
 - **Carte** : `leaflet` + `react-leaflet` sur fond OpenStreetMap
 - **Mode IA** : OpenRouter (streaming SSE), clé fournie par l'utilisateur dans Réglages —
   **jamais en dur**, stockée localement
@@ -89,6 +90,11 @@ scripts/themes/      Génération de src/data/themes.ts (source.md → gen.py). 
   (France Culture, France Inter, Comédie-Française, ARTE, TNP…) — sources personnalisables
 - **Parcours d'apprentissage** par profil (débutant, comédien, metteur en scène…)
 - **Ma collection** (favoris) et **Journal** du comédien (CRUD local + stats)
+- **Carnet & contacts** : répertoire des professionnels du spectacle (metteurs en scène, directeurs de
+  casting, régisseurs, compagnies…). Collez l'URL d'un site ou d'un profil → l'**IA prépare une fiche**
+  (dernières mises en scène, esthétique, contacts publics, angle de candidature). **Suivi des
+  interactions** : rappels contextuels en un tap (relancer après audition, anniversaire, félicitations)
+  regroupés dans un encart « À relancer » sur l'Accueil et le Carnet
 
 Chaque chip de filtre affiche le **nombre d'enregistrements** correspondants, pour voir d'un coup
 d'œil la profondeur de chaque catégorie.

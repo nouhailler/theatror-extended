@@ -1,6 +1,33 @@
 # CONTEXT — état du projet
 
-_Dernière mise à jour : 2026-07-15._
+_Dernière mise à jour : 2026-07-16._
+
+## Fait (session du 2026-07-16)
+- **Carnet d'adresses enrichi + suivi des interactions** — deux fonctionnalités bâties autour d'un
+  même noyau `Contact`/`Reminder` (slice zustand dans `src/store.ts`, persistance idb
+  `theathror-contacts` / `theathror-reminders`, hydratés au boot). Pattern CRUD calqué sur le Journal.
+- **Écrans** : `Carnet.tsx` (`/carnet`) — liste filtrable par rôle, encart rappels, création via
+  `components/ContactFormModal.tsx` (formulaire réutilisé en création et édition) ; `FicheContact.tsx`
+  (`/carnet/:id`) — coordonnées (liens mailto/tel), fiche de préparation IA, rappels. Branché dans
+  `App.tsx`, le Drawer (groupe *Personnel*) et `help.ts` (2 entrées, fiche avant liste).
+- **Analyse d'URL** (`src/lib/enrich.ts`) : `fetchPageText` passe par le proxy Netlify existant
+  (`/.netlify/functions/feed?url=` — déjà générique + anti-SSRF, accepte `text/html`), nettoie le HTML
+  en texte (≤ 12 k), puis `messagesDepuisPage` / `messagesRepliModele` construisent le prompt envoyé
+  via `useAI().run`. **Choix produit validé** : si le texte extrait est < 350 car. (SPA/anti-bot), on
+  bascule sur le repli connaissance du modèle, avec avertissement « à vérifier » (`ficheSource`).
+  Le résumé est persisté sur le contact (`fiche`, `ficheAt`, `ficheSource`).
+- **Rappels** (`src/lib/reminders.ts`) : `dueItems` fusionne rappels non faits (échéance ≤ 30 j,
+  retards inclus) et anniversaires dérivés (prochaine occurrence ≤ 14 j, non cochables). Encart
+  `components/RappelsBanner.tsx` partagé — `compact` sur l'Accueil (3 lignes max), complet dans le
+  Carnet. Modèles contextuels en un tap sur la fiche. Helpers de date ajoutés à `src/lib/date.ts`
+  (`joursDepuisAujourdhui`, `delaiRelatif`, `ajouteMois`, `dansNJours`).
+- **Vérifié** : `tsc` + `npm run build` propres ; smoke test Playwright (viewport 412×915) piloté sur
+  le build de preview — création de contact, ajout de rappels (modèle + personnalisé échu), badges du
+  Carnet et encart « À relancer » de l'Accueil, **9/9 assertions vertes, zéro erreur console**. DA
+  cohérente (carte rouge dégradée comme les autres encarts, or/Playfair). Nouveaux écrans reçoivent
+  aussi leur astuce contextuelle (`ScreenTip`) automatiquement.
+- **Limite connue** : l'analyse d'URL dépend de la clé OpenRouter (comme tout le Mode IA) et de la
+  lisibilité de la page côté serveur — les sites rendus intégralement en JS retombent sur le repli.
 
 ## Fait (session du 2026-07-15)
 - **Écran Thèmes** (`/explorer/themes`, `src/screens/Themes.tsx` + `ThemeDetail.tsx`) : le répertoire

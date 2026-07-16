@@ -12,6 +12,8 @@ export const KEYS = {
   flux: 'theathror-flux', // cache des nouveautés RSS (podcasts/vidéos)
   fluxUser: 'theathror-flux-user', // sources RSS ajoutées par l'utilisateur
   rehearsal: 'theathror-rehearsal', // pièces du mode répétition
+  contacts: 'theathror-contacts', // carnet d'adresses (professionnels du spectacle)
+  reminders: 'theathror-reminders', // rappels de suivi des interactions
 } as const;
 
 // ─── IndexedDB (idb-keyval) : favoris, journal, préférences ───

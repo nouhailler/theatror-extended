@@ -7,6 +7,22 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 
 ## [Non publié]
 
+### 2026-07-16
+- **Carnet & contacts** (`/carnet`, `src/screens/Carnet.tsx` + `FicheContact.tsx`) : un répertoire de
+  professionnels du spectacle (metteurs en scène, directeurs de casting, régisseurs, comédiens,
+  compagnies, agents), avec coordonnées, filtres par rôle, et persistance locale (idb
+  `theathror-contacts`). Accessible via le menu ☰ › Personnel.
+- **Fiche de préparation IA** : depuis un contact, l'URL de son site ou profil est récupérée via le
+  proxy Netlify existant (`/.netlify/functions/feed`, anti-SSRF), réduite en texte, puis résumée par
+  OpenRouter (clé des Réglages) en **dernières mises en scène, esthétique, contacts publics et angle
+  de candidature**. Si la page est illisible (SPA/anti-bot), repli honnête sur la connaissance du
+  modèle, signalé comme « à vérifier ». Modules `src/lib/enrich.ts`.
+- **Suivi des interactions** (idb `theathror-reminders`) : rappels contextuels rattachés à un contact,
+  ajoutés en un tap (« Relancer +3 mois après audition », « Souhaiter l'anniversaire », « Féliciter
+  pour une création ») ou personnalisés. Un encart **« À relancer »** agrège les échéances (retards en
+  rouge, anniversaires dérivés) sur l'**Accueil** et en tête du **Carnet**. Logique dans
+  `src/lib/reminders.ts`, helpers de date dans `src/lib/date.ts`.
+
 ### 2026-07-15
 - **Écran Thèmes** (`/explorer/themes`) : le répertoire indexé par sujet — **592 pièces, 47 thèmes**.
   On entre par un thème, on obtient les pièces qui l'abordent avec un résumé ; les **102 pièces

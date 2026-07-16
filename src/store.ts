@@ -11,6 +11,7 @@ import {
   clearTips,
 } from './lib/storage';
 import { JOURNAL_SEED } from './data/journalSeed';
+import { todayISO } from './lib/date';
 
 // ─── Types ───
 export type FavCategory =
@@ -27,6 +28,45 @@ export interface JournalEntry {
   date: string; // ISO (YYYY-MM-DD)
   txt: string;
   minutes?: number; // temps de travail en scène (stats)
+}
+
+// ─── Carnet d'adresses (professionnels du spectacle) ───
+export type ContactRole =
+  | 'Metteur en scène' | 'Directeur de casting' | 'Régisseur'
+  | 'Comédien' | 'Compagnie' | 'Agent' | 'Autre';
+
+export const CONTACT_ROLES: ContactRole[] = [
+  'Metteur en scène', 'Directeur de casting', 'Régisseur',
+  'Comédien', 'Compagnie', 'Agent', 'Autre',
+];
+
+export interface Contact {
+  id: string;
+  nom: string;
+  role: ContactRole;
+  organisation?: string; // théâtre, compagnie
+  email?: string;
+  tel?: string;
+  url?: string;          // site compagnie / profil professionnel
+  anniversaire?: string; // ISO (l'année est ignorée pour le rappel annuel)
+  notes?: string;
+  fiche?: string;        // résumé IA extrait de l'URL (markdown)
+  ficheAt?: string;      // ISO — date de génération du résumé
+  ficheSource?: 'page' | 'modele'; // extraction réelle de la page, ou repli connaissance
+  createdAt: string;
+}
+
+// ─── Suivi des interactions (rappels contextuels) ───
+export type ReminderKind = 'relance' | 'anniversaire' | 'felicitation' | 'autre';
+
+export interface Reminder {
+  id: string;
+  contactId: string;
+  label: string;
+  due: string; // ISO (YYYY-MM-DD)
+  kind: ReminderKind;
+  note?: string;
+  done: boolean;
 }
 
 export interface Settings {
@@ -49,6 +89,19 @@ interface State {
   addEntry: (e: Omit<JournalEntry, 'id'>) => void;
   updateEntry: (id: string, patch: Partial<Omit<JournalEntry, 'id'>>) => void;
   deleteEntry: (id: string) => void;
+
+  // Carnet d'adresses
+  contacts: Contact[];
+  addContact: (c: Omit<Contact, 'id' | 'createdAt'>) => string;
+  updateContact: (id: string, patch: Partial<Omit<Contact, 'id' | 'createdAt'>>) => void;
+  deleteContact: (id: string) => void;
+
+  // Rappels de suivi
+  reminders: Reminder[];
+  addReminder: (r: Omit<Reminder, 'id' | 'done'>) => void;
+  updateReminder: (id: string, patch: Partial<Omit<Reminder, 'id'>>) => void;
+  toggleReminder: (id: string) => void;
+  deleteReminder: (id: string) => void;
 
   // Préférences
   settings: Settings;
@@ -129,6 +182,49 @@ export const useStore = create<State>((set, getState) => ({
     void idbSet(KEYS.journal, journal);
   },
 
+  contacts: [],
+  addContact: (c) => {
+    const id = uid();
+    const contacts = [{ ...c, id, createdAt: todayISO() }, ...getState().contacts];
+    set({ contacts });
+    void idbSet(KEYS.contacts, contacts);
+    return id;
+  },
+  updateContact: (id, patch) => {
+    const contacts = getState().contacts.map((c) => (c.id === id ? { ...c, ...patch } : c));
+    set({ contacts });
+    void idbSet(KEYS.contacts, contacts);
+  },
+  deleteContact: (id) => {
+    const contacts = getState().contacts.filter((c) => c.id !== id);
+    const reminders = getState().reminders.filter((r) => r.contactId !== id);
+    set({ contacts, reminders });
+    void idbSet(KEYS.contacts, contacts);
+    void idbSet(KEYS.reminders, reminders);
+  },
+
+  reminders: [],
+  addReminder: (r) => {
+    const reminders = [...getState().reminders, { ...r, id: uid(), done: false }];
+    set({ reminders });
+    void idbSet(KEYS.reminders, reminders);
+  },
+  updateReminder: (id, patch) => {
+    const reminders = getState().reminders.map((r) => (r.id === id ? { ...r, ...patch } : r));
+    set({ reminders });
+    void idbSet(KEYS.reminders, reminders);
+  },
+  toggleReminder: (id) => {
+    const reminders = getState().reminders.map((r) => (r.id === id ? { ...r, done: !r.done } : r));
+    set({ reminders });
+    void idbSet(KEYS.reminders, reminders);
+  },
+  deleteReminder: (id) => {
+    const reminders = getState().reminders.filter((r) => r.id !== id);
+    set({ reminders });
+    void idbSet(KEYS.reminders, reminders);
+  },
+
   settings: DEFAULT_SETTINGS,
   setSettings: (patch) => {
     const settings = { ...getState().settings, ...patch };
@@ -173,11 +269,13 @@ export const useStore = create<State>((set, getState) => ({
   setTourStep: (i) => set({ tourStep: i }),
 
   hydrate: async () => {
-    const [favs, storedJournal, settings, seeded] = await Promise.all([
+    const [favs, storedJournal, settings, seeded, contacts, reminders] = await Promise.all([
       idbGet<FavMap>(KEYS.favs, {}),
       idbGet<JournalEntry[]>(KEYS.journal, []),
       idbGet<Settings>(KEYS.settings, DEFAULT_SETTINGS),
       idbGet<boolean>(KEYS.seeded, false),
+      idbGet<Contact[]>(KEYS.contacts, []),
+      idbGet<Reminder[]>(KEYS.reminders, []),
     ]);
     let journal = storedJournal;
     if (!seeded && storedJournal.length === 0) {
@@ -188,6 +286,8 @@ export const useStore = create<State>((set, getState) => ({
     set({
       favs,
       journal,
+      contacts,
+      reminders,
       settings: { ...DEFAULT_SETTINGS, ...settings },
       hydrated: true,
     });

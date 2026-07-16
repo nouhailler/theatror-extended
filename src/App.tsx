@@ -43,6 +43,8 @@ import RepConfig from './screens/rehearsal/RepConfig';
 import RepPlayer from './screens/rehearsal/RepPlayer';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
+import Carnet from './screens/Carnet';
+import FicheContact from './screens/FicheContact';
 import Reglages from './screens/Reglages';
 
 export default function App() {
@@ -91,6 +93,8 @@ export default function App() {
           <Route path="/repetition/:id/jouer" element={<RepPlayer />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
+          <Route path="/carnet" element={<Carnet />} />
+          <Route path="/carnet/:id" element={<FicheContact />} />
           <Route path="/reglages" element={<Reglages />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

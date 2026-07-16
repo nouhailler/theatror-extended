@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store';
 import { Overline } from '../components/ui';
 import WikiImage from '../components/WikiImage';
+import RappelsBanner from '../components/RappelsBanner';
 import { LIEUX, CITATIONS } from '../data/content';
 import { PIECES } from '../data/pieces';
 import { searchAll } from '../lib/search';
@@ -89,6 +90,9 @@ export default function Accueil() {
         </div>
       ) : (
       <>
+      {/* Rappels de suivi (contacts à relancer) */}
+      <RappelsBanner compact />
+
       {/* Hero théâtre du jour */}
       <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(212,169,78,.25)', background: 'var(--hero-red)' }}>
         <WikiImage

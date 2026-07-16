@@ -400,6 +400,39 @@ export const HELP: HelpEntry[] = [
     test: (p) => p.startsWith('/scene'),
   },
   {
+    id: 'fiche-contact',
+    title: "Fiche d'un contact",
+    resume: "Tout sur un contact professionnel : coordonnées, fiche de préparation générée depuis son site, et rappels de suivi.",
+    tips: [
+      "Renseignez l'URL d'un site de compagnie ou d'un profil, puis touchez « Analyser » : l'IA résume dernières mises en scène, esthétique et contacts publics.",
+      "L'analyse nécessite une clé OpenRouter (Réglages). Si la page est illisible, la fiche s'appuie sur le nom — à vérifier.",
+      'Ajoutez des rappels en un tap : relancer après une audition, souhaiter un anniversaire, féliciter pour une création.',
+    ],
+    situe: 'En touchant un contact dans le Carnet.',
+    relations: [
+      { label: 'Carnet & contacts', path: '/carnet' },
+      { label: 'Réglages (clé IA)', path: '/reglages' },
+    ],
+    test: (p) => /^\/carnet\/[^/]+/.test(p),
+  },
+  {
+    id: 'carnet',
+    title: 'Carnet & contacts',
+    resume: "Votre répertoire de professionnels du spectacle — metteurs en scène, directeurs de casting, régisseurs, compagnies — avec fiches de préparation et rappels de relance.",
+    tips: [
+      'Ajoutez un contact avec son rôle, sa structure et l\'URL de son site ou profil.',
+      "Depuis une fiche, l'IA prépare un résumé pour votre candidature à partir de la page.",
+      "L'encart « À relancer » regroupe les échéances : relances, anniversaires, félicitations.",
+      'Tout reste privé, sur votre appareil.',
+    ],
+    situe: "Menu ☰ › Personnel › Carnet & contacts.",
+    relations: [
+      { label: 'Journal du comédien', path: '/journal' },
+      { label: 'Mode IA', path: '/ia' },
+    ],
+    test: (p) => p.startsWith('/carnet'),
+  },
+  {
     id: 'journal',
     title: 'Journal du comédien',
     resume: "Votre carnet de bord : répétitions, progrès, difficultés et idées de mise en scène, avec suivi du temps.",
