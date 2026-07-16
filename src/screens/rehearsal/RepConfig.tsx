@@ -87,6 +87,11 @@ export default function RepConfig() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: '18px 18px 28px' }} data-screen-label="Répétition — configuration">
       <BackHeader to="/repetition" title="Configuration" sub={play.titre} />
 
+      <button onClick={() => nav(`/repetition/${play.id}/aide`)}
+        style={{ textAlign: 'center', background: 'var(--bg-field)', border: '1px solid var(--b-input)', borderRadius: 999, padding: '9px 12px', color: 'var(--gold-chip-text)', fontSize: 13.5, fontFamily: 'var(--font-body)', cursor: 'pointer' }}>
+        📖 Lire la documentation pour commencer
+      </button>
+
       {/* Mon rôle */}
       <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--gold)' }}>Mon rôle</div>

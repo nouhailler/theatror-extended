@@ -8,6 +8,14 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Répétition — prise en main** : lien « 📖 Lire la documentation pour commencer » en tête de l'écran
+  **Configuration**, sur le modèle du Mode IA. Nouvel écran de **documentation** (`/repetition/:id/aide`)
+  pensé pour des comédiens : il explique chaque réglage avec un exemple du *Misanthrope*, en insistant
+  sur **Didascalies** (Lire / Afficher / Ignorer), **Mes répliques** (Pause manuelle / Chronométré /
+  Masqué) et surtout **Mémoriser mon rôle (cartes)** — les 3 modes détaillés (**Ping-Pong**, **Trous**,
+  **Indice**), le bouton **Révéler** puis l'auto-évaluation *À revoir / Presque / Su*, et les deux
+  compteurs (« **X/Y sues** » = répliques acquises sur le total du rôle ; « **carte N/Y** » = position
+  dans la séance, qui grandit avec « À revoir »). Écran `src/screens/rehearsal/AideRepetition.tsx`.
 - **Correctif import Répétition** : l'écran « Nouvelle pièce » n'avait qu'une petite flèche `←` pour
   sortir — invisible en PWA installée, surtout quand le **sélecteur de fichier natif** (« Importer un .txt »)
   recouvre toute l'app, d'où le sentiment d'être bloqué. Ajout d'un bouton **« ← Annuler et revenir »**

@@ -43,6 +43,7 @@ import RepImport from './screens/rehearsal/RepImport';
 import RepConfig from './screens/rehearsal/RepConfig';
 import RepPlayer from './screens/rehearsal/RepPlayer';
 import RepCards from './screens/rehearsal/RepCards';
+import AideRepetition from './screens/rehearsal/AideRepetition';
 import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Carnet from './screens/Carnet';
@@ -96,6 +97,7 @@ export default function App() {
           <Route path="/repetition/:id/config" element={<RepConfig />} />
           <Route path="/repetition/:id/jouer" element={<RepPlayer />} />
           <Route path="/repetition/:id/cartes" element={<RepCards />} />
+          <Route path="/repetition/:id/aide" element={<AideRepetition />} />
           <Route path="/scene" element={<Scene />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/carnet" element={<Carnet />} />
