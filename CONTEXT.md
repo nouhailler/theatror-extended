@@ -5,11 +5,15 @@ _Dernière mise à jour : 2026-07-16._
 ## Fait (session du 2026-07-16)
 - **Miniatures dans l'écran Pièces** : `PieceCard.tsx` affiche une vignette 58×58 à gauche du titre via
   `WikiImage` (repli initiale dorée). Correspondance `pieceId → fichier Wikimedia` centralisée dans
-  `src/data/pieceImages.ts` — **34 pièces** amorcées à partir d'images **déjà présentes dans l'app**
-  (`CREDITS` de `lib/wikimedia.ts`), donc garanties de se charger (URLs vérifiées 200). Les ~296
-  autres pièces gardent la tuile initiale : dégradation gracieuse, aucun trou. Vérifié visuellement
-  (Playwright, viewport 412×915) : vignettes réelles en tête de liste, tuiles dorées sur le filtre
-  Vaudeville (Feydeau/Labiche sans image). Complétable œuvre par œuvre sans toucher `pieces.ts`.
+  `src/data/pieceImages.ts` — **329 des 330 pièces couvertes** (seul `garcon-aveugle` reste sans image).
+  Construit en 7 lots à partir de liens fournis par l'utilisateur (catégories/pages Commons & Wikipédia),
+  résolus vers un fichier concret via l'API Wikimedia par un script jetable (recherche + filtre
+  anti-faux-positifs « le nom de fichier doit contenir l'auteur »), **chaque fichier vérifié 200**, puis
+  **revue visuelle sur planche-contact** (Playwright) pour écarter les faux positifs que le 200 ne détecte
+  pas (pages de djvu vides, mires de microfilm, faire-part, mauvais homonyme — ex. le sculpteur *Corneille
+  van Clève* au lieu du dramaturge). Politique assumée : image spécifique de l'œuvre (page de titre,
+  gravure, mise en scène) si fiable, **sinon portrait de l'auteur** (répétition acceptée par l'utilisateur,
+  « une image répétitive plutôt qu'une tuile sans saveur »). `pieces.ts` n'est jamais touché.
 - **Carnet d'adresses enrichi + suivi des interactions** — deux fonctionnalités bâties autour d'un
   même noyau `Contact`/`Reminder` (slice zustand dans `src/store.ts`, persistance idb
   `theathror-contacts` / `theathror-reminders`, hydratés au boot). Pattern CRUD calqué sur le Journal.

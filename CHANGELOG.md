@@ -9,10 +9,12 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 
 ### 2026-07-16
 - **Miniatures des pièces** : l'écran Pièces (et les cartes réutilisées) affiche une vignette à gauche
-  de chaque titre. Table `pieceId → fichier Wikimedia` (`src/data/pieceImages.ts`) amorcée avec ~34
-  œuvres iconiques (Le Misanthrope, Tartuffe, Phèdre, Le Cid, Cyrano, Hamlet, Ubu roi…), en réutilisant
-  des images du domaine public **déjà présentes dans l'app**. Les pièces sans image retombent sur la
-  tuile « initiale dorée » de `WikiImage` — jamais de trou. Complétable œuvre par œuvre.
+  de chaque titre. Table `pieceId → fichier Wikimedia` (`src/data/pieceImages.ts`) couvrant désormais
+  **329 des 330 pièces**. Chaque fichier Commons est du domaine public / licence libre et **vérifié
+  (HTTP 200)** ; image spécifique de l'œuvre (page de titre, gravure, mise en scène) quand elle existe,
+  sinon **portrait de l'auteur**. Les faux positifs de recherche (sujets hors-propos, pages blanches,
+  mires) ont été écartés à la revue visuelle. Seul *Le Garçon et l'Aveugle* (farce médiévale anonyme,
+  sans source) garde la tuile « initiale dorée » de `WikiImage`.
 - **Carnet & contacts** (`/carnet`, `src/screens/Carnet.tsx` + `FicheContact.tsx`) : un répertoire de
   professionnels du spectacle (metteurs en scène, directeurs de casting, régisseurs, comédiens,
   compagnies, agents), avec coordonnées, filtres par rôle, et persistance locale (idb
