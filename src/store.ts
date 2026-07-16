@@ -12,6 +12,7 @@ import {
 } from './lib/storage';
 import { JOURNAL_SEED } from './data/journalSeed';
 import { todayISO } from './lib/date';
+import { DEFAULT_HOME_SHORTCUTS } from './data/homeShortcuts';
 
 // ─── Types ───
 export type FavCategory =
@@ -73,6 +74,7 @@ export interface Settings {
   openRouterKey: string;
   openRouterModel: string;
   tipsEnabled: boolean; // astuces contextuelles au fil de la navigation
+  homeShortcuts: string[]; // accès rapides affichés sur l'accueil (ids de homeShortcuts)
 }
 
 interface State {
@@ -146,6 +148,7 @@ const DEFAULT_SETTINGS: Settings = {
   openRouterKey: '',
   openRouterModel: 'anthropic/claude-3.5-sonnet',
   tipsEnabled: true,
+  homeShortcuts: DEFAULT_HOME_SHORTCUTS,
 };
 
 export const useStore = create<State>((set, getState) => ({

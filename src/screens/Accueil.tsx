@@ -7,6 +7,7 @@ import RappelsBanner from '../components/RappelsBanner';
 import { LIEUX, CITATIONS } from '../data/content';
 import { PIECES } from '../data/pieces';
 import { searchAll } from '../lib/search';
+import { HOME_SHORTCUTS_BY_ID } from '../data/homeShortcuts';
 
 // Rotation quotidienne déterministe.
 function jourDeLAnnee(): number {
@@ -49,12 +50,9 @@ export default function Accueil() {
   const citation = pick(CITATIONS);
   const piece = pick(PIECES);
 
-  const quick = [
-    { titre: 'Monologues', sub: 'Pour vos auditions', to: '/scene?seg=mono' },
-    { titre: 'Frise du théâtre', sub: "2 500 ans d'histoire", to: '/explorer/frise' },
-    { titre: 'Trouver une pièce', sub: 'Filtres par distribution', to: '/pieces' },
-    { titre: 'Journal', sub: 'Notes de répétition', to: '/journal' },
-  ];
+  // Accès rapides personnalisables (choisis dans Réglages), dans l'ordre stocké.
+  const homeShortcuts = useStore((s) => s.settings.homeShortcuts);
+  const quick = homeShortcuts.map((id) => HOME_SHORTCUTS_BY_ID[id]).filter(Boolean);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 22, padding: '18px 18px 28px' }} data-screen-label="Accueil">
@@ -134,14 +132,26 @@ export default function Accueil() {
         </div>
       </div>
 
-      {/* Accès rapides */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-        {quick.map((q) => (
-          <div key={q.titre} onClick={() => nav(q.to)} className="card-tap" style={quickStyle}>
-            <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{q.titre}</div>
-            <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 2 }}>{q.sub}</div>
+      {/* Accès rapides — personnalisables depuis Réglages */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 8 }}>
+          <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Accès rapides</div>
+          <button onClick={() => nav('/reglages')} style={{ background: 'none', border: 'none', color: 'var(--gold-chip-text)', fontSize: 12.5, cursor: 'pointer', fontFamily: 'var(--font-body)', padding: 0 }}>Personnaliser →</button>
+        </div>
+        {quick.length > 0 ? (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+            {quick.map((q) => (
+              <div key={q.id} onClick={() => nav(q.to)} className="card-tap" style={quickStyle}>
+                <div style={{ fontFamily: 'var(--font-title)', fontSize: 16.5, fontWeight: 600 }}>{q.label}</div>
+                <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 2 }}>{q.sub}</div>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div onClick={() => nav('/reglages')} className="card-tap" style={{ ...quickStyle, textAlign: 'center', color: 'var(--text-muted)', fontStyle: 'italic', fontSize: 13.5 }}>
+            Aucun accès rapide — touchez pour en choisir dans Réglages.
+          </div>
+        )}
       </div>
 
       {/* Ma collection */}

@@ -8,6 +8,14 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Accueil personnalisable** : la section « Accès rapides » de l'accueil est configurable depuis
+  **Réglages › Accueil**. On coche parmi 20 raccourcis (Mode répétition, Exercices, Voix & diction,
+  Carnet & contacts, Médias, Festivals, Mise en scène…) ceux à afficher sur sa page d'accueil — utile
+  selon le moment (répétition en cours, entraînement, casting). Stocké dans les préférences
+  (`settings.homeShortcuts`), catalogue dans `src/data/homeShortcuts.ts`. Par défaut : les 4 accès
+  historiques (comportement inchangé pour les utilisateurs existants).
+- **Fiche pièce** : l'image de la pièce s'affiche désormais en fond du héro, sous le titre (au lieu de
+  la seule initiale), en réutilisant les vignettes déjà résolues.
 - **Miniatures des pièces** : l'écran Pièces (et les cartes réutilisées) affiche une vignette à gauche
   de chaque titre. Table `pieceId → fichier Wikimedia` (`src/data/pieceImages.ts`) couvrant désormais
   **329 des 330 pièces**. Chaque fichier Commons est du domaine public / licence libre et **vérifié

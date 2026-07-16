@@ -3,6 +3,15 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Accueil personnalisable** : la grille « Accès rapides » de `Accueil.tsx` est pilotée par
+  `settings.homeShortcuts` (nouveau champ de `Settings`, défaut = les 4 accès historiques, merge au boot
+  donc rétro-compatible). Catalogue de 20 raccourcis dans `src/data/homeShortcuts.ts` (id/label/sub/to).
+  `Reglages.tsx` ajoute une section « Accueil › Accès rapides » avec une bascule par raccourci
+  (`toggleShortcut`, ajout en fin de liste → ordre d'activation respecté à l'affichage). Lien
+  « Personnaliser → » sur l'accueil, état vide géré. Vérifié en pilotant l'app (Playwright) : coche dans
+  Réglages → apparition sur l'accueil → persistance après reload, zéro erreur console.
+- **Fiche pièce — image de héro** : `FichePiece.tsx` remplace l'initiale seule par `<WikiImage>` +
+  `pieceImage(id)` (repli initiale dorée). Aucune donnée nouvelle, réutilise les vignettes.
 - **Miniatures dans l'écran Pièces** : `PieceCard.tsx` affiche une vignette 58×58 à gauche du titre via
   `WikiImage` (repli initiale dorée). Correspondance `pieceId → fichier Wikimedia` centralisée dans
   `src/data/pieceImages.ts` — **329 des 330 pièces couvertes** (seul `garcon-aveugle` reste sans image).

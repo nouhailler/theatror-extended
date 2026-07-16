@@ -33,7 +33,7 @@ export const HELP: HelpEntry[] = [
     tips: [
       "La barre de recherche cherche dans toute l'application : pièces, auteurs, personnages, costumes, décors…",
       'Le « rendez-vous du jour » change chaque jour — théâtre, citation et pièce mis en avant.',
-      'Les accès rapides mènent directement à vos outils les plus utiles.',
+      'Les accès rapides sont personnalisables : choisissez-les dans Réglages (Mode répétition, Voix & diction, Carnet & contacts…).',
       "Touchez ☆ n'importe où pour ajouter aux favoris (retrouvés dans Ma collection).",
     ],
     situe: "Onglet « Accueil » en bas à gauche, ou le titre THEATHROR en haut.",
@@ -451,8 +451,9 @@ export const HELP: HelpEntry[] = [
   {
     id: 'reglages',
     title: 'Réglages',
-    resume: "Configurez le Mode IA (clé OpenRouter et modèle), les astuces et l'aide de l'application.",
+    resume: "Configurez les accès rapides de l'accueil, le Mode IA (clé OpenRouter et modèle), les astuces et l'aide.",
     tips: [
+      "« Accès rapides » : cochez les raccourcis à afficher sur votre page d'accueil (Mode répétition, Voix & diction, Carnet & contacts…).",
       "Renseignez votre clé OpenRouter pour activer le Mode IA.",
       'Chargez et choisissez un modèle gratuit d\'OpenRouter.',
       "Relancez le mode démo, revoyez l'introduction ou gérez les astuces.",

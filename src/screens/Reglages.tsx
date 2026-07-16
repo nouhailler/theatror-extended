@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useStore } from '../store';
 import { BackHeader } from '../components/ui';
 import { fetchFreeModels, type OpenRouterModel } from '../lib/openrouter';
+import { HOME_SHORTCUTS } from '../data/homeShortcuts';
 
 // Modèles OpenRouter courants (repli si la liste en ligne n'est pas chargée).
 const MODELES = [
@@ -50,6 +51,13 @@ export default function Reglages() {
     setTimeout(() => setSaved(false), 1800);
   };
 
+  // Active/désactive un accès rapide de l'accueil (ajout en fin de liste).
+  const toggleShortcut = (id: string) => {
+    const cur = settings.homeShortcuts;
+    const next = cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id];
+    setSettings({ homeShortcuts: next });
+  };
+
   // Options du sélecteur : modèles gratuits si chargés, sinon la liste par défaut.
   // On garde toujours le modèle courant sélectionnable, même absent de la liste.
   const baseOptions = onlyFree && freeModels ? freeModels.map((m) => m.id) : MODELES;
@@ -61,6 +69,36 @@ export default function Reglages() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: '18px 18px 28px' }} data-screen-label="Réglages">
       <BackHeader to="/" title="Réglages" />
+
+      <section className="card card-16" style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div>
+          <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>Accueil</div>
+          <div style={{ fontFamily: 'var(--font-title)', fontSize: 19, fontWeight: 600, marginTop: 2 }}>Accès rapides</div>
+          <div style={{ fontSize: 13.5, color: 'var(--text-muted)', marginTop: 4, lineHeight: 1.5 }}>
+            Choisissez les raccourcis affichés sur votre page d'accueil — Mode répétition si vous répétez,
+            Exercices ou Voix &amp; diction pour vous entraîner, Carnet &amp; contacts pour un casting…
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {HOME_SHORTCUTS.map((sc) => (
+            <label key={sc.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, cursor: 'pointer', padding: '9px 0', borderTop: '1px solid var(--b-chip)' }}>
+              <span style={{ minWidth: 0 }}>
+                <span style={{ fontSize: 14.5, color: 'var(--text-2b)' }}>{sc.label}</span>
+                <span style={{ fontSize: 12.5, color: 'var(--text-muted)', fontStyle: 'italic', marginLeft: 8 }}>{sc.sub}</span>
+              </span>
+              <input
+                type="checkbox"
+                checked={settings.homeShortcuts.includes(sc.id)}
+                onChange={() => toggleShortcut(sc.id)}
+                style={{ width: 18, height: 18, flex: 'none' }}
+              />
+            </label>
+          ))}
+        </div>
+        <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>
+          {settings.homeShortcuts.length} affiché{settings.homeShortcuts.length > 1 ? 's' : ''} sur l'accueil
+        </div>
+      </section>
 
       <section className="card card-16" style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
         <div>
