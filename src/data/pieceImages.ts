@@ -314,6 +314,33 @@ export const PIECE_IMAGES: Record<string, string> = {
   'fausses-confidences': 'Pierre Carlet de Chamblain de Marivaux - Versailles MV 2985.jpg',
   'amphitryon': 'Amphitryon, RP-P-1910-1703.jpg',
   'bajazet': 'Jean racine.jpg',
+  // ── Batch 6 (2026-07-16) — Thomas Corneille / Hugo / Voltaire / Shakespeare.
+  // Portraits d'auteur (T. Corneille : Van Loo ; Hugo : Carjat ; Voltaire :
+  // Largillière). Othello : scène de production. Sources hors-sujet écartées.
+  'ariane': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'amour-a-la-mode': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'inconnu': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'mort-d-achille': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'comte-d-essex': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'festin-de-pierre': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'galant-double': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'illustres-ennemis': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'persee-et-demetrius': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'stilicon': 'Portrait de Thomas Corneille - Jacob van Loo - Musée Condé.jpg',
+  'grand-mere': 'Victor Hugo by Étienne Carjat 1876 - full.jpg',
+  'roi-s-amuse': 'Victor Hugo by Étienne Carjat 1876 - full.jpg',
+  'burgraves': 'Victor Hugo by Étienne Carjat 1876 - full.jpg',
+  'mangeront-ils': 'Victor Hugo by Étienne Carjat 1876 - full.jpg',
+  'marie-tudor': 'Victor Hugo by Étienne Carjat 1876 - full.jpg',
+  'agathocle': 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
+  'alzire-ou-les-americains': 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
+  'irene': 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
+  'femme-qui-a-raison': 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
+  'fanatisme-ou-mahomet-le-prophete': 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
+  'oedipe': 'Atelier de Nicolas de Largillière, portrait de Voltaire, détail (musée Carnavalet) -002.jpg',
+  'roi-lear': 'Shakespeare.jpg',
+  'songe-nuit-ete': 'Shakespeare.jpg',
+  'othello': '"Othello" Shakespeare Chechnya National theatre Director Roman Markholia 15.jpg',
 };
 
 /** Fichier Wikimedia d'une pièce, ou undefined (→ repli initiale dans WikiImage). */
