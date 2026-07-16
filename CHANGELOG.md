@@ -8,6 +8,15 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Castings — veille & candidatures** (`/casting`) : un outil pour surveiller des appels à candidatures
+  et gérer ses castings. **Sources** = flux RSS + pages d'auditions que vous ajoutez, lues **à la demande**
+  via le proxy Netlify existant (anti-SSRF) — une page à la fois, pas de crawl furtif. Pré-filtre local
+  par mots-clés, puis l'**IA (OpenRouter, votre clé)** détecte si c'est un casting, en **extrait le schéma
+  structuré** (titre, compagnie, ville, dates, profils, rémunéré, contact…) et calcule un **score de
+  compatibilité** avec votre profil comédien. **Tableau de bord** (nouveaux, à échéance, très compatibles,
+  CV/vidéo), filtres, fiche détail, dédup par hash SHA-256. Tout reste **local** à l'appareil (RGPD).
+  _Volontairement exclus_ : rotation de proxies résidentiels (contournement de blocage, et infaisable en
+  PWA), scraping Facebook/Instagram/LinkedIn (interdit par leurs CGU), crawler furtif à grande échelle.
 - **Mode IA — prise en main** : deux liens toujours visibles en tête de l'écran — « 📖 Lire la
   documentation pour commencer » et « ⚙️ Clé IA » (vers les Réglages). Nouvel écran de **documentation**
   (`/ia/aide`) qui explique **pas à pas** chaque outil (Assistant, Mon rôle, Générer, Distribution,

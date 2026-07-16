@@ -3,6 +3,20 @@
 _Dernière mise à jour : 2026-07-16._
 
 ## Fait (session du 2026-07-16)
+- **Castings — veille & candidatures** (`/casting`, `src/screens/Casting.tsx`, menu Personnel). Modules
+  découplés en idb (comme `feeds.ts`, rien dans le store central) : `src/lib/castingStore.ts` (CRUD
+  sources/annonces/profil, clés `theathror-casting-sources|castings|casting-profile`),
+  `src/lib/castingScan.ts` (fetch via proxy Netlify → hash SHA-256 → parse RSS/Atom **ou** page, pré-filtre
+  local par mots-clés), `src/lib/castingAI.ts` (une requête JSON par candidat : détection + extraction du
+  schéma + score de compatibilité vs profil ; **extracteur d'objet dédié** car `extractJson` partagé vise
+  un tableau et se trompe quand l'objet contient des tableaux internes). Écran = dashboard + sources +
+  profil (repliables) + « Vérifier maintenant » (scan séquentiel, IA plafonnée à 15/vérif) + filtres +
+  liste triée par score + fiche détail. **Décisions produit assumées** (débat avec l'utilisateur) :
+  **refus** de la rotation de proxies résidentiels (évasion de blocage + infaisable en PWA), du scraping
+  Facebook/Instagram/LinkedIn (CGU), et du crawler furtif massif ; on garde RSS + pages pointées à la
+  demande + toute l'intelligence IA. Vérifié **E2E Playwright** (proxy + OpenRouter mockés) : ajout source
+  → scan → filtre mots-clés (1 seul appel IA, bruit écarté) → extraction → carte avec score 88 →
+  persistance après reload → fiche détail complète (email, raisons, dates). Zéro erreur console.
 - **Mode IA — prise en main & doc** : `ModeIA.tsx` affiche deux pills en tête (« Lire la documentation »
   → `/ia/aide` ; « Clé IA » → `/reglages`), toujours visibles. Nouvel écran `src/screens/ia/AideIA.tsx`
   (route `/ia/aide`) : documentation pas-à-pas de chaque outil (Assistant, Mon rôle, Générer,

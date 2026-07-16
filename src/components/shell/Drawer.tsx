@@ -73,6 +73,7 @@ export default function Drawer() {
         { label: 'Ma collection', note: 'favoris', onGo: go('/collection') },
         { label: 'Journal du comédien', onGo: go('/journal') },
         { label: 'Carnet & contacts', note: 'pro du spectacle', onGo: go('/carnet') },
+        { label: 'Castings', note: 'veille & candidatures', onGo: go('/casting') },
       ],
     },
     {

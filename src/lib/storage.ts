@@ -14,6 +14,9 @@ export const KEYS = {
   rehearsal: 'theathror-rehearsal', // pièces du mode répétition
   contacts: 'theathror-contacts', // carnet d'adresses (professionnels du spectacle)
   reminders: 'theathror-reminders', // rappels de suivi des interactions
+  castingSources: 'theathror-casting-sources', // sources de veille casting (RSS / pages)
+  castings: 'theathror-castings', // annonces de casting collectées (locales)
+  castingProfile: 'theathror-casting-profile', // profil comédien pour le score de compatibilité
 } as const;
 
 // ─── IndexedDB (idb-keyval) : favoris, journal, préférences ───

@@ -46,6 +46,7 @@ import Scene from './screens/Scene';
 import Journal from './screens/Journal';
 import Carnet from './screens/Carnet';
 import FicheContact from './screens/FicheContact';
+import Casting from './screens/Casting';
 import Reglages from './screens/Reglages';
 
 export default function App() {
@@ -97,6 +98,7 @@ export default function App() {
           <Route path="/journal" element={<Journal />} />
           <Route path="/carnet" element={<Carnet />} />
           <Route path="/carnet/:id" element={<FicheContact />} />
+          <Route path="/casting" element={<Casting />} />
           <Route path="/reglages" element={<Reglages />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

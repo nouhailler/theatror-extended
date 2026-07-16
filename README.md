@@ -95,6 +95,9 @@ scripts/themes/      Génération de src/data/themes.ts (source.md → gen.py). 
   (dernières mises en scène, esthétique, contacts publics, angle de candidature). **Suivi des
   interactions** : rappels contextuels en un tap (relancer après audition, anniversaire, félicitations)
   regroupés dans un encart « À relancer » sur l'Accueil et le Carnet
+- **Castings** : veille des appels à candidatures. Ajoutez des **flux RSS** ou des **pages d'auditions** ;
+  l'app les lit à la demande (via le proxy) et l'**IA détecte, résume, structure et note** chaque casting
+  selon votre profil (score de compatibilité). Tableau de bord, filtres, fiche détail — tout reste local
 
 Chaque chip de filtre affiche le **nombre d'enregistrements** correspondants, pour voir d'un coup
 d'œil la profondeur de chaque catégorie.

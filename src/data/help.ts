@@ -434,6 +434,23 @@ export const HELP: HelpEntry[] = [
     test: (p) => p.startsWith('/carnet'),
   },
   {
+    id: 'casting',
+    title: 'Castings — veille & candidatures',
+    resume: "Surveillez des sources d'appels à candidatures (flux RSS et pages) et laissez l'IA détecter, résumer et noter les castings selon votre profil.",
+    tips: [
+      "Ajoutez vos sources : un flux RSS, ou l'URL d'une page « auditions / appel à candidatures » d'une compagnie, d'un théâtre ou d'un festival.",
+      "Renseignez « Mon profil » (genre, âge, styles, régions) : l'IA s'en sert pour calculer un score de compatibilité.",
+      "« Vérifier maintenant » lit les sources et analyse les nouvelles annonces (nécessite une clé OpenRouter — Réglages).",
+      "Le tableau de bord résume : nouveaux, à échéance proche, très compatibles. Tout reste sur votre appareil.",
+    ],
+    situe: "Menu ☰ › Personnel › Castings.",
+    relations: [
+      { label: 'Carnet & contacts', path: '/carnet' },
+      { label: 'Réglages (clé IA)', path: '/reglages' },
+    ],
+    test: (p) => p.startsWith('/casting'),
+  },
+  {
     id: 'journal',
     title: 'Journal du comédien',
     resume: "Votre carnet de bord : répétitions, progrès, difficultés et idées de mise en scène, avec suivi du temps.",
