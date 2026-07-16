@@ -7,6 +7,8 @@ import { hasTexte, loadTexte } from '../data/pieceTextes';
 import { DRAMATURGES } from '../data/dramaturges';
 import { difficulteLabel, useBack } from '../components/ui';
 import Star from '../components/Star';
+import WikiImage from '../components/WikiImage';
+import { pieceImage } from '../data/pieceImages';
 import { useRehearsalStore } from '../lib/rehearsalStore';
 import { scriptFromBlocs } from '../data/rehearsal';
 
@@ -49,10 +51,17 @@ export default function FichePiece() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} data-screen-label={`Fiche ${p.titre}`}>
-      {/* Héro */}
-      <div style={{ position: 'relative', height: 168, background: 'var(--hero-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <span style={{ fontFamily: 'var(--font-title)', fontSize: 84, color: 'rgba(242,233,220,.14)', lineHeight: 1 }}>{p.titre.charAt(0)}</span>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.15) 0%,rgba(23,16,21,0) 30%,rgba(23,16,21,.92) 100%)' }} />
+      {/* Héro : image de la pièce en fond (repli initiale dorée), titre par-dessus */}
+      <WikiImage
+        file={pieceImage(p.id)}
+        initial={p.titre.charAt(0)}
+        initialSize={84}
+        width={900}
+        objectPosition="center"
+        fallbackBg="var(--hero-red)"
+        style={{ height: 168 }}
+      >
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(23,16,21,.28) 0%,rgba(23,16,21,.05) 32%,rgba(23,16,21,.92) 100%)' }} />
         <button onClick={goBack} aria-label="Retour"
           style={{ position: 'absolute', top: 12, left: 14, cursor: 'pointer', color: 'var(--text)', fontSize: 20, background: 'rgba(23,16,21,.55)', borderRadius: 999, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>←</button>
         <div style={{ position: 'absolute', top: 14, right: 16 }}>
@@ -63,7 +72,7 @@ export default function FichePiece() {
           <div style={{ fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, lineHeight: 1.1 }}>{p.titre}</div>
           <div style={{ fontSize: 14, color: 'var(--text-2)', fontStyle: 'italic' }}>{p.auteur} · {p.annee}</div>
         </div>
-      </div>
+      </WikiImage>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: '18px 18px 28px' }}>
         {/* Métadonnées */}
