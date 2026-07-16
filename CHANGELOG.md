@@ -8,6 +8,20 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/). Dates au 
 ## [Non publié]
 
 ### 2026-07-16
+- **Journal de répétition** (`/pieces/:id/journal`) : nouveau bouton **📓 Journal de répétition** sous
+  « Répéter cette pièce » dans la fiche. Un carnet de bord **par pièce** (titre = nom de la pièce) pour
+  consigner chaque séance. On **sélectionne l'acte puis la/les scènes travaillées** (structure extraite du
+  texte intégral) — indispensable pour situer la note dans la pièce — plus un champ libre pour les pièces
+  sans découpage. Champs proposés : **énergie / météo intérieure** (échelle 1–5 en emojis, pour filtrer
+  plus tard « en forme » vs « fatigué »), **présences** (metteur en scène, régisseur, autres), **Notes de
+  mise en scène** (déplacements, rythme, intentions — l'objectif), **Travail d'interprétation**
+  (découvertes, ratés, ressenti physique/voix, partenaires — le subjectif), **Régie** (accessoires,
+  costumes, lumière/son), **Le recul** (retour du metteur en scène, ressenti personnel, devoirs pour la
+  prochaine fois) et une **note vocale** à chaud (≈30 s, persistée). Chaque champ porte une aide expliquant
+  à quoi il sert, et une **documentation dépliable** en tête explique comment tenir son journal. Liste des
+  séances filtrable par énergie, dépliables, éditables. 100 % local (idb `theathror-rep-journal`). Modules
+  `src/data/repJournal.ts`, `src/lib/repJournalStore.ts`, `src/lib/useVoiceMemo.ts`,
+  `src/screens/rehearsal/RepJournal.tsx`.
 - **Répétition — prise en main** : lien « 📖 Lire la documentation pour commencer » en tête de l'écran
   **Configuration**, sur le modèle du Mode IA. Nouvel écran de **documentation** (`/repetition/:id/aide`)
   pensé pour des comédiens : il explique chaque réglage avec un exemple du *Misanthrope*, en insistant

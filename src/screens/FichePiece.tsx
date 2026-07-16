@@ -113,6 +113,19 @@ export default function FichePiece() {
           </button>
         )}
 
+        {/* Journal de répétition (séances, scènes travaillées, notes) */}
+        {hasTexte(p.id) && (
+          <button onClick={() => nav(`/pieces/${p.id}/journal`)}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              width: '100%', padding: '12px 16px', cursor: 'pointer', marginTop: -12,
+              background: 'none', color: 'var(--gold-chip-text)', border: '1px solid rgba(212,169,78,.45)',
+              borderRadius: 10, fontFamily: 'var(--font-title)', fontSize: 15, fontWeight: 600,
+            }}>
+            📓 Journal de répétition
+          </button>
+        )}
+
         {/* Résumé */}
         {p.resume && (
           <div>

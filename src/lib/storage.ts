@@ -12,6 +12,7 @@ export const KEYS = {
   flux: 'theathror-flux', // cache des nouveautés RSS (podcasts/vidéos)
   fluxUser: 'theathror-flux-user', // sources RSS ajoutées par l'utilisateur
   rehearsal: 'theathror-rehearsal', // pièces du mode répétition
+  repJournal: 'theathror-rep-journal', // journal de répétition (par pièce)
   contacts: 'theathror-contacts', // carnet d'adresses (professionnels du spectacle)
   reminders: 'theathror-reminders', // rappels de suivi des interactions
   castingSources: 'theathror-casting-sources', // sources de veille casting (RSS / pages)
