@@ -64,6 +64,53 @@ export const PIECE_IMAGES: Record<string, string> = {
 
   // Feydeau
   'puce-a-l-oreille': "La puce à l'oreille, pièce de Georges Feydeau - défets de presse - btv1b525109326 (1 of 8).jpg",
+
+  // ── Batch 1 (2026-07-16) — liens fournis par l'utilisateur, résolus vers un
+  // fichier Commons concret et vérifiés (200). Quand aucune image spécifique
+  // fiable n'existait, on retombe sur le portrait de l'auteur (repli assumé).
+  // Images spécifiques de l'œuvre
+  antony: 'Antony (Alexandre Dumas).jpg',
+  turcaret: 'Turcaret II-3 – Lesage.png',
+  'henry-iii-et-sa-cour': 'Henri III et sa cour P-FG-ES-05765.jpg',
+  'tour-de-nesle': 'Bocage as Buridan (Tour de Nesle).jpg',
+  'ubu-enchaine': 'Jarry - Ubu enchaîné, 1900 (page 11 crop).jpg',
+  'farce-cuvier': 'Farce du cuvier, modernisation Gassies, 1896.djvu',
+  'la-mouette': "Moscow Art Theatre production of Anton Chekhov's The Seagull 1898.jpg",
+  'oncle-vania': '"Uncle Vanya" LCCN98517783.jpg',
+  'chant-du-cygne': 'Лебединая песня (Калхас) литографированный оттиск 1888.jpg',
+  ours: 'The Bear by Anton Chekhov - Jan 2009 (3287886601).jpg',
+  noce: 'The Wedding Chekhov Gymnasium.jpg',
+  lysistrata: 'Title page first editions of Lysistrata of Aristophanes, 1516.jpg',
+  eugenie: 'Beaumarchais Eugénie Akt III Szene VIII.jpg',
+  // Repli : portrait de l'auteur (aucune image spécifique fiable)
+  'crispin-rival-de-son-maitre': 'Alain-René Lesage.png',
+  kean: 'Nadar - Alexander Dumas père (1802-1870) - Google Art Project 2.jpg',
+  antliaclastes: 'Alfred Jarry.jpg',
+  'andre-del-sarto': 'Alfred de Musset.jpg',
+  barberine: 'Alfred de Musset.jpg',
+  carmosine: 'Alfred de Musset.jpg',
+  'il-faut-qu-une-porte-soit-ouverte-ou-fer': 'Alfred de Musset.jpg',
+  'il-ne-faut-jurer-de-rien': 'Alfred de Musset.jpg',
+  'ane-et-le-ruisseau': 'Alfred de Musset.jpg',
+  'nuit-venitienne': 'Alfred de Musset.jpg',
+  chandelier: 'Alfred de Musset.jpg',
+  'caprices-marianne': 'Alfred de Musset.jpg',
+  louison: 'Alfred de Musset.jpg',
+  'on-ne-saurait-penser-a-tout': 'Alfred de Musset.jpg',
+  caprice: 'Alfred de Musset.jpg',
+  sauvage: 'Anton Chekhov with bow-tie sepia image.jpg',
+  'demande-en-mariage': 'Anton Chekhov with bow-tie sepia image.jpg',
+  'ce-fou-de-platonov': 'Anton Chekhov with bow-tie sepia image.jpg',
+  cerisaie: 'Anton Chekhov with bow-tie sepia image.jpg',
+  jubile: 'Anton Chekhov with bow-tie sepia image.jpg',
+  'mefaits-du-tabac': 'Anton Chekhov with bow-tie sepia image.jpg',
+  'trois-s-urs': 'Anton Chekhov with bow-tie sepia image.jpg',
+  'sur-la-grand-route': 'Anton Chekhov with bow-tie sepia image.jpg',
+  'tatiana-repina': 'Anton Chekhov with bow-tie sepia image.jpg',
+  'tragedien-malgre-lui': 'Anton Chekhov with bow-tie sepia image.jpg',
+  ivanov: 'Anton Chekhov with bow-tie sepia image.jpg',
+  'les-grenouilles': 'Aristofanes.jpg',
+  'les-oiseaux': 'Aristofanes.jpg',
 };
 
 /** Fichier Wikimedia d'une pièce, ou undefined (→ repli initiale dans WikiImage). */
