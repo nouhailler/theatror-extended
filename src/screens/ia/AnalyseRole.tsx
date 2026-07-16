@@ -153,14 +153,20 @@ export default function AnalyseRole() {
           <div>
             <Label>Portée</Label>
             <select style={fieldStyle} value={String(acteSel)} onChange={(e) => { setActeSel(e.target.value === 'all' ? 'all' : Number(e.target.value)); setResults([]); setRan(false); }}>
-              <option value="all">Toute la pièce (acte par acte)</option>
+              <option value="all">Toute la pièce (acte par acte — lourd sur modèle gratuit)</option>
               {actes.map((a) => <option key={a.acteIndex} value={a.acteIndex}>{a.acteLabel} — {a.lineCount} répliques</option>)}
             </select>
           </div>
 
           {chunks.length > 0 && (
             <div style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>
-              ≈ {chunks.length} requête{chunks.length > 1 ? 's' : ''} IA{acteSel === 'all' && chunks.length > 3 ? ' — pensez à cibler un acte pour réduire le coût' : ''}.
+              ≈ {chunks.length} requête{chunks.length > 1 ? 's' : ''} IA envoyée{chunks.length > 1 ? 's' : ''} à la suite.
+            </div>
+          )}
+
+          {acteSel === 'all' && chunks.length > 1 && (
+            <div style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--red-chip-text)', background: 'var(--red-chip-bg, rgba(158,43,58,.15))', border: '1px solid var(--red-chip-border)', borderRadius: 10, padding: '10px 12px' }}>
+              ⚠️ « Toute la pièce » enchaîne <strong>{chunks.length} requêtes</strong>. Sur un <strong>modèle gratuit</strong> d'OpenRouter (quota et contexte limités), l'analyse peut être lente, se faire <strong>bloquer</strong> en cours de route (erreurs de limite) ou rester incomplète. Pour un résultat fiable, choisissez plutôt <strong>un acte à la fois</strong>.
             </div>
           )}
         </>
