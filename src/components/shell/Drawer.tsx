@@ -8,7 +8,7 @@ interface Item {
   onGo?: () => void;
 }
 interface Group {
-  titre: string;
+  titre?: string;
   items: Item[];
 }
 
@@ -29,18 +29,15 @@ export default function Drawer() {
 
   const groups: Group[] = [
     {
-      titre: 'Découvrir',
+      items: [{ label: 'Accueil', onGo: go('/') }],
+    },
+    {
+      titre: 'Personnel',
       items: [
-        { label: 'Accueil', onGo: go('/') },
-        { label: 'Pièces & filtres', onGo: go('/pieces') },
-        { label: 'Encyclopédie', onGo: go('/explorer/encyclopedie') },
-        { label: 'Personnages célèbres', onGo: go('/explorer/personnages') },
-        { label: 'Thèmes', note: 'par sujet', onGo: go('/explorer/themes') },
-        { label: 'Fiche dramaturge', note: 'ex. Molière', onGo: go('/explorer/dramaturge/moliere') },
-        { label: 'Frise chronologique', onGo: go('/explorer/frise') },
-        { label: 'Carte du monde', onGo: go('/explorer/carte') },
-        { label: 'Collections thématiques', onGo: go('/explorer/collections') },
-        { label: 'Quiz', onGo: go('/quiz') },
+        { label: 'Ma collection', note: 'favoris', onGo: go('/collection') },
+        { label: 'Journal du comédien', onGo: go('/journal') },
+        { label: 'Carnet & contacts', note: 'pro du spectacle', onGo: go('/carnet') },
+        { label: 'Castings', note: 'veille & candidatures', onGo: go('/casting') },
       ],
     },
     {
@@ -68,12 +65,17 @@ export default function Drawer() {
       ],
     },
     {
-      titre: 'Personnel',
+      titre: 'Découvrir',
       items: [
-        { label: 'Ma collection', note: 'favoris', onGo: go('/collection') },
-        { label: 'Journal du comédien', onGo: go('/journal') },
-        { label: 'Carnet & contacts', note: 'pro du spectacle', onGo: go('/carnet') },
-        { label: 'Castings', note: 'veille & candidatures', onGo: go('/casting') },
+        { label: 'Pièces & filtres', onGo: go('/pieces') },
+        { label: 'Encyclopédie', onGo: go('/explorer/encyclopedie') },
+        { label: 'Personnages célèbres', onGo: go('/explorer/personnages') },
+        { label: 'Thèmes', note: 'par sujet', onGo: go('/explorer/themes') },
+        { label: 'Fiche dramaturge', note: 'ex. Molière', onGo: go('/explorer/dramaturge/moliere') },
+        { label: 'Frise chronologique', onGo: go('/explorer/frise') },
+        { label: 'Carte du monde', onGo: go('/explorer/carte') },
+        { label: 'Collections thématiques', onGo: go('/explorer/collections') },
+        { label: 'Quiz', onGo: go('/quiz') },
       ],
     },
     {
@@ -127,10 +129,12 @@ export default function Drawer() {
         </div>
 
         {groups.map((g) => (
-          <div key={g.titre}>
-            <div style={{ padding: '16px 18px 5px', fontSize: 11.5, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>
-              {g.titre}
-            </div>
+          <div key={g.titre ?? g.items[0].label} style={g.titre ? undefined : { paddingTop: 10 }}>
+            {g.titre && (
+              <div style={{ padding: '16px 18px 5px', fontSize: 11.5, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>
+                {g.titre}
+              </div>
+            )}
             {g.items.map((i) => (
               <div
                 key={i.label}
