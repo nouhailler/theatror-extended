@@ -15,6 +15,7 @@ export default function ScreenTip() {
   const menuOpen = useStore((s) => s.menuOpen);
   const helpOpen = useStore((s) => s.helpOpen);
   const tourStep = useStore((s) => s.tourStep);
+  const tourPicking = useStore((s) => s.tourPicking);
   const onbStep = useStore((s) => s.onbStep);
 
   // Astuce active pour la visite courante (indépendante de tipsSeen, qu'on
@@ -25,7 +26,7 @@ export default function ScreenTip() {
   useEffect(() => {
     // On n'affiche (ni ne « consomme ») une astuce que si aucun autre volet
     // n'est ouvert — sinon l'intro ou la démo la marqueraient vue à vide.
-    if (menuOpen || helpOpen || tourStep !== null || onbStep !== null) return undefined;
+    if (menuOpen || helpOpen || tourPicking || tourStep !== null || onbStep !== null) return undefined;
     const entry = helpForPath(pathname);
     if (tipsEnabled && entry && !tipsSeen[entry.id]) {
       setTipId(entry.id);
@@ -37,10 +38,10 @@ export default function ScreenTip() {
     setVisible(false);
     return undefined;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, menuOpen, helpOpen, tourStep, onbStep, tipsEnabled]);
+  }, [pathname, menuOpen, helpOpen, tourPicking, tourStep, onbStep, tipsEnabled]);
 
   if (!tipId || !visible) return null;
-  if (menuOpen || helpOpen || tourStep !== null || onbStep !== null) return null;
+  if (menuOpen || helpOpen || tourPicking || tourStep !== null || onbStep !== null) return null;
 
   const entry = helpForPath(pathname);
   if (!entry || entry.id !== tipId) return null;

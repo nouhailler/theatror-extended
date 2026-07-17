@@ -178,17 +178,17 @@ export const HELP: HelpEntry[] = [
   {
     id: 'explorer',
     title: 'Explorer',
-    resume: "Le hub de la découverte : encyclopédie, frise, carte du monde, personnages et collections thématiques.",
+    resume: "Le sommaire de l'app, en deux zones : « Travailler son jeu » pour répéter et s'entraîner, « Culture théâtrale » pour se documenter.",
     tips: [
-      'Chaque tuile ouvre un espace de découverte.',
-      "C'est le point d'entrée de tout le contenu « culture ».",
-      'Retrouvez ici l\'Encyclopédie, la Frise, la Carte et les Collections.',
+      "Zone 1 — Travailler son jeu : Mode répétition, Exercices d'acteur, Entraînement vocal, Mise en scène, Parcours, et le Mode IA.",
+      'Zone 2 — Culture théâtrale : Encyclopédie, Personnages, Thèmes, Collections, Frise, Carte, Costumes, Décors, Accessoires, Festivals, Médias, Quiz.',
+      'Chaque tuile ouvre une section ; le menu ☰ donne le même contenu sous forme de liste.',
     ],
     situe: "Onglet « Explorer » en bas.",
     relations: [
+      { label: 'Mode répétition', path: '/repetition' },
       { label: 'Encyclopédie', path: '/explorer/encyclopedie' },
       { label: 'Frise', path: '/explorer/frise' },
-      { label: 'Carte', path: '/explorer/carte' },
     ],
     test: (p) => p === '/explorer',
   },
@@ -374,9 +374,11 @@ export const HELP: HelpEntry[] = [
       'Plus rapide : sur une fiche de pièce à texte intégral, touchez « 🎭 Répéter cette pièce » — tout est pré-rempli.',
       "Choisissez votre rôle, une voix par personnage, la vitesse, et le sort des didascalies.",
       "Sur vos répliques, l'app attend : touchez l'écran pour continuer (ou mode chronométré / masqué pour tester la mémoire). Vous pouvez aussi vous enregistrer et vous réécouter.",
+      'Pour mémoriser : « Cartes de mémorisation » propose vos répliques une à une en Ping-Pong, Trous ou Indice, et remet devant celles que vous ratez.',
+      'Le lien « 📖 Lire la documentation » en tête de la configuration explique didascalies, répliques et cartes, exemples à l\'appui.',
       'La session reprend là où vous vous étiez arrêté ; tout est enregistré sur votre appareil.',
     ],
-    situe: "Explorer › Mode répétition, ou menu ☰ › L'atelier › Mode répétition.",
+    situe: "Explorer › Travailler son jeu › Mode répétition, ou menu ☰ › L'atelier › Mode répétition.",
     relations: [
       { label: 'Pièces (textes intégraux)', path: '/pieces' },
       { label: "Exercices d'acteur", path: '/exercices' },
@@ -497,24 +499,55 @@ export function helpById(id: string): HelpEntry | undefined {
 export interface DemoStep {
   path: string;
   helpId: string;
+  /** Étape retenue par la visite « temps forts » (sinon : visite complète seulement). */
+  fort?: boolean;
 }
 
+/** Les deux visites proposées au lancement du mode démo. */
+export type DemoMode = 'forts' | 'complet';
+
+// L'ordre suit les deux zones d'Explorer : on travaille d'abord, on se
+// documente ensuite, et on finit par ce qui est à soi (collection, journal,
+// carnet, castings).
 export const DEMO_STEPS: DemoStep[] = [
-  { path: '/', helpId: 'accueil' },
-  { path: '/pieces', helpId: 'pieces' },
-  { path: '/explorer', helpId: 'explorer' },
-  { path: '/explorer/encyclopedie', helpId: 'encyclopedie' },
-  { path: '/explorer/frise', helpId: 'frise' },
+  { path: '/', helpId: 'accueil', fort: true },
+  { path: '/pieces', helpId: 'pieces', fort: true },
+  { path: '/explorer', helpId: 'explorer', fort: true },
+
+  // Travailler son jeu
+  { path: '/repetition', helpId: 'repetition', fort: true },
+  { path: '/scene?seg=mono', helpId: 'scene', fort: true },
+  { path: '/exercices', helpId: 'exercices' },
+  { path: '/voix', helpId: 'voix' },
+  { path: '/mise-en-scene', helpId: 'mise-en-scene' },
+  { path: '/parcours', helpId: 'parcours' },
+  { path: '/ia', helpId: 'ia', fort: true },
+
+  // Culture théâtrale
+  { path: '/explorer/encyclopedie', helpId: 'encyclopedie', fort: true },
+  { path: '/explorer/personnages', helpId: 'personnages' },
+  { path: '/explorer/frise', helpId: 'frise', fort: true },
   { path: '/explorer/carte', helpId: 'carte' },
   { path: '/explorer/collections', helpId: 'collections' },
   { path: '/costumes', helpId: 'costumes' },
   { path: '/decors', helpId: 'decors' },
   { path: '/accessoires', helpId: 'accessoires' },
   { path: '/festivals', helpId: 'festivals' },
-  { path: '/scene?seg=mono', helpId: 'scene' },
+  { path: '/medias', helpId: 'medias' },
   { path: '/quiz', helpId: 'quiz' },
-  { path: '/ia', helpId: 'ia' },
-  { path: '/journal', helpId: 'journal' },
-  { path: '/collection', helpId: 'collection' },
+
+  // Personnel
+  { path: '/collection', helpId: 'collection', fort: true },
+  { path: '/journal', helpId: 'journal', fort: true },
+  { path: '/carnet', helpId: 'carnet' },
+  { path: '/casting', helpId: 'casting', fort: true },
+
   { path: '/reglages', helpId: 'reglages' },
 ];
+
+const DEMO_FORTS = DEMO_STEPS.filter((s) => s.fort);
+
+/** Les étapes de la visite choisie. « Temps forts » est un sous-ensemble, même ordre. */
+export function demoSteps(mode: DemoMode): DemoStep[] {
+  return mode === 'forts' ? DEMO_FORTS : DEMO_STEPS;
+}

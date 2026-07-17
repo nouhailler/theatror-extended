@@ -82,7 +82,7 @@ export default function Drawer() {
       titre: 'Aide',
       items: [
         { label: 'Aide de cet écran', note: '?', onGo: () => { close(); openHelp(); } },
-        { label: 'Mode démo', note: 'visite guidée', onGo: () => { close(); startTour(); } },
+        { label: 'Mode démo', note: 'temps forts ou complet', onGo: () => { close(); startTour(); } },
         { label: "Revoir l'introduction", onGo: () => { onbReplay(); } },
         { label: 'Réglages', onGo: go('/reglages') },
       ],

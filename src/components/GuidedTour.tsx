@@ -1,26 +1,34 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store';
-import { DEMO_STEPS, helpById } from '../data/help';
+import { demoSteps, helpById } from '../data/help';
+import TourPicker from './TourPicker';
 
 // Mode démo : parcours qui traverse réellement l'application, section par
 // section. Le texte de chaque étape vient de l'aide contextuelle (help.ts),
-// pour une seule source de vérité.
+// pour une seule source de vérité. Deux visites au choix (voir TourPicker) :
+// « temps forts » (sous-ensemble) ou « complète ».
 export default function GuidedTour() {
+  const picking = useStore((s) => s.tourPicking);
+  const mode = useStore((s) => s.tourMode);
   const step = useStore((s) => s.tourStep);
   const setStep = useStore((s) => s.setTourStep);
   const nav = useNavigate();
 
+  const steps = demoSteps(mode);
+
   // Synchronise la route avec l'étape courante.
   useEffect(() => {
-    if (step !== null && DEMO_STEPS[step]) nav(DEMO_STEPS[step].path);
-  }, [step, nav]);
+    if (step !== null && steps[step]) nav(steps[step].path);
+  }, [step, steps, nav]);
 
+  if (picking) return <TourPicker />;
   if (step === null) return null;
-  const demo = DEMO_STEPS[step];
+  const demo = steps[step];
+  if (!demo) return null;
   const entry = helpById(demo.helpId);
   if (!entry) return null;
-  const isLast = step === DEMO_STEPS.length - 1;
+  const isLast = step === steps.length - 1;
 
   const end = () => setStep(null);
   const prev = () => { if (step > 0) setStep(step - 1); };
@@ -49,7 +57,7 @@ export default function GuidedTour() {
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
         <div style={{ fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--gold)' }}>
-          Mode démo · {step + 1} / {DEMO_STEPS.length}
+          Mode démo · {step + 1} / {steps.length}
         </div>
         <button onClick={end} aria-label="Quitter la démo"
           style={{ cursor: 'pointer', color: 'var(--text-muted)', fontSize: 19, lineHeight: 1, background: 'none', border: 'none' }}>

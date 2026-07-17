@@ -13,6 +13,10 @@ import {
 import { JOURNAL_SEED } from './data/journalSeed';
 import { todayISO } from './lib/date';
 import { DEFAULT_HOME_SHORTCUTS } from './data/homeShortcuts';
+import type { DemoMode } from './data/help';
+
+/** Dernière page de l'onboarding (voir Onboarding.tsx, qui rend les mêmes pages). */
+export const ONB_LAST = 3;
 
 // ─── Types ───
 export type FavCategory =
@@ -124,15 +128,20 @@ interface State {
   markTip: (id: string) => void;
   resetTips: () => void;
 
-  // Onboarding (0–2 | null)
+  // Onboarding (0–ONB_LAST | null)
   onbStep: number | null;
   onbNext: () => void;
   onbFinish: () => void;
   onbReplay: () => void;
 
-  // Visite guidée (0–9 | null)
+  // Visite guidée. startTour ouvre le choix de la visite (tourPicking) ; pickTour
+  // fixe le mode et démarre. tourStep est un index dans demoSteps(tourMode).
+  tourPicking: boolean;
+  tourMode: DemoMode;
   tourStep: number | null;
   startTour: () => void;
+  pickTour: (mode: DemoMode) => void;
+  cancelTourPick: () => void;
   setTourStep: (i: number | null) => void;
 
   hydrate: () => Promise<void>;
@@ -254,7 +263,7 @@ export const useStore = create<State>((set, getState) => ({
   },
 
   onbStep: onbSeen() ? null : 0,
-  onbNext: () => set({ onbStep: Math.min(2, (getState().onbStep ?? 0) + 1) }),
+  onbNext: () => set({ onbStep: Math.min(ONB_LAST, (getState().onbStep ?? 0) + 1) }),
   onbFinish: () => {
     markOnbSeen();
     set({ onbStep: null });
@@ -264,11 +273,15 @@ export const useStore = create<State>((set, getState) => ({
     set({ onbStep: 0, menuOpen: false });
   },
 
+  tourPicking: false,
+  tourMode: 'forts',
   tourStep: null,
   startTour: () => {
     markOnbSeen();
-    set({ tourStep: 0, onbStep: null, menuOpen: false });
+    set({ tourPicking: true, tourStep: null, onbStep: null, menuOpen: false });
   },
+  pickTour: (mode) => set({ tourMode: mode, tourPicking: false, tourStep: 0 }),
+  cancelTourPick: () => set({ tourPicking: false }),
   setTourStep: (i) => set({ tourStep: i }),
 
   hydrate: async () => {

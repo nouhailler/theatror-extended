@@ -1,6 +1,7 @@
-import { useStore } from '../store';
+import { ONB_LAST, useStore } from '../store';
 
 const gold = '#d4a94e';
+const rouge = '#9e2b3a';
 const dim = 'rgba(212,169,78,.25)';
 
 interface Ligne {
@@ -8,18 +9,25 @@ interface Ligne {
   txt: string;
 }
 
+const TRAVAILLER: Ligne[] = [
+  { titre: 'Mode répétition', txt: "Collez votre texte : l'app lit les autres rôles à voix haute, vous donnez la réplique." },
+  { titre: 'Cartes de mémorisation', txt: 'Ping-Pong, textes à trous, indices — les répliques ratées reviennent.' },
+  { titre: 'Exercices & voix', txt: 'Respiration, diction, impro, projection, virelangues.' },
+  { titre: "Monologues d'audition", txt: 'Filtrés par durée, émotion, homme/femme, niveau.' },
+];
+
 const DECOUVRIR: Ligne[] = [
   { titre: 'Pièces & filtres', txt: 'Par durée, distribution, genre, décor, domaine public…' },
   { titre: 'Encyclopédie & fiches', txt: 'Dramaturges, mouvements, genres, métiers — avec portraits.' },
-  { titre: 'Frise chronologique', txt: 'De Thespis à Beckett, ère par ère.' },
-  { titre: 'Carte & collections', txt: 'Grands théâtres, festivals, sélections thématiques.' },
+  { titre: 'Frise & carte', txt: 'De Thespis à Beckett ; grands théâtres et festivals du monde.' },
+  { titre: 'Citations & glossaire', txt: 'Des milliers de répliques et tous les termes du théâtre.' },
 ];
 
-const TRAVAILLER: Ligne[] = [
-  { titre: "Monologues d'audition", txt: 'Filtrés par durée, émotion, homme/femme, niveau.' },
-  { titre: 'Citations & glossaire', txt: 'Des milliers de répliques et tous les termes du théâtre.' },
+const PERSONNEL: Ligne[] = [
   { titre: 'Favoris ☆ → Ma collection', txt: "Touchez l'étoile sur une pièce, un auteur, une citation." },
   { titre: 'Journal du comédien', txt: 'Répétitions, progrès, idées de mise en scène.' },
+  { titre: 'Carnet & contacts', txt: 'Les professionnels du spectacle que vous croisez.' },
+  { titre: 'Castings', txt: 'Veille des annonces et suivi de vos candidatures.' },
 ];
 
 function Barres({ lignes, couleur }: { lignes: Ligne[]; couleur: string }) {
@@ -45,7 +53,7 @@ export default function Onboarding() {
   const startTour = useStore((s) => s.startTour);
 
   if (step === null) return null;
-  const isLast = step === 2;
+  const isLast = step === ONB_LAST;
 
   return (
     <div
@@ -85,27 +93,37 @@ export default function Onboarding() {
         {step === 1 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div>
-              <div style={{ fontSize: 12, letterSpacing: 2.5, textTransform: 'uppercase', color: gold }}>1 · Découvrir</div>
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, marginTop: 4 }}>2 500 ans de théâtre</div>
+              <div style={{ fontSize: 12, letterSpacing: 2.5, textTransform: 'uppercase', color: gold }}>1 · Travailler son jeu</div>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, marginTop: 4 }}>Votre atelier</div>
             </div>
-            <Barres lignes={DECOUVRIR} couleur={gold} />
+            <Barres lignes={TRAVAILLER} couleur={rouge} />
           </div>
         )}
 
         {step === 2 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div>
-              <div style={{ fontSize: 12, letterSpacing: 2.5, textTransform: 'uppercase', color: gold }}>2 · Travailler</div>
-              <div style={{ fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, marginTop: 4 }}>Votre atelier</div>
+              <div style={{ fontSize: 12, letterSpacing: 2.5, textTransform: 'uppercase', color: gold }}>2 · Culture théâtrale</div>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, marginTop: 4 }}>2 500 ans de théâtre</div>
             </div>
-            <Barres lignes={TRAVAILLER} couleur="#9e2b3a" />
+            <Barres lignes={DECOUVRIR} couleur={gold} />
+          </div>
+        )}
+
+        {step === 3 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div>
+              <div style={{ fontSize: 12, letterSpacing: 2.5, textTransform: 'uppercase', color: gold }}>3 · Personnel</div>
+              <div style={{ fontFamily: 'var(--font-title)', fontSize: 26, fontWeight: 700, marginTop: 4 }}>Votre carnet de bord</div>
+            </div>
+            <Barres lignes={PERSONNEL} couleur={rouge} />
           </div>
         )}
       </div>
 
       <div style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, paddingTop: 18 }}>
         <div style={{ display: 'flex', gap: 8 }}>
-          {[0, 1, 2].map((i) => (
+          {Array.from({ length: ONB_LAST + 1 }, (_, i) => i).map((i) => (
             <div key={i} style={{ width: 8, height: 8, borderRadius: 999, background: step === i ? gold : dim }} />
           ))}
         </div>
